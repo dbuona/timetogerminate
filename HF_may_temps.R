@@ -5,16 +5,17 @@ temp<-separate(temp,date,c("year","month","day"),remove=FALSE)
 
 temp<-filter(temp,month=="05")
 temp<-filter(temp, year>1979)
-a<-mean(temp$airt,na.rm = TRUE)
-b<-mean(temp$airtmax,na.rm = TRUE)
-c<-mean(temp$airtmin,na.rm=TRUE)
+mean(temp$airt,na.rm = TRUE)
+mean(temp$airtmax,na.rm = TRUE)
+mean(temp$airtmin,na.rm=TRUE)
 
-d<-1.8
-a*d+32
-b*d+32
-c*d+32
-22*d+32
-a
-b
-c
-max(temp$year)
+temp$fluct<-temp$airtmax-temp$airtmin
+mean(temp$fluct,na.rm=TRUE)
+
+quantile(temp$fluct, na.rm=TRUE)
+
+quantile(temp$airtmax,na.rm=TRUE)
+
+19*1.8+32
+
+25*1.8+32

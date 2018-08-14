@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage{Sweave}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{mdframed}
+\usepackage{cite}
+\usepackage{natbib}
+\bibliographystyle{..//refs/styles/besjournals.bst}
+\usepackage[small]{caption}
+\setkeys{Gin}{width=0.8\textwidth}
+\setlength{\captionmargin}{30pt}
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\topmargin -1.5cm        
+\oddsidemargin -0.04cm   
+\evensidemargin -0.04cm
+\textwidth 16.59cm
+\textheight 21.94cm 
+%&\pagestyle{empty} %comment if want page numbers
+\parskip 0pt
+%\renewcommand{\baselinestretch}{1.5}
+\parindent 20pt
+
+\newmdenv[
+  topline=true,
+  bottomline=true,
+  skipabove=\topsep,
+  skipbelow=\topsep
+  ]{siderules}
+\usepackage{lineno}
+\linenumbers
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\title{A race against time: phenology as a mediator of competition across multiple plant life stages}
+\author{Dissertation proposal of Daniel Buonaiuto}
+\maketitle{}
+\section*{Motivation and Dissertation Framework}
+\par\par Phenology, the timing of annual life cycle events \citep{}, allows organisms to synchronize important life cycles events with optimum environmental conditions. \citep{}. Phenological cycles are apparent across a wide range of taxa, but phenological optimization may be especially important for sessile organisms such as plants, lacking the ability to seek out more favorable conditions, to persist in variable enviroments. Phenology is an important mediator of ecosystem processes \citep{} and species interactions \citep*{}, and globally patterns of phenology are shifting. Significant shifts in phenology accross a diversity of taxa and regions have been widely doccumented as a result of anthropogenic climate change \citep*{}, and shifts of such magnitude are expected to radically alter ecosystem structure and functioning accross virtually all scales \citep*{}. Our ability to predict the precise nature of these changes remains limited, but addressing anthropogenic global change is one of the most critical, existential challenges of our world today \citep{}, and it is essential that biological research is aimed to better understand the effects of global change on our planet.\\
+\par In my proposed disseratation, I heed this call to advance our understanding of the effects of global change on species interactions as mediated through phenology. Sitting at the nexus of traditional community ecology and global change biology, my proposed dissertation will explore how phenological change mediates intra and interspecific interactions in plants at two different critical life stages. In Part I of the dissertation, I will investigate how reproductive phenological patterns in temperate forests of North America may mediate competition for pollen and influence tree demography in a changing climate. In this section I will, in chapter 1 use statisitcal modeling highlight the evolutionary singificance of of widespread but poorly studied phenological trait known as hysteranthy and, in chapter 2, employ both observational and experimental approaches attempt to characterize the reaction norm for floral-foliate phenological interphases to fluctating environmental cues. In Part II, I will turn my attention to competition for resources at early stages of plant development as mediated germination phenology. In this section, I will, in chapter 3, use experimental techniques to evaluate the effect of climate change on germination phenology, and in turn, the influence of differential germination phenology on interspecific competition between hebaceous taxa of temperate woodlands. In chapter 4, I widen the scope of my attempt to characterize the reaction norm of germination phenology to climate change through a global meta-analysis on the topic.
+
+\section*{Background}
+\indent Phenological plasticity allows organisms synchronize their life cycle events with optimum conditions. In the temperate zone of Eastern North America, a region spanning 25 to 50-55 degree latitute in which my dissertation is focused, plant biolgical activity, growth and reproduction, occurs during the warmth of summer, while in the unfavorable conditions of winter, most perennial plants enter a state of dormancy in which biological functioning is minimal. Plant interpret these these changes in the environment through a complex sensing of physical cues that signal the changing of the seasons, and can respond by fine-tuning their pheological transitions accordingly. For temperate plants, it is widely accepted that plant phenology transitions are mediated by the interaction of exogenous environmental cues of temperture and photoperiod with endogenous cues like circadian clocks. While the three environmental cues, cool (chilling) and warm (forcing) temperatures and photoperiod seem to be relatively conserved across temperate plant species, it is clear that these cues interact, and increased exposure to one can compinsate for reduced exposure to others.\\ 
+As further background to my proposal I will elaborate on the physiology and ecology of the two major phenolocal phases of interest, dormancy and spring growth, for my dissertation. 
+
+\textbf{Dormancy}\\
+\indent Dormancy is as a tempory state in which metabolic activity is completely mimimized, preventing organism growth, development or activity. It is generally accepted that dormancy allows organisms to persist by conserving energy during periods that are unfavorable for biological functioning.\\
+Dormancy cycles at the bud level can be generally described in three subphases: paradormancy, endodormancy and ecodormancy The transition to paradormancy is initiated by shortening photoperiods falling temperatures, and in this state, I'm not totally sure what happens. During endodormancy, dormant plant are unable to reinitate cell activity even if conditions are favorable. It has been suggested that a build up of callouse in the cell's plasmodesmata isolate the cells to maintain endodormancy. Callose is broken down by exposure to cold temperatures to transition the cell to ecodormancy, in which biological function remains surpressed, but plant are able to reinitiate cell activity after a certain exposure to favorable conditions as signaled by warm temperature and increasing photoperiods.\\
+\indent Seed dormancy is operationally defined as a block to the completion of germination of an intact viable seed under favorable conditions \citep{FinchSavage2016}. The taxonomy of dormancy in seeds is far more complicated than in buds, with three broad types of dormancy that can be further subdivided into several classes. Physical dormancy (PY) is caused by the seed or fruit coat being initially impermeable to water. PY is broken does to by mechanical or chemical scarification which weakens the seed coat and allows the seed to imbibe water. Morphological dormancy (MD), results from an underdeveloped embryo at the time of dispersal, and simply need more time to grow in order to germinate. Physiological dormancy (PD) is the most common form of dormancy in which intrinsic properties of the seeds prevent germination. It has been demonstrated in several different model systems that the maintenence of dormancy is associated with high levels of and sensitiitvy to abscisic acid (ABA) and dormancy loss and germintion associated with increasing levels and sensativity Gibberelic acid (GA3). The dynamics of these chemical are mediated by the same environmental cues as bud dormancy, however there is considerable debate whether seed germination is a separate phenological phase from dormancy break, or the end of dormancy itself. This debate has implications for the interpretation of cues, in which broadly speaking, temperature regulates the depth of dormancy and light is the cues that triggers germination. For both bud and seed phenology, there are no external signals for the completion of dormancy, so it is common practice to use spring phenological phases, such as budburst in buds or radicale emergence in seeds, to characterize the start of the growth season.\\
+
+\textbf{Spring Phenology: Leaf and Flower production}
+\indent Classically, the first phenological phase of the growing season is considered to be leaf budburst, though it should be noted that there are some unobservable phenophases, like xylem reconstruction or phloem initiation that must occur first. It should also be noted that in many species in the temperature forest it is flower development rather than leaf that is the first visable phenophase of the growing season, though broadly speaking, flowering in temperate plants can happen be observed throughout the growing season, while leaf development happens only at the beginning. Optimum timing for leaf development is a tradeoff between advancing to maximize the growing season while delaying to reduce the risk of damage from late season frost. Flower phenology shares the elements of this tradoff, with an additional dimension that optimum timing must also conincide with favorable conditions for pollination, abundance of pollinators for zoophilious species, and dry, windy condtions for anemophilous taxa. There is debate as to what degree the dynamics of is a product of local adaptation or phenotypic plasticity, but there is substantial interanual and interpopulation variability in phenological traits. \\ 
+
+\section*{PART I: Competition for Pollen: Hysteranthy and Floral-Foliate patterns}
+\section*{Chapter 1: Hysteranthy}
+\subsection*{Introduction}
+Green is the color of spring \citep{Schwartz1998}, but any keen observer walking the Eastern deciduous forests of North America early in the season would readily notice that it is often the subtle reds and yellows of emerging tree flowers that are the first harbingers of the season. Why do some tree species seasonally flower before leafing out? This trait, known as hysteranthy,proteranthy or precocious flowering \citep{Heinig1899,} is apparent in many commercially and ecologically important woody plant species and has been described as a characteristic flowering pattern in temperate deciduous forests of North America \citep{Rathcke1985}. While there has been little direct, empirical investigation into the origins or significance of this pattern, several hypotheses have emerged:\\
+\indent The most common hypothesis for the seemingly high rate of occurrence of hysteranthy in temperate deciduous species is that this phenological pattern is an adaptation critical for wind pollination, with leafless flowering allowing for more effective pollen transfer \citep{Whitehead1969,Rathcke1985, Spurr1980}. However, despite this common adaptive interpretation of hysteranthy, evidence does not preclude it from being under weak to no direct selection. The hysteranthous pattern could simply be a by-product of other, independent selective regimes acting with differential strength on floral and foliate phenology such as selection for extremely early flowering. A third possibility is that hysteranthy may also be a highly conserved trait, and the preponderance of this phenological pattern in the temperate zone is a product of phylogenetic representation of the region rather than an adaptive quality to the trait.\\
+\indent In this chapter, I propose to evaluate the associations between hysteranthy and several other life history traits of temperate woody plant species by combining phylogenetic information with compiled species-level data on hysteranthy, pollination syndrome and several related traits (shade tolerance, plant height, flowering time, duration of fruit maturation). Each of the state hypotheses above yeild clear predictions when examined across species, which will be detailed below.\\
+\subsection*{Hypotheses}
+Given wind-pollination efficiency hypothesis, I would expect:
+\begin{itemize}
+\item Wind pollination syndrome to be a strong predicted of hysteranthy.
+\item A possible assocition between shade tolerance and hysteranthous flowering, as shade tolerant species are likely to be found in more dense forests, where the benefit of flowering before canopy closure would be accentuated. 
+\item As possible association between hysteranthy and increasing plant height, because the reduction wind speeds as a result of canopy closure would be most dramatic experienced in tall canopy species.\\
+\end{itemize}
+If hysteranthy is the incidental byproduct of selection on other phenological traits, I would expect:
+\begin{itemize}
+\item No strong signal from the three predictors mentioned above.
+\item Early flowering would be the strongest predictor of hysteranthy.
+\item A possible relationship between longer fruit maturation times and hysteranthy, as fruit development has been suggested to be driver of early flowering \citep{Primack1987}.
+\end{itemize}
+If hysteranthy is evolutionarily conserved:
+\begin{itemize}
+\item A strong phylogenetic signal with only weak associations with the traits mentioned above.
+\end{itemize}
+
+\subsection*{Methods}
+\subsection*{Preliminary results}
+\subsection*{Preliminary discussion}
+\section*{Chapter 2: Plasticity of Floral-Foliate patterns in dynamic environments}
+\subsection*{Introduction}
+\indent A common assumption that has been demonstrated in the literature is that there tends to be correlation between growing season phenophases such as flowering and leaf development--when one is earlier or later, the other tends to be as well \citep{Lechowitz1992}. While this relationship may hold at a coarse temporal scale, at a finer one, any non-perfect coordination between phases could alter the duration interphase period, defined here as the time between the start of one phenological phase and the next. These alterations could in turn, affact the reproductive success in species in which the interphase has been theorized to be functially important like hysteranthous species of the eastern forest. In this chapter, I will [1] use long term observation data to quantify the fine scale variability in floral-foliate interphases for a suite of temperate woody plants and [2] use growth chamber studies to gain a more mechanistic understand of the sesativity of interphase timing and duration to varying climate conditions.\\
+\subsection*{Hypotheses}
+I expect that the floral-foliate interphase varaibility under different conditions will vary between species. I predict:
+\begin{itemize}
+\item Species with mixed buds will be more constrained in their interphase duration than species with separate buds.
+\item Hysteranthous species will more consistantly maintain their interphase duration than non-hysteranthous species, as in hysteranthous species, the interphase has been suggested to be of adaptive significant, which is not the case for non-hysteranthous species.
+\end{itemize}
+I also predict that:
+\begin{itemize}
+\item Maintainance of the interphase duration under different treatments is the product of proportional response to environmental cues.
+\item Variability in interphase duration under different treatments of the product of differentially sensative reponses to interaction environmental cues.
+\end{itemize}
+
+\subsection*{Methods}
+\subsection*{Preliminary results}
+\subsection*{Preliminary discussion}
+
+\section*{PART II: Competition for resources and germination phenology}
+\section*{Chapter 3: Seasonal priority effects in a changing climate}
+\subsection*{Introduction}
+There is significant ecological importance of simply showing up on time. Priority effects,the impacts that a given species has on a system due to its prior arivival, are an essential to understanding community assembly, and can lead system on radically diverging tradjecteries to alternate stable states.But priority effect go beyond just the sequential arrival of species to a site, and can also opperate seasonally on a within year scale through plant phenology, with species active earlier influence the community dynamics to follow. These seasonal prioty effects can be particular important in the context of interspecific competitions. Early initiating speices are able complete much of thier lifecycle before competition intesifies with subsequent initiatiors, and as such can gain a competive advantage over latecomers, even if the later are inherantly superior competors. Priority effect have been demonstrated in many systems, and it has been suggest that seasonal priority effects are of paticular importance for faciliting plant invasion. However while the correlation between early phenology and competive advange is apparent, it is diff . For this chapter I will use temperature treatment to manipulate the germination phenology of two competeting species in order to isolate the role of the seasonal priorty effect in there competive dynamics. In addition to directly testing for  eveidence of seasonal priorty effects mediating competition, because I will use temperature treatments that are realistic under predicted climate change scenarios, this chapter will also provide valuable insight to the scope of change in phenological rank that could be expected with climate change.
+\subsection*{Hypotheses}
+I predict that competitive dominance with be strongly influenced by the the strength of the seasonal priority effect. Say more here.
+\subsection*{proposed methods}
+\textbf{Pre-study germination experiments for candidates species} My proposed pairwise competion experiment requires species with the following phenological characteristics. A] Species with substantially contrasting germination phenologies (one with shorter time to germination, one with longer). B] Different environmental conditions alter the lag in germination between earlier and later species changes substantially without significant effects on the overall germination percentage, thus altering the magnitude of the season priority effect. Note: if conditions B] cannot be met through environmental manipulations alone, I can also alter the seasonal priorty effects by sowing species in different time intervals.\\
+
+\section*{Chapter 4: Quantify the plasticity of temporality in germination response to the environment: A metaanalysis}
+\subsection*{Introduction}
+Varying climate conditions effects seed germination in two main ways: through the overall percentage of seeds that will germinate and the speed at which germination takes place. There is significant covarience between these responses, and the relationship between them as and their response to climate change will play a major role in the structure and function of ecosystems as climate change. Changes in germination percentage will effect seed bank dynamics, species abundances, and changes in the timing 
+\subsection*{Methods}
+\subsection*{Current progress}
+
+
+ 
+
+\end{document}

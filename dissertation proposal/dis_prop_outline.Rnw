@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{mdframed}
+\usepackage{cite}
+\usepackage{natbib}
+\bibliographystyle{..//refs/styles/besjournals.bst}
+\usepackage[small]{caption}
+\setkeys{Gin}{width=0.8\textwidth}
+\setlength{\captionmargin}{30pt}
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\topmargin -1.5cm        
+\oddsidemargin -0.04cm   
+\evensidemargin -0.04cm
+\textwidth 16.59cm
+\textheight 21.94cm 
+%&\pagestyle{empty} %comment if want page numbers
+\parskip 0pt
+\renewcommand{\baselinestretch}{1.5}
+\parindent 20pt
+
+\newmdenv[
+  topline=true,
+  bottomline=true,
+  skipabove=\topsep,
+  skipbelow=\topsep
+  ]{siderules}
+%\usepackage{lineno}
+%\linenumbers
+
+\begin{document}
+\section*{Motivation and Dissertation Framework}
+\begin{enumerate}
+\item Climate change affects phenology.
+\item Phenology mediates many ecosystem processes and community interactions.
+\item Currently, we are limited in our abilitiy to anticipate these effects, but need to.
+\item My dissertation, positioned at the intersection of community ecology and global change bio does that.
+\item How? Sitting at the nexus of traditional community ecology and global change biology, my proposed dissertation will explore how phenological change mediates intra and interspecific interactions in plants at two different critical life stages.
+\item explain one sentence about each chapter here.
+\end{enumerate}
+\section*{Background}
+\begin{enumerate}
+\item phenological plasticity allows plants to optimize life cycle events
+\item cues of phenology in temperate zone.
+\item In temperate zone most (perennial plants) have a dormant and growing season, and the timing of this transition between them varies between species, populations, and years, and the timing transition to growing season (dormancy break), is very important.
+\item explain how bud dormancy works (endo, eco). This has been modeled in a few different way.
+\item explain how seed doramancy works
+\begin{enumerate}
+\item Baskins dormancy classification
+\item There is a debate whether germination and dormancy break are seperate or continuous
+\end{enumerate}
+\item Discuss the hydrothermal time model.
+\item Priority effects: Timing influence community interactions, trait evolution etc. We look at two kinds of priority effect FLS (competition for pollen), and germination (resource.)
+\begin{enumerate}
+\item FLS could be a driver of other traits, and may have implications for reproduction
+\item There is a correlation between early phenology and competitive dominance, invasion success.
+\end{enumerate}
+\end{enumerate}
+
+\section*{chapter I: The signifcance of flower-leaf sequences in an era of global climate change}
+\subsection*{Introduction}
+Green is the color of spring \citep{}, but any keen observer walking the Eastern deciduous forests of North America early in the season would readily notice that it is often the subtle reds and yellows of emerging tree 
+flowers that are the harbingers of the season. Why do some tree species seasonally flower before leafing out? This sequence, known as hysteranthy, proteranthy, or precocious flowering is readily apparent in many ecologically and commercially important species and has been described as  the characteristic flower-leaf sequence (FLS) of temperate deciduous forests \citep{}. Questions regarding the evolutionary origins and functionality of FLS are go beyond simple observational curiosity. Recent work has begun to show that it is not only individual phenological phases that are important, but also the realtionship between them, even if they are seemingly disperate \citep{}. In fact, most of the current hypotheses regarding FLS's suggest they critical to the reproductive or physiological functioning of woody plants \citep{}. Several authors suggest that the hysteranthous FLS is a trait critical for wind-pollination effeciency \citep{}. Others suggest that flowering first is an adaptation to reduce water stress and maintain floral hydration \citep{}, though this hypothesis has emerged primarily from the dry-decidous tropics where hysteranthy is also common \citep{}.  Still others suggest the hysteranthous FLS is and adapation to allow for extremely early flowering and is correlated with other early flowering traits such as seed size, dispersal time and cold tolerance \citep{}. It is also possible that FLS's are highly conserved trait, and the preponderance of hysteranthy in the temperate zone is a product of phylogenetic representation of the region rather than an adaptive quality to the trait.\\
+\indent Despite the rich theoretical attention FLS has recieved in the literature, data about FLS is limited. The most comprehensive source of data we have regarding FLS comes from qualative descriptions in regional flora and guide books. A few long term empirical dataset can be found, but these are rare when compared with the larger body of phenological data as flower and leaf phenology have generally been observed separately{}. In part Im I ask, given the available data:
+\begin{enumerate}
+\item  What is the associations between FLS and several other life history traits (pollination syndrome, shade tolerance, plant height, flowering time, duration of fruit maturation) pertinent to the established hypotheses. Are these results sensative to data quality, observational ambiguity and modeling choices?
+\item To what degree do FLS vary interantually, between populations, and individals?
+\item Is there evidence that patterns FLS are being affected by global climate change.
+ \end{enumerate}
+Then, using a controlled environemnt experiment, I will investigate a possible mechansim that would produce variability in FLS over time and space, and extrapolate my findings to consider the effect of global cliamte change. In this part II I ask:
+\begin{enumerate}
+\item Is variablility in FLS a product of a differntial sensativies to environmental cue combinations between flower and leaf buds?
+\end{itemize}
+
+\subsection*{Proposed methods:}
+\subsection*{Status and Preliminary Results:}
+\textbf{What is the associations between FLS and several other life history traits?  Are sensativity of the above analysis to data quality, observational ambiguity and modeling choices?}
+In the catagorical models, only flowering time is a consistantly strong predictor of FLS, with the effect size of pollination syndrome, seed development time and phylogenetic signal varing in significance depending on data source and modeling choices. There was no strong signal from height or shade tolerance. [See figure].\\
+In the continuous model, pollination syndrome was the strongest predictor of FLS with shade tolerance and early flowering significant as well. [See figure]. These finding support the pollination syndrome and early flowering.\\
+\textbf{To what degree do FLS vary interantually, between populations, and individals?}
+There is signifcant variation between interanually and between indivudals. [See figure]. There are population difference, but these do not correlate to altitude or latitude, except in super hysteranthous species Alnus and Corylus.\\
+
+
+\section*{chapter II: The germination response to varying stratification regimes of a suite of temperate herbaceous speicies}
+\subsection{Introduction}
+Non-deep physiological dormancy the most common seed dormancy class in species from the temperate zone \citep{Finch-Savage_2006}. For many of such species, dormancy release is acheived by exposure to a period of cool, moist conditions prior to encountering suitable germination conditions \citep{}. This cold stratification requirement has been indetified in a large number of taxa, and stratifcation treatments are employed widely in both plant science and industry \citep{Hartmann_2011}. The temperatures under which stratification is acheived vary considerably among species, and has been reported to be quite broad in some \citep{Pritchard_1999,Vleeshouwers_2001}, and narrow in others \citep{WASHITAN_1988}. The duration of stratification needs has also been show to differ between species, ranging from just a few days \citpe*{} to many months \citep{} and may vary signifcantly between seed crops due to maternal effects  \citep{}. While cold stratifcation is commonly found as an expermental treatment in the literature, and has been shown to advance germination, studies which evaluate the germination response across a range of stratifaction periods or temperature are comparately more rare, and have typically been restricted important horticultural or agricultual species \citep{}. As a result, the dynamism of the germination response to variable statification regimes is poorly characterized in the vast majority of plant species.\\
+\indent Cold stratification in the lab, serves as a proxy for natural exposure to chilling conditions a seed would experience overwintering in the field. With global climate change, changes to the severity and duration of winter will alter the natural stratification period experienced by seeds \citep{}. While winters are gernally predicted to be warmer and shorter \citep{IPCC}, the number of days which the stratification conditions are met may increase, decrease, or shift temporally, differentially affecting the germination phenology plant species depening on their geographic position, and the dynamics of their response to temperature \citep{Walck_2011}. These shifts in germination may in turn alter plant competition through priority effects \citep{} and plant demography though seed bank dynamics, and multi-trophic interactions.
+\indent To better predict the effect of warming winters on seed germination, it is imperative to better characterize the germination response to variable stratification regimes for a more broad range of plant species. In this chapter I ask:
+\begin{enumerate}
+\item How does varying stratifaction periods effect the germination time courses of plant species?
+\item How do stratification periods and incubation temperatures interact in germination time course?
+\item Is the stratification requirement best characterized by an optimum (Can seeds get over stratified) or a threshold?
+\item To what degree is germination rank between species affected by varying stratification regimes?
+\end{enumerate}
+\subsection*{Proposed methods}
+\textbf{Experimental Protocols:} In the summer of 2018, seed of 24 temperate Eastern North America herbaceous plant species of both native and non-native origins were procurred from plant nursury stock or collections (see figure X for species and provanances) and dry-stored until the start of the experiment. In mid-August 2018, all seeds were checked for the prescence of an embryo using a float test \citep{Baskin_2014}, and imbibed in distilled water for 24 hours. Seeds of each species were then randomly divided into cohorts of 20-40, depending on seed availability and place onto wetted filter paper in 8 cm plastic petri dishes. Each cohort was then assigned to a combination of stratification duration (10 levels: 0, 10, 20, 30, 40, 50, 60, 70, 80,100 days) and incubation (2 levels, low temperature: 20 day/10 night or high 25 day/15 night) treatments, making for a 20 level fully factorial treatment design. For stratification, petri dishes were wrapped in aluminum foil and place in a X germination chamber in the dark at 4 degrees C. At the end of each stratification duration, cohorts were transfered to incubation conditions in growth chambers. Germination fractions were observed every other day for 25 days, and petri dishes were checked daily and moistened as needed. By measuring the germination fraction over time, I will generate germination time courses for each species and each treatment.\\
+\textbf{Statistical analysis:} Using the germinination time courses for each species, I will calculate the rate of change for T_b given as a function of stratification duration. From these data, I will assess each species sensitivity to stratification, and use this information to predict how germination rank may change under different stratification scenarios. I will also examine whether species with different traits such as life history, habitat requirements, native status, and phylogeny differ in the strength of their response to the environmental treatments.\\
+\subsection{Status/preliminary results}
+\textbf{Project Status:} The experimental procedures are underway, and expected to conclude in December 2018.
+\section*{Timeline}
+\section*{Chapter Options}
+\begin{enumerate}
+\item Hysteranthy and Flobuds together
+\item OEGRES
+\item Germination trials
+\item Priority effects
+\end{enumerate}
+\line(1,0){10cm}
+\begin{enumerate}
+\item Hysterany
+\item Flobuds
+\item OEGRES
+\item Germination Trials and Priority effects together
+\end{enumerate}
+\line(1,0){10cm}
+\begin{enumerate}
+\item Hysterany and Flobuds
+\item Common Garden
+\item OEGRES
+\item Germination Trials and Priority effects together
+\end{enumerate}
+\line(1,0){10cm}
+\begin{itemize}
+\item 3 chapters seed stuff only
+\item 3 chapter any other combination
+\end{itemize}
+
+
+\end{document}

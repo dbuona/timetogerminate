@@ -1,16 +1,15 @@
 This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: dis_prop_outline.aux
-I couldn't open style file ..//refs/styles/besjournals.bst.bst
+I couldn't open style file /refs/styles/besjournals.bst.bst
 ---line 3 of file dis_prop_outline.aux
- : \bibstyle{..//refs/styles/besjournals.bst
- :                                          }
+ : \bibstyle{/refs/styles/besjournals.bst
+ :                                       }
 I'm skipping whatever remains of this command
-I found no \bibdata command---while reading file dis_prop_outline.aux
 I found no style file---while reading file dis_prop_outline.aux
-You've used 11 entries,
+You've used 37 entries,
             0 wiz_defined-function locations,
-            104 strings with 783 characters,
+            157 strings with 1290 characters,
 and the built_in function-call counts, 0 in all, are:
 = -- 0
 > -- 0
@@ -49,4 +48,4 @@ warning$ -- 0
 while$ -- 0
 width$ -- 0
 write$ -- 0
-(There were 3 error messages)
+(There were 2 error messages)

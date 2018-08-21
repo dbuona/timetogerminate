@@ -1,0 +1,146 @@
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{Sweave}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{mdframed}
+\usepackage{natbib}
+\bibliographystyle{..//refs/styles/besjournals.bst}
+\usepackage[small]{caption}
+\setkeys{Gin}{width=0.8\textwidth}
+\setlength{\captionmargin}{30pt}
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\topmargin -1.5cm        
+\oddsidemargin -0.04cm   
+\evensidemargin -0.04cm
+\textwidth 16.59cm
+\textheight 19.94cm 
+%&\pagestyle{empty} %comment if want page numbers
+\parskip 0pt
+\renewcommand{\baselinestretch}{1.5}
+\parindent 20pt
+
+\newmdenv[
+  topline=true,
+  bottomline=true,
+  skipabove=\topsep,
+  skipbelow=\topsep
+  ]{siderules}
+\usepackage{lineno}
+%\linenumbers
+
+\usepackage{multirow}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+\textbf{Temporal Biology Seminar: Phenology}\\
+\indent Phenology, the timing of annual life cycle events, is a critical trait in living organisms, influencing and being influenced by the evolution and ecology across many scales. In this graduate seminar we will discuss the biological underpinning and implications of phenology through primary scientific literature. \\
+\indent the course will meet once per week for a 3 hour discussion based lecture. \textit{Prerequisites:} Introductory course in ecology and evolution , or permission of instructor.
+
+\begin{center}
+\scalebox{0.8}{
+  \begin{tabular}{|l|l|l|l|}
+\hline
+Week & Topic & Lecture Focus & Readings \\
+\hline
+\multicolumn{4}{|c|}{Part I: Fundamentals} \\
+\hline
+\multirow{2}{10em}{Week 1} &\multirow{2}{10em} {Introductory Remarks } &  What is phenology anyway?"& Forest and Rushing 2010 \\ 
+& & and is phenology a "trait"? & Lechowicz 1984, Ollerton 1992, \\
+\hline
+\multirow{2}{10em}{Week 2} &\multirow{2}{10em} {Environmental Cues} & Environental factors influencing phenology & Rathke and Lacey 1985 \\ 
+& & and modeling phenological responses to environments & Chuine 2000, Fu 2014  \\
+\hline
+\multirow{2}{10em}{Week 3} &\multirow{2}{10em} {Physiology of Phenology} & How/Where do plants perceive their environment? & Bernier 2005 \\ 
+& & and genetic regulation of phenology & Wilczek 2010, Visser 2010  \\
+\hline
+\multirow{2}{10em}{Week 4} &\multirow{2}{10em} {Evolution of Phenology} & Heritability and local adaptation of phenology & Liepe 2016  \\ 
+& & & Vitasse 2009 \\
+\hline
+\multirow{2}{10em}{Week 5} &\multirow{2}{10em} {Carryover effects} & Phenological sequences & Lechowicz 1995, Gougherty 2018  \\ 
+& & Maternal effects & Johnsen 2005, Auge 2017  \\
+\hline
+\multicolumn{4}{|c|}{Part II: Function} \\
+\hline
+\multirow{2}{10em}{Week 6} &\multirow{2}{10em} {Ecosystem Ecology} & Phenology, fluxes and feebacks  & Richardson 2013 \\ 
+& &  & McKown 2012  \\
+\hline
+\multirow{2}{10em}{Week 7} &\multirow{2}{10em} {Community Ecology} & Temporal Niches & Fargione 2005 \\ 
+& & Phenology and Competition & Ross 1972, Wainwright 2011  \\
+\hline
+\multirow{2}{10em}{Week 8} &\multirow{2}{10em} {Evolutionary biology} & Phenological speciation: Allochrony & Hipperson 2016, Taylor 2017 \\ 
+& & Phenology and life history evolution & Burghardt 2015, Rubin 2018  \\
+\hline
+\multicolumn{4}{|c|}{Part III: Phenology in a changing world} \\
+\hline
+\multirow{2}{10em}{Week 9} &\multirow{2}{10em} {Phenological Shifts} & Observed changes & Menzel 2006, Fu 2015 \\ 
+& &  & Ffrench-Constant2016, Da Silva 2015  \\
+\hline
+\multirow{2}{10em}{Week 10} &\multirow{2}{10em} {Invasion} & Phenology as a mechanism of invasion & Wolkovich 2013, Gioria 2017 \\ 
+& & Rapid evolution of phenological response & Montague 2008, Franks 2007  \\
+\hline
+\multirow{2}{10em}{Week 11} &\multirow{2}{10em} {Phenology and Extremes} & False Spring & Gu 2008 \\ 
+& & Drought & Ivits 2014, Cui 2017  \\
+\hline
+\multirow{2}{10em}{Week 12} &\multirow{2}{10em} {Phenological Mismatches} & Pollinator networks & Kudo 2003, Petanidou 2014 \\ 
+& &Herbivory and Predation  & Kharouba 2015, Yang 2010  \\
+\hline
+
+\end{tabular}}
+\end{center}
+
+\nocite{Auge_2017,Bernier_2005,Burghardt_2015,CHUINE_2000,Clausen_1941,Cui_2017,Da-Silva_2015,Fargione_2005,ffrench-Constant_2016, Forrest_2010,Franks_2007,Gioria_2016,Lechowicz_1995,Lechowicz_1984,Fu_2014,Fu_2015,Gougherty_2018,Gu_2008,Hipperson_2016,Ivits_2013,Johnsen_2005,Kharouba_2015,Kudo_2013,Liepe_2016,McKown_2012,MENZEL_2006,MONTAGUE_2007,OLLERTON_1992,PETANIDOU_2014,Rathcke_1985,RICHARDSON_2013,Ross_1972,Rubin_2018,Taylor_2017,Visser_2010,Vitasse_2009,Wainwright_2011,Wolkovich_2013,Yang_2010,Wilczek_2010}
+\bibliography{tempbio_ref}
+\end{document}

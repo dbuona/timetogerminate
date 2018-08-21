@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  20 AUG 2018 18:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  21 AUG 2018 17:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -601,6 +601,9 @@ Package caption3 Info: TeX engine: e-TeX on input line 57.
 \c@ContinuedFloat=\count144
 Package caption Info: float package is loaded.
 )
+(/usr/local/texlive/2015/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen167
+)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/upquote/upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
@@ -624,13 +627,13 @@ LaTeX Font Info:    ... okay on input line 84.
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count145
-\scratchdimen=\dimen167
+\scratchdimen=\dimen168
 \scratchbox=\box55
 \nofMPsegments=\count146
 \nofMParguments=\count147
 \everyMPshowfont=\toks20
 \MPscratchCnt=\count148
-\MPscratchDim=\dimen168
+\MPscratchDim=\dimen169
 \MPnumerator=\count149
 \makeMPintoPDFobject=\count150
 \everyMPtoPDFconversion=\toks21
@@ -672,50 +675,6 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 87.
 
-
-Package natbib Warning: Citation `Forrest2010' on page 1 undefined on input lin
-e 89.
-
-
-Package natbib Warning: Citation `Pia02007' on page 1 undefined on input line 8
-9.
-
-
-Package natbib Warning: Citation `Cleland2007' on page 1 undefined on input lin
-e 89.
-
-
-Package natbib Warning: Citation `Yang2010' on page 1 undefined on input line 8
-9.
-
-
-Package natbib Warning: Citation `Leverett2017' on page 1 undefined on input li
-ne 89.
-
-
-Package natbib Warning: Citation `Chuine2001' on page 1 undefined on input line
- 89.
-
-
-Package natbib Warning: Citation `Parmesian2003' on page 1 undefined on input l
-ine 89.
-
-
-Package natbib Warning: Citation `Menzel2006' on page 1 undefined on input line
- 89.
-
-
-Package natbib Warning: Citation `Root2003' on page 1 undefined on input line 8
-9.
-
-
-Package natbib Warning: Citation `Cleland2012' on page 1 undefined on input lin
-e 89.
-
-
-Package natbib Warning: Citation `Ovaskainen2013' on page 1 undefined on input 
-line 89.
-
 Runaway argument?
 {Vitasse2010). For plants growing in temperate regions, it is widely \ETC.
 ! Paragraph ended before \@citex was complete.
@@ -730,14 +689,6 @@ My plan is to forget the whole thing and hope for the best.
 [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-Package natbib Warning: Citation `Rinne2011' on page 2 undefined on input line 
-100.
-
-
-Package natbib Warning: Citation `Sagar2014' on page 2 undefined on input line 
-100.
-
 ! Undefined control sequence.
 l.101 ...n dormancy induction remains unclear\citp
                                                   {Baskin2002}. Environmenta...
@@ -747,114 +698,64 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-
-Package natbib Warning: Citation `Bradford1995' on page 2 undefined on input li
-ne 107.
-
-
-Package natbib Warning: Citation `Balta' on page 2 undefined on input line 107.
-
-
-Runaway argument?
-{Steadman or Prichars. The model formulation is below:\\ [insert seco\ETC.
-! Paragraph ended before \@citex was complete.
+! Missing number, treated as zero.
 <to be read again> 
-                   \par 
-l.110 
-      
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
+                   i
+l.109 [insert second model here]
+                                \\
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--110
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--110
+
+ []
 
 [2]
-
-Package natbib Warning: Citation `Barnes2004' on page 3 undefined on input line
- 126.
-
-
-Package natbib Warning: Citation `Barnes2016' on page 3 undefined on input line
- 126.
-
-
-Package natbib Warning: Citation `Zanne2013' on page 3 undefined on input line 
-126.
-
-
-Package natbib Warning: Citation `Ives2010' on page 3 undefined on input line 1
-26.
-
-
-Package natbib Warning: Citation `Ho2014' on page 3 undefined on input line 126
-.
-
-
-Package natbib Warning: Citation `Wilcox2000' on page 3 undefined on input line
- 126.
-
-
-Package natbib Warning: Citation `Gelman2007' on page 3 undefined on input line
- 126.
-
-
-Package natbib Warning: Citation `Okeefe' on page 3 undefined on input line 127
-.
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 132--135
-
- []
-
-
-Overfull \hbox (15.47841pt too wide) in paragraph at lines 137--137
-[]\OT1/cmr/bx/n/14.4 Chapter II: The ger-mi-na-tion re-sponse to vary-ing strat
--i-fi-ca-tion regimes
- []
-
-
-Package natbib Warning: Citation `Finch-Savage_2006' on page 4 undefined on inp
-ut line 139.
-
-
-Package natbib Warning: Citation `Hartmann_2011' on page 4 undefined on input l
-ine 139.
-
-
-Package natbib Warning: Citation `Pritchard_1999' on page 4 undefined on input 
-line 139.
-
-
-Package natbib Warning: Citation `Vleeshouwers_2001' on page 4 undefined on inp
-ut line 139.
-
-
-Package natbib Warning: Citation `WASHITAN_1988' on page 4 undefined on input l
-ine 139.
-
 ! Undefined control sequence.
-l.139 ...cies, ranging from just a few days \citpe
-                                                  *{} to many months \citep{...
+l.118 \indet
+             Treating FLS as catagorical masks important characteristics of ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 128--133
 
-Package natbib Warning: Citation `IPCC' on page 4 undefined on input line 140.
+ []
 
 
-Package natbib Warning: Citation `Walck_2011' on page 4 undefined on input line
- 140.
+Underfull \hbox (badness 10000) in paragraph at lines 128--133
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--133
+
+ []
 
 [4]
+Overfull \hbox (15.47841pt too wide) in paragraph at lines 143--143
+[]\OT1/cmr/bx/n/14.4 Chapter II: The ger-mi-na-tion re-sponse to vary-ing strat
+-i-fi-ca-tion regimes
+ []
 
-Package natbib Warning: Citation `Baskin_2014' on page 5 undefined on input lin
-e 149.
 
+Package natbib Warning: Citation `IPCC' on page 5 undefined on input line 146.
+
+[5]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.150 ... will calculate the rate of change for T_
+l.156 ... will calculate the rate of change for T_
                                                   b given as a function of s...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -862,13 +763,13 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.151 \subsection
+l.157 \subsection
                  {Status/preliminary results}
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (1363.14796pt too wide) in paragraph at lines 149--151
+Overfull \hbox (1363.14796pt too wide) in paragraph at lines 155--157
 \OT1/cmr/m/n/10 for T$[]\OML/cmm/m/it/10 givenasafunctionofstratificationdurati
 on:Fromthesedata; Iwillassesseachspeciessensitivitytostratification; andusethis
 informationtopredicthowgerminationrankmaychangeunderdifferentstratificationscen
@@ -878,76 +779,77 @@ heenvironmentaltreatments:[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--151
+Underfull \hbox (badness 10000) in paragraph at lines 155--157
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--153
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
 
  []
 
-
-Package natbib Warning: Citation `Baskin_2014' on page 5 undefined on input lin
-e 155.
-
-
-Package natbib Warning: Citation `Baskin_2014' on page 5 undefined on input lin
-e 155.
-
-[5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 172.
+[6]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 178.
 
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 172.
- [6]
-
-Package natbib Warning: Citation `Fukami20015' on page 7 undefined on input lin
-e 190.
-
-
-Package natbib Warning: Citation `Wainwright' on page 7 undefined on input line
- 190.
-
-
-Package natbib Warning: Citation `Korner2008' on page 7 undefined on input line
- 190.
-
-[7]
-
-Package natbib Warning: Citation `Inouye_2000' on page 8 undefined on input lin
-e 200.
-
-
-Package natbib Warning: Citation `Axmanova_2012' on page 8 undefined on input l
-ine 201.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 200--203
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 178.
+ [7]
+Underfull \hbox (badness 10000) in paragraph at lines 206--209
 
  []
 
-(./dis_prop_outline.bbl)
+[8] [9]
+Overfull \vbox (69.65211pt too high) has occurred while \output is active []
+
+
+[10] (./dis_prop_outline.bbl
+! Misplaced alignment tab character &.
+<argument> Michgan Shrubs &
+                            Vines: A guide to species of the Great Lakes Region
+l.59 ...uide to species of the Great Lakes Region}
+                                                  . University of Michigan
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<argument> Trends in Ecology &
+                               Evolution
+l.82   Ecology & Evolution}
+                            \textbf{22}, 357 -- 365.
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+[11] [12]
+Missing character: There is no Î in font cmr10!
+Missing character: There is no ² in font cmr10!
+ [13])
 
 Package natbib Warning: There were undefined citations.
 
-[8] (./dis_prop_outline.aux) )
-(\end occurred inside a group at level 2)
+[14] (./dis_prop_outline.aux) )
+(\end occurred inside a group at level 1)
 
-### semi simple group (level 2) entered at line 108 (\begingroup)
 ### semi simple group (level 1) entered at line 98 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 13017 strings out of 493089
- 271127 string characters out of 6134842
- 301074 words of memory out of 5000000
- 16387 multiletter control sequences out of 15000+600000
- 10716 words of font info for 40 fonts, out of 8000000 for 9000
+ 13170 strings out of 493089
+ 274206 string characters out of 6134842
+ 305660 words of memory out of 5000000
+ 16535 multiletter control sequences out of 15000+600000
+ 11062 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,6n,39p,10404b,434s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,8n,39p,10404b,416s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
@@ -957,11 +859,12 @@ mr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17
 .pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pf
 b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
->
-Output written on dis_prop_outline.pdf (8 pages, 140212 bytes).
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+
+Output written on dis_prop_outline.pdf (14 pages, 180864 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 47 compressed objects within 1 object stream
+ 90 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

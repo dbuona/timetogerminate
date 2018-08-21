@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{Sweave}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{mdframed}
+\usepackage{cite}
+\usepackage{natbib}
+\bibliographystyle{..//refs/styles/besjournals.bst}
+\usepackage[small]{caption}
+\setkeys{Gin}{width=0.7\textwidth}
+\setlength{\captionmargin}{30pt}
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\topmargin -1.5cm        
+\oddsidemargin -0.04cm   
+\evensidemargin -0.04cm
+\textwidth 16 cm
+\textheight 21.94cm 
+%&\pagestyle{empty} %comment if want page numbers
+\parskip 0pt
+\renewcommand{\baselinestretch}{1.2}
+\parindent 20pt
+
+\newmdenv[
+  topline=true,
+  bottomline=true,
+  skipabove=\topsep,
+  skipbelow=\topsep
+  ]{siderules}
+\usepackage{lineno}
+%\linenumbers
+
+\usepackage{multirow}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\textbf{Alternate Community Ecology}\\
+Community ecology is the study of organism and how they interact. It has a rich theoretical basis, a tradition of experimentation and observation and applied implications for the biolgical world around us. In this class we will integrate theory and evidence to see what it takes build and maintain communities from the group up. \\
+In classes 2-6 imagine world with only one species in it.\\
+In class 7, we add another species at the same trophic level.\\
+From class 10-17 we build complexity by looking at multi-specific interaction across trophic levels.\\
+From class 18 onwards we discuss the complex phenomina that allow species to coexist and gives rise to the incredible biodiversty we see on Earth today.
+
+\scalebox{0.9}{
+  \begin{tabular}{|l|l|l|}
+\hline
+Week & Lecture & Reading \\
+\hline
+\multirow{2}{10em}{Week 1} & 1] Definitions and Descriptions of Communities and biodiversity  & Velland 1990 \\
+& 2] Simple population growth models &   \\ 
+\hline
+\multirow{2}{10em}{Week 2} & 3] Life history theory  &  \\ 
+& 4] Metapopulation &   \\ 
+\hline
+\multirow{2}{10em}{Week 3} & 5] Population movement  & Dingle 2007  \\ 
+& 6] Population genetics &   \\ 
+\hline
+\multirow{2}{10em}{Week 4} & 7] Model of competion  &  \\ 
+& 8] Niche Theory &   \\ 
+\hline
+\multirow{2}{10em}{Week 5} & 9] Competion: observations and experiemnts  &  \\ 
+& 10] Preditor-prey and host-parasitoid models &   \\ 
+\hline
+\multirow{2}{10em}{Week 6} & 11] Indirrect and Non-consumptive effects  &  \\ 
+& 12] Disease Ecology &   \\ 
+\hline
+\multirow{2}{10em}{Week 7} & 13] Density Dependence  &  \\ 
+& 14] Mutualism and Facilitation & Janzen 1966  \\ 
+\hline
+\multirow{2}{10em}{Week 8} & 15] Eco-Evo. Feedbacks  &  \\ 
+& 16] Ecological networks I &   \\ 
+\hline
+\multirow{2}{10em}{Week 9} & 17] Ecological Networks II  &  \\ 
+& 18] Succession & Gleason 1939  \\ 
+\hline
+\multirow{2}{10em}{Week 10} & 19] Competion: observations and experiemnts  &  \\ 
+& 20] Disturbance & Connell 1978, Wilkinson 1999   \\ 
+\hline
+\multirow{2}{10em}{Week 11} & 21] Fluctuating environments  & Warner and Chesson 1985 \\ 
+& 22] Metacommunities & Leibold 2004  \\ 
+\hline
+\multirow{2}{10em}{Week 12} & 23] Priority effects and Alternate stable states  & Fukami 2015  \\ 
+& 24]  Biodiversity and function  &  Tillman 1999 \\ 
+\hline
+
+\end{tabular}}
+\end{center}
+
+
+
+\end{document}

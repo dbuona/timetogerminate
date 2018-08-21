@@ -1,0 +1,158 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\hline
+\textbf{1. What is a community?}
+\begin{itemize}
+\item Velland,M. (1990). Conceptual Synthesis in Community Ecology.
+\item Mittelbach Ch.2
+\end{itemize}
+\hline
+\textbf{2. Niches and Tradeoffs}
+\begin{itemize}
+\item Losos,J.B., (2010). Adaptive Radiation, Ecological Opportunity, and Evolutionary Determinism. \textit{The American Naturalist}, 176:6, 623-639.
+\item Paper about tradeoffs
+\end{itemize}
+\hline
+\textbf{3. Basic population model I}
+\begin{itemize}
+\item Gotelli Ch. 1
+\end{itemize}
+\hline
+\textbf{4. Basic population model II}
+\begin{itemize}
+\item Gotelli Ch. 2
+\end{itemize}
+\hline
+\textbf{5. Life History}
+\begin{itemize}
+\item Gotelli p.50-62
+\item Choose paper by Stearns
+\end{itemize}
+\hline
+\textbf{6. Brief Overview of Population Genetics}
+\begin{itemize}
+\item Balkenhol et al, Ch. 2 (Canvas)
+\item Clausen, J., D. Keck, W. Hiesy, (1941), Regional Differentiation in Plant Species. \textit{The American Naturalist},75:758. 231-250
+\end{itemize}
+\hline
+\textbf{7. Movement, Migrations and Metapopulations}
+\begin{itemize}
+\item Gotelli Ch. 4
+\item Dingle, H., A. Drake, (2007), What is Migration? \textit{BioScience}, 57:2, 113-121.
+\end{itemize}
+\hline
+\textbf{8. Models of Competition}
+\begin{itemize}
+\item Gotelli p. 100-114
+\item Mittelbach p. 132-136
+\end{itemize}
+\hline
+\textbf{9. Models of Predation}
+\begin{itemize}
+\item Gotelli p.126-140
+\item Mittelbach p. 85-91
+\end{itemize}
+\hline
+\textbf{10. Interaction of Interactions }
+\begin{itemize}
+\item Chase, J.M., P.A. Abrams, J.P. Grover, S. Diehl, P. Chesson, R.D. Holt, S.H. Richards, R.M. Nisbet, T.J. Case. (2002). The interaction between predation and competition: a review and synthesis. \textit{Ecology Letters}, 5:,302–315.
+\item 
+\end{itemize}
+\hline
+\textbf{11. Mutualism and Facilitation}
+\begin{itemize}
+\item Mittelbach Ch. 9
+\item Janzen, D.H., (1966). Coevolution of mutualism between ants and acacias in Central America. \textit{Evolution}, 20:3, 249-275.
+\end{itemize}
+\hline
+\textbf{12. Eco-Evo Feedbacks}
+\begin{itemize}
+\item Benton, M.J., (2009), The Red Queen and the Court Jester: Species Diversity and the Role of Biotic and Abiotic Factors Through Time. \textit{Science},323:, 728-732.
+\item Fenster, C.B., W.S. Armbruster, P. Wilson, M.R. Dudash, J.D.Thompson. (2004). Pollination Syndromes and Floral Specialization. \textit{Annu. Rev. Ecol. Evol. Syst},35:,375–403.
+\end{itemize}
+\hline
+\textbf{13. Interaction Networks I}
+\begin{itemize}
+\item Mittelbach 198-205
+\item Mittelbach 214-222
+\end{itemize}
+\hline
+\textbf{14. Interaction Networks II}
+\begin{itemize}
+\item Mittelbach Ch.11
+\item Beschta, M.L., (2003). Cottonwoods, Elk and Wolves in the Lamar Valley of Yellowstone National Park. \textit{Ecological Applications},13:5,1295-1309.
+\item Bestcha M.L., W.J. Ripple, (2016). Riparian vegetation recovery in Yellowstone: The first two decades after wolf reintroduction. \textit{Biological Conservation},198:, 93-103.
+\end{itemize}
+\hline
+\textbf{15. Indirrect Effects}
+\begin{itemize}
+\item Morin Ch. 8 (Canvas)
+\item Amo, L., J.J. Jensen, N.M. van Dam, M. Dicke, M.E. Visser, (2013). Birds exploit herbivore-induced plant volatiles to locateherbivorous prey. \textit{Ecology Letters}, 16:, 1348-1355.
+\end{itemize}
+\hline
+\textbf{16. Disturbances}
+\begin{itemize}
+\item Mittelbach p. 297-299.
+\item Fox, J.W., (2013). The intermediate disturbance hypothesis should be abandoned, \textit{Trends in Ecology & Evolution},28:2, 86-92.
+\item Sheil, D., D.F.R.P Burslem, (2013). Defining and defending Connell's intermediate disturbance hypothesis: A response to Fox.\textit{Trends in Ecology & Evolution}
+\end{itemize}
+\hline
+\textbf{17. Succession}
+\begin{itemize}
+\item Gleason, H.A., (1939). The Individualistic Concept of the Plant Association. \textit{American Midland Naturalist}, 21:1, 92-110.
+\item del Moral,R., B. Magnusson. (2014). Surtsey and Mount St. Helens: a comparison of early succession rates. \textit{Biogeosciences}, 11:,2099-2111.
+\end{itemize}
+\hline
+\textbf{18. Coexistance}
+\begin{itemize}
+\item Mittelbach 289-297.
+\item Mittelbach 260-263.
+\item Silverton, J., Plant coexistence and the niche. (2004). \textit{Trends in Ecology and Evolution}. 19:11, 605-611.
+\end{itemize}
+\hline
+\textbf{19. Metacommunities and Community Assembly}
+\begin{itemize}
+\item Leibold, M.A.,M. Holyoak, N. Mouquet, P. Amarasekare, J.M. Chase, M.F. Hoopes,R.D. Holt, J.B. Shurin, R.Law, D.Tilman, M. Loreau, A. Gonzalez. (2004).The metacommunity concept: a framework for multi-scale community ecology. \texit{Ecology Letters}, 7:, 601-613
+\item Fukami, T., (2015). Historical Contingency in Community Assembly: Integrating Niches, Species Pools, and Priority Effects. \textit{Annu. Rev. Ecol. Evol. Syst.}, 46:,1-23. 
+\end{itemize}
+\hline
+\textbf{20. Alternate Stable States}
+\begin{itemize}
+\item Mittelbach 304-313
+\item Folke, C., S. Carpenter, B. Walker,M. Scheffer, T. Elmqvist, L. Gunderson, C.S. Holling. (2004). Regime shifts, Resiliance, and Biodiversity in Ecosystem Management.\textit{Annu. Rev. Ecol. Evol. Syst.}, 35:, \textbf{557-569 only}.
+\end{itemize}
+\hline
+\textbf{21. Compexity, Stability and Function}
+\begin{itemize}
+\item Tilman, D., (1999). The Ecological Consequences of Change in Biodiversity: A Search for General Principles. \textit{Ecology},80:5, 1455-1474.
+\item Mori, A.S., F. Isbell, and R. Seidl, (2018), beta-Diversity, Community Assembly, and Ecosystem Functioning. \textit{Trends in Ecology and Evolution},33:7, 549-564.
+\end{itemize}
+\hline
+\textbf{22. Quaternary Biogeography}
+\begin{itemize}
+\item Tifney, B.H., (1985). Perspectives on the origin of floristic similarity between Eastern Asia and Eastern North America. \textit{Journal of the Arnold Arboretum}, 66:1, 73-94
+\item Gavin, D.G., M.C. Fitzpatrick, P.F. Gugger, K.D. Heath, F. Rodriguez-Sanchez, \textit{et al}. (2014). Climate refugia: joint inference from fossil records, species distribution models and phylogeography. \textit{New Phytologist},2004:, 37-54.
+\end{itemize}
+\hline
+\textbf{23. Invasion}
+\begin{itemize}
+\item Sax. D.F., J.J. Stachowicz, J.H. Brown, J/F. Bruno,
+M.N Dawson, S.D. Gaines, R.K. Grosberg, A. Hastings, R.D. Holt, M.M. Mayfield, M.I. O’Connor,W.R. Rice. (2007). Ecological and evolutionary insights from species invasions. \textit{Trends in Ecology and Evolution}, 22:9,465-471.
+\item Richardson, D.M., P. Pysek. (2006). Plant invasions: merging the concepts of species invasiveness and community invasibility.\textit{Progress in Physical Geography}, 30:3, 409-431.
+\end{itemize} 
+\hline
+\textbf{24. Applications}
+\begin{itemize}
+\item McLaughlin, M.C., J.J. Hellmann, M.W. Schwartz. (2007). A Framework for Debate of Assisted Migration in an Era of Climate Change. \textit{Conservation Biology}, 21:2, 297-302.
+\item Donlon, J. (2005). Re-wilding North America. \textit{Nature},436:18, 913-914.
+\end{itemize} 
+\hline
+
+
+
+
+
+
+\end{document}

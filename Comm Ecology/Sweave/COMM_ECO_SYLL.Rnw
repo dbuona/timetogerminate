@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage{Sweave}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{mdframed}
+\usepackage{natbib}
+\bibliographystyle{..//refs/styles/besjournals.bst}
+\usepackage[small]{caption}
+\setkeys{Gin}{width=0.8\textwidth}
+\setlength{\captionmargin}{30pt}
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\topmargin -1.5cm        
+\oddsidemargin -0.04cm   
+\evensidemargin -0.04cm
+\textwidth 16.59cm
+\textheight 19.94cm 
+%&\pagestyle{empty} %comment if want page numbers
+\parskip 0pt
+\renewcommand{\baselinestretch}{1.2}
+\parindent 20pt
+
+\newmdenv[
+  topline=true,
+  bottomline=true,
+  skipabove=\topsep,
+  skipbelow=\topsep
+  ]{siderules}
+\usepackage{lineno}
+%\linenumbers
+\begin{document}
+\textbf{Community Ecology}\\
+\indent Community ecology is the study of interactions between organisms and their environment. It has a rich theoretical basis, a tradition of experimentation and observation and applied implications  in the world around us. In this class, we will integrate theory and evidence to see what it takes build and maintain communities from the ground up. \\
+
+\textit{Required textbooks:}\\
+Gotelli, N.J.(2008) \textit{A Primer of Ecology: Fourth Edition. (or any).} Sinauer Associates. \\
+\\
+Mittelbach, G. (2012) \textit{Community Ecology.} Oxford University Press \\
+\\
+\indent This course will meet twice a week for a one hour lecture, with an additional weekly discussion section/lab to be scheduled once the course begins.\\
+
+\scalebox{.85}{
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Topic & Reading(s) \\
+\hline
+1] What is Community Ecology anyway?  & Velland 1999, Mittelbach Ch. 2 \\  
+\hline
+2] Niches and Tradeoffs  & Losos 2010, Argawal 2010 \\ 
+\hline
+3] Basic Populations Models I  & Gotelli Ch. 1 \\ 
+\hline
+4] Basic Populations Models II  & Gotelli Ch. 2 \\ 
+\hline
+5] Life History  & Gotelli p.50-62, Stearns 2000 \\ 
+\hline
+6] Population Genetics  & Waits Ch. 3 (Canvas), Clausen 1941 \\ 
+\hline
+7] Movement, Migration and Metapopulations  & Gotelli Ch. 4, Dingle 2007 \\ 
+\hline
+8] Models of Competition & Gotelli p. 100-114, Mittelbach p. 132-136 \\ 
+\hline
+9] Models of Predation & Gotelli p.126-140, Mittelbach p. 85-91\\ 
+\hline
+10]  Competion and Predation in Nature & Goldberg 1992, Chase 2002 \\ 
+\hline
+11]  Mutulism and Facilitation & Mittelbach Ch. 9, Janzen 1966 \\ 
+\hline
+12]  Eco-Evo & Benton 2009, Argawal 2012, Fenster 2004 \\ 
+\hline
+13]  Interaction Networks I & Mittelbach p. 198-205, Mittelbach p. 214-222 \\ 
+\hline
+14]  Interaction Networks II & Mittelbach Ch.11, Beschta 2003,2014 \\ 
+\hline
+15]  Indirect effects & Morin Ch. 8 (Canvas), Amo 2003 \\ 
+\hline
+16]  Disturbance & Mittelbach p. 297-299, Fox 2013, Sheil 2013, \\ 
+\hline
+17] Succession & Gleason 1939, del Moral 2014 \\ 
+\hline
+18] Coexistance & Mittelbach p. 289-297, Mittelbach p. 260-263, Silverton 2004 \\ 
+\hline
+19] Metacommunity and assembly theory & Leibold 2004, Fukami 2015\\ 
+\hline
+20] Alternate stable states & Mittelbach p. 304-313, Folke 2004\\ 
+\hline
+21] Compexity, stability and function & Tilman 1999, Mori 2018\\ 
+\hline
+22] Quaternary Biogeography & Tifney 1985, Gavin 2014\\ 
+\hline
+23] Invasion & Sax 2007, Richarson 2006\\ 
+\hline
+24] Applications & McLachlan 2007, Donlon 2005\\ 
+\hline
+\end{tabular}
+\end{center}}
+
+\nocite{Amo_2013,Benton_2009,Beschta_2003,Beschta_2016,Chase_2002, Clausen_1941,Connell_1976,del_Moral_2014,Dingle_2007,Donlan_2005,Fenster_2004,Folke_2004,Fox_2013,Fukami_2015,Gavin_2014,Gleason_1939,Janzen_1966,Leibold_2004,Losos_2010,McLachlan_2007,Mori_2018,Richardson_2006,Sax_2007,Schlaepfer_2011,Sheil_2013,Sih_1985,Silverton_2004,Tiffney_1985,Tillman_1999,Velland_2010,Waits_2016,Morin_1999,Stearns_2000,Goldberg_1992, Argawal_2010,Argawal_2012}
+\bibliography{eco_ref}
+
+\end{document}

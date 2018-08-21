@@ -1,0 +1,14 @@
+\documentclass{article}
+
+\usepackage{natbib}
+\nocite{*}
+\bibliographystyle{..//refs/styles/amnat.bst}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+
+\nocite{*}
+\bibliography{GCB_ref}
+
+\end{document}

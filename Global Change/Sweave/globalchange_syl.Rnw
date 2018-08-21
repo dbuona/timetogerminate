@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{Sweave}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{mdframed}
+\usepackage{natbib}
+\bibliographystyle{..//refs/styles/besjournals.bst}
+\usepackage[small]{caption}
+\setkeys{Gin}{width=0.8\textwidth}
+\setlength{\captionmargin}{30pt}
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\topmargin -1.5cm        
+\oddsidemargin -0.04cm   
+\evensidemargin -0.04cm
+\textwidth 16.59cm
+\textheight 19.94cm 
+%&\pagestyle{empty} %comment if want page numbers
+\parskip 0pt
+\renewcommand{\baselinestretch}{1.2}
+\parindent 20pt
+
+\newmdenv[
+  topline=true,
+  bottomline=true,
+  skipabove=\topsep,
+  skipbelow=\topsep
+  ]{siderules}
+\usepackage{lineno}
+%\linenumbers
+
+\usepackage{multirow}
+\begin{document}
+
+
+\textbf{Course: Global Change Biology}\\
+\indent In the year 2000, atmospheric chemest Paul Crutzen suggested that humans had fundamentally changed Earth systems so much that is was time to declare a new Geological epoch: the Anthropocene. While this proposal has yet to be formally accepted, the impact of the statement has given rise to a whole new scientific sub-discipline seeking to understand the impact of these massive Earth systems changes on living organisms: Global Change Biology. Using primary scientific literature as a guide, in this course we will 1] explore the two major drivers of global change, global climate change from anthropogeneic greenhouse gas emisions and land used change and 2] investigate the impacts and feedbacks of the changes on the organisms around us.\\
+\indent This course will consist of two, 60 minutes meetings per week. \textit{Prerequisites:} Introduction to Life Science or permission of instructor.\\
+\begin{center}
+\scalebox{.85}{
+  \begin{tabular}{|l|l|l|}
+\hline
+Week & Lecture & Reading \\
+\hline
+\multicolumn{3}{|c|}{Part I: What's Changing} \\
+\hline
+\multirow{2}{10em}{Week 1} & 1] Introduction to Climate Change  & Dobrowski 2012, IPCC \\  & 2] A tale of climates past & Crowley and North 1988  \\ 
+\hline
+\multirow{2}{10em}{Week 2} & 3]Climate future  &IPCC, Williams and Jackson 2007   \\  & 4] Feedbacks   & Cox 2000, Sabine 2004   \\ 
+\hline
+\multirow{2}{10em}{Week 3} & 5]Introduction to Land Use Change  & Foley 2005  \\  & 6] Urbanization: Scope and Scale & Schneider 2009, Seto 2010\\ 
+\hline
+\multirow{2}{10em}{Week 4} & 7] Protected areas & Naughton-Treves 2005, Joppa 2009  \\  & 8] Interacting drivers & Mantyka-Pringle 2012,Hof 2011  \\ 
+\hline
+\multicolumn{3}{|c|}{Part II: Biological Impacts} \\
+\hline
+\multirow{2}{10em}{Week 5} & 9] 
+Thermal Tolerance and Stress & Kaliq 2014, Deutsch 2008  \\  & 10] Plant Physiology & Korner 2006, Pooter and Navas 2002  \\ 
+\hline
+\multirow{2}{10em}{Week 6} & 11] Phenology   & Cleland 2012  \\  & 12] Dispersal and Migration & Schloss 2012,Colwell 2008  \\ 
+\hline
+\multirow{2}{10em}{Week 7} & 13] Genetic changes   & Carrol 2007  \\  & 14] Fragmentation and Bottlenecking & Jump 2006, Riley 2006  \\ 
+\hline
+\multirow{2}{10em}{Week 8} & 15] Extinction  & Thomas 2004  \\  & 16] Patterns of community change 1  & Olden 2001, Clavel 2011  \\ 
+\hline
+\multirow{2}{10em}{Week 9} & 17]Invasive speices & Liu 2017, Sax 2008 \\ & 18] Pests and Pathogens  & Raffa 2008, Harvell et al 2002  \\ 
+
+\hline
+\multirow{2}{10em}{Week 10} & 19] Eutrofication  & Diaz 2008, Schindler 2008  \\  & 20] Ocean Acidification & Anthony2008, Kroeker 2013  \\ 
+\hline
+\multirow{2}{10em}{Week 11} & 21] Novel Ecosystems  &  Hobbs 2009  \\  & 22] Urban Ecology  & Arnfield 2003, Grimm 2008  \\
+\hline
+\multicolumn{3}{|c|}{Part III: Management} \\
+\hline
+\multirow{2}{10em}{Week 12} & 23]Carbon Farming, Ecological Restoration & Lindenmeyer2012, Harris 2013  \\  & 24]  Assisting and Assisting and assisted migration  & Nunez 2013, Willis 2009  \\
+\hline
+
+
+\end{tabular}}
+\end{center}
+\nocite{Anthony_2008,Arnfield_2003,Clavel_2011,Cleland_2012,Colwell_2008,Cox_2000,Crowley_1988,Deutsch_2008,Diaz_2008,Dobrowski_2012,Foley_2005,Grimm_2008,Hamann_2012,Harris_2006,Hof_2011,IPCC_2014,Joppa_2009,Jump_2006,Khaliq_2014,Korner_2006,Kroeker_2013,Lindenmayer_2012,Liu_2017,Mantyka_pringle_2011,Naughton_Treves_2005,Poorter_2003,Riley_2006,Sabine_2004,Sax_2002,Schindler_2008,Schloss_2012,Schneider_2009,Seto_2010,Willis_2009,Nunez_2013}
+\bibliography{GCB_ref}
+
+\end{document}

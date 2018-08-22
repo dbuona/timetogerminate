@@ -1,5 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2015)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: dis_prop_outline.aux
 The style file: ..//refs/styles/besjournals.bst.bst
 Database file #1: prop.bib
@@ -114,45 +114,45 @@ while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
 Warning--empty journal in Janzen1967
 Warning--empty journal in Pritchard1996
 Warning--empty journal in Whitehead1969
-You've used 57 entries,
+You've used 63 entries,
             2805 wiz_defined-function locations,
-            1496 strings with 24659 characters,
-and the built_in function-call counts, 35693 in all, are:
-= -- 2948
-> -- 1698
-< -- 31
-+ -- 657
-- -- 595
-* -- 2977
-:= -- 5722
-add.period$ -- 109
-call.type$ -- 57
-change.case$ -- 479
-chr.to.int$ -- 58
-cite$ -- 62
-duplicate$ -- 2387
-empty$ -- 2516
-format.name$ -- 779
-if$ -- 6959
+            1545 strings with 26112 characters,
+and the built_in function-call counts, 39938 in all, are:
+= -- 3287
+> -- 1926
+< -- 34
++ -- 746
+- -- 676
+* -- 3345
+:= -- 6396
+add.period$ -- 121
+call.type$ -- 63
+change.case$ -- 536
+chr.to.int$ -- 64
+cite$ -- 68
+duplicate$ -- 2658
+empty$ -- 2803
+format.name$ -- 880
+if$ -- 7786
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 532
-newline$ -- 175
-num.names$ -- 228
-pop$ -- 985
+missing$ -- 595
+newline$ -- 193
+num.names$ -- 252
+pop$ -- 1097
 preamble$ -- 1
-purify$ -- 426
+purify$ -- 477
 quote$ -- 0
-skip$ -- 837
+skip$ -- 931
 stack$ -- 0
-substring$ -- 1819
-swap$ -- 1301
+substring$ -- 2046
+swap$ -- 1458
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 495
+type$ -- 549
 warning$ -- 5
-while$ -- 234
+while$ -- 258
 width$ -- 0
-write$ -- 619
+write$ -- 685
 (There were 52 error messages)

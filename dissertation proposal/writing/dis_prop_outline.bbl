@@ -1,4 +1,4 @@
-\begin{thebibliography}{57}
+\begin{thebibliography}{63}
 \providecommand{\natexlab}[1]{#1}
 
 \bibitem[{Axmanov{\'a} \emph{et~al.}(2012)Axmanov{\'a}, Tich{\'y},
@@ -33,6 +33,10 @@ Batlla, D. \& Benech-Arnold, R.L. ({2015}) {A framework for the interpretation
 Batlla, D., Grundy, A., Dent, K.C., Clay, H.A. \& Finch-Savage, W.E. ({2009})
   {A quantitative analysis of temperature-dependent dormancy changes in
   Polygonum aviculare seeds}. \emph{{WEED RESEARCH}} \textbf{{49}}, {428--438}.
+
+\bibitem[{Bewley({1997})}]{Bewley1997}
+Bewley, J. ({1997}) {Seed germination and dormancy}. \emph{{PLANT CELL}}
+  \textbf{{9}}, {1055--1066}.
 
 \bibitem[{Bolmgren \emph{et~al.}(2003)Bolmgren, Eriksson \&
   Linder}]{Bolmgren2003}
@@ -95,6 +99,10 @@ Connolly, J. \& Wayne, P. ({2005}) {Assessing determinants of community biomass
 Dickson, T.L., Hopwood, J.L. \& Wilsey, B.J. (2012) Do priority effects benefit
   invasive plants more than native plants? an experiment with six grassland
   species. \emph{Biological Invasions} \textbf{14}, 2617--2624.
+
+\bibitem[{Finch-Savage \& Leubner-Metzger({2006})}]{Finch-Savage2006}
+Finch-Savage, W.E. \& Leubner-Metzger, G. ({2006}) {Seed dormancy and the
+  control of germination}. \emph{{NEW PHYTOLOGIST}} \textbf{{171}}, {501--523}.
 
 \bibitem[{Finn \emph{et~al.}(2007)Finn, Straszewski \& Peterson}]{Finn2007}
 Finn, G.A., Straszewski, A.E. \& Peterson, V. (2007) A general growth stage key
@@ -185,6 +193,17 @@ Kucera, B., Cohn, M. \& Leubner-Metzger, G. ({2005}) {Plant hormone
 Leverett, L.D. ({2017}) {Germination phenology determines the propensity for
   facilitation and competition}. \emph{{ECOLOGY}} \textbf{{98}}, {2437--2446}.
 
+\bibitem[{Long \emph{et~al.}({2015})Long, Gorecki, Renton, Scott, Colville,
+  Goggin, Commander, Westcott, Cherry \& Finch-Savage}]{Long2015}
+Long, R.L., Gorecki, M.J., Renton, M., Scott, J.K., Colville, L., Goggin, D.E.,
+  Commander, L.E., Westcott, D.A., Cherry, H. \& Finch-Savage, W.E. ({2015})
+  {The ecophysiology of seed persistence: a mechanistic view of the journey to
+  germination or demise}. \emph{{BIOLOGICAL REVIEWS}} \textbf{{90}}, {31--59}.
+
+\bibitem[{M.~Baskin \& Baskin(2004)}]{Baskin2004}
+M.~Baskin, J. \& Baskin, C. (2004) A classification system of seed dormancy.
+  \emph{{SEED SCIENCE RESEARCH}} \textbf{14}, 1 -- 16.
+
 \bibitem[{Menzel \emph{et~al.}({2006})Menzel, Sparks, Estrella, Koch, Aasa,
   Ahas, Alm-Kuebler, Bissolli, Braslavska, Briede, Chmielewski, Crepinsek,
   Curnel, Dahl, Defila, Donnelly, Filella, Jatcza, Mage, Mestre, Nordli,
@@ -271,6 +290,20 @@ Steadman, K. \& Pritchard, H. ({2004}) {Germination of Aesculus hippocastanum
   seeds following cold-induced dormancy loss can be described in relation to a
   temperature-dependent reduction in base temperature (T-b) and thermal time}.
   \emph{{NEW PHYTOLOGIST}} \textbf{{161}}, {415--425}.
+
+\bibitem[{Visser \emph{et~al.}({2010})Visser, Caro, van Oers, Schaper \&
+  Helm}]{Visser2010}
+Visser, M.E., Caro, S.P., van Oers, K., Schaper, S.V. \& Helm, B. ({2010})
+  {Phenology, seasonal timing and circannual rhythms: towards a unified
+  framework}. \emph{{PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY
+  B-BIOLOGICAL SCIENCES}} \textbf{{365}}, {3113--3127}.
+
+\bibitem[{Vitasse \emph{et~al.}({2013})Vitasse, Hoch, Randin, Lenz, Kollas,
+  Scheepens \& Koerner}]{Vitasse2010}
+Vitasse, Y., Hoch, G., Randin, C.F., Lenz, A., Kollas, C., Scheepens, J.F. \&
+  Koerner, C. ({2013}) {Elevational adaptation and plasticity in seedling
+  phenology of temperate deciduous tree species}. \emph{{OECOLOGIA}}
+  \textbf{{171}}, {663--678}.
 
 \bibitem[{Wainwright \emph{et~al.}({2012})Wainwright, Wolkovich \&
   Cleland}]{Wainwright2012}

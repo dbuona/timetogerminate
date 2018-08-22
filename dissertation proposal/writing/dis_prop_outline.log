@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  22 AUG 2018 12:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  22 AUG 2018 14:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -594,7 +594,7 @@ Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
 )
-No file dis_prop_outline.aux.
+(./dis_prop_outline.aux)
 \openout1 = `dis_prop_outline.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
@@ -609,6 +609,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
 LaTeX Font Info:    ... okay on input line 84.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
 LaTeX Font Info:    ... okay on input line 84.
+
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count159
@@ -661,98 +662,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 87.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 87.
-
-
-Package natbib Warning: Citation `Forrest2010' on page 1 undefined on input lin
-e 89.
-
-
-Package natbib Warning: Citation `Piao2007' on page 1 undefined on input line 8
-9.
-
-
-Package natbib Warning: Citation `Cleland2007' on page 1 undefined on input lin
-e 89.
-
-
-Package natbib Warning: Citation `Yang2010' on page 1 undefined on input line 8
-9.
-
-
-Package natbib Warning: Citation `Leverett2017' on page 1 undefined on input li
-ne 89.
-
-
-Package natbib Warning: Citation `Chuine2001' on page 1 undefined on input line
- 89.
-
-
-Package natbib Warning: Citation `Parmesan2003' on page 1 undefined on input li
-ne 89.
-
-
-Package natbib Warning: Citation `Menzel2006' on page 1 undefined on input line
- 89.
-
-
-Package natbib Warning: Citation `Root2003' on page 1 undefined on input line 8
-9.
-
-
-Package natbib Warning: Citation `Cleland2012' on page 1 undefined on input lin
-e 89.
-
-
-Package natbib Warning: Citation `Ovaskainen2013' on page 1 undefined on input 
-line 89.
-
-
-Package natbib Warning: Citation `Vitasse2010' on page 1 undefined on input lin
-e 97.
-
-
-Package natbib Warning: Citation `Forrest2010' on page 1 undefined on input lin
-e 97.
-
-
-Package natbib Warning: Citation `Visser2010' on page 1 undefined on input line
- 97.
-
-
-Package natbib Warning: Citation `Finch-Savage2006' on page 1 undefined on inpu
-t line 97.
-
-
-Package natbib Warning: Citation `Baskin2004' on page 1 undefined on input line
- 97.
-
-
-Package natbib Warning: Citation `Finch-Savage2006' on page 1 undefined on inpu
-t line 97.
-
-
-Package natbib Warning: Citation `Long2015' on page 1 undefined on input line 9
-7.
-
-
-Package natbib Warning: Citation `Bewley1997' on page 1 undefined on input line
- 97.
-
-[1
+ [1
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-Package natbib Warning: Citation `Rathcke1985' on page 2 undefined on input lin
-e 98.
-
-
-Package natbib Warning: Citation `Rinne2011' on page 2 undefined on input line 
-99.
-
-
-Package natbib Warning: Citation `Sager2014' on page 2 undefined on input line 
-99.
-
 ! Undefined control sequence.
 l.100 ...n dormancy induction remains unclear\citp
                                                   {Baskin2002}. Environmenta...
@@ -761,18 +673,6 @@ of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
-
-
-Package natbib Warning: Citation `Kucera2005' on page 2 undefined on input line
- 100.
-
-
-Package natbib Warning: Citation `Chuine2002' on page 2 undefined on input line
- 102.
-
-
-Package natbib Warning: Citation `Bradford2002' on page 2 undefined on input li
-ne 102.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 102--103
@@ -801,14 +701,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--105
  []
 
 
-Package natbib Warning: Citation `Pritchard1999' on page 2 undefined on input l
-ine 106.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 106--108
 
  []
 
+[2]
 ! Missing $ inserted.
 <inserted text> 
                 $
@@ -817,217 +714,66 @@ l.109 \theta
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-[2]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.110 where $T_
-               o$ is the optimum temperature.
+l.110 
+      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Package natbib Warning: Citation `Bradford2005' on page 3 undefined on input li
-ne 111.
-
-
-Package natbib Warning: Citation `Batlla2015' on page 3 undefined on input line
- 111.
-
-
-Package natbib Warning: Citation `Meyer2000' on page 3 undefined on input line 
-112.
-
-
-Package natbib Warning: Citation `Pritchard1996' on page 3 undefined on input l
-ine 112.
-
-
-Package natbib Warning: Citation `Batlla2003' on page 3 undefined on input line
- 112.
-
-
-Package natbib Warning: Citation `Steadman2004' on page 3 undefined on input li
-ne 112.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 112--113
-
- []
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.115 where \beta
-                  is constant rate of decline, $t_s$ is the stratifcation ti...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.115 where \beta is constant rate of decline, $t_
-                                                  s$ is the stratifcation ti...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Package natbib Warning: Citation `Rathcke1985' on page 3 undefined on input lin
-e 119.
-
-
-Package natbib Warning: Citation `Gougherty2018' on page 3 undefined on input l
-ine 119.
-
-
-Package natbib Warning: Citation `Whitehead1969' on page 3 undefined on input l
-ine 119.
-
-
-Package natbib Warning: Citation `Friedman2009' on page 3 undefined on input li
-ne 119.
-
-
-Package natbib Warning: Citation `Franklin2016' on page 3 undefined on input li
-ne 119.
-
-
-Package natbib Warning: Citation `Janzen1967' on page 3 undefined on input line
- 119.
-
-
-Package natbib Warning: Citation `Franklin2016' on page 3 undefined on input li
-ne 119.
-
-
-Package natbib Warning: Citation `Gougherty2018' on page 3 undefined on input l
-ine 119.
-
-
-Package natbib Warning: Citation `Bolmgren2003' on page 3 undefined on input li
-ne 119.
-
-
-Package natbib Warning: Citation `Primack1987' on page 3 undefined on input lin
-e 119.
-
-
-Package natbib Warning: Citation `Wolkovich2014' on page 3 undefined on input l
-ine 120.
-
-[3]
-
-Package natbib Warning: Citation `Barnes2004' on page 4 undefined on input line
- 131.
-
-
-Package natbib Warning: Citation `Barnes2016' on page 4 undefined on input line
- 131.
-
-
-Package natbib Warning: Citation `Burns1990' on page 4 undefined on input line 
-131.
-
-
-Package natbib Warning: Citation `Zanne2013' on page 4 undefined on input line 
-131.
-
-
-Package natbib Warning: Citation `Ives2010' on page 4 undefined on input line 1
-31.
-
-
-Package natbib Warning: Citation `Ho2014' on page 4 undefined on input line 131
-.
-
-
-Package natbib Warning: Citation `Wilcox2010' on page 4 undefined on input line
- 131.
-
-
-Package natbib Warning: Citation `Gelman2007' on page 4 undefined on input line
- 131.
-
-
-Package natbib Warning: Citation `Okeefe2015' on page 4 undefined on input line
- 132.
-
-
-Package natbib Warning: Citation `Finn2007' on page 4 undefined on input line 1
-33.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 134--137
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--137
-
- []
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 138--139
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
  []
 
 
-LaTeX Warning: Reference `fig:Figure 1' on page 5 undefined on input line 140.
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
+
+ []
+
+[3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 136--139
+
+ []
 
 
-LaTeX Warning: Reference `fig:Figure 2' on page 5 undefined on input line 141.
+Underfull \hbox (badness 10000) in paragraph at lines 136--139
+
+ []
 
 
-LaTeX Warning: Reference `fig:Figure 3' on page 5 undefined on input line 142.
+Underfull \hbox (badness 10000) in paragraph at lines 140--141
 
+ []
 
-LaTeX Warning: Reference `fig:Figure 4' on page 5 undefined on input line 143.
-
-
-LaTeX Warning: Reference `fig:Figure 5' on page 5 undefined on input line 143.
-
-
-Overfull \hbox (15.47841pt too wide) in paragraph at lines 150--150
+[5]
+Overfull \hbox (15.47841pt too wide) in paragraph at lines 152--152
 []\OT1/cmr/bx/n/14.4 Chapter II: The ger-mi-na-tion re-sponse to vary-ing strat
 -i-fi-ca-tion regimes
  []
 
-
-Package natbib Warning: Citation `Hartmann_2011' on page 5 undefined on input l
-ine 152.
-
-
-Package natbib Warning: Citation `Steadman2004' on page 5 undefined on input li
-ne 152.
-
-
-Package natbib Warning: Citation `Batlla2009' on page 5 undefined on input line
- 152.
+! Undefined control sequence.
+l.154 \indent\indentThe
+                        cold stratification requirement for dormancy release...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
-Package natbib Warning: Citation `Walck2011' on page 5 undefined on input line 
-153.
-
-
-Package natbib Warning: Citation `IPCC' on page 5 undefined on input line 153.
-
-
-Package natbib Warning: Citation `Walck2011' on page 5 undefined on input line 
-153.
-
-[5]
-
-LaTeX Warning: Reference `table:Table 1' on page 6 undefined on input line 162.
-
-
-
-Package natbib Warning: Citation `Baskin2014' on page 6 undefined on input line
- 162.
+Package natbib Warning: Citation `IPCC' on page 6 undefined on input line 155.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.163 ... will calculate the rate of change for T_
+l.165 ... will calculate the rate of change for T_
                                                   b given as a function of s...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1035,13 +781,13 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.164 \subsection
-                 {Status/preliminary results}
+l.166 \subsection
+                 *{Status/preliminary results}
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (1363.14796pt too wide) in paragraph at lines 162--164
+Overfull \hbox (1363.14796pt too wide) in paragraph at lines 164--166
 \OT1/cmr/m/n/10 for T$[]\OML/cmm/m/it/10 givenasafunctionofstratificationdurati
 on:Fromthesedata; Iwillassesseachspeciessensitivitytostratification; andusethis
 informationtopredicthowgerminationrankmaychangeunderdifferentstratificationscen
@@ -1051,98 +797,29 @@ heenvironmentaltreatments:[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--164
+Underfull \hbox (badness 10000) in paragraph at lines 164--166
 
  []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 165--166
-
- []
-
-
-Package natbib Warning: Citation `Baskin2014' on page 6 undefined on input line
- 168.
-
-
-Package natbib Warning: Citation `Baskin2014' on page 6 undefined on input line
- 168.
 
 [6]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 185.
+Underfull \hbox (badness 10000) in paragraph at lines 167--168
+
+ []
+
+[7]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 187.
 
  (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 185.
- [7]
-
-Package natbib Warning: Citation `Fukami2015' on page 8 undefined on input line
- 203.
-
-
-Package natbib Warning: Citation `Fukami2011' on page 8 undefined on input line
- 203.
-
-
-Package natbib Warning: Citation `Wainwright2012' on page 8 undefined on input 
-line 203.
-
-
-Package natbib Warning: Citation `Fukami2015' on page 8 undefined on input line
- 203.
-
-
-Package natbib Warning: Citation `Gioria2018' on page 8 undefined on input line
- 203.
-
-
-Package natbib Warning: Citation `Dickson2012' on page 8 undefined on input lin
-e 203.
-
-
-Package natbib Warning: Citation `Cleland2015' on page 8 undefined on input lin
-e 203.
-
-
-Package natbib Warning: Citation `Kardol2013' on page 8 undefined on input line
- 203.
-
-
-Package natbib Warning: Citation `Wainwright2012' on page 8 undefined on input 
-line 203.
-
-
-Package natbib Warning: Citation `Korner2008' on page 8 undefined on input line
- 203.
-
-[8]
-
-Package natbib Warning: Citation `Inouye2001' on page 9 undefined on input line
- 213.
-
-
-LaTeX Warning: Reference `fig:Figure 6' on page 9 undefined on input line 213.
-
-
-Package natbib Warning: Citation `Axmanova2012' on page 9 undefined on input li
-ne 214.
-
-
-Package natbib Warning: Citation `Connolly2005' on page 9 undefined on input li
-ne 215.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 213--216
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 187.
+ [8]
+Underfull \hbox (badness 10000) in paragraph at lines 215--218
 
  []
 
-[9]
-Overfull \vbox (69.65211pt too high) has occurred while \output is active []
-
-
-[10] (./dis_prop_outline.bbl
+[9] [10] (./dis_prop_outline.bbl [11]
 ! Misplaced alignment tab character &.
 <argument> Michgan Shrubs &
                             Vines: A guide to species of the Great Lakes Region
@@ -1167,10 +844,10 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-[11] [12]
+[12] [13]
 Missing character: There is no Î in font cmr10!
 Missing character: There is no ² in font cmr10!
- [13])
+ [14]) [15]
 
 ! LaTeX Error: Unknown float option `e'.
 
@@ -1178,7 +855,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.292 \begin{figure}[here]
+l.286 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -1189,7 +866,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.292 \begin{figure}[here]
+l.286 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -1200,16 +877,16 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.292 \begin{figure}[here]
+l.286 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/Data_comparision_plot.jpeg, id=54, 769.87625pt x 310.15875pt>
+<..//figures/Data_comparision_plot.jpeg, id=60, 769.87625pt x 310.15875pt>
 File: ..//figures/Data_comparision_plot.jpeg Graphic file (type jpg)
 
 <use ..//figures/Data_comparision_plot.jpeg>
 Package pdftex.def Info: ..//figures/Data_comparision_plot.jpeg used on input l
-ine 293.
+ine 287.
 (pdftex.def)             Requested size: 424.82512pt x 171.15102pt.
 
 
@@ -1219,7 +896,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.298 \begin{figure}[here]
+l.293 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -1230,7 +907,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.298 \begin{figure}[here]
+l.293 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -1241,18 +918,17 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.298 \begin{figure}[here]
+l.293 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
+<..//figures/HF_continuous_scaled_mode.jpeg, id=61, 858.20625pt x 447.6725pt>
+File: ..//figures/HF_continuous_scaled_mode.jpeg Graphic file (type jpg)
 
-<..//figures/HF_continuous_scaled_model.pdf, id=55, 726.01506pt x 543.68262pt>
-File: ..//figures/HF_continuous_scaled_model.pdf Graphic file (type pdf)
-
-<use ..//figures/HF_continuous_scaled_model.pdf>
-Package pdftex.def Info: ..//figures/HF_continuous_scaled_model.pdf used on inp
-ut line 299.
-(pdftex.def)             Requested size: 424.82512pt x 318.13185pt.
+<use ..//figures/HF_continuous_scaled_mode.jpeg>
+Package pdftex.def Info: ..//figures/HF_continuous_scaled_mode.jpeg used on inp
+ut line 294.
+(pdftex.def)             Requested size: 424.82512pt x 221.60881pt.
 
 
 ! LaTeX Error: Unknown float option `e'.
@@ -1261,7 +937,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.304 \begin{figure}[here]
+l.300 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -1272,7 +948,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.304 \begin{figure}[here]
+l.300 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -1283,16 +959,16 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.304 \begin{figure}[here]
+l.300 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/QURU_HF_intervar.jpeg, id=56, 1345.025pt x 492.84125pt>
+<..//figures/QURU_HF_intervar.jpeg, id=62, 1345.025pt x 492.84125pt>
 File: ..//figures/QURU_HF_intervar.jpeg Graphic file (type jpg)
 
 <use ..//figures/QURU_HF_intervar.jpeg>
 Package pdftex.def Info: ..//figures/QURU_HF_intervar.jpeg used on input line 3
-05.
+01.
 (pdftex.def)             Requested size: 448.42812pt x 164.30757pt.
 
 
@@ -1302,7 +978,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.310 \begin{figure}[here]
+l.306 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -1313,7 +989,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.310 \begin{figure}[here]
+l.306 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -1324,15 +1000,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.310 \begin{figure}[here]
+l.306 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/raw_flobuds.jpeg, id=57, 1345.025pt x 492.84125pt>
+<..//figures/raw_flobuds.jpeg, id=63, 1345.025pt x 492.84125pt>
 File: ..//figures/raw_flobuds.jpeg Graphic file (type jpg)
 
 <use ..//figures/raw_flobuds.jpeg>
-Package pdftex.def Info: ..//figures/raw_flobuds.jpeg used on input line 311.
+Package pdftex.def Info: ..//figures/raw_flobuds.jpeg used on input line 307.
 (pdftex.def)             Requested size: 448.42812pt x 164.30757pt.
 
 
@@ -1342,7 +1018,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.316 \begin{figure}[here]
+l.312 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -1353,7 +1029,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.316 \begin{figure}[here]
+l.312 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -1364,1018 +1040,133 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.316 \begin{figure}[here]
+l.312 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/Goods_mod2b.jpeg, id=58, 767.86874pt x 494.84875pt>
+<..//figures/Goods_mod2b.jpeg, id=64, 767.86874pt x 494.84875pt>
 File: ..//figures/Goods_mod2b.jpeg Graphic file (type jpg)
 
 <use ..//figures/Goods_mod2b.jpeg>
-Package pdftex.def Info: ..//figures/Goods_mod2b.jpeg used on input line 317.
+Package pdftex.def Info: ..//figures/Goods_mod2b.jpeg used on input line 313.
 (pdftex.def)             Requested size: 377.62633pt x 243.36145pt.
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.330 \textit{Asclepias_syriaca}
-                                &New York & perennial & O \\
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
 
-! Extra }, or forgotten $.
-<recently read> \egroup 
-                        
-l.330 \textit{Asclepias_syriaca}
-                                &New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+! LaTeX Error: Unknown float option `e'.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.318 \begin{figure}[here]
+                          
+Option `e' ignored and `p' used.
 
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
+! LaTeX Error: Unknown float option `r'.
 
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.318 \begin{figure}[here]
+                          
+Option `r' ignored and `p' used.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
 
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+! LaTeX Error: Unknown float option `e'.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.318 \begin{figure}[here]
+                          
+Option `e' ignored and `p' used.
 
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+<..//figures/species_table.pdf, id=65, 614.295pt x 794.97pt>
+File: ..//figures/species_table.pdf Graphic file (type pdf)
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
+<use ..//figures/species_table.pdf>
+Package pdftex.def Info: ..//figures/species_table.pdf used on input line 319.
+(pdftex.def)             Requested size: 424.82512pt x 242.28387pt.
 
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
+! LaTeX Error: Unknown float option `e'.
 
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.324 \begin{figure}[here]
+                          
+Option `e' ignored and `p' used.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
 
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+! LaTeX Error: Unknown float option `r'.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.324 \begin{figure}[here]
+                          
+Option `r' ignored and `p' used.
 
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
+! LaTeX Error: Unknown float option `e'.
 
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.324 \begin{figure}[here]
+                          
+Option `e' ignored and `p' used.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
+<..//figures/response_surface.jpg, id=67, 652.4375pt x 446.66875pt>
+File: ..//figures/response_surface.jpg Graphic file (type jpg)
 
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+<use ..//figures/response_surface.jpg>
+Package pdftex.def Info: ..//figures/response_surface.jpg used on input line 32
+5.
+(pdftex.def)             Requested size: 236.01555pt x 161.57759pt.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
 
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+Package natbib Warning: There were undefined citations.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
+[16 <..//figures/Data_comparision_plot.jpeg>] [17 <..//figures/HF_continuous_sc
+aled_mode.jpeg> <..//figures/QURU_HF_intervar.jpeg>] [18 <..//figures/raw_flobu
+ds.jpeg> <..//figures/Goods_mod2b.jpeg>] [19 <..//figures/species_table.pdf> <.
+.//figures/response_surface.jpg>] (./dis_prop_outline.aux)
 
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Extra }, or forgotten $.
-<inserted text> }
-                 
-l.330 \textit{Asclepias_syriaca}&
-                                 New York & perennial & O \\
-(That makes 100 errors; please try again.) 
+ ) 
 Here is how much of TeX's memory you used:
- 14354 strings out of 492995
- 292236 string characters out of 6132704
- 330768 words of memory out of 5000000
- 17780 multiletter control sequences out of 15000+600000
+ 14371 strings out of 492995
+ 292687 string characters out of 6132704
+ 330605 words of memory out of 5000000
+ 17790 multiletter control sequences out of 15000+600000
  11706 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,8n,39p,10388b,524s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,7n,39p,10388b,577s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
+sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
+ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
+al/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/
+texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
+live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
+ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
+ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on dis_prop_outline.pdf (19 pages, 558238 bytes).
+PDF statistics:
+ 136 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 42 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-!  ==> Fatal error occurred, no output PDF file produced!

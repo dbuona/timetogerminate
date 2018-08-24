@@ -1,10 +1,15 @@
-This is BibTeX, Version 0.99d (TeX Live 2017)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: dis_prop_outline.aux
 The style file: ..//refs/styles/besjournals.bst.bst
 Database file #1: prop.bib
-Warning--I didn't find a database entry for ""
-Warning--I didn't find a database entry for "IPCC"
+Warning--I didn't find a database entry for "Baskin2002"
+Warning--I didn't find a database entry for "Luna2009"
+Warning--I didn't find a database entry for "IPCC_2014"
+Name 1 in "Chuine, I., and Cour P. and Rousseau D. D." has a comma at the end for entry Chuine2002
+while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Chuine, I., and Cour P. and Rousseau D. D." has a comma at the end for entry Chuine2002
+while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
 Name 1 in "Barnes, Burton V, and Wagner, Warren H. JR.," has a comma at the end for entry Barnes2004
 while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
 Name 2 in "Barnes, Burton V, and Wagner, Warren H. JR.," has a comma at the end for entry Barnes2004
@@ -98,7 +103,10 @@ Name 3 in "Burns, Russell M. and Honkala, Barbara H. and {$[$}Technical coordina
 while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
 Name 3 in "Burns, Russell M. and Honkala, Barbara H. and {$[$}Technical coordinators{$]$}," has a comma at the end for entry Burns1990
 while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
-Warning--empty year in Cleland2012; set to ????
+Name 1 in "Chuine, I., and Cour P. and Rousseau D. D." has a comma at the end for entry Chuine2002
+while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Chuine, I., and Cour P. and Rousseau D. D." has a comma at the end for entry Chuine2002
+while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
 Name 1 in "Hartmann, H.T., and D.E. Kester, and F.T. Davis, and R.L. Geneve" has a comma at the end for entry Hartmann_2011
 while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
 Name 2 in "Hartmann, H.T., and D.E. Kester, and F.T. Davis, and R.L. Geneve" has a comma at the end for entry Hartmann_2011
@@ -116,43 +124,43 @@ Warning--empty journal in Pritchard1996
 Warning--empty journal in Whitehead1969
 You've used 63 entries,
             2805 wiz_defined-function locations,
-            1545 strings with 26112 characters,
-and the built_in function-call counts, 39938 in all, are:
+            1549 strings with 26154 characters,
+and the built_in function-call counts, 39937 in all, are:
 = -- 3287
 > -- 1926
 < -- 34
 + -- 746
 - -- 676
-* -- 3345
+* -- 3343
 := -- 6396
 add.period$ -- 121
 call.type$ -- 63
 change.case$ -- 536
 chr.to.int$ -- 64
-cite$ -- 68
-duplicate$ -- 2658
-empty$ -- 2803
+cite$ -- 67
+duplicate$ -- 2659
+empty$ -- 2804
 format.name$ -- 880
-if$ -- 7786
+if$ -- 7787
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 595
 newline$ -- 193
 num.names$ -- 252
-pop$ -- 1097
+pop$ -- 1093
 preamble$ -- 1
 purify$ -- 477
 quote$ -- 0
-skip$ -- 931
+skip$ -- 934
 stack$ -- 0
 substring$ -- 2046
-swap$ -- 1458
+swap$ -- 1459
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 549
-warning$ -- 5
+warning$ -- 4
 while$ -- 258
 width$ -- 0
 write$ -- 685
-(There were 52 error messages)
+(There were 56 error messages)

@@ -46,9 +46,9 @@ Week & Lecture & Reading \\
 \hline
 \multicolumn{3}{|c|}{Part I: What's Changing} \\
 \hline
-\multirow{2}{10em}{Week 1} & 1] Introduction to Climate Change  & Dobrowski 2012, IPCC \\  & 2] A tale of climates past & Crowley and North 1988  \\ 
+\multirow{2}{10em}{Week 1} & 1] Introduction to Climate Change  & IPCC \\  & 2] A tale of climates past & Knol l2007  \\ 
 \hline
-\multirow{2}{10em}{Week 2} & 3]Climate future  &IPCC, Williams and Jackson 2007   \\  & 4] Feedbacks   & Cox 2000, Sabine 2004   \\ 
+\multirow{2}{10em}{Week 2} & 3]Climate future  & Williams and Jackson 2007   \\  & 4] Feedbacks   & Cox 2000, Sabine 2004   \\ 
 \hline
 \multirow{2}{10em}{Week 3} & 5]Introduction to Land Use Change  & Foley 2005  \\  & 6] Urbanization: Scope and Scale & Schneider 2009, Seto 2010\\ 
 \hline
@@ -80,7 +80,7 @@ Thermal Tolerance and Stress & Kaliq 2014, Deutsch 2008  \\  & 10] Plant Physiol
 
 \end{tabular}}
 \end{center}
-\nocite{Anthony_2008,Arnfield_2003,Clavel_2011,Cleland_2012,Colwell_2008,Cox_2000,Crowley_1988,Deutsch_2008,Diaz_2008,Dobrowski_2012,Foley_2005,Grimm_2008,Hamann_2012,Harris_2006,Hof_2011,IPCC_2014,Joppa_2009,Jump_2006,Khaliq_2014,Korner_2006,Kroeker_2013,Lindenmayer_2012,Liu_2017,Mantyka_pringle_2011,Naughton_Treves_2005,Poorter_2003,Riley_2006,Sabine_2004,Sax_2002,Schindler_2008,Schloss_2012,Schneider_2009,Seto_2010,Willis_2009,Nunez_2013}
+\nocite{Anthony_2008,Arnfield_2003,Clavel_2011,Cleland_2012,Colwell_2008,Cox_2000,Knoll2007,Deutsch_2008,Diaz_2008,Foley_2005,Grimm_2008,Hamann_2012,Harris_2006,Hof_2011,IPCC_2014,Joppa_2009,Jump_2006,Khaliq_2014,Korner_2006,Kroeker_2013,Lindenmayer_2012,Liu_2017,Mantyka_pringle_2011,Naughton_Treves_2005,Poorter_2003,Riley_2006,Sabine_2004,Sax_2002,Schindler_2008,Schloss_2012,Schneider_2009,Seto_2010,Willis_2009,Nunez_2013}
 \bibliography{GCB_ref}
 
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  24 AUG 2018 14:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  30 AUG 2018 13:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -677,11 +677,6 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-Package natbib Warning: Citation `Baskin2002' on page 2 undefined on input line
- 100.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 102--103
 
  []
@@ -748,7 +743,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 115--116
 <inserted text> 
                 $
 l.138 $D_e$ \Leftarrow
-                       $\beta_1(photoperiod:phase)+\beta_2(chill:phase+)+\be...
+                       $\beta_1(photoperiod:phase)+\beta_2(chill:phase)+\bet...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
@@ -756,7 +751,7 @@ you left one out. Proceed, with fingers crossed.
 <inserted text> 
                 $
 l.138 $D_e$ \Leftarrow $\beta
-                             _1(photoperiod:phase)+\beta_2(chill:phase+)+\be...
+                             _1(photoperiod:phase)+\beta_2(chill:phase)+\bet...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
@@ -781,14 +776,6 @@ Overfull \hbox (15.47841pt too wide) in paragraph at lines 152--152
 -i-fi-ca-tion regimes
  []
 
-
-Package natbib Warning: Citation `Luna2009' on page 5 undefined on input line 1
-54.
-
-
-Package natbib Warning: Citation `IPCC_2014' on page 5 undefined on input line 
-155.
-
 [5]
 Underfull \hbox (badness 10000) in paragraph at lines 164--166
 
@@ -807,16 +794,16 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 187.
- [7]
+ [7] [8]
 Underfull \hbox (badness 10000) in paragraph at lines 216--219
 
  []
 
-[8] [9] (./dis_prop_outline.bbl [10]
+[9] (./dis_prop_outline.bbl [10]
 ! Misplaced alignment tab character &.
 <argument> Michgan Shrubs &
                             Vines: A guide to species of the Great Lakes Region
-l.67 ...uide to species of the Great Lakes Region}
+l.68 ...uide to species of the Great Lakes Region}
                                                   . University of Michigan
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -828,7 +815,7 @@ might try typing `S' now just to see what is salvageable.
 ! Misplaced alignment tab character &.
 <argument> Trends in Ecology &
                                Evolution
-l.90   Ecology & Evolution}
+l.91   Ecology & Evolution}
                             \textbf{22}, 357 -- 365.
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1124,39 +1111,33 @@ File: ..//figures/response_surface.jpg Graphic file (type jpg)
 Package pdftex.def Info: ..//figures/response_surface.jpg used on input line 32
 6.
 (pdftex.def)             Requested size: 236.01555pt x 161.57759pt.
-
-
-Package natbib Warning: There were undefined citations.
-
-[15 <..//figures/Data_comparision_plot.jpeg>] [16 <..//figures/HF_continuous_sc
-aled_mode.jpeg> <..//figures/QURU_HF_intervar.jpeg>] [17 <..//figures/raw_flobu
-ds.jpeg> <..//figures/Goods_mod2b.jpeg>] [18 <..//figures/species_table.pdf> <.
-.//figures/response_surface.jpg>] (./dis_prop_outline.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+ [15 <..//figures/Data_comparision_plot.jpeg>] [16 <..//figures/HF_continuous_s
+caled_mode.jpeg> <..//figures/QURU_HF_intervar.jpeg>] [17 <..//figures/raw_flob
+uds.jpeg> <..//figures/Goods_mod2b.jpeg>] [18 <..//figures/species_table.pdf> <
+..//figures/response_surface.jpg>]
+(./dis_prop_outline.aux) ) 
 Here is how much of TeX's memory you used:
- 13244 strings out of 493089
- 275991 string characters out of 6134842
- 305119 words of memory out of 5000000
- 16597 multiletter control sequences out of 15000+600000
+ 13250 strings out of 493089
+ 276111 string characters out of 6134842
+ 305241 words of memory out of 5000000
+ 16603 multiletter control sequences out of 15000+600000
  11706 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,7n,39p,10404b,576s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on dis_prop_outline.pdf (18 pages, 555187 bytes).
+</usr/local/texlive/2015/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
+10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9
+.pfb>
+Output written on dis_prop_outline.pdf (18 pages, 555380 bytes).
 PDF statistics:
  132 PDF objects out of 1000 (max. 8388607)
  91 compressed objects within 1 object stream

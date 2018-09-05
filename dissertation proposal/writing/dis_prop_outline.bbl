@@ -1,4 +1,4 @@
-\begin{thebibliography}{66}
+\begin{thebibliography}{67}
 \providecommand{\natexlab}[1]{#1}
 
 \bibitem[{Axmanov{\'a} \emph{et~al.}(2012)Axmanov{\'a}, Tich{\'y},
@@ -197,6 +197,11 @@ Koerner, C., Stoecklin, J., Reuther-Thiebaud, L. \& Pelaez-Riedl, S. ({2008})
 Kucera, B., Cohn, M. \& Leubner-Metzger, G. ({2005}) {Plant hormone
   interactions during seed dormancy release and germination}. \emph{Seed
   Science Research} \textbf{{15}}, {281--307}.
+
+\bibitem[{Leubner-Metzger({2003})}]{Leubner2003}
+Leubner-Metzger, G. ({2003}) {Functions and regulation of beta-1,3-glucanases
+  during seed germination, dormancy release and after-ripening}. \emph{Seed
+  Science Research} \textbf{{13}}, {17--34}.
 
 \bibitem[{Leverett({2017})}]{Leverett2017}
 Leverett, L.D. ({2017}) {Germination phenology determines the propensity for

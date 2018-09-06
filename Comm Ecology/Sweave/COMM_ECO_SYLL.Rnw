@@ -19,7 +19,7 @@
 \textheight 19.94cm 
 %&\pagestyle{empty} %comment if want page numbers
 \parskip 0pt
-\renewcommand{\baselinestretch}{1.2}
+\renewcommand{\baselinestretch}{1.6}
 \parindent 20pt
 
 \newmdenv[
@@ -31,74 +31,82 @@
 \usepackage{lineno}
 %\linenumbers
 \begin{document}
-\textbf{Community Ecology}\\
-\indent Community ecology is the study of interactions between organisms and their environment. It has a rich theoretical basis, a tradition of experimentation and observation and applied implications  in the world around us. In this class, we will integrate theory and evidence to see what it takes build and maintain communities from the ground up. \\
+\title{Community Ecology}
+\date{}
+\maketitle{}
+Community ecology is the study of interactions between organisms and their environment in a given time and space. It has a rich theoretical basis, a tradition of experimentation and observation, and major applications in the world around us. In this class, we will integrate theory and evidence to see what it takes build and maintain communities from the ground up. \\
 
-\textit{Required textbooks:}\\
-Gotelli, N.J.(2008) \textit{A Primer of Ecology: Fourth Edition. (or any).} Sinauer Associates. \\
-\\
-Mittelbach, G. (2012) \textit{Community Ecology.} Oxford University Press \\
-\\
-\indent This course will meet twice a week for a one hour lecture, with an additional weekly discussion section/lab to be scheduled once the course begins.\\
+\textbf{Course Objectives:} This goal of this course is to broadly expose student to the principles, development and applications of community ecology work. Specifically, student should expect to:
+\begin{itemize}
+\item Gain profeciency in the mathmatical models of species interactions and community dynamics.
+\item Learn to recognize the patterns that structure communities across different scales and evaluate possible mechanisms for these patterns based in community ecology theory.
+\item  Engage with applications of community ecology, with an understanding of the theory and evidance to contribute thoughtful to today's debates in the field.
+\end{itemize}\\
 
-\scalebox{.85}{
+\textbf{Required text:} Mittelbach, G. (2012) \textit{Community Ecology.} Oxford University Press \\
+
+\textbf{Course Structure:} This course will meet twice a week for a one hour lecture.\\
+
+\textbf{Prerequisites:} A course in introductory biology or permission of instructor.\\
+
+\scalebox{.9}{
 \begin{center}
 \begin{tabular}{|l|l|}
 \hline
-Topic & Reading(s) \\
+Topic  & Reading(s) \\
 \hline
-1] What is Community Ecology anyway?  & Velland 1999, Mittelbach Ch. 2 \\  
+1] What is Community Ecology anyway? & Mittelbach Ch. 1, \textit{Velland 1999} \\  
 \hline
-2] Niches and Tradeoffs  & Losos 2010, Argawal 2010 \\ 
+2] Patterns of Biodiversity  & Mittelbach Ch. 2  \\ 
 \hline
-3] Basic Populations Models I  & Gotelli Ch. 1 \\ 
+3] Tradeoffs: Niche and Life History Theory  & Argawal 2010, \textit{Silverton 2004} \\ 
 \hline
-4] Basic Populations Models II  & Gotelli Ch. 2 \\ 
+4] Basic Populations Models   & Mittelbach Ch. 4\\ 
 \hline
-5] Life History  & Gotelli p.50-62, Stearns 2000 \\ 
+5] Age-structured populations  & Gotelli p.50-62 (Canvas) \\ 
 \hline
-6] Population Genetics  & Waits Ch. 3 (Canvas), Clausen 1941 \\ 
+6] Population Genetics  & Waits Ch. 3 (Canvas),  \\ 
 \hline
-7] Movement, Migration and Metapopulations  & Gotelli Ch. 4, Dingle 2007 \\ 
+7] Models of Competition  & Mittelbach Ch. 7  \\ 
 \hline
-8] Models of Competition & Gotelli p. 100-114, Mittelbach p. 132-136 \\ 
+8] Competition in experiments and nature  & Mittelbach Ch. 8, \textit{Goldberg 1992}  \\ 
 \hline
-9] Models of Predation & Gotelli p.126-140, Mittelbach p. 85-91\\ 
+9] Basic Models of Predation & Mittelbach Ch. 5 \\ 
 \hline
-10]  Competion and Predation in Nature & Goldberg 1992, Chase 2002 \\ 
+10] Selective and Responsive Predation & Mittelbach Ch. 6 \\ 
 \hline
-11]  Mutulism and Facilitation & Mittelbach Ch. 9, Janzen 1966 \\ 
+11]  Mutulism and Facilitation & Mittelbach Ch. 9, \textit{Janzen 1966} \\ 
 \hline
-12]  Eco-Evo & Benton 2009, Argawal 2012, Fenster 2004 \\ 
+12]  Eco-Evo & Mittelbach ch. 15, \textit{Benton 2009} \\ 
 \hline
-13]  Interaction Networks I & Mittelbach p. 198-205, Mittelbach p. 214-222 \\ 
+13]  Ecological Networks I & Mittelbach Ch.10 \\ 
 \hline
-14]  Interaction Networks II & Mittelbach Ch.11, Beschta 2003,2014 \\ 
+14]  Food Chains and Webs & Mittelbach Ch.11, \textit{Beschta 2003,2014} \\ 
 \hline
-15]  Indirect effects & Morin Ch. 8 (Canvas), Amo 2003 \\ 
+15] Metapopulations and Patchy Environments & Ch. 12\\
 \hline
-16]  Disturbance & Mittelbach p. 297-299, Fox 2013, Sheil 2013, \\ 
+16]Metacommunities and Assemby Theory & Mittelbach Ch.13 Mittelbach, \textit{Leibold 2004} \\ 
 \hline
-17] Succession & Gleason 1939, del Moral 2014 \\ 
+17] Variable Environments and Species Coexistance & Mittelbach p. 291-303, \textit{Fox 2013}\\
 \hline
-18] Coexistance & Mittelbach p. 289-297, Mittelbach p. 260-263, Silverton 2004 \\ 
+18] Historical Contingencies & Fukami 2015\\
 \hline
-19] Metacommunity and assembly theory & Leibold 2004, Fukami 2015\\ 
+19] Alternate stable states and Regime shifts & Mittelbach p. 304-313, \textit{Folke 2004}\\ 
 \hline
-20] Alternate stable states & Mittelbach p. 304-313, Folke 2004\\ 
+20] Compexity, stability and function & Mittelbach Ch. 3, \textit{Tilman 1999}\\ 
 \hline
-21] Compexity, stability and function & Tilman 1999, Mori 2018\\ 
+21] Quaternary Biogeography & Tifney 1985, Gavin 2014\\ 
 \hline
-22] Quaternary Biogeography & Tifney 1985, Gavin 2014\\ 
+22] Invasion biology & Sax 2007, Richarson 2006\\ 
 \hline
-23] Invasion & Sax 2007, Richarson 2006\\ 
+21] Invasion Debate & Gould 1998 \\ 
 \hline
-24] Applications & McLachlan 2007, Donlon 2005\\ 
+24] Rewilding and Restoration & McLachlan 2007, Donlon 2005\\ 
 \hline
 \end{tabular}
 \end{center}}
 
-\nocite{Amo_2013,Benton_2009,Beschta_2003,Beschta_2016,Chase_2002, Clausen_1941,Connell_1976,del_Moral_2014,Dingle_2007,Donlan_2005,Fenster_2004,Folke_2004,Fox_2013,Fukami_2015,Gavin_2014,Gleason_1939,Janzen_1966,Leibold_2004,Losos_2010,McLachlan_2007,Mori_2018,Richardson_2006,Sax_2007,Schlaepfer_2011,Sheil_2013,Sih_1985,Silverton_2004,Tiffney_1985,Tillman_1999,Velland_2010,Waits_2016,Morin_1999,Stearns_2000,Goldberg_1992, Argawal_2010,Argawal_2012}
+\nocite{Gotelli2008,Benton_2009,Beschta_2003,Beschta_2016,Dingle_2007,Donlan_2005,Folke_2004,Fox_2013,Fukami_2015,Gavin_2014,Janzen_1966,Leibold_2004,McLachlan_2007,Richardson_2006,Sax_2007,Silverton_2004,Tiffney_1985,Tillman_1999,Velland_2010,Waits_2016,Goldberg_1992, Argawal_2010, Gould_1998}
 \bibliography{eco_ref}
 
 \end{document}

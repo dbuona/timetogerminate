@@ -3,23 +3,20 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: COMM_ECO_SYLL.aux
 The style file: ..//refs/styles/besjournals.bst.bst
 Database file #1: eco_ref.bib
-Name 1 in "Clausen, J., and D.D. Keck and W.M. Hiesey" has a comma at the end for entry Clausen_1941
-while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
-Name 1 in "Clausen, J., and D.D. Keck and W.M. Hiesey" has a comma at the end for entry Clausen_1941
-while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
+Warning--I didn't find a database entry for "Gotelli2008"
 Name 1 in "Waits, L.P, and A. Storfer" has a comma at the end for entry Waits_2016
 while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
 Name 1 in "Waits, L.P, and A. Storfer" has a comma at the end for entry Waits_2016
-while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
-Name 1 in "Morin, Peter J.," has a comma at the end for entry Morin_1999
-while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
-Name 1 in "Morin, Peter J.," has a comma at the end for entry Morin_1999
 while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
 Name 1 in "Agrawal, A.A., and J.K. Conner, and S. Rasmann" has a comma at the end for entry Argawal_2010
 while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
 Name 1 in "Agrawal, A.A., and J.K. Conner, and S. Rasmann" has a comma at the end for entry Argawal_2010
 while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
 Name 2 in "Agrawal, A.A., and J.K. Conner, and S. Rasmann" has a comma at the end for entry Argawal_2010
+while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Gould, S.J.," has a comma at the end for entry Gould_1998
+while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Gould, S.J.," has a comma at the end for entry Gould_1998
 while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
 Name 1 in "Agrawal, A.A., and J.K. Conner, and S. Rasmann" has a comma at the end for entry Argawal_2010
 while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
@@ -30,58 +27,54 @@ while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
 Name 2 in "Agrawal, A.A., and J.K. Conner, and S. Rasmann" has a comma at the end for entry Argawal_2010
 while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
 Warning--can't use both author and editor fields in Argawal_2010
-Name 1 in "Clausen, J., and D.D. Keck and W.M. Hiesey" has a comma at the end for entry Clausen_1941
+Name 1 in "Gould, S.J.," has a comma at the end for entry Gould_1998
 while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
-Name 1 in "Clausen, J., and D.D. Keck and W.M. Hiesey" has a comma at the end for entry Clausen_1941
-while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
-Name 1 in "Morin, Peter J.," has a comma at the end for entry Morin_1999
-while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
-Name 1 in "Morin, Peter J.," has a comma at the end for entry Morin_1999
+Name 1 in "Gould, S.J.," has a comma at the end for entry Gould_1998
 while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
 Name 1 in "Waits, L.P, and A. Storfer" has a comma at the end for entry Waits_2016
 while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
 Name 1 in "Waits, L.P, and A. Storfer" has a comma at the end for entry Waits_2016
 while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
 Warning--can't use both author and editor fields in Waits_2016
-You've used 36 entries,
+You've used 22 entries,
             2805 wiz_defined-function locations,
-            1372 strings with 19478 characters,
-and the built_in function-call counts, 22525 in all, are:
-= -- 1876
-> -- 1024
-< -- 23
-+ -- 403
-- -- 358
-* -- 1836
-:= -- 3613
-add.period$ -- 72
-call.type$ -- 36
-change.case$ -- 297
-chr.to.int$ -- 37
-cite$ -- 38
-duplicate$ -- 1506
-empty$ -- 1627
-format.name$ -- 449
-if$ -- 4423
+            1256 strings with 16934 characters,
+and the built_in function-call counts, 13816 in all, are:
+= -- 1130
+> -- 660
+< -- 15
++ -- 259
+- -- 232
+* -- 1129
+:= -- 2234
+add.period$ -- 44
+call.type$ -- 22
+change.case$ -- 186
+chr.to.int$ -- 23
+cite$ -- 24
+duplicate$ -- 916
+empty$ -- 983
+format.name$ -- 287
+if$ -- 2698
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 332
-newline$ -- 112
-num.names$ -- 144
-pop$ -- 578
+missing$ -- 206
+newline$ -- 70
+num.names$ -- 88
+pop$ -- 360
 preamble$ -- 1
-purify$ -- 263
+purify$ -- 165
 quote$ -- 0
-skip$ -- 543
+skip$ -- 331
 stack$ -- 0
-substring$ -- 1242
-swap$ -- 821
-text.length$ -- 1
+substring$ -- 725
+swap$ -- 498
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 315
+type$ -- 192
 warning$ -- 2
-while$ -- 154
+while$ -- 91
 width$ -- 0
-write$ -- 397
-(There were 19 error messages)
+write$ -- 243
+(There were 15 error messages)

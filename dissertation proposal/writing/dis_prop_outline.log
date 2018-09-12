@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 SEP 2018 11:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  12 SEP 2018 18:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -678,26 +678,30 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2] [3] [4]
-Overfull \hbox (15.47841pt too wide) in paragraph at lines 145--145
+
+LaTeX Warning: Reference `fig:Figure 5' on page 5 undefined on input line 137.
+
+[5]
+Overfull \hbox (15.47841pt too wide) in paragraph at lines 144--144
 []\OT1/cmr/bx/n/14.4 Chapter II: The ger-mi-na-tion re-sponse to vary-ing strat
 -i-fi-ca-tion regimes
  []
 
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 157--159
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--158
 
  []
 
-[6]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 175.
+[6] [7]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 174.
 
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 175.
- [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 197--200
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 174.
+ [8]
+Underfull \hbox (badness 10000) in paragraph at lines 196--199
 
  []
 
@@ -737,7 +741,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.266 \begin{figure}[here]
+l.263 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -748,7 +752,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.266 \begin{figure}[here]
+l.263 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -759,17 +763,17 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.266 \begin{figure}[here]
+l.263 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/Data_comparision_plot.jpeg, id=58, 769.87625pt x 310.15875pt>
-File: ..//figures/Data_comparision_plot.jpeg Graphic file (type jpg)
+<..//figures/MTSV_v_USFS_comp.pdf, id=58, 731.98236pt x 318.91626pt>
+File: ..//figures/MTSV_v_USFS_comp.pdf Graphic file (type pdf)
 
-<use ..//figures/Data_comparision_plot.jpeg>
-Package pdftex.def Info: ..//figures/Data_comparision_plot.jpeg used on input l
-ine 267.
-(pdftex.def)             Requested size: 424.82512pt x 171.15102pt.
+<use ..//figures/MTSV_v_USFS_comp.pdf>
+Package pdftex.def Info: ..//figures/MTSV_v_USFS_comp.pdf used on input line 26
+4.
+(pdftex.def)             Requested size: 424.82512pt x 185.0932pt.
 
 
 ! LaTeX Error: Unknown float option `e'.
@@ -778,7 +782,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.273 \begin{figure}[here]
+l.270 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -789,7 +793,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.273 \begin{figure}[here]
+l.270 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -800,17 +804,19 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.273 \begin{figure}[here]
+l.270 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/HF_continuous_scaled_mode.jpeg, id=59, 858.20625pt x 447.6725pt>
-File: ..//figures/HF_continuous_scaled_mode.jpeg Graphic file (type jpg)
+<..//figures/HF_con_v_bin_comp.pdf, id=59, 1286.93604pt x 380.57784pt>
+File: ..//figures/HF_con_v_bin_comp.pdf Graphic file (type pdf)
 
-<use ..//figures/HF_continuous_scaled_mode.jpeg>
-Package pdftex.def Info: ..//figures/HF_continuous_scaled_mode.jpeg used on inp
-ut line 274.
-(pdftex.def)             Requested size: 424.82512pt x 221.60881pt.
+<use ..//figures/HF_con_v_bin_comp.pdf>
+Package pdftex.def Info: ..//figures/HF_con_v_bin_comp.pdf used on input line 2
+71.
+(pdftex.def)             Requested size: 462.58847pt x 136.79886pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 272.
 
 
 ! LaTeX Error: Unknown float option `e'.
@@ -819,7 +825,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.280 \begin{figure}[here]
+l.278 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -830,7 +836,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.280 \begin{figure}[here]
+l.278 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -841,17 +847,16 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.280 \begin{figure}[here]
+l.278 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/QURU_HF_intervar.jpeg, id=60, 1345.025pt x 492.84125pt>
-File: ..//figures/QURU_HF_intervar.jpeg Graphic file (type jpg)
+<..//figures/HF_dissplot.pdf, id=60, 718.72182pt x 388.53416pt>
+File: ..//figures/HF_dissplot.pdf Graphic file (type pdf)
 
-<use ..//figures/QURU_HF_intervar.jpeg>
-Package pdftex.def Info: ..//figures/QURU_HF_intervar.jpeg used on input line 2
-81.
-(pdftex.def)             Requested size: 448.42812pt x 164.30757pt.
+<use ..//figures/HF_dissplot.pdf>
+Package pdftex.def Info: ..//figures/HF_dissplot.pdf used on input line 279.
+(pdftex.def)             Requested size: 424.82512pt x 229.6541pt.
 
 
 ! LaTeX Error: Unknown float option `e'.
@@ -860,7 +865,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.286 \begin{figure}[here]
+l.285 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -871,7 +876,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.286 \begin{figure}[here]
+l.285 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -882,56 +887,16 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.286 \begin{figure}[here]
+l.285 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/raw_flobuds.jpeg, id=61, 1345.025pt x 492.84125pt>
-File: ..//figures/raw_flobuds.jpeg Graphic file (type jpg)
+<..//figures/Quals_plots.pdf, id=61, 794.97pt x 614.295pt>
+File: ..//figures/Quals_plots.pdf Graphic file (type pdf)
 
-<use ..//figures/raw_flobuds.jpeg>
-Package pdftex.def Info: ..//figures/raw_flobuds.jpeg used on input line 287.
-(pdftex.def)             Requested size: 448.42812pt x 164.30757pt.
-
-
-! LaTeX Error: Unknown float option `e'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.292 \begin{figure}[here]
-                          
-Option `e' ignored and `p' used.
-
-
-! LaTeX Error: Unknown float option `r'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.292 \begin{figure}[here]
-                          
-Option `r' ignored and `p' used.
-
-
-! LaTeX Error: Unknown float option `e'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.292 \begin{figure}[here]
-                          
-Option `e' ignored and `p' used.
-
-<..//figures/Goods_mod2b.jpeg, id=62, 767.86874pt x 494.84875pt>
-File: ..//figures/Goods_mod2b.jpeg Graphic file (type jpg)
-
-<use ..//figures/Goods_mod2b.jpeg>
-Package pdftex.def Info: ..//figures/Goods_mod2b.jpeg used on input line 293.
-(pdftex.def)             Requested size: 377.62633pt x 243.36145pt.
+<use ..//figures/Quals_plots.pdf>
+Package pdftex.def Info: ..//figures/Quals_plots.pdf used on input line 286.
+(pdftex.def)             Requested size: 455.24408pt x 351.79211pt.
 
 
 ! LaTeX Error: Unknown float option `e'.
@@ -966,7 +931,7 @@ l.298 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/species_table.pdf, id=63, 614.295pt x 794.97pt>
+<..//figures/species_table.pdf, id=62, 614.295pt x 794.97pt>
 File: ..//figures/species_table.pdf Graphic file (type pdf)
 
 <use ..//figures/species_table.pdf>
@@ -1006,44 +971,47 @@ l.304 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/response_surface.jpg, id=65, 652.4375pt x 446.66875pt>
+<..//figures/response_surface.jpg, id=64, 652.4375pt x 446.66875pt>
 File: ..//figures/response_surface.jpg Graphic file (type jpg)
 
 <use ..//figures/response_surface.jpg>
 Package pdftex.def Info: ..//figures/response_surface.jpg used on input line 30
 5.
 (pdftex.def)             Requested size: 236.01555pt x 161.57759pt.
- [15 <..//figures/Data_comparision_plot.jpeg>] [16 <..//figures/HF_continuous_s
-caled_mode.jpeg> <..//figures/QURU_HF_intervar.jpeg>] [17 <..//figures/raw_flob
-uds.jpeg> <..//figures/Goods_mod2b.jpeg>] [18 <..//figures/species_table.pdf> <
-..//figures/response_surface.jpg>]
-(./dis_prop_outline.aux) ) 
+ [15 <..//figures/MTSV_v_USFS_comp.pdf> <..//figures/HF_con_v_bin_comp.pdf>] [1
+6 <..//figures/HF_dissplot.pdf>] [17 <..//figures/Quals_plots.pdf>] [18 <..//fi
+gures/species_table.pdf> <..//figures/response_surface.jpg>] (./dis_prop_outlin
+e.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 13253 strings out of 493089
- 276168 string characters out of 6134842
- 306276 words of memory out of 5000000
- 16606 multiletter control sequences out of 15000+600000
- 11706 words of font info for 43 fonts, out of 8000000 for 9000
+ 13256 strings out of 493089
+ 276001 string characters out of 6134842
+ 306267 words of memory out of 5000000
+ 16607 multiletter control sequences out of 15000+600000
+ 12792 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,7n,39p,10404b,736s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10
-.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.p
-fb>
-Output written on dis_prop_outline.pdf (18 pages, 565440 bytes).
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on dis_prop_outline.pdf (18 pages, 857876 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
+ 480 PDF objects out of 1000 (max. 8388607)
+ 356 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 42 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 37 words of extra memory for PDF output out of 10000 (max. 10000000)
 

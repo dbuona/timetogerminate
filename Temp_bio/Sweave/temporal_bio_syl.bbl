@@ -1,4 +1,4 @@
-\begin{thebibliography}{40}
+\begin{thebibliography}{34}
 \providecommand{\natexlab}[1]{#1}
 
 \bibitem[{Auge \emph{et~al.}(2017)Auge, Blair, Neville \& Donohue}]{Auge_2017}
@@ -22,20 +22,9 @@ Burghardt, L.T., Metcalf, C.J.E., Wilczek, A.M., Schmitt, J. \& Donohue, K.
 Chuine, I. (2000) A unified model for budburst of trees. \emph{Journal of
   Theoretical Biology} \textbf{207}, 337 -- 347.
 
-\bibitem[{Clausen \emph{et~al.}(1941)Clausen, Keck \& Hiesey}]{Clausen_1941}
-Clausen, J., Keck, D.D. \& Hiesey, W.M. (1941) Regional differentiation in
-  plant species. \emph{The American Naturalist} \textbf{75}, 231--250.
-
 \bibitem[{Cui \emph{et~al.}(2017)Cui, Martz \& Guo}]{Cui_2017}
 Cui, T., Martz, L. \& Guo, X. (2017) Grassland phenology response to drought in
   the canadian prairies. \emph{Remote Sensing} \textbf{9}, 1258.
-
-\bibitem[{Da~Silva \emph{et~al.}(2015)Da~Silva, Valcu \&
-  Kempenaers}]{Da-Silva_2015}
-Da~Silva, A., Valcu, M. \& Kempenaers, B. (2015) Light pollution alters the
-  phenology of dawn and dusk singing in common european songbirds.
-  \emph{Philosophical Transactions of the Royal Society B: Biological Sciences}
-  \textbf{370}.
 
 \bibitem[{Fargione \& Tilman(2005)}]{Fargione_2005}
 Fargione, J. \& Tilman, D. (2005) Niche differences in phenology and rooting
@@ -93,19 +82,19 @@ Gu, L., Hanson, P.J., Post, W.M., Kaiser, D.P., Yang, B., Nemani, R., Pallardy,
   S.G. \& Meyers, T. (2008) The 2007 eastern us spring freeze: Increased cold
   damage in a warming world? \emph{BioScience} \textbf{58}, 253--262.
 
-\bibitem[{Hipperson \emph{et~al.}(2016)Hipperson, Dunning, Baker, Butlin,
-  Hutton, Papadopulos, Smadja, Wilson, Devaux \& Savolainen}]{Hipperson_2016}
-Hipperson, H., Dunning, L.T., Baker, W.J., Butlin, R.K., Hutton, I.,
-  Papadopulos, A.S.T., Smadja, C.M., Wilson, T.C., Devaux, C. \& Savolainen, V.
-  (2016) Ecological speciation in sympatric palms: 2. pre- and post-zygotic
-  isolation. \emph{Journal of Evolutionary Biology} \textbf{29}, 2143--2156.
-
 \bibitem[{Ivits \emph{et~al.}(2013)Ivits, Horion, Fensholt \&
   Cherlet}]{Ivits_2013}
 Ivits, E., Horion, S., Fensholt, R. \& Cherlet, M. (2013) Drought footprint on
   european ecosystems between 1999 and 2010 assessed by remotely sensed
   vegetation phenology and productivity. \emph{Global Change Biology}
   \textbf{20}, 581--593.
+
+\bibitem[{Johnsen \emph{et~al.}(2005)Johnsen, Fossdal, Nagy, Molmann,
+  D{\ae}hlen \& Tore}]{Johnsen_2005}
+Johnsen, {\O}., Fossdal, C.G., Nagy, N., Molmann, J., D{\ae}hlen, O.G. \& Tore,
+  S. (2005) Climatic adaptation in picea abies progenies is affected by the
+  temperature during zygotic embryogenesis and seed maturation. \emph{Plant,
+  Cell \& Environment} \textbf{28}, 1090--1102.
 
 \bibitem[{Kharouba \emph{et~al.}(2015)Kharouba, Vellend, Sarfraz \&
   Myers}]{Kharouba_2015}
@@ -116,10 +105,6 @@ Kharouba, H.M., Vellend, M., Sarfraz, R.M. \& Myers, J.H. (2015) The effects of
 \bibitem[{Lechowicz(1984)}]{Lechowicz_1984}
 Lechowicz, M.J. (1984) Why do temperate deciduous trees leaf out at different
   times? adaptation and ecology of forest communities \textbf{124}, 821--842.
-
-\bibitem[{Lechowicz(1995)}]{Lechowicz_1995}
-Lechowicz, M.J. (1995) Seasonality of flowering and fruiting in temperate
-  forest trees. \emph{Canadian Journal of Botany} \textbf{73}, 175--182.
 
 \bibitem[{Liepe \emph{et~al.}(2016)Liepe, Hamann, Smets, Fitzpatrick \&
   Aitken}]{Liepe_2016}
@@ -134,30 +119,17 @@ McKown, A.D., Guy, R.D., Azam, M.S., Drewes, E.C. \& Quamme, L.K. (2012)
   Seasonality and phenology alter functional leaf traits. \emph{Oecologia}
   \textbf{172}, 653--665.
 
-\bibitem[{MENZEL \emph{et~al.}(2006)MENZEL, SPARKS, ESTRELLA, KOCH, AASA, AHAS,
-  ALM-K{\"U}BLER, BISSOLLI, BRASLAVSK{\'A}, BRIEDE \& et~al.}]{MENZEL_2006}
-MENZEL, A., SPARKS, T.H., ESTRELLA, N., KOCH, E., AASA, A., AHAS, R.,
-  ALM-K{\"U}BLER, K., BISSOLLI, P., BRASLAVSK{\'A}, O., BRIEDE, A. \& et~al.
-  (2006) European phenological response to climate change matches the warming
-  pattern. \emph{Global Change Biology} \textbf{12}, 1969--1976.
-
-\bibitem[{Montague \emph{et~al.}(2007)Montague, Barrett \& G.}]{MONTAGUE_2007}
-Montague, J.L., Barrett, S.C.H. \& G., E.C. (2007) Re-establishment of clinal
-  variation in flowering time among introduced populations of purple
-  loosestrife (lythrum salicaria , lythraceae). \emph{Journal of Evolutionary
-  Biology} \textbf{21}, 234--245.
+\bibitem[{Menzel \emph{et~al.}(2006)Menzel, Sparks, Estrella, Koch, Aasa, Ahas,
+  Alm-Kumbler, Peter, Braslavska, Briede \& et~al.}]{MENZEL_2006}
+Menzel, A., Sparks, T.H., Estrella, N., Koch, E., Aasa, A., Ahas, R.,
+  Alm-Kumbler, K., Peter, B., Braslavska, O., Briede, A. \& et~al. (2006)
+  European phenological response to climate change matches the warming pattern.
+  \emph{Global Change Biology} \textbf{12}, 1969--1976.
 
 \bibitem[{Ollerton \& Lack(1992)}]{OLLERTON_1992}
 Ollerton, J. \& Lack, A. (1992) Flowering phenology: An example of relaxation
   of natural selection? \emph{Trends in Ecology & Evolution} \textbf{7}, 274 --
   276.
-
-\bibitem[{{\O}YSTEIN \emph{et~al.}(2005){\O}YSTEIN, GUNNAR, NINA, J{\O}RGEN,
-  GRAM \& TORE}]{Johnsen_2005}
-{\O}YSTEIN, J., GUNNAR, F.C., NINA, N., J{\O}RGEN, M., GRAM, D.O. \& TORE, S.
-  (2005) Climatic adaptation in picea abies progenies is affected by the
-  temperature during zygotic embryogenesis and seed maturation. \emph{Plant,
-  Cell \& Environment} \textbf{28}, 1090--1102.
 
 \bibitem[{Petanidou \emph{et~al.}(2014)Petanidou, Kallimanis, Sgardelis,
   Mazaris, Pantis \& Waser}]{PETANIDOU_2014}
@@ -224,10 +196,5 @@ Wolkovich, E.M., Davies, T.J., Schaefer, H., Cleland, E.E., Cook, B.I.,
   Travers, S.E., Willis, C.G. \& Davis, C.C. (2013) Temperature-dependent
   shifts in phenology contribute to the success of exotic species with climate
   change. \emph{American Journal of Botany} \textbf{100}, 1407--1421.
-
-\bibitem[{Yang \& Rudolf(2010)}]{Yang_2010}
-Yang, L.H. \& Rudolf, V.H.W. (2010) Phenology, ontogeny and the effects of
-  climate change on the timing of species interactions. \emph{Ecology Letters}
-  \textbf{13}, 1--10.
 
 \end{thebibliography}

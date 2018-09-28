@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  28 SEP 2018 13:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  28 SEP 2018 13:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -827,7 +827,12 @@ File: ts1aer.fd
 LaTeX Font Info:    Font shape `TS1/aer/m/n' in size <10> not available
 (Font)              Font shape `TS1/cmr/m/n' tried instead on input line 93.
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--101
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
 
@@ -841,8 +846,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--105
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
+
+ []
+
 ! Undefined control sequence.
-l.126 8] Nutrient cycling & Vitousek 1997, \texit
+l.128 8] Nutrient cycling & Vitousek 1997, \texit
                                                  {Levin II.10} \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -851,7 +861,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.136 ...sphere productivity & Korner 2006, \texit
+l.138 ...sphere productivity & Korner 2006, \texit
                                                   {Levin III.9} \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -860,7 +870,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.140 13]Thermal tolerance & Kaliq 2014, \texit
+l.142 13]Thermal tolerance & Kaliq 2014, \texit
                                                {Levin I.2-3} \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -869,7 +879,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.142 ...henological shifts & Cleland 2012, \texit
+l.144 ...henological shifts & Cleland 2012, \texit
                                                   {Levin I.9} \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -878,7 +888,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.148 ...bitat Fragmentation & Hamann 2012, \texit
+l.150 ...bitat Fragmentation & Hamann 2012, \texit
                                                   {Levin IV.3} \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -887,7 +897,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.150 18] Invasion & Liu 2017, \texit
+l.152 18] Invasion & Liu 2017, \texit
                                      {Levin VII.8} \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -896,7 +906,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.158 ...logical Restoration & Harris 2006, \texit
+l.160 ...logical Restoration & Harris 2006, \texit
                                                   {Levin V.7} \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -913,6 +923,18 @@ and I'll forget about whatever was undefined.
                                Evolution
 l.50   Ecology & Evolution}
                             \textbf{33}, 720 -- 730.
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<argument> Trends in Ecology &
+                               Evolution
+l.72 ...ion}. \emph{Trends in Ecology & Evolution}
+                                                  
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -937,7 +959,7 @@ e1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
 ublic/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
 ic/cm-super/sfrm1000.pfb>
-Output written on globalchange_syl.pdf (4 pages, 95930 bytes).
+Output written on globalchange_syl.pdf (4 pages, 94057 bytes).
 PDF statistics:
  42 PDF objects out of 1000 (max. 8388607)
  29 compressed objects within 1 object stream

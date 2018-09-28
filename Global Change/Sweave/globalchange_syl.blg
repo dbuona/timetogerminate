@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: globalchange_syl.aux
 The style file: ..//refs/styles/besjournals.bst.bst
 Database file #1: GCB_ref.bib
-You've used 39 entries,
+You've used 29 entries,
             2805 wiz_defined-function locations,
-            1356 strings with 21136 characters,
-and the built_in function-call counts, 28166 in all, are:
-= -- 2229
-> -- 1630
-< -- 12
-+ -- 629
-- -- 583
-* -- 2483
-:= -- 4502
-add.period$ -- 78
-call.type$ -- 39
-change.case$ -- 390
-chr.to.int$ -- 40
-cite$ -- 39
-duplicate$ -- 1800
-empty$ -- 1810
-format.name$ -- 707
-if$ -- 5377
+            1304 strings with 19142 characters,
+and the built_in function-call counts, 20969 in all, are:
+= -- 1647
+> -- 1198
+< -- 10
++ -- 456
+- -- 428
+* -- 1848
+:= -- 3335
+add.period$ -- 58
+call.type$ -- 29
+change.case$ -- 287
+chr.to.int$ -- 30
+cite$ -- 29
+duplicate$ -- 1354
+empty$ -- 1366
+format.name$ -- 522
+if$ -- 4028
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 425
-newline$ -- 121
-num.names$ -- 156
-pop$ -- 776
+missing$ -- 316
+newline$ -- 91
+num.names$ -- 118
+pop$ -- 587
 preamble$ -- 1
-purify$ -- 350
+purify$ -- 258
 quote$ -- 0
-skip$ -- 627
+skip$ -- 480
 stack$ -- 0
-substring$ -- 1346
-swap$ -- 1057
-text.length$ -- 0
+substring$ -- 983
+swap$ -- 801
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 351
+type$ -- 258
 warning$ -- 0
-while$ -- 174
+while$ -- 124
 width$ -- 0
-write$ -- 432
+write$ -- 323

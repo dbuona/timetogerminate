@@ -1,4 +1,4 @@
-\begin{thebibliography}{34}
+\begin{thebibliography}{36}
 \providecommand{\natexlab}[1]{#1}
 
 \bibitem[{Auge \emph{et~al.}(2017)Auge, Blair, Neville \& Donohue}]{Auge_2017}
@@ -38,6 +38,12 @@ ffrench Constant, R.H., Somers-Yeates, R., Bennie, J., Economou, T., Hodgson,
   earlier tree budburst across the united kingdom. \emph{Proceedings of the
   Royal Society B: Biological Sciences} \textbf{283}, 20160813.
 
+\bibitem[{Fitzjarrald \emph{et~al.}(2001)Fitzjarrald, Acevedo \&
+  Moore}]{Fitzjarrald_2001}
+Fitzjarrald, D.R., Acevedo, O.C. \& Moore, K.E. (2001) Climatic consequences of
+  leaf presence in the eastern united states. \emph{Journal of Climate}
+  \textbf{14}, 598.
+
 \bibitem[{Forrest \& Miller-Rushing(2010)}]{Forrest_2010}
 Forrest, J. \& Miller-Rushing, A.J. (2010) Toward a synthetic understanding of
   the role of phenology in ecology and evolution. \emph{Philosophical
@@ -74,7 +80,7 @@ Gioria, M. \& Py{\v s}ek, P. (2016) Early bird catches the worm: germination as
 \bibitem[{Gougherty \& Gougherty(2018)}]{Gougherty_2018}
 Gougherty, A.V. \& Gougherty, S.W. (2018) Sequence of flower and leaf emergence
   in deciduous trees is linked to ecological traits, phylogenetics, and
-  climate. \emph{New Phytologist} .
+  climate. \emph{New Phytologist} \textbf{220}, 121--131.
 
 \bibitem[{Gu \emph{et~al.}(2008)Gu, Hanson, Post, Kaiser, Yang, Nemani,
   Pallardy \& Meyers}]{Gu_2008}
@@ -113,6 +119,13 @@ Liepe, K.J., Hamann, A., Smets, P., Fitzpatrick, C.R. \& Aitken, S.N. (2016)
   reforestation in a warming world. \emph{Evolutionary Applications}
   \textbf{9}, 409--419.
 
+\bibitem[{McDonough~MacKenzie \emph{et~al.}(2018)McDonough~MacKenzie, Primack
+  \& Miller-Rushing}]{Mackenzie_2018}
+McDonough~MacKenzie, C., Primack, R.B. \& Miller-Rushing, A.J. (2018) Local
+  environment, not local adaptation, drives leaf-out phenology in common
+  gardens along an elevational gradient in acadia national park, maine.
+  \emph{American Journal of Botany} \textbf{105}, 986--995.
+
 \bibitem[{McKown \emph{et~al.}(2012)McKown, Guy, Azam, Drewes \&
   Quamme}]{McKown_2012}
 McKown, A.D., Guy, R.D., Azam, M.S., Drewes, E.C. \& Quamme, L.K. (2012)
@@ -128,8 +141,8 @@ Menzel, A., Sparks, T.H., Estrella, N., Koch, E., Aasa, A., Ahas, R.,
 
 \bibitem[{Ollerton \& Lack(1992)}]{OLLERTON_1992}
 Ollerton, J. \& Lack, A. (1992) Flowering phenology: An example of relaxation
-  of natural selection? \emph{Trends in Ecology & Evolution} \textbf{7}, 274 --
-  276.
+  of natural selection? \emph{Trends in Ecology /& Evolution} \textbf{7}, 274
+  -- 276.
 
 \bibitem[{Petanidou \emph{et~al.}(2014)Petanidou, Kallimanis, Sgardelis,
   Mazaris, Pantis \& Waser}]{PETANIDOU_2014}
@@ -186,8 +199,8 @@ Wainwright, C.E., Wolkovich, E.M. \& Cleland, E.E. (2011) Seasonal priority
   \& Schmitt}]{Wilczek_2010}
 Wilczek, A.M., Burghardt, L.T., Cobb, A.R., Cooper, M.D., Welch, S.M. \&
   Schmitt, J. ({2010}) {Genetic and physiological bases for phenological
-  responses to current and predicted climates}. \emph{{PHILOSOPHICAL
-  TRANSACTIONS OF THE ROYAL SOCIETY B-BIOLOGICAL SCIENCES}} \textbf{{365}},
+  responses to current and predicted climates}. \emph{Philosophical
+  Transactions of the Royal Society B: Biological Sciences} \textbf{{365}},
   {3129--3147}.
 
 \bibitem[{Wolkovich \emph{et~al.}(2013)Wolkovich, Davies, Schaefer, Cleland,

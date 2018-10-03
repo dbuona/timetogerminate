@@ -37,16 +37,16 @@
 \title{Global Change Biology}
 \date{}
 \maketitle{}
-\indent In the year 2000, atmospheric chemest Paul Crutzen suggested that humans had fundamentally changed Earth systems so much that is was time to declare a new Geological epoch: the Anthropocene. While this proposal has yet to be formally accepted, the impact of the statement has given rise to a whole new scientific sub-discipline seeking to understand the impact of these massive Earth systems changes on living organisms: Global Change Biology. This course is roughly divided into three parts. In \texitbf{part one}, we will discuss the drivers and physical effects of anthropogenic change. In \textbf{part two}, we will focus on how these changes impact organisms and ecosystems. In \textbf{part three}, we will explore some of the anthroengenic responses to global change that are aimed to mitigate the detrimental effects on organisms. \\
+\indent In the year 2000, atmospheric chemest Paul Crutzen suggested that humans had fundamentally changed Earth systems so much that is was time to declare a new Geological epoch: the Anthropocene. While this proposal has yet to be formally accepted, the sentiment of the statement has given rise to a whole new scientific sub-discipline seeking to understand the impacts of these massive planetary alterations on living organisms: Global Change Biology. This course is roughly divided into three parts. In \texitbf{part one}, we will discuss the drivers and physical effects of global change. In \textbf{part two}, we will focus on how these changes impact organisms and ecosystems. In \textbf{part three}, we will explore some of the anthroengenic responses to global change that are aimed to mitigate their detrimental effects on organisms. \\
 
-\indent\textbf{Course Objective:} The goals of this class are to broady expose students to the the  drivers of effects global change on life. Specifically, students should expect to:
+\indent\textbf{Course Objective:} The goals of this class are to broady expose students to the drivers and effects of global change on life. Specifically, students should expect to:
 \begin{itemize}
-\item Obtain a broad foundation for the study of Earth Systems and drivers of global change.
+\item Obtain a broad foundation for the study of Earth Systems and drivers of global change, with an emphasis on terrestrial systems.
 \item Gain an understanding of the range of possibile effects of global change on organisms the complexity of interacting drivers.
-\item Increase comfort reading primary literature and learn to evaluate the current state of global change science with all of its limitations and promises.
+\item Increase in comfort and competence reading primary literature, and learn to evaluate the current state of global change science with all of its limitations and promises.
 \end{itemize}
 
-\textbf{Required Text:} Because of the diversity of topics covered, we will approach our study of global change biology through the developing body of primary scientific liturature rather than through a single text book. Many lectures will pair with suggested readings (italacized below) that will either provide additional background to the lecture topic or another example of the concepts being discussed.\\
+\textbf{Required Text:} Because of the diversity of topics covered, we will approach our study of global change biology through the developing body of primary scientific liturature rather than through a single text book. Many lectures will pair with suggested readings (italacized below) that will either provide additional background to the lecture topic or other examples of the concepts being discussed.\\
 
 \textbf{Course structure:} This course will meet twice per week for 75 minutes. This first half will consist of a lecture from the instructor, with the second half consisting of student faciliated discussions on relevant papers.\\
 
@@ -66,7 +66,7 @@ Topic  & Reading(s) \\
 \hline
 4] Feedbacks, sources and sinks & Cox 2000, \textit{Kurz 2008}\\
 \hline
-5] Localized impacts: Disturbance & Westerling 2006, \textit{Logan and Powell 2001} \\
+5] Localized impacts: Disturbance & Westerling 2006, \textit{Logan 2001} \\
 \hline
 6] Land Use Change & Foley 2005, \textit{Grimm 2008}\\
 \hline
@@ -85,7 +85,7 @@ Topic  & Reading(s) \\
 \hline
 13] Plasticity and phenological shifts & Cleland 2012, \textit{Logan 2014} \\
 \hline
-14] Global change and Evolution & Reusch and Wood 2007 \textit{Gorton 2018} \\
+14] Global change and Evolution & Reusch 2007 \textit{Gorton 2018} \\
 \hline
 15] Fragmentation and Migration & Chen 2011, \texit{Hamman 2012} \\
 \hline

@@ -5,37 +5,37 @@ The style file: ..//refs/styles/besjournals.bst.bst
 Database file #1: GCB_ref.bib
 You've used 40 entries,
             2805 wiz_defined-function locations,
-            1388 strings with 23368 characters,
-and the built_in function-call counts, 32776 in all, are:
-= -- 2394
+            1384 strings with 23239 characters,
+and the built_in function-call counts, 32744 in all, are:
+= -- 2391
 > -- 2268
 < -- 14
 + -- 860
 - -- 821
-* -- 2975
-:= -- 5265
+* -- 2971
+:= -- 5264
 add.period$ -- 80
 call.type$ -- 40
-change.case$ -- 474
+change.case$ -- 473
 chr.to.int$ -- 41
 cite$ -- 40
-duplicate$ -- 2010
-empty$ -- 1931
+duplicate$ -- 2005
+empty$ -- 1929
 format.name$ -- 948
-if$ -- 6185
+if$ -- 6178
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 511
+missing$ -- 509
 newline$ -- 124
 num.names$ -- 162
-pop$ -- 957
+pop$ -- 956
 preamble$ -- 1
 purify$ -- 433
 quote$ -- 0
-skip$ -- 734
+skip$ -- 735
 stack$ -- 0
-substring$ -- 1291
-swap$ -- 1244
+substring$ -- 1289
+swap$ -- 1240
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
@@ -43,4 +43,4 @@ type$ -- 357
 warning$ -- 0
 while$ -- 168
 width$ -- 0
-write$ -- 444
+write$ -- 443

@@ -37,20 +37,20 @@
 \title{Global Change Biology}
 \date{}
 \maketitle{}
-\indent In the year 2000, atmospheric chemest Paul Crutzen suggested that humans had fundamentally changed Earth systems so much that is was time to declare a new Geological epoch: the Anthropocene. While this proposal has yet to be formally accepted, the impact of the statement has given rise to a whole new scientific sub-discipline seeking to understand the impact of these massive Earth systems changes on living organisms: Global Change Biology. This course is roughly divided into two parts. In part one, we will discuss the elements of the Earth system and how they are changing. In part two, we will focus on how these changes impact organisms and how the effect might be mitigated. \\
+\indent In the year 2000, atmospheric chemest Paul Crutzen suggested that humans had fundamentally changed Earth systems so much that is was time to declare a new Geological epoch: the Anthropocene. While this proposal has yet to be formally accepted, the impact of the statement has given rise to a whole new scientific sub-discipline seeking to understand the impact of these massive Earth systems changes on living organisms: Global Change Biology. This course is roughly divided into three parts. In \texitbf{part one}, we will discuss the drivers and physical effects of anthropogenic change. In \textbf{part two}, we will focus on how these changes impact organisms and ecosystems. In \textbf{part three}, we will explore some of the anthroengenic responses to global change that are aimed to mitigate the detrimental effects on organisms. \\
 
 \indent\textbf{Course Objective:} The goals of this class are to broady expose students to the the  drivers of effects global change on life. Specifically, students should expect to:
 \begin{itemize}
-\item Obtain a broad foundation for the study of Earth systems and drivers of global change.
+\item Obtain a broad foundation for the study of Earth Systems and drivers of global change.
 \item Gain an understanding of the range of possibile effects of global change on organisms the complexity of interacting drivers.
-\item Learn to identify and evaluate the current state of global change science with all of its limitations and promises.
+\item Increase comfort reading primary literature and learn to evaluate the current state of global change science with all of its limitations and promises.
 \end{itemize}
 
-\textbf{Required Text:} Because of the diversity of topics covered, we will approach our study of global change biology through the developing body of primary scientific liturature rather than through a single text book. Most lectures will include with suggested readings (italacized below) from the text:\\
+\textbf{Required Text:} Because of the diversity of topics covered, we will approach our study of global change biology through the developing body of primary scientific liturature rather than through a single text book. Many lectures will pair with suggested readings (italacized below) from the text:\\
 
 \indent Levin, Simon A., et al., editors. \textit{The Princeton Guide to Ecology.} Princeton University Press, 2009.\\
 
-These reading will serve to clarify the background information provided in lectures, and is highly reccomended.\\
+These readings will augment and clarify the background information covered in lectures, and are highly reccomended.\\
 
 \textbf{Course structure:} This course will meet twice per week for 75 minutes. This first half will consist of a lecture from the instructor, with the second half consisting of student faciliated discussions on relevant papers.\\
 
@@ -62,55 +62,53 @@ These reading will serve to clarify the background information provided in lectu
 \hline
 Topic  & Reading(s) \\
 \hline
-1] Introduction Global Change and the Earth's Climate System & IPCC 2014\\  
+1] Introduction to our changing climate system  & IPCC 2001, IPCC 2014\\  
 \hline
-2] Tools for the study of climate change & Newman Ch.1(Canvas) \\
+2] Paleoclimate: the effects of rapid climate change in deep time & Knoll 2007 \\
 \hline
-3] Paleoclimate: the effects of rapid climate change in deep time & Knoll 2007 \\
+3] Predicting Future Climates & Bonan 2018, \textit{Newman Ch.2 (Canvas)} \\
 \hline
-4] Predicting Future Climates & Bonan 2018, \textit{Newman Ch.2 (Canvas)} \\
+4] Feedbacks, sources and sinks & Cox 2000, \textit{Levin IV.7}\\
 \hline
-5] Sources, sinks and feedbacks & Cox 2000, \textit{Levin IV.7}\\
+5] Localized impacts: Disturbance & Kurz 2008, \textit{Levin IV.1} \\
 \hline
-6] Localized impacts of climate change: disturbance & Kurz 2008, \textit{Levin IV.1} \\
+6] Land Use Change & Foley 2005, \textit{Levin VII.7}\\
 \hline
-7] Intensification and land conversion & Foley 2005, \textit{Levin VII.7}\\
+7] Nutrient cycling & Vitousek 1997, \texit{Levin II.10} \\
 \hline
-8] Nutrient cycling & Vitousek 1997, \texit{Levin II.10} \\
+8] Marine effects & Anthony2008, Kroeker 2013 \\
 \hline
-9] Eutrofication & Diaz 2008, \textit{Levin VII.4} \\
+9] Interacting drivers &  Hoff 2011, Mantyka-pringle 2011 \textit{Newman Ch. 13 (Canvas)} \\
 \hline
-10] Ocean acidification & Anthony2008, Kroeker 2013  \\
 \hline
-11] Urbanization & Grimm 2008 \\
+10] Plant physiology & Korner 2006, \texit{Levin III.9} \\
 \hline
-10] Interacting drivers &  Hoff 2011, \textit{Newman Ch. 13 (Canvas)} \\
+11] Terrestrial ecosystem productivity  & Norby 2011 \\
 \hline
-11] Plant physiology and biosphere productivity & Korner 2006, \texit{Levin III.9} \\
+12]Thermal tolerance & Kaliq 2014, \texit{Levin I.2-3} \\
 \hline
-12] "FACE" case study & Norby 2011 \\
+13] Plasticity and phenological shifts & Cleland 2012, \texit{Levin I.9} \\
 \hline
-13]Thermal tolerance & Kaliq 2014, \texit{Levin I.2-3} \\
+14] Global change and Evolution & Logan 2014, \textit{Levin III.19} \\
 \hline
-14] Plasticity and phenological shifts & Cleland 2012, \texit{Levin I.9} \\
+15]Distributions, Fragmentation and Migration & Chen 2011,\textit{Levin I.6 and 12} \\
 \hline
-15] Global change and evolution & Logan 2014, \textit{Levin III.19} \\
+16] Invasion & Liu 2017, \texit{Levin VII.8} \\
 \hline
-16]Migration and dispersal & Chen 2011,\textit{Levin I.6 and 12} \\
+17] The 6th extinction & Plotnick 2016 \textit{Levin V.1} \\
 \hline
-17] Habitat Fragmentation & Hamann 2012, \texit{Levin IV.3} \\
+18] Novel ecosystem and communities &  Hobbs 2009, Clavel 2010, \\
 \hline
-18] Invasion & Liu 2017, \texit{Levin VII.8} \\
 \hline
-19] The 6th extinction & Plotnick 2016 \textit{Levin V.1} \\
+19] Conservation I: Who, what, where, why? & Chan 2006 \\
 \hline
-20] Novel ecosystem and community change & Clavel 2010, Hobbs 2009 \\
+20] Conservation II: How? & McGwire 2016, Shwartz 2012 \\
 \hline
-21] Conservation & McGwire 2016, \textit{Levin V.6} \\
+21] Ecological Restoration & Cannon 2018, Harris 2006 \\
 \hline
-22] Ecological Restoration & Harris 2006, \texit{Levin V.7} \\
+22] Conservation Policy & Diaz 2015\\
 \hline
-23] Assisted Migration & Shwartz 2012, Willis 2009 \\
+22]Spotlight REDD+  & Visseren-Hamakers 2012  \\
 \hline
 24]Communicating science in an era of global change & Knowlton 2017, Godet 2018 \\
 \hline
@@ -118,7 +116,7 @@ Topic  & Reading(s) \\
 \end{tabular}
 \end{center}
 
-\nocite{Anthony_2008, Clavel_2011, Cleland_2012, Cox_2000, Knoll_2007, Diaz_2008, Foley_2005, Grimm_2008, Hamann_2012, Harris_2006, Hof_2011, IPCC_2014,Khaliq_2014,Korner_2006, Kroeker_2013, Liu_2017, Willis_2009, Schwartz_2012, McGuire_2016, Chen_2011, Knowlton_2017,Godet_2018, Bonan_2018, Vitousek_1997, Norby_2011, Plotnick_2016, Hobbs_2009, Logan_2014, Newman_2011}
+\nocite{Anthony_2008, Clavel_2011, Cleland_2012, Cox_2000, Knoll_2007, Diaz_2008, Foley_2005, Hof_2011, IPCC_2014,Khaliq_2014,Korner_2006, Kroeker_2013, Liu_2017, Willis_2009, Schwartz_2012, McGuire_2016, Chen_2011, Knowlton_2017,Godet_2018, Bonan_2018, Vitousek_1997, Norby_2011, Plotnick_2016, Hobbs_2009, Logan_2014, Newman_2011, Diaz_2015, Chan_2006, Visseren-Hamakers_2012, Harris_2006, Cannon_2018}
 
 \bibliography{GCB_ref}
 

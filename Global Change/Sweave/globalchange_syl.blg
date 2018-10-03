@@ -1,46 +1,60 @@
-This is BibTeX, Version 0.99d (TeX Live 2015)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: globalchange_syl.aux
 The style file: ..//refs/styles/besjournals.bst.bst
 Database file #1: GCB_ref.bib
-You've used 29 entries,
+Warning--I didn't find a database entry for "Knoll_2007"
+Warning--I didn't find a database entry for "Schwartz_2012"
+Warning--I didn't find a database entry for "McGuire_2016"
+Warning--I didn't find a database entry for "Chen_2011"
+Warning--I didn't find a database entry for "Knowlton_2017"
+Warning--I didn't find a database entry for "Godet_2018"
+Warning--I didn't find a database entry for "Bonan_2018"
+Warning--I didn't find a database entry for "Vitousek_1997"
+Warning--I didn't find a database entry for "Norby_2011"
+Warning--I didn't find a database entry for "Plotnick_2016"
+Warning--I didn't find a database entry for "Hobbs_2009"
+Warning--I didn't find a database entry for "Logan_2014"
+Warning--I didn't find a database entry for "Newman_2011"
+You've used 18 entries,
             2805 wiz_defined-function locations,
-            1299 strings with 19525 characters,
-and the built_in function-call counts, 22237 in all, are:
-= -- 1693
-> -- 1390
-< -- 10
-+ -- 528
-- -- 500
-* -- 1988
-:= -- 3549
-add.period$ -- 58
-call.type$ -- 29
-change.case$ -- 311
-chr.to.int$ -- 30
-cite$ -- 29
-duplicate$ -- 1400
-empty$ -- 1387
-format.name$ -- 594
-if$ -- 4238
+            1224 strings with 18875 characters,
+and the built_in function-call counts, 18449 in all, are:
+= -- 1230
+> -- 1556
+< -- 3
++ -- 588
+- -- 571
+* -- 1760
+:= -- 2985
+add.period$ -- 36
+call.type$ -- 18
+change.case$ -- 282
+chr.to.int$ -- 19
+cite$ -- 18
+duplicate$ -- 1038
+empty$ -- 936
+format.name$ -- 626
+if$ -- 3391
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 339
-newline$ -- 91
-num.names$ -- 118
-pop$ -- 634
+missing$ -- 298
+newline$ -- 58
+num.names$ -- 72
+pop$ -- 562
 preamble$ -- 1
-purify$ -- 282
+purify$ -- 262
 quote$ -- 0
-skip$ -- 505
+skip$ -- 389
 stack$ -- 0
-substring$ -- 977
-swap$ -- 847
-text.length$ -- 2
+substring$ -- 610
+swap$ -- 695
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 258
+type$ -- 162
 warning$ -- 0
-while$ -- 124
+while$ -- 78
 width$ -- 0
-write$ -- 323
+write$ -- 203
+(There were 13 warnings)

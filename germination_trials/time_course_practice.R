@@ -91,3 +91,13 @@ library(germinationmetrics)
 d<-filter(data,Taxa=="Asclepias syriaca")
 t50(germ.counts = d$DAY, intervals = d$germination, partial = FALSE, method = "farooq")
 FourPHFfit(germ.counts = d$DAY, intervals = d$germination, total.seeds = 20, tmax = 20)
+
+library("drc")
+View(chickweed0)
+chickweed <- data.frame(start = c(0, chickweed0$time), end = c(chickweed0$time, Inf)) 
+chickweed$count <- c(0, diff(chickweed0$count), 200 - tail(chickweed0$count, 1))
+chickweed.m1 <- drm(count~start+end, data = chickweed, fct = LL.3(), type = "event")
+summary(chickweed.m1)
+ED(chickweed.m1, c(10, 50, 90))
+plot(chickweed.m1, xlab = "Time (hours)", ylab = "Proportion germinated", 
+     xlim=c(0, 340), ylim=c(0, 0.25), log="", lwd=2, cex=1.2) 

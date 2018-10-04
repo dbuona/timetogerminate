@@ -87,6 +87,8 @@ ggplot(full, aes(x = DAY, y = germination, color=COLD, shape=INC)) + stat_summar
 ####plot for community rank
 ggplot(full, aes(x = DAY, y = germination, color=Taxa )) + stat_summary(alpha=0.7)+facet_grid(COLD~INC)+theme_bw()+geom_line(stat = "summary", fun.y = mean)
 ##This is where it gets wonky
+AS<-filter(full, Taxa=="Asclepias syriaca")
+ggplot(AS, aes(x = DAY, y = germination, color=COLD, shape=INC)) + stat_summary(alpha=0.7)+theme_bw()+geom_line(stat = "summary", fun.y = mean)+scale_color_manual(values=c("orange", "dodgerblue", "purple","darkgreen"))
 
 ###
 

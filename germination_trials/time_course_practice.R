@@ -11,8 +11,8 @@ data<-read.csv("time_course_practice.csv", header=TRUE)
 data2<-read.csv("time_course_practice2.csv", header=TRUE)
 data3<-read.csv("time_course_practice3.csv", header=TRUE)
 data4<-read.csv("time_course_practice4.csv", header=TRUE)
-data<-select(data,-c(X))
-data3<-select(data3,-c(X,X.1))
+data<-dplyr::select(data,-c(X))
+data3<-dplyr::select(data3,-c(X,X.1))
 
 colnames(data)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","8/28/18","8/29/18",	"8/30/18",	"8/31/18",	"9/3/18",	"9/5/18",	"9/7/18",	"9/9/18",	"9/12/18",	"9/14/18",	"9/16/18",	"9/17/18","9/18/18","9/20/18","9/21/18"))
 ncol(data)
@@ -86,18 +86,34 @@ ggplot(full, aes(x = DAY, y = germination, color=COLD, shape=INC)) + stat_summar
 
 ####plot for community rank
 ggplot(full, aes(x = DAY, y = germination, color=Taxa )) + stat_summary(alpha=0.7)+facet_grid(COLD~INC)+theme_bw()+geom_line(stat = "summary", fun.y = mean)
+##This is where it gets wonky
 
-library(germinationmetrics)
-d<-filter(data,Taxa=="Asclepias syriaca")
-t50(germ.counts = d$DAY, intervals = d$germination, partial = FALSE, method = "farooq")
-FourPHFfit(germ.counts = d$DAY, intervals = d$germination, total.seeds = 20, tmax = 20)
+###
 
-library("drc")
-View(chickweed0)
-chickweed <- data.frame(start = c(0, chickweed0$time), end = c(chickweed0$time, Inf)) 
-chickweed$count <- c(0, diff(chickweed0$count), 200 - tail(chickweed0$count, 1))
-chickweed.m1 <- drm(count~start+end, data = chickweed, fct = LL.3(), type = "event")
-summary(chickweed.m1)
-ED(chickweed.m1, c(10, 50, 90))
-plot(chickweed.m1, xlab = "Time (hours)", ylab = "Proportion germinated", 
-     xlim=c(0, 340), ylim=c(0, 0.25), log="", lwd=2, cex=1.2) 
+full2<-data%>% group_by(Taxa,plate_num,INC,COLD,DAY,tot_seed) %>% summarise(germ=mean(germination))
+full2$perc<-full2$germ/full2$tot_seed
+full2$uni<-paste(full2$Taxa,full2$INC,spe=".")
+
+
+
+for(i in (unique(full2$plate_num))){
+  XX<-data.frame(full2$plate_num,start = c(0,full2$DAY), end = c(full2$DAY,Inf))
+  }
+  
+  nam <- paste( "data", sep = ".")
+  (assign(nam, df[df$uni==i,]))
+ 
+
+head$framz
+
+
+list <- list(paste("data", unique(df$uni) , sep = "."))
+
+
+lapply(list, function(x) data.frame(start = c(0,x$DAY), end = c(x$DAY,Inf)))
+
+
+
+
+
+

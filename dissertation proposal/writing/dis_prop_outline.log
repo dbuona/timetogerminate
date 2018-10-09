@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  27 SEP 2018 08:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  8 OCT 2018 19:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -8,8 +8,8 @@ LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2017/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -652,49 +652,123 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 \c__siunitx_mathsf_int=\count165
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 86.
+(Font)              <12> on input line 86.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 86.
+(Font)              <8> on input line 86.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 86.
 \c__siunitx_mathtt_int=\count166
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 89.
+(Font)              <14.4> on input line 89.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 89.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 89.
+(Font)              <7> on input line 89.
  [1
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2] [3] [4] [5] [6]
-Overfull \hbox (15.47841pt too wide) in paragraph at lines 147--147
-[]\OT1/cmr/bx/n/14.4 Chapter II: The ger-mi-na-tion re-sponse to vary-ing strat
--i-fi-ca-tion regimes
+Overfull \hbox (19.9027pt too wide) in paragraph at lines 135--138
+\OT1/cmr/m/n/12 intermediate, MTSV-physiological, USFS-functional, USFS-interme
+diate and USFS-physiological
  []
 
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 160--163
-
- []
-
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 164--165
+[7] [8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 160--162
 
  []
 
-[9]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 181.
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
+
+ []
+
+[11]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 180.
 
  (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 181.
- [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 206--209
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 180.
+ [12]
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 205--208
 
  []
 
-[12] (./dis_prop_outline.bbl [13]
+[14]
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.268 \end{center}}
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.268 \end{center}}
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.268 \end{center}}
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.268 \end{center}}
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.268 \end{center}}
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.268 \end{center}}
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+(./dis_prop_outline.bbl [15] [16]
 ! Misplaced alignment tab character &.
 <argument> Michgan Shrubs &
                             Vines: A guide to species of the Great Lakes Region
@@ -707,6 +781,7 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
+[17]
 ! Misplaced alignment tab character &.
 <argument> Trends in Ecology &
                                Evolution
@@ -719,10 +794,10 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-[14] [15] [16]
-Missing character: There is no Î in font cmr10!
-Missing character: There is no ² in font cmr10!
- [17]) [18]
+[18] [19] [20]
+Missing character: There is no Î in font cmr12!
+Missing character: There is no ² in font cmr12!
+ [21]) [22]
 
 ! LaTeX Error: Unknown float option `e'.
 
@@ -756,7 +831,7 @@ l.273 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/MTSV_v_USFS_comp.pdf, id=70, 731.98236pt x 318.91626pt>
+<..//figures/MTSV_v_USFS_comp.pdf, id=81, 731.98236pt x 318.91626pt>
 File: ..//figures/MTSV_v_USFS_comp.pdf Graphic file (type pdf)
 
 <use ..//figures/MTSV_v_USFS_comp.pdf>
@@ -797,7 +872,7 @@ l.280 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/HF_con_v_bin_comp.pdf, id=71, 1286.93604pt x 380.57784pt>
+<..//figures/HF_con_v_bin_comp.pdf, id=82, 1286.93604pt x 380.57784pt>
 File: ..//figures/HF_con_v_bin_comp.pdf Graphic file (type pdf)
 
 <use ..//figures/HF_con_v_bin_comp.pdf>
@@ -805,7 +880,7 @@ Package pdftex.def Info: ..//figures/HF_con_v_bin_comp.pdf used on input line 2
 81.
 (pdftex.def)             Requested size: 462.58847pt x 136.79886pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 282.
+(Font)              <10.95> on input line 282.
 
 
 ! LaTeX Error: Unknown float option `e'.
@@ -840,7 +915,7 @@ l.288 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/HF_dissplot.pdf, id=72, 718.72182pt x 388.53416pt>
+<..//figures/HF_dissplot.pdf, id=83, 718.72182pt x 388.53416pt>
 File: ..//figures/HF_dissplot.pdf Graphic file (type pdf)
 
 <use ..//figures/HF_dissplot.pdf>
@@ -880,7 +955,7 @@ l.295 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/Quals_plots.pdf, id=73, 794.97pt x 614.295pt>
+<..//figures/Quals_plots.pdf, id=84, 794.97pt x 614.295pt>
 File: ..//figures/Quals_plots.pdf Graphic file (type pdf)
 
 <use ..//figures/Quals_plots.pdf>
@@ -953,7 +1028,7 @@ l.349 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/time_course2_output.jpeg, id=74, 952.55875pt x 610.28pt>
+<..//figures/time_course2_output.jpeg, id=85, 952.55875pt x 610.28pt>
 File: ..//figures/time_course2_output.jpeg Graphic file (type jpg)
 
 <use ..//figures/time_course2_output.jpeg>
@@ -994,43 +1069,42 @@ l.358 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/response_surface.jpg, id=75, 652.4375pt x 446.66875pt>
+<..//figures/response_surface.jpg, id=86, 652.4375pt x 446.66875pt>
 File: ..//figures/response_surface.jpg Graphic file (type jpg)
 
 <use ..//figures/response_surface.jpg>
 Package pdftex.def Info: ..//figures/response_surface.jpg used on input line 36
 0.
 (pdftex.def)             Requested size: 236.01555pt x 161.57759pt.
- [19 <..//figures/MTSV_v_USFS_comp.pdf> <..//figures/HF_con_v_bin_comp.pdf>] [2
-0 <..//figures/HF_dissplot.pdf>] [21 <..//figures/Quals_plots.pdf>] [22 <..//fi
-gures/time_course2_output.jpeg>] [23 <..//figures/response_surface.jpg>] (./dis
-_prop_outline.aux) ) 
+ [23 <..//figures/MTSV_v_USFS_comp.pdf>]
+[24 <..//figures/HF_con_v_bin_comp.pdf> <..//figures/HF_dissplot.pdf>] [25 <../
+/figures/Quals_plots.pdf>] [26] [27 <..//figures/time_course2_output.jpeg> <../
+/figures/response_surface.jpg>] (./dis_prop_outline.aux) ) 
 Here is how much of TeX's memory you used:
- 14386 strings out of 492995
- 292763 string characters out of 6132704
- 333755 words of memory out of 5000000
- 17802 multiletter control sequences out of 15000+600000
- 12792 words of font info for 47 fonts, out of 8000000 for 9000
+ 14384 strings out of 492995
+ 292836 string characters out of 6132704
+ 336793 words of memory out of 5000000
+ 17806 multiletter control sequences out of 15000+600000
+ 13719 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,8n,39p,10388b,736s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi9.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-17.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.
-pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
-></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></
-usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
-sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on dis_prop_outline.pdf (23 pages, 1003847 bytes).
+</usr/local/texlive/2
+017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/20
+17/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/201
+7/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2017
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2017/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on dis_prop_outline.pdf (27 pages, 976364 bytes).
 PDF statistics:
- 481 PDF objects out of 1000 (max. 8388607)
- 353 compressed objects within 4 object streams
+ 486 PDF objects out of 1000 (max. 8388607)
+ 356 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 \usepackage{Sweave}
 \usepackage{float}
 \usepackage{graphicx}
@@ -40,27 +40,27 @@
 \maketitle{}
 \indent Phenology, the timing of annual life cycle events, is a critical trait in living organisms, influencing and being influenced by evolution and ecology across many scales. In this graduate seminar we will discuss the biological underpinning and implications of phenology through primary scientific literature. \\
 
-\textbf{Course objects:} The goal of this course is for students to broadly consider the role that phenology plays in biological, ecological and evolutionary processes. Specfically, students will:
+\textbf{Course objects:} The goal of this course is for students to broadly consider the role that phenology plays in biological, ecological and evolutionary processes. Specifically, students will:
 \begin{itemize}
-\item Understand the biolgical and evolutionary underpinning of phenology.
+\item Understand the biological and evolutionary underpinning of phenology.
 \item Consider the role of phenology in structuring ecological and evolutionary processes.
 \item Gain exposure to the diverse application of phenological research within the field of biology, and consider phenology's role in their own field of interest.
 \end{itemize}
 
-\textbf{Course Structure:} This seminar will meet once per week for two hours. Meetings will consist of brief introductory and concluding remakes by the instruction and a student facilitated discussion.\\
+\textbf{Course Structure:} This seminar will meet once per week for two hours. Meetings will consist of brief introductory and concluding remakes by the instructor and a student facilitated discussion.\\
 
 \textbf{Prerequisites:} Advanced academic standing with introductory coursework in ecology and evolution, or permission of instructor.
 
 \begin{center}
-\scalebox{0.8}{
+\scalebox{0.6}{
   \begin{tabular}{|l|l|l|l|}
 \hline
 Week & Topic & Lecture Focus & Readings \\
 \hline
 \multicolumn{4}{|c|}{Part I: Fundamentals} \\
 \hline
-\multirow{2}{10em}{Week 1} &\multirow{2}{10em} {Introductory Remarks } &  What is phenology anyway?"& Forest and Rushing 2010 \\ 
-& & and is phenology a "trait"? & Lechowicz 1984, Ollerton 1992, \\
+\multirow{2}{10em}{Week 1} &\multirow{2}{10em} {Introductory Remarks } &  What is phenology anyway?& Forest and Rushing 2010 \\ 
+& & and is phenology a ``trait"? & Lechowicz 1984, Ollerton 1992, \\
 \hline
 \multirow{2}{10em}{Week 2} &\multirow{2}{10em} {Environmental Cues} & Environental factors influencing phenology & Rathke and Lacey 1985 \\ 
 & & and modeling phenological responses to environments & Chuine 2000, Fu 2014  \\

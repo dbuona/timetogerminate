@@ -21,9 +21,9 @@ ncol(data2)
 colnames(data2)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num", "9/12/18",	"9/14/18",	"9/16/18",	"9/17/18","9/18/18","9/20/18","9/21/18","9/23/18","9/26/18","9/28/18","9/30/18","10/03/18","10/05/18","9/10/18"))
 
 data3$"9/24/18"<-0
-colnames(data3)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","9/26/18","9/28/18","9/30/18","10/03/18","10/05/18","10/07/18","9/24/18"))
+colnames(data3)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","9/26/18","9/28/18","9/30/18","10/03/18","10/05/18","10/07/18","10/08/18","9/24/18"))
 
-colnames(data4)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/01/18","10/03/18","10/05/18","10/07/18"))
+colnames(data4)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/01/18","10/03/18","10/05/18","10/07/18","10/08/18"))
 
 
 data<-gather(data,"date","germination",7:21)
@@ -32,10 +32,10 @@ data$germination<-as.numeric(data$germination)
 data2<-gather(data2,"date","germination",7:20)
 data2$germination<-as.numeric(data2$germination)
 
-data3<-gather(data3,"date","germination",7:13)
+data3<-gather(data3,"date","germination",7:14)
 data3$germination<-as.numeric(data3$germination)
 
-data4<-gather(data4,"date","germination",7:10)
+data4<-gather(data4,"date","germination",7:11)
 data4$germination<-as.numeric(data4$germination)
 
 

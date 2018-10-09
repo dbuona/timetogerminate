@@ -91,7 +91,7 @@ Week & Topic & Lecture Focus & Readings \\
 & &  & Ffrench-Constant 2016, Fu, 2015  \\
 \hline
 \multirow{2}{10em}{Week 10} &\multirow{2}{10em} {Invasion} & Phenology as a mechanism of invasion & Wolkovich 2013, Gioria 2017 \\ 
-& & Rapid evolution of phenological response &  Franks 2007  \\
+& & Rapid evolution of phenological response &  Erfmeier 2005  \\
 \hline
 \multirow{2}{10em}{Week 11} &\multirow{2}{10em} {Phenology and Extremes} & False Spring & Gu 2008 \\ 
 & & Drought & Ivits 2014, Cui 2017  \\
@@ -103,6 +103,6 @@ Week & Topic & Lecture Focus & Readings \\
 \end{tabular}}
 \end{center}
 
-\nocite{Auge_2017,Bernier_2005,Burghardt_2015,CHUINE_2000,Cui_2017,Fargione_2005,ffrench-Constant_2016, Forrest_2010,Franks_2007,Gioria_2016,Lechowicz_1984,Fu_2014,Fu_2015,Gougherty_2018,Gu_2008,Ivits_2013,Johnsen_2005,Kharouba_2015,Kudo_2013,Liepe_2016,McKown_2012,MENZEL_2006,OLLERTON_1992,PETANIDOU_2014,Rathcke_1985,RICHARDSON_2013,Ross_1972,Rubin_2018,Taylor_2017,Visser_2010,Vitasse_2009,Wainwright_2011,Wolkovich_2013,Wilczek_2010,Mackenzie_2018,Fitzjarrald_2001}
+\nocite{Auge_2017,Bernier_2005,Burghardt_2015,CHUINE_2000,Cui_2017,Fargione_2005,ffrench-Constant_2016, Forrest_2010,Erfmeier_2005,Gioria_2016,Lechowicz_1984,Fu_2014,Fu_2015,Gougherty_2018,Gu_2008,Ivits_2013,Johnsen_2005,Kharouba_2015,Kudo_2013,Liepe_2016,McKown_2012,MENZEL_2006,OLLERTON_1992,PETANIDOU_2014,Rathcke_1985,RICHARDSON_2013,Ross_1972,Rubin_2018,Taylor_2017,Visser_2010,Vitasse_2009,Wainwright_2011,Wolkovich_2013,Wilczek_2010,Mackenzie_2018,Fitzjarrald_2001}
 \bibliography{tempbio_ref}
 \end{document}

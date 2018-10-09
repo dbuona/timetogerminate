@@ -1,0 +1,46 @@
+\documentclass[18]{article}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{mdframed}
+\usepackage{cite}
+\usepackage{natbib}
+\bibliographystyle{..//refs/styles/besjournals.bst}
+\usepackage[small]{caption}
+\setkeys{Gin}{width=0.8\textwidth}
+\setlength{\captionmargin}{30pt}
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{10pt}
+\renewcommand{\familydefault}{\rmdefault}
+\topmargin -1 cm 
+  
+\oddsidemargin -0.04cm   
+\evensidemargin -0.04cm
+\textwidth 16.59cm
+\textheight 22.94cm 
+%&\pagestyle{empty} %comment if want page numbers
+\parskip 0pt
+\renewcommand{\baselinestretch}{1.2}
+\parindent 20pt
+\usepackage{multirow}
+\newmdenv[
+  topline=true,
+  bottomline=true,
+  skipabove=\topsep,
+  skipbelow=\topsep
+  ]{siderules}
+%\usepackage{lineno}
+%\linenumbers
+
+\begin{document}
+
+\begin{document}
+
+hysteranthy_(_0_,_1_) $ \~{} $  $\beta_1X_p_o_l+\beta_2X_h_e_i_g_h_t+\beta_3X_t_o_l+\beta_4X_p_h_e_n+\beta_5X_s_e_e_d+E $\\
+
+
+Event Day_(_e_x_p_e_r_i_m_e_n_t_a_l)  $ \~{} $  $\beta_1(photoperiod:phase)+\beta_2(chill:phase)+\beta_3 (force:phase)+E $\\
+
+
+\end{document}

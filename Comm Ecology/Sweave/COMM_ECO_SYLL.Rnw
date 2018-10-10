@@ -34,13 +34,13 @@
 \title{Community Ecology}
 \date{}
 \maketitle{}
-Community ecology is the study of interactions between organisms and their environment in a given time and space. It has a rich theoretical basis, a tradition of experimentation and observation, and major applications in the world around us. In this class, we will integrate theory and evidence to see what it takes build and maintain communities from the ground up. \\
+Community ecology is the study of interactions between organisms and their environment in a given time and space. It has a rich theoretical basis, a tradition of experimentation and observation, and major applications in the world around us. In this class, we will integrate theory and evidence to see what it takes to build and maintain communities from the ground up. \\
 
-\textbf{Course Objectives:} This goal of this course is to broadly expose student to the principles, development and applications of community ecology. Specifically, student should expect to:
+\textbf{Course Objectives:} The goal of this course is to broadly expose students to the principles, development, and applications of community ecology. Specifically, students should expect to:
 \begin{itemize}
-\item Gain profeciency in the mathematical models of species interactions and community dynamics.
-\item Learn to recognize the patterns that structure communities across different scales and evaluate possible mechanisms for these patterns based in community ecology theory.
-\item Engage with applications of community ecology, with an understanding of the theory and evidance to contribute thoughtful to today's debates in the field.
+\item Gain proficiency in the mathematical models of species interactions and community dynamics.
+\item Learn to recognize the patterns that structure communities across different scales, and to evaluate possible mechanisms for these patterns based in community ecology theory.
+\item Engage with applications of community ecology, with an understanding of the theory and evidence to contribute thoughtfully to today's debates in the field.
 \end{itemize}
 \textbf{Required text:} Mittelbach, G. (2012) \textit{Community Ecology.} Oxford University Press \\
 \textbf{Course Structure:} This course will meet twice a week for a one hour lecture.\\
@@ -54,51 +54,51 @@ Topic  & Reading(s) \\
 \hline
 1] What is Community Ecology anyway? & Mittelbach Ch. 1, \textit{Velland 1999} \\  
 \hline
-2] Patterns of Biodiversity  & Mittelbach Ch. 2  \\ 
+2] Patterns of biodiversity  & Mittelbach Ch. 2  \\ 
 \hline
-3] Tradeoffs: Niche and Life History Theory  & Argawal 2010, \textit{Silverton 2004} \\ 
+3] Tradeoffs: niches and life history theory  & Argawal 2010, \textit{Silverton 2004} \\ 
 \hline
-4] Basic Populations Models   & Mittelbach Ch. 4\\ 
+4] Basic population models   & Mittelbach Ch. 4\\ 
 \hline
 5] Age-structured populations  & Gotelli p.50-62 (Canvas) \\ 
 \hline
-6] Population Genetics  & Waits Ch. 3 (Canvas),  \\ 
+6] Population genetics  & Waits Ch. 3 (Canvas),  \\ 
 \hline
-7] Models of Competition  & Mittelbach Ch. 7  \\ 
+7] Models of competition  & Mittelbach Ch. 7  \\ 
 \hline
 8] Competition in experiments and nature  & Mittelbach Ch. 8, \textit{Goldberg 1992}  \\ 
 \hline
-9] Basic Models of Predation & Mittelbach Ch. 5 \\ 
+9] Basic models of predation & Mittelbach Ch. 5 \\ 
 \hline
-10] Selective and Responsive Predation & Mittelbach Ch. 6 \\ 
+10] Selective and responsive predation & Mittelbach Ch. 6 \\ 
 \hline
-11]  Mutulism and Facilitation & Mittelbach Ch. 9, \textit{Janzen 1966} \\ 
+11]  Mutulism and facilitation & Mittelbach Ch. 9, \textit{Janzen 1966} \\ 
 \hline
 12]  Eco-Evo & Mittelbach ch. 15, \textit{Benton 2009} \\ 
 \hline
-13]  Ecological Networks I & Mittelbach Ch.10 \\ 
+13]  Ecological networks I: descriptions & Mittelbach Ch.10 \\ 
 \hline
-14]  Food Chains and Webs & Mittelbach Ch.11, \textit{Beschta 2003,2014} \\ 
+14]  Ecological networks II: controls & Mittelbach Ch.11, \textit{Beschta 2003,2014} \\ 
 \hline
-15] Metapopulations and Patchy Environments & Ch. 12\\
+15] Metapopulations and patchy environments & Ch. 12\\
 \hline
-16] Metacommunities and Assemby Theory & Mittelbach Ch.13 Mittelbach, \textit{Leibold 2004} \\ 
+16] Metacommunities and assembly theory & Mittelbach Ch.13 Mittelbach, \textit{Leibold 2004} \\ 
 \hline
-17] Variable Environments and Species Coexistance & Mittelbach p. 291-303, \textit{Fox 2013}\\
+17] Variable environments and species coexistence & Mittelbach p. 291-303, \textit{Fox 2013}\\
 \hline
-18] Historical Contingencies & Fukami 2015\\
+18] Historical contingencies & Fukami 2015\\
 \hline
-19] Alternate stable states and Regime shifts & Mittelbach p. 304-313, \textit{Folke 2004}\\ 
+19] Alternate stable states and regime shifts & Mittelbach p. 304-313, \textit{Folke 2004}\\ 
 \hline
-20] Compexity, stability and function & Mittelbach Ch. 3, \textit{Tilman 1999}\\ 
+20] Complexity, stability and function & Mittelbach Ch. 3, \textit{Tilman 1999}\\ 
 \hline
-21] Quaternary Biogeography &  Gavin 2014\\ 
+21] Quaternary biogeography &  Gavin 2014\\ 
 \hline
-22] Invasion biology & Sax 2007, Richarson 2006\\ 
+22] Invasion biology & Sax 2007, Richardson 2006\\ 
 \hline
-21] Invasion Debate & Gould 1998 \\ 
+21] Invasion debate & Gould 1998 \\ 
 \hline
-24] Rewilding and Restoration & McLachlan 2007, Donlon 2005\\ 
+24] Rewilding and restoration & McLachlan 2007, Donlon 2005\\ 
 \hline
 \end{tabular}
 \end{center}}

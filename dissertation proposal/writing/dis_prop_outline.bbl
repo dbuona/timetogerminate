@@ -1,5 +1,10 @@
-\begin{thebibliography}{67}
+\begin{thebibliography}{69}
 \providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Ackerman({2000})}]{Ackerman2000}
+Ackerman, J. ({2000}) {Abiotic pollen and pollination: ecological, functional,
+  and evolutionary perspectives}. \emph{{PLANT SYSTEMATICS AND EVOLUTION}}
+  \textbf{{222}}, {167--185}.
 
 \bibitem[{Axmanov{\'a} \emph{et~al.}(2012)Axmanov{\'a}, Tich{\'y},
   Fajmonov{\'a}, H{\'a}jkov{\'a}, Hettenbergerov{\'a}, Li, Merunkov{\'a} \&
@@ -8,6 +13,10 @@ Axmanov{\'a}, I., Tich{\'y}, L., Fajmonov{\'a}, Z., H{\'a}jkov{\'a}, P.,
   Hettenbergerov{\'a}, E., Li, C., Merunkov{\'a}, K. \& et~al. (2012)
   Estimation of herbaceous biomass from species composition and cover.
   \emph{Applied Vegetation Science} \textbf{15}, 580--589.
+
+\bibitem[{Barnes \emph{et~al.}(2016)Barnes, Dick \& Gunn}]{Barnes2016}
+Barnes, B.V., Dick, C.W. \& Gunn, M.E. (2016) \emph{Michgan Shrubs & Vines: A
+  guide to species of the Great Lakes Region}. University of Michigan Press.
 
 \bibitem[{Barnes \& Wagner(1981,2004)}]{Barnes2004}
 Barnes, B.V. \& Wagner, W.H.J. (1981,2004) \emph{Michigan Trees: A guide to the
@@ -62,11 +71,6 @@ Bradford, K.J. (2002) Applications of hydrothermal time to quantifying and
 Burns, R.M., Honkala, B.H. \& coordinators{$]$}, T. (1990) Silvics of north
   america: Volume 2. hardwoods. Tech. rep., United States Department of
   Agriculture (USDA), Forest Service.
-
-\bibitem[{Burton V.~Barnes, Christopher W.~Dick(2016)}]{Barnes2016}
-Burton V.~Barnes, Christopher W.~Dick, M.E.G. (2016) \emph{Michgan Shrubs &
-  Vines: A guide to species of the Great Lakes Region}. University of Michigan
-  Press.
 
 \bibitem[{Chuine \& Beaubien({2001})}]{Chuine2001}
 Chuine, I. \& Beaubien, E. ({2001}) {Phenology is a major determinant of tree
@@ -144,8 +148,8 @@ Fukami, T. \& Nakajima, M. ({2011}) {Community assembly: alternative stable
   states or alternative transient states?} \emph{Ecology Letters}
   \textbf{{14}}, {973--984}.
 
-\bibitem[{Gellman \& Hill(2997)}]{Gelman2007}
-Gellman, A. \& Hill, J. (2997) \emph{Data Analysis Using Regression and
+\bibitem[{Gellman \& Hill(2007)}]{Gelman2007}
+Gellman, A. \& Hill, J. (2007) \emph{Data Analysis Using Regression and
   Multilevel/Hierarchical Models}. Cambridge University Press.
 
 \bibitem[{Gioria \emph{et~al.}(2018)Gioria, Py{\v s}ek \& Osborne}]{Gioria2018}
@@ -301,6 +305,10 @@ Rinne, P.L., Welling, A., Vahala, J., Ripel, L., Ruonala, R., Kangasj{\"a}rvi,
 Root, T.L., Price, J.T., Hall, K.R., Schneider, S.H., Rosenzweig, C. \& Pounds,
   J.A. (2003) Fingerprints of global warming on wild animals and plants.
   \emph{Nature} \textbf{421}, 57--60.
+
+\bibitem[{Ross \& Harper(1972)}]{Ross1972}
+Ross, M.A. \& Harper, J.L. (1972) Occupation of biological space during
+  seedling establishment \textbf{60}, 77--88.
 
 \bibitem[{Sager \& Lee(2014)}]{Sager2014}
 Sager, R. \& Lee, J.Y. (2014) Plasmodesmata in integrated cell signalling:

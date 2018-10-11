@@ -1,0 +1,79 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: COMM_ECO_SYLL.aux
+The style file: ..//refs/styles/besjournals.bst.bst
+Database file #1: eco_ref.bib
+Name 1 in "Waits, L.P, and A. Storfer" has a comma at the end for entry Waits_2016
+while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Waits, L.P, and A. Storfer" has a comma at the end for entry Waits_2016
+while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Agrawal, A.A., and J.K. Conner, and S. Rasmann" has a comma at the end for entry Argawal_2010
+while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Agrawal, A.A., and J.K. Conner, and S. Rasmann" has a comma at the end for entry Argawal_2010
+while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
+Name 2 in "Agrawal, A.A., and J.K. Conner, and S. Rasmann" has a comma at the end for entry Argawal_2010
+while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Gould, S.J.," has a comma at the end for entry Gould_1998
+while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Gould, S.J.," has a comma at the end for entry Gould_1998
+while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Agrawal, A.A., and J.K. Conner, and S. Rasmann" has a comma at the end for entry Argawal_2010
+while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
+Name 2 in "Agrawal, A.A., and J.K. Conner, and S. Rasmann" has a comma at the end for entry Argawal_2010
+while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Agrawal, A.A., and J.K. Conner, and S. Rasmann" has a comma at the end for entry Argawal_2010
+while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
+Name 2 in "Agrawal, A.A., and J.K. Conner, and S. Rasmann" has a comma at the end for entry Argawal_2010
+while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
+Warning--can't use both author and editor fields in Argawal_2010
+Name 1 in "Gould, S.J.," has a comma at the end for entry Gould_1998
+while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Gould, S.J.," has a comma at the end for entry Gould_1998
+while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Waits, L.P, and A. Storfer" has a comma at the end for entry Waits_2016
+while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Waits, L.P, and A. Storfer" has a comma at the end for entry Waits_2016
+while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
+Warning--can't use both author and editor fields in Waits_2016
+You've used 21 entries,
+            2805 wiz_defined-function locations,
+            1240 strings with 16550 characters,
+and the built_in function-call counts, 13175 in all, are:
+= -- 1068
+> -- 642
+< -- 14
++ -- 254
+- -- 226
+* -- 1077
+:= -- 2135
+add.period$ -- 42
+call.type$ -- 21
+change.case$ -- 179
+chr.to.int$ -- 22
+cite$ -- 23
+duplicate$ -- 873
+empty$ -- 934
+format.name$ -- 276
+if$ -- 2568
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 199
+newline$ -- 67
+num.names$ -- 84
+pop$ -- 347
+preamble$ -- 1
+purify$ -- 159
+quote$ -- 0
+skip$ -- 318
+stack$ -- 0
+substring$ -- 668
+swap$ -- 475
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 180
+warning$ -- 2
+while$ -- 86
+width$ -- 0
+write$ -- 233
+(There were 15 error messages)

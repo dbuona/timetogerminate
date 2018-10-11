@@ -1,0 +1,63 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: temporal_bio_syl.aux
+The style file: ..//refs/styles/besjournals.bst.bst
+Database file #1: tempbio_ref.bib
+Name 1 in "Johnsen, {\O}ysten, and Fossdal, Carl Gunnar, and Nagy, Nina and Molmann, Jorgen and D{\ae}hlen, Ola Gram and Skroppa Tore" has a comma at the end for entry Johnsen_2005
+while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Johnsen, {\O}ysten, and Fossdal, Carl Gunnar, and Nagy, Nina and Molmann, Jorgen and D{\ae}hlen, Ola Gram and Skroppa Tore" has a comma at the end for entry Johnsen_2005
+while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
+Name 2 in "Johnsen, {\O}ysten, and Fossdal, Carl Gunnar, and Nagy, Nina and Molmann, Jorgen and D{\ae}hlen, Ola Gram and Skroppa Tore" has a comma at the end for entry Johnsen_2005
+while executing---line 1620 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Johnsen, {\O}ysten, and Fossdal, Carl Gunnar, and Nagy, Nina and Molmann, Jorgen and D{\ae}hlen, Ola Gram and Skroppa Tore" has a comma at the end for entry Johnsen_2005
+while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
+Name 2 in "Johnsen, {\O}ysten, and Fossdal, Carl Gunnar, and Nagy, Nina and Molmann, Jorgen and D{\ae}hlen, Ola Gram and Skroppa Tore" has a comma at the end for entry Johnsen_2005
+while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
+Name 1 in "Johnsen, {\O}ysten, and Fossdal, Carl Gunnar, and Nagy, Nina and Molmann, Jorgen and D{\ae}hlen, Ola Gram and Skroppa Tore" has a comma at the end for entry Johnsen_2005
+while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
+Name 2 in "Johnsen, {\O}ysten, and Fossdal, Carl Gunnar, and Nagy, Nina and Molmann, Jorgen and D{\ae}hlen, Ola Gram and Skroppa Tore" has a comma at the end for entry Johnsen_2005
+while executing---line 1700 of file ..//refs/styles/besjournals.bst.bst
+Warning--empty journal in Lechowicz_1984
+Warning--empty journal in Ross_1972
+You've used 36 entries,
+            2805 wiz_defined-function locations,
+            1337 strings with 20305 characters,
+and the built_in function-call counts, 24608 in all, are:
+= -- 2027
+> -- 1256
+< -- 14
++ -- 492
+- -- 445
+* -- 2137
+:= -- 3899
+add.period$ -- 70
+call.type$ -- 36
+change.case$ -- 328
+chr.to.int$ -- 37
+cite$ -- 38
+duplicate$ -- 1608
+empty$ -- 1666
+format.name$ -- 572
+if$ -- 4747
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 364
+newline$ -- 112
+num.names$ -- 144
+pop$ -- 658
+preamble$ -- 1
+purify$ -- 292
+quote$ -- 0
+skip$ -- 547
+stack$ -- 0
+substring$ -- 1307
+swap$ -- 922
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 324
+warning$ -- 2
+while$ -- 164
+width$ -- 0
+write$ -- 397
+(There were 7 error messages)

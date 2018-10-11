@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  10 OCT 2018 15:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  11 OCT 2018 09:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -666,32 +666,32 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2] [3] [4] [5] [6]
-Overfull \hbox (19.9027pt too wide) in paragraph at lines 133--136
+Overfull \hbox (19.9027pt too wide) in paragraph at lines 137--140
 \OT1/cmr/m/n/12 intermediate, MTSV-physiological, USFS-functional, USFS-interme
 diate and USFS-physiological
  []
 
 [7] [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 159--161
+Underfull \hbox (badness 10000) in paragraph at lines 163--165
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--163
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
 
  []
 
 [10] [11]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 179.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 183.
 
  (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 179.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 183.
 
 [12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 204--207
+Underfull \hbox (badness 10000) in paragraph at lines 208--211
 
  []
 
@@ -703,7 +703,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.267 \end{center}}
+l.271 \end{center}}
                    
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -715,7 +715,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.267 \end{center}}
+l.271 \end{center}}
                    
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -727,7 +727,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.267 \end{center}}
+l.271 \end{center}}
                    
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -739,7 +739,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.267 \end{center}}
+l.271 \end{center}}
                    
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -751,7 +751,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.267 \end{center}}
+l.271 \end{center}}
                    
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -763,7 +763,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.267 \end{center}}
+l.271 \end{center}}
                    
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -772,8 +772,8 @@ If that doesn't work, type  X <return>  to quit.
 ! Misplaced alignment tab character &.
 <argument> Michgan Shrubs &
                             Vines: A guide to species of the Great Lakes Region
-l.68 ...uide to species of the Great Lakes Region}
-                                                  . University of Michigan
+l.19   guide to species of the Great Lakes Region}
+                                                  . University of Michigan P...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -785,7 +785,7 @@ might try typing `S' now just to see what is salvageable.
 ! Misplaced alignment tab character &.
 <argument> Trends in Ecology &
                                Evolution
-l.91   Ecology & Evolution}
+l.95   Ecology & Evolution}
                             \textbf{22}, 357 -- 365.
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -805,7 +805,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.272 \begin{figure}[here]
+l.276 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -816,7 +816,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.272 \begin{figure}[here]
+l.276 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -827,7 +827,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.272 \begin{figure}[here]
+l.276 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -836,7 +836,7 @@ File: ..//figures/MTSV_v_USFS_comp.pdf Graphic file (type pdf)
 
 <use ..//figures/MTSV_v_USFS_comp.pdf>
 Package pdftex.def Info: ..//figures/MTSV_v_USFS_comp.pdf used on input line 27
-3.
+7.
 (pdftex.def)             Requested size: 424.82512pt x 185.0932pt.
 
 
@@ -846,7 +846,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.279 \begin{figure}[here]
+l.283 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -857,7 +857,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.279 \begin{figure}[here]
+l.283 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -868,7 +868,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.279 \begin{figure}[here]
+l.283 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -877,10 +877,10 @@ File: ..//figures/HF_con_v_bin_comp.pdf Graphic file (type pdf)
 
 <use ..//figures/HF_con_v_bin_comp.pdf>
 Package pdftex.def Info: ..//figures/HF_con_v_bin_comp.pdf used on input line 2
-80.
+84.
 (pdftex.def)             Requested size: 462.58847pt x 136.79886pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 281.
+(Font)              <10.95> on input line 285.
 
 
 ! LaTeX Error: Unknown float option `e'.
@@ -889,7 +889,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.287 \begin{figure}[here]
+l.291 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -900,7 +900,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.287 \begin{figure}[here]
+l.291 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -911,7 +911,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.287 \begin{figure}[here]
+l.291 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -919,7 +919,7 @@ Option `e' ignored and `p' used.
 File: ..//figures/HF_dissplot.pdf Graphic file (type pdf)
 
 <use ..//figures/HF_dissplot.pdf>
-Package pdftex.def Info: ..//figures/HF_dissplot.pdf used on input line 288.
+Package pdftex.def Info: ..//figures/HF_dissplot.pdf used on input line 292.
 (pdftex.def)             Requested size: 424.82512pt x 229.6541pt.
 
 
@@ -929,7 +929,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.294 \begin{figure}[here]
+l.298 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -940,7 +940,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.294 \begin{figure}[here]
+l.298 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -951,7 +951,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.294 \begin{figure}[here]
+l.298 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -959,7 +959,7 @@ Option `e' ignored and `p' used.
 File: ..//figures/raw_plots_final.pdf Graphic file (type pdf)
 
 <use ..//figures/raw_plots_final.pdf>
-Package pdftex.def Info: ..//figures/raw_plots_final.pdf used on input line 295
+Package pdftex.def Info: ..//figures/raw_plots_final.pdf used on input line 299
 .
 (pdftex.def)             Requested size: 424.82512pt x 444.94492pt.
 
@@ -970,7 +970,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.307 \begin{figure}[here]
+l.311 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -981,7 +981,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.307 \begin{figure}[here]
+l.311 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -992,7 +992,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.307 \begin{figure}[here]
+l.311 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -1003,7 +1003,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.348 \begin{figure}[here]
+l.352 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -1014,7 +1014,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.348 \begin{figure}[here]
+l.352 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -1025,7 +1025,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.348 \begin{figure}[here]
+l.352 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -1034,7 +1034,7 @@ File: ..//figures/Time_course_output.jpeg Graphic file (type jpg)
 
 <use ..//figures/Time_course_output.jpeg>
 Package pdftex.def Info: ..//figures/Time_course_output.jpeg used on input line
- 350.
+ 354.
 (pdftex.def)             Requested size: 472.03111pt x 319.20758pt.
 
 
@@ -1044,7 +1044,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.357 \begin{figure}[here]
+l.361 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -1055,7 +1055,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.357 \begin{figure}[here]
+l.361 \begin{figure}[here]
                           
 Option `r' ignored and `p' used.
 
@@ -1066,7 +1066,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.357 \begin{figure}[here]
+l.361 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
@@ -1074,18 +1074,18 @@ Option `e' ignored and `p' used.
 File: ..//figures/response_surface.jpg Graphic file (type jpg)
 
 <use ..//figures/response_surface.jpg>
-Package pdftex.def Info: ..//figures/response_surface.jpg used on input line 35
-9.
+Package pdftex.def Info: ..//figures/response_surface.jpg used on input line 36
+3.
 (pdftex.def)             Requested size: 236.01555pt x 161.57759pt.
  [23 <..//figures/MTSV_v_USFS_comp.pdf>]
 [24 <..//figures/HF_con_v_bin_comp.pdf> <..//figures/HF_dissplot.pdf>] [25 <../
 /figures/raw_plots_final.pdf>] [26] [27 <..//figures/Time_course_output.jpeg> <
 ..//figures/response_surface.jpg>] (./dis_prop_outline.aux) ) 
 Here is how much of TeX's memory you used:
- 14384 strings out of 492995
- 292851 string characters out of 6132704
- 336793 words of memory out of 5000000
- 17806 multiletter control sequences out of 15000+600000
+ 14390 strings out of 492995
+ 292959 string characters out of 6132704
+ 337852 words of memory out of 5000000
+ 17812 multiletter control sequences out of 15000+600000
  13719 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,8n,39p,10388b,736s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1102,7 +1102,7 @@ ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on dis_prop_outline.pdf (27 pages, 1507385 bytes).
+Output written on dis_prop_outline.pdf (27 pages, 1508080 bytes).
 PDF statistics:
  698 PDF objects out of 1000 (max. 8388607)
  515 compressed objects within 6 object streams

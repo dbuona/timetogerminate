@@ -62,7 +62,7 @@ Topic  & Reading(s) \\
 \hline
 5] Age-structured populations  & Gotelli p.50-62 (Canvas) \\ 
 \hline
-6] Population genetics  & Waits Ch. 3 (Canvas),  \\ 
+6] Population genetics  & Waits Ch. 3 (Canvas)  \\ 
 \hline
 7] Models of competition  & Mittelbach Ch. 7  \\ 
 \hline
@@ -80,9 +80,9 @@ Topic  & Reading(s) \\
 \hline
 14]  Ecological networks II: controls & Mittelbach Ch.11, \textit{Beschta 2003,2014} \\ 
 \hline
-15] Metapopulations and patchy environments & Ch. 12\\
+15] Metapopulations and patchy environments & Mittelbach Ch. 12\\
 \hline
-16] Metacommunities and assembly theory & Mittelbach Ch.13 Mittelbach, \textit{Leibold 2004} \\ 
+16] Metacommunities and assembly theory & Mittelbach Ch.13, \textit{Leibold 2004} \\ 
 \hline
 17] Variable environments and species coexistence & Mittelbach p. 291-303, \textit{Fox 2013}\\
 \hline

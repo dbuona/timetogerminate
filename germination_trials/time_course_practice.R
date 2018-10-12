@@ -84,9 +84,13 @@ full<-rbind(data,data2,data3,data4)
 
 full$INC<-ifelse(full$INC=="H", "High","Low")
 ggplot(full, aes(x = DAY, y = germination, color=COLD, shape=INC)) + stat_summary(alpha=0.7)+facet_wrap(~Taxa)+theme_bw()+geom_line(stat = "summary", fun.y = mean)+scale_color_manual(values=c("orange", "dodgerblue", "purple","darkgreen"))
+unique(full$Taxa)
+(CARRIER %in% c("UA", "AA"))
+goodsp<-dplyr::filter(full, Taxa %in% c("Anemone virginana","Asclepias syriaca", "Cryptotaenia canadensis","Hesperis matronalis","Phlox cuspidata","Silene vulgaris"))
+ggplot(goodsp, aes(x = DAY, y = germination, color=COLD, shape=INC)) + stat_summary(alpha=0.7)+facet_wrap(~Taxa)+theme_bw()+geom_line(stat = "summary", fun.y = mean)+scale_color_manual(values=c("orange", "dodgerblue", "purple","darkgreen"))
 
 ####plot for community rank
-ggplot(full, aes(x = DAY, y = germination, color=Taxa )) + stat_summary(alpha=0.7)+facet_grid(COLD~INC)+theme_bw()+geom_line(stat = "summary", fun.y = mean)
+ggplot(goodsp, aes(x = DAY, y = germination, color=Taxa )) + stat_summary(alpha=0.7)+facet_grid(COLD~INC)+theme_bw()+geom_line(stat = "summary", fun.y = mean)
 ##This is where it gets wonky
 AS<-filter(full, Taxa=="Asclepias syriaca")
 ggplot(AS, aes(x = DAY, y = germination, color=COLD, shape=INC)) + stat_summary(alpha=0.7)+theme_bw()+geom_line(stat = "summary", fun.y = mean)+scale_color_manual(values=c("orange", "dodgerblue", "purple","darkgreen"))

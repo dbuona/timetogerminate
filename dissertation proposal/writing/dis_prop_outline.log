@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  11 OCT 2018 09:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  11 OCT 2018 14:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1029,13 +1029,13 @@ l.352 \begin{figure}[here]
                           
 Option `e' ignored and `p' used.
 
-<..//figures/Time_course_output.jpeg, id=85, 1606.0pt x 1086.0575pt>
-File: ..//figures/Time_course_output.jpeg Graphic file (type jpg)
+<..//figures/Subset_time_couse.jpeg, id=85, 903.375pt x 550.055pt>
+File: ..//figures/Subset_time_couse.jpeg Graphic file (type jpg)
 
-<use ..//figures/Time_course_output.jpeg>
-Package pdftex.def Info: ..//figures/Time_course_output.jpeg used on input line
- 354.
-(pdftex.def)             Requested size: 472.03111pt x 319.20758pt.
+<use ..//figures/Subset_time_couse.jpeg>
+Package pdftex.def Info: ..//figures/Subset_time_couse.jpeg used on input line 
+354.
+(pdftex.def)             Requested size: 472.03111pt x 287.42351pt.
 
 
 ! LaTeX Error: Unknown float option `e'.
@@ -1079,30 +1079,30 @@ Package pdftex.def Info: ..//figures/response_surface.jpg used on input line 36
 (pdftex.def)             Requested size: 236.01555pt x 161.57759pt.
  [23 <..//figures/MTSV_v_USFS_comp.pdf>]
 [24 <..//figures/HF_con_v_bin_comp.pdf> <..//figures/HF_dissplot.pdf>] [25 <../
-/figures/raw_plots_final.pdf>] [26] [27 <..//figures/Time_course_output.jpeg> <
-..//figures/response_surface.jpg>] (./dis_prop_outline.aux) ) 
+/figures/raw_plots_final.pdf>] [26] [27 <..//figures/Subset_time_couse.jpeg> <.
+.//figures/response_surface.jpg>] (./dis_prop_outline.aux) ) 
 Here is how much of TeX's memory you used:
  14390 strings out of 492995
- 292959 string characters out of 6132704
+ 292954 string characters out of 6132704
  337852 words of memory out of 5000000
  17812 multiletter control sequences out of 15000+600000
  13719 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,8n,39p,10388b,736s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texliv
-e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive
-/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/
-2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2
-017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/201
-7/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on dis_prop_outline.pdf (27 pages, 1508080 bytes).
+</usr/local/texlive
+/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/
+2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2
+017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/20
+17/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2017
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on dis_prop_outline.pdf (27 pages, 1308418 bytes).
 PDF statistics:
  698 PDF objects out of 1000 (max. 8388607)
  515 compressed objects within 6 object streams

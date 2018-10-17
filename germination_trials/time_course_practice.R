@@ -102,14 +102,15 @@ table(full$COLD)
 ggplot(full, aes(x = DAY, y = germination, color=COLD, shape=INC)) + stat_summary(alpha=0.7)+facet_wrap(~Taxa)+theme_bw()+geom_line(stat = "summary", fun.y = mean)+scale_color_manual(values=c("orange", "dodgerblue", "purple","darkgreen", "red"))
 unique(full$Taxa)
 (CARRIER %in% c("UA", "AA"))
-goodsp<-dplyr::filter(full, Taxa %in% c("Anemone virginana","Asclepias syriaca", "Cryptotaenia canadensis","Hesperis matronalis","Phlox cuspidata","Silene vulgaris"))
-ggplot(goodsp, aes(x = DAY, y = germination, color=COLD, shape=INC)) + stat_summary(alpha=0.7)+facet_wrap(~Taxa)+theme_bw()+geom_line(stat = "summary", fun.y = mean)+scale_color_manual(values=c("orange", "dodgerblue", "purple","darkgreen","red"))
+goodsp<-dplyr::filter(full, Taxa %in% c("Asclepias syriaca", "Cryptotaenia canadensis","Hesperis matronalis","Phlox cuspidata","Silene vulgaris","Polygonum virginiatum"))
+goodsp<-dplyr::filter(goodsp, COLD!="D") 
+ggplot(goodsp, aes(x = DAY, y = germination, color=COLD, shape=INC))+facet_wrap(~Taxa)+stat_summary(alpha=0.7)+theme_bw()+geom_line(stat = "summary", fun.y = mean)+scale_color_manual(values=c("orange", "dodgerblue", "purple","darkgreen"),labels=c("0 Days", "14 days", "28 days", "35 days"),name="Stratification Level")
 
 ####plot for community rank
 ggplot(goodsp, aes(x = DAY, y = germination, color=Taxa )) + stat_summary(alpha=0.7)+facet_grid(COLD~INC)+theme_bw()+geom_line(stat = "summary", fun.y = mean)
 ##This is where it gets wonky
 AS<-filter(full, Taxa=="Asclepias syriaca")
-ggplot(AS, aes(x = DAY, y = germination, color=COLD, shape=INC)) + stat_summary(alpha=0.7)+theme_bw()+geom_line(stat = "summary", fun.y = mean)+scale_color_manual(values=c("orange", "dodgerblue", "purple","darkgreen"))
+ggplot(AS, aes(x = DAY, y = germination, color=COLD, shape=INC)) + stat_summary(alpha=0.7)+theme_bw()+geom_line(stat = "summary", fun.y = mean)+scale_color_manual(values=c("orange", "dodgerblue", "purple","darkgreen"), labels=c("0 Days", "14 days", "28 days", "35 days"),name="Stratification Level")
 
 ###
 

@@ -14,12 +14,14 @@ data4<-read.csv("time_course_practice4.csv", header=TRUE)
 data5<-read.csv("time_course_practice5.csv", header=TRUE)
 data6<-read.csv("time_course_practice6.csv",header=TRUE)
 data7<-read.csv("time_course_practice7.csv", header=TRUE)
+data8<-read.csv("time_course_practice8.csv", header=TRUE)
 
 data<-dplyr::select(data,-c(X))
 data3<-dplyr::select(data3,-c(X,X.1))
 data5<-dplyr::select (data5,1:20)
-data6<-dplyr::select(data6,1:18)
-data7<-dplyr::select(data7,1:14)
+data6<-dplyr::select(data6,1:19)
+data7<-dplyr::select(data7,1:15)
+data8<-dplyr::select(data8,1:11)
 
 ##### Columnames
 colnames(data)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","8/28/18","8/29/18",	"8/30/18",	"8/31/18",	"9/3/18",	"9/5/18",	"9/7/18",	"9/9/18",	"9/12/18",	"9/14/18",	"9/16/18",	"9/17/18","9/18/18","9/20/18","9/21/18"))
@@ -36,9 +38,11 @@ colnames(data4)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/01
 data5$"10/08/18"<-0
 colnames(data5)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/10/18","10/12/18","10/14/18","10/15/18","10/17/18","10/19/18","10/21/18","10/22/18","10/24/18","10/26/18","10/28/18","10/29/18","10/31/18","11/2/18","10/08/18"))
 
-colnames(data6)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/15/18","10/17/18","10/19/18","10/21/18","10/22/18","10/24/18","10/26/18","10/28/18","10/29/18","10/31/18","11/2/18","11/4/18"))
+colnames(data6)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/15/18","10/17/18","10/19/18","10/21/18","10/22/18","10/24/18","10/26/18","10/28/18","10/29/18","10/31/18","11/2/18","11/4/18","11/5/18"))
 
-colnames(data7)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/22/18","10/24/18","10/26/18","10/28/18","10/29/18","10/31/18","11/2/18","11/4/18"))
+colnames(data7)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/22/18","10/24/18","10/26/18","10/28/18","10/29/18","10/31/18","11/2/18","11/4/18","11/5/18"))
+
+colnames(data8)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/29/18","10/31/18","11/2/18","11/4/18","11/5/18"))
 ##################
 
 #########Reformat
@@ -57,11 +61,14 @@ data4$germination<-as.numeric(data4$germination)
 data5<-gather(data5,"date","germination",7:21)
 data5$germination<-as.numeric(data5$germination)
 
-data6<-gather(data6,"date","germination",7:18)
+data6<-gather(data6,"date","germination",7:19)
 data6$germination<-as.numeric(data6$germination)
 
-data7<-gather(data7,"date","germination",7:14)
+data7<-gather(data7,"date","germination",7:15)
 data7$germination<-as.numeric(data7$germination)
+
+data8<-gather(data8,"date","germination",7:11)
+data8$germination<-as.numeric(data8$germination)
 
 ####Convert DATE to DOE###########
 data$date<-as.Date(data$date,format =  "%m/%d/%y")
@@ -113,6 +120,15 @@ data7$day<-yday(data7$date)
 unique(data7$day)
 start7<-yday("2018/10/22")
 data7$DAY<-data7$day-start7
+
+data8$date<-as.Date(data8$date,format =  "%m/%d/%y")
+class(data8$date)
+data8$day<-yday(data8$date)
+unique(data8$day)
+start8<-yday("2018/10/29")
+data8$DAY<-data8$day-start8
+
+
 #######
 
 
@@ -124,21 +140,20 @@ data4$germination<-ifelse(is.na(data4$germination),0,data4$germination)
 data5$germination<-ifelse(is.na(data5$germination),0,data5$germination)
 data6$germination<-ifelse(is.na(data6$germination),0,data6$germination)
 data7$germination<-ifelse(is.na(data7$germination),0,data7$germination)
+data8$germination<-ifelse(is.na(data8$germination),0,data8$germination)
 
 #ggplot(data, aes(x = DAY, y = germination, color=INC)) + stat_summary(alpha=0.7)+facet_wrap(~Taxa)+theme_bw()+geom_line(stat = "summary", fun.y = mean)
 #ggplot(data2, aes(x = DAY, y = germination, color=INC)) + stat_summary(alpha=0.7)+facet_wrap(~Taxa)+theme_bw()+geom_line(stat = "summary", fun.y = mean)
 #ggplot(data3, aes(x = DAY, y = germination, color=INC)) + stat_summary(alpha=0.7)+facet_wrap(~Taxa)+theme_bw()+geom_line(stat = "summary", fun.y = mean)
 
-full<-rbind(data,data2,data3,data4,data5,data6,data7)
+full<-rbind(data,data2,data3,data4,data5,data6,data7,data8)
 
 full$INC<-ifelse(full$INC=="H", "High","Low")
 table(full$COLD)
 unique(full$Taxa)
 
 full2<-dplyr::filter(full,Taxa %in% c("Oenethera biennis","Cryptotaenia canadensis", "Hesperis matronalis","Polygonum virginiatum","Asclepias syriaca","Silene stellata","Silene vulgaris","Eurbia diviricata","Thalictrum dioicum","Anemone virginana"))
-ggplot(full2, aes(x = DAY, y = germination, color=COLD, shape=INC)) + stat_summary(alpha=0.7)+facet_grid(Taxa~INC)+theme_bw()+geom_line(stat = "summary", fun.y = mean)+scale_color_manual(values=c("orange", "dodgerblue", "purple","darkgreen", "red","deeppink","green"))
-
-ggplot(full, aes(x = DAY, y = germination, color=COLD, shape=INC)) + stat_summary(alpha=0.7)+facet_wrap(~Taxa)+theme_bw()+geom_line(stat = "summary", fun.y = mean)+scale_color_manual(values=c("orange", "dodgerblue", "purple","darkgreen", "red","deeppink","green"))
+ggplot(full, aes(x = DAY, y = germination, color=COLD, shape=INC)) + stat_summary(alpha=0.7)+facet_wrap(~Taxa)+theme_bw()+geom_line(stat = "summary", fun.y = mean)+scale_color_manual(values=c("orange", "dodgerblue", "purple","darkgreen", "red","deeppink","green","black"))
 
 
 goodsp<-dplyr::filter(full, Taxa %in% c("Asclepias syriaca","Eurbia diviricata", "Cryptotaenia canadensis","Hesperis matronalis","Silene stellata","Polygonum virginiatum"))

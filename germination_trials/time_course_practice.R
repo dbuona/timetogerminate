@@ -18,8 +18,8 @@ data7<-read.csv("time_course_practice7.csv", header=TRUE)
 data<-dplyr::select(data,-c(X))
 data3<-dplyr::select(data3,-c(X,X.1))
 data5<-dplyr::select (data5,1:20)
-data6<-dplyr::select(data6,1:17)
-data7<-dplyr::select(data7,1:13)
+data6<-dplyr::select(data6,1:18)
+data7<-dplyr::select(data7,1:14)
 
 ##### Columnames
 colnames(data)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","8/28/18","8/29/18",	"8/30/18",	"8/31/18",	"9/3/18",	"9/5/18",	"9/7/18",	"9/9/18",	"9/12/18",	"9/14/18",	"9/16/18",	"9/17/18","9/18/18","9/20/18","9/21/18"))
@@ -36,9 +36,9 @@ colnames(data4)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/01
 data5$"10/08/18"<-0
 colnames(data5)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/10/18","10/12/18","10/14/18","10/15/18","10/17/18","10/19/18","10/21/18","10/22/18","10/24/18","10/26/18","10/28/18","10/29/18","10/31/18","11/2/18","10/08/18"))
 
-colnames(data6)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/15/18","10/17/18","10/19/18","10/21/18","10/22/18","10/24/18","10/26/18","10/28/18","10/29/18","10/31/18","11/2/18"))
+colnames(data6)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/15/18","10/17/18","10/19/18","10/21/18","10/22/18","10/24/18","10/26/18","10/28/18","10/29/18","10/31/18","11/2/18","11/4/18"))
 
-colnames(data7)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/22/18","10/24/18","10/26/18","10/28/18","10/29/18","10/31/18","11/2/18"))
+colnames(data7)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/22/18","10/24/18","10/26/18","10/28/18","10/29/18","10/31/18","11/2/18","11/4/18"))
 ##################
 
 #########Reformat
@@ -57,10 +57,10 @@ data4$germination<-as.numeric(data4$germination)
 data5<-gather(data5,"date","germination",7:21)
 data5$germination<-as.numeric(data5$germination)
 
-data6<-gather(data6,"date","germination",7:17)
+data6<-gather(data6,"date","germination",7:18)
 data6$germination<-as.numeric(data6$germination)
 
-data7<-gather(data7,"date","germination",7:13)
+data7<-gather(data7,"date","germination",7:14)
 data7$germination<-as.numeric(data7$germination)
 
 ####Convert DATE to DOE###########

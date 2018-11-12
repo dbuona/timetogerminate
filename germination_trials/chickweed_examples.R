@@ -1,7 +1,8 @@
 
 ####multi species
 library(drc)
-
+data("chickweed")
+data("germination")
 germLL.2 <- drm(germinated ~ start + end, species:factor(temp), 
                 data = germination[c(1:23, 25:61, 63:192), ], fct = LL.2(), type = "event")
 plot(germLL.2, ylim=c(0, 1.5), legendPos=c(2.5,1.5))  # plotting the fitted curves and the data

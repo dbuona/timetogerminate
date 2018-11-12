@@ -65,6 +65,16 @@ germLL.2 <- drm(tru.daily ~ start + end, factor(Taxa):factor(INC),
 
 plot(germLL.2, ylim=c(0, 1.5))
 coef(germLL.2)
+?LL.2()
+
+
+## Plotting the fitted curves and the data
+## plot(germLL.3, ylim = c(0, 1.5), legendPos = c(2.5,1.5))
+
+
+
+
+
 
 ## first installing drc and drcData
 devtools::install_github("DoseResponse/drcData")
@@ -72,9 +82,17 @@ devtools::install_github("DoseResponse/drcData")
 ## then installing the development version of medrc
 devtools::install_github("DoseResponse/medrc")
 
-library(medrc)
-help("broccoli")
-bm <- medrm(tru.daily ~ start, curveid=b + c + e + d ~ factor(force),
-            random=c + e + d ~ 1|Taxa,
-            data=goob, fc=LL.()) 
-drcData(broccoli)
+?broccoli
+data(broccoli)
+
+dater.no<-filter(chill.no,plate_num!=0)
+
+
+bm <- medrm(tru.daily ~ start, curvid=b + c + e + d ~ force,
+            random=c + e + d ~ 1|Taxa/plate_num,
+            data=goob, fc=LL.5()) 
+
+bm <- medrm(LeafLength ~ Day, curveid=b + c + e + d ~ Stress,
+            random=c + e + d ~ 1|Genotype/ID,
+            data=broccoli, fc=LL.5()) 
+

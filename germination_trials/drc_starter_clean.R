@@ -140,5 +140,23 @@ master.dat<-filter(master.dat,plate_num!=0)
 master.dat$force<-ifelse(master.dat$INC=="H",25,20)
 
 ###Omit rows where start= 25 and germination is 0, iew complete germination
+#master.dat<-filter(master.dat, start!=25 & tru.daily!=0)
+master.dat<-filter(master.dat, Taxa!="Impatiens capensis")
+master.dat<-filter(master.dat, Taxa!="Phlox cuspidata")
+master.dat<-filter(master.dat, Taxa!="Carex grisea")
+master.dat<-filter(master.dat, Taxa!="Oenethera biennis")
+master.datL<-filter(master.dat,INC=="L")
+master.datH<-filter(master.dat,INC=="H")
+library(drc)
+master.dat$indentifyer <- paste(master.dat$Taxa,master.dat$INC,master.dat$COLD)
+
+specieslist <- unique(master.dat$indentifyer)
+
+listE50<-list()
+for (sp in seq_along(specieslist)){
+  dataonesp <- subset(master.dat, indentifyer==specieslist[sp])
+  mod <- drm(tru.daily~start+end, data = dataonesp, fct = LL.2(), type = "event")
+  listE50[[paste(sp, specieslist[sp])]]<-list(ED(mod,50))
+  }
 
 

@@ -150,13 +150,41 @@ master.datH<-filter(master.dat,INC=="H")
 library(drc)
 master.dat$indentifyer <- paste(master.dat$Taxa,master.dat$INC,master.dat$COLD)
 
-specieslist <- unique(master.dat$indentifyer)
+specieslist <- unique(master.dat$Taxa)
+treatlist <- unique(master.dat$COLD)
 
+##this combines cold. but I cant get them to run together
 listE50<-list()
 for (sp in seq_along(specieslist)){
-  dataonesp <- subset(master.dat, indentifyer==specieslist[sp])
-  mod <- drm(tru.daily~start+end, data = dataonesp, fct = LL.2(), type = "event")
-  listE50[[paste(sp, specieslist[sp])]]<-list(ED(mod,50))
-  }
+  dataonesp <- subset(master.dat, Taxa==specieslist[sp])
+  mod <- drm(tru.daily~start+end, factor(INC), data = dataonesp, fct = LL.2(), type = "event")
+  listE50[[paste(sp, specieslist[sp])]]<-list(ED(mod,c(50)))
+}
 
+###this combines species
+listgoob<-list()
+for (tr in seq_along(treatlist)){
+  dataonesp <- subset(master.dat, COLD==treatlist[tr])
+  mod <- drm(tru.daily~start+end, factor(INC), data = dataonesp, fct = LL.3(), type = "event")
+  listgoob[[paste(tr, treatlist[tr])]]<-list(ED(mod,c(50,75)))
+}
+
+listgoob
+listE50
+
+
+
+df<-as.data.frame(listE50)
+
+df2<-as.data.frame(df2<-t(df))
+class(df2)
+df2<-df2 %>% rownames_to_column(var="goo")
+df2<-df2[grep("Estimate", df2$goo),] 
+
+df2$scratch <- sapply(strsplit(as.character(df2$goo),"."), "[", 1)
+df2$Genus <- sapply(strsplit(as.character(df2$goo),'.'), "[", 2)
+df2$species <- sapply(strsplit(as.character(df2$goo),'.'), "[", 3)
+
+df2<-df2 %>% separate(goo, c("scratch","Genus","species","treatment"))
+unique(df2$Genus)
 

@@ -9,16 +9,18 @@ library("Hmisc")
 source("germination_cleaning.R")
 
 plateid<-unique(cum_data_full$plate_num)
+
+
 daily.dat<- cum_data_full %>% group_by(plate_num) %>% mutate(germ.daily = germ_num - lag(germ_num))
 daily.dat<- daily.dat%>% group_by(plate_num) %>% mutate(germination = lead(germ.daily))
-colnames(daily.dat)[which(names(daily.dat) == "DAY")] <- "start"
-daily.dat<- daily.dat %>% group_by(plate_num) %>% mutate(end = lead(start))
-
-daily.dat$end<-ifelse(is.na(daily.dat$end),Inf,daily.dat$end)
+daily.dat$germination<-ifelse(daily.dat$DAY==-Inf,daily.dat$germ_num,daily.dat$germination)
+daily.dat<- daily.dat %>% group_by(plate_num) %>% mutate(END = lead(DAY))
+daily.dat<-dplyr::select(daily.dat,Taxa,INC, COLD, plate_num,date,viable,DAY,END,germination,mold,adj_total)
+daily.dat$END<-ifelse(is.na(daily.dat$END),Inf,daily.dat$END)
 daily.dat$germination<-ifelse(is.na(daily.dat$germination),daily.dat$viable,daily.dat$germination)
 
-daily.dat<-dplyr::select(daily.dat,Taxa,INC, COLD, plate_num,date,viable,start,end,germination,mold,adj_total)
-#check all this
+
+
 
 unique(daily.dat$plate_num)
 daily.dat$force<-ifelse(daily.dat$INC=="H",25,20)

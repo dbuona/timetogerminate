@@ -20,13 +20,16 @@ specieslist<-sort(unique(d$Taxa))
 
 ###remove infinity rows with no left of right censoring
 nonstartcens<-filter(d,END==0 & germination==0)
-noendcense<-filter(d,END==Inf,germination==0)         
+noendcense<-filter(d,END==Inf & germination==0)         
 d<-anti_join(d, nonstartcens)
 d<-anti_join(d,noendcense)
 
-####model without censoring
-d.nocen<-filter(d,END!=Inf)
-d.nocen<-filter(d.nocen,DAY!=-Inf)
+####model without right censoring
+#d.nocen<-filter(d,DAY!=-Inf)
+#d.nocen<-filter(d,END!=Inf)
+#average ungerminated
+#dormy<-dplyr::filter(d,END==Inf)
+#mean(dormy$germination) #7.1 so on average germination percent was ~60
 
 ### make each species its own data frame
 X<-split(d, with(d, d$Taxa), drop = TRUE)
@@ -36,27 +39,29 @@ Y <- lapply(seq_along(X), function(x) as.data.frame(X[[x]])[, 1:14])
 names(Y) <-(c(specieslist))
 list2env(Y, envir = .GlobalEnv)
 
-#=============================drc example
-germLL.2 <- drm(germinated ~ start + end, species:factor(temp), 
- data = germination[c(1:23, 25:61, 63:192), ], fct = LL.2(), type = "event")
-plot(germLL.2, ylim=c(0, 1.5), legendPos=c(2.5,1.5))  # plotting the fitted curves and the data
- summary(germLL.2)
  
- 
- germLL.3 <- drm(germinated~start+end, species:factor(temp), 
-                 data = germination[c(1:23, 25:61, 63:192), ], fct = LL.3(), type = "event",
-                  start = c(coef(germLL.2)[1:13], rep(0.7,13), coef(germLL.2)[14:26]), 
-                  upper = c(rep(Inf, 13), rep(1, 13), rep(Inf, 13)))
-#+++++++++++++++++++++++END Drc
+goop<-dplyr::filter(`Cryptotaenia canadensis`, COLD=="G" & INC=="L")
 
-Poly.L<-dplyr::filter(`Cryptotaenia canadensis`,INC=="L")
-PolyL.G.<-dplyr::filter(Poly.L,COLD=="H")
 
-goo<-drm(germination~DAY+END, data = PolyL.G., fct = LL.2(), type ="event")
+goo<-drm(germination~DAY+END,, data = goop,fct = LL.3(), type ="event") ##problem if this model estimates 
+goo50<-drm(germination~DAY+END,factor(INC):factor(COLD), data = goop,fct = LL.3(c(NA,.5,NA)), type ="event") 
+goo100<-drm(germination~DAY+END, data = goop,fct = LL.2(), type ="event") ##problem if this model estimates 
+
+ED(goo,c(50),"delta")
 summary(goo)
-plot(goo,xlim=c(1,25), ylim=c(0,1.2),legendPos=c(2.5,1))
-ED(goo,(90))
-drm(germination~DAY+END,factor(INC):factor(COLD), data = `Av.f`, fct = LL.3(), type ="event", start = c(coef(goo)[1:18],rep(-Inf,18), coef(goo)[19:36]))
+ED(goo50,c(50),"delta")
+ED(goo100,c(50),"delta")
+
+summary(goo)
+plot(goo100,xlim=c(0,100), ylim=c(0,1),col="darkgreen",pch=20)
+axis(1, at=seq(0, 25, by=5), labels = TRUE)
+plot(goo,add=TRUE,xlim=c(0,100), ylim=c(0,1),col="red",pch=20)
+plot(goo50,add=TRUE,xlim=c(0,100), ylim=c(0,1),col="blue",pch=20)
+
+
+
+ED(goo,(50),"delta")
+drm(germination~DAY+END,factor(INC):factor(COLD), data = `Av.f`, fct = LL.4(), type ="event", start = c(coef(goo)[1:18],rep(-Inf,18), coef(goo)[19:36]))
 
 Modelit<-function(x,y,z){y<-drm(germination~DAY+END, factor(INC):factor(COLD), data = x, fct = LL.2(), type ="event")
 z<-as.data.frame(ED(y,c(50)))}

@@ -3,6 +3,7 @@
 #but if I dont include these data, the model has no away of accounting for final germination percentage hmm
 #also models with with left censoring struggle to converged, although I think its actually having trouble with models with treeatments that have all zero, +++actually its both
 
+##current idea, could ignore left censor and let the model estimate the upper bound, thats probably accuraten for most species except Carex.
 
 rm(list=ls()) 
 options(stringsAsFactors = FALSE)
@@ -40,15 +41,21 @@ names(Y) <-(c(specieslist))
 list2env(Y, envir = .GlobalEnv)
 
  
-goop<-dplyr::filter(`Cryptotaenia canadensis`, COLD=="G" & INC=="L")
+goop<-dplyr::filter(`Asclepias syriaca`,COLD=="C" )
 
+global<-drm(germination~DAY+END, data =`Asclepias syriaca`,fct = LL.3(), type ="event")
+summary(global) ## asclepias the average is 0.92
 
-goo<-drm(germination~DAY+END,, data = goop,fct = LL.3(), type ="event") ##problem if this model estimates 
+goo<-drm(germination~DAY+END,INC, data = goop,fct = LL.3(c(NA,.9,NA)), type ="event") ##problem if this model estimates 
+summary(goo)
+goo2<-drm(germination~DAY+END,INC, data = goop,fct = LL.3(c(NA,NA,NA)), type ="event")
+summary(goo2)
+
 goo50<-drm(germination~DAY+END,factor(INC):factor(COLD), data = goop,fct = LL.3(c(NA,.5,NA)), type ="event") 
 goo100<-drm(germination~DAY+END, data = goop,fct = LL.2(), type ="event") ##problem if this model estimates 
 
 ED(goo,c(50),"delta")
-summary(goo)
+
 ED(goo50,c(50),"delta")
 ED(goo100,c(50),"delta")
 
@@ -61,8 +68,10 @@ plot(goo50,add=TRUE,xlim=c(0,100), ylim=c(0,1),col="blue",pch=20)
 
 
 ED(goo,(50),"delta")
-drm(germination~DAY+END,factor(INC):factor(COLD), data = `Av.f`, fct = LL.4(), type ="event", start = c(coef(goo)[1:18],rep(-Inf,18), coef(goo)[19:36]))
 
+
+
+####old attempt to model each treatment together
 Modelit<-function(x,y,z){y<-drm(germination~DAY+END, factor(INC):factor(COLD), data = x, fct = LL.2(), type ="event")
 z<-as.data.frame(ED(y,c(50)))}
 

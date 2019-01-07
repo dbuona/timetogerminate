@@ -37,7 +37,8 @@ colnames(chill.G)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","10/
 chill.H<-read.csv("dat_chill_H.csv",header=TRUE)
 colnames(chill.H)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","11/12/18","11/14/18","11/16/18","11/18/18","11/19/18","11/21/18","11/23/18","11/26/18","11/28/18","11/30/18","12/2/18","12/3/18","12/5/18","12/7/18","viable","chill_germ", "mold", "adj_total"))
 
-
+chill.i<-read.csv("dat_chill_i.csv",header=TRUE)
+colnames(chill.i)<-(c("zero_day","tot_seed","Taxa","INC","COLD","plate_num","11/26/18","11/28/18","11/30/18","12/2/18","12/3/18","12/5/18","12/7/18","12/10/18","12/12/18","12/14/18","12/16/18","12/17/18","12/20/18","12/21/18","viable","chill_germ", "mold", "adj_total"))
 
 ##make all nas 0
 na2zero<-function(x){x%>% replace(is.na(.), 0)}
@@ -50,6 +51,7 @@ chill.E<-na2zero(chill.E)
 chill.F<-na2zero(chill.F)
 chill.G<-na2zero(chill.G)
 chill.H<-na2zero(chill.H)
+chill.i<-na2zero(chill.i)
 ##3adjust germination percentages
 
 ####1] total germinated/ totalviable+total germ
@@ -63,7 +65,7 @@ chill.E$adj_total<-chill.E$"11/9/18"+chill.E$viable
 chill.F$adj_total<-chill.F$"11/16/18"+chill.F$viable
 chill.G$adj_total<-chill.G$"11/23/18"+chill.G$viable
 chill.H$adj_total<-chill.H$"12/7/18"+chill.H$viable
-
+chill.i$adj_total<-chill.i$"12/21/18"+chill.i$viable
 
 ###This is a dummy varaible to be helpful when converting to drc format
 chill.no$"1/1/18"<-chill.no$chill_germ
@@ -75,6 +77,7 @@ chill.E$"1/1/18"<-chill.E$chill_germ
 chill.F$"1/1/18"<-chill.F$chill_germ
 chill.G$"1/1/18"<-chill.G$chill_germ
 chill.H$"1/1/18"<-chill.H$chill_germ
+chill.i$"1/1/18"<-chill.i$chill_germ
 
 colnames(chill.no)
 chill.no <- chill.no[, c(1,2,3,4,5,6,27,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26)]
@@ -86,7 +89,7 @@ chill.E <- chill.E[, c(1,2,3,4,5,6,26,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,
 chill.F <- chill.F[, c(1,2,3,4,5,6,26,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25)]
 chill.G <- chill.G[, c(1,2,3,4,5,6,26,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25)]
 chill.H <- chill.H[, c(1,2,3,4,5,6,25,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24)]
-
+chill.i <- chill.i[, c(1,2,3,4,5,6,25,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24)]
 
 
 ##reformat data
@@ -108,8 +111,10 @@ chill.G<-gather(chill.G,"date","germ_num",7:22)
 chill.G$germ_num<-as.numeric(chill.G$germ_num)
 chill.H<-gather(chill.H,"date","germ_num",7:21)
 chill.H$germ_num<-as.numeric(chill.H$germ_num)
+chill.i<-gather(chill.i,"date","germ_num",7:21)
+chill.i$germ_num<-as.numeric(chill.i$germ_num)
 
-colnames(chill.H)
+
 
 
 ####### calculate day of exp
@@ -158,10 +163,12 @@ chill.H$day<-yday(chill.H$date)
 startH<-yday("2018/11/12")
 chill.H$DAY<-chill.H$day-startH
 
+chill.i$date<-as.Date(chill.i$date,format= "%m/%d/%y")
+chill.i$day<-yday(chill.i$date)
+starti<-yday("2018/11/26")
+chill.i$DAY<-chill.i$day-starti
 
-
-
-cum_data_full<-rbind(chill.no,chill.A,chill.B,chill.C,chill.D,chill.E,chill.F,chill.G,chill.H)
+cum_data_full<-rbind(chill.no,chill.A,chill.B,chill.C,chill.D,chill.E,chill.F,chill.G,chill.H,chill.i)
 
 colnames(cum_data_full)
 cum_data_full<-filter(cum_data_full,INC %in% c("H","L")) ##get rid of empty lines
@@ -190,3 +197,6 @@ cum_data_full$DAY<-ifelse(cum_data_full$DAY<0,-Inf,cum_data_full$DAY)
 unique(cum_data_full$COLD)
 
 write.csv(cum_data_full,"cumulative_data.csv")
+
+chilli<-filter(cum_data_full,COLD=="i")
+ggplot(chilli, aes(x = DAY, y = germ_num, shape=INC)) + stat_summary(alpha=0.7)+theme_bw()+geom_line(stat = "summary", fun.y = mean)+facet_wrap(~Taxa)

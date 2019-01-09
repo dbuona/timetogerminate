@@ -40,34 +40,68 @@ Y <- lapply(seq_along(X), function(x) as.data.frame(X[[x]])[, 1:14])
 names(Y) <-(c(specieslist))
 list2env(Y, envir = .GlobalEnv)
 
- 
-goop<-dplyr::filter(`Asclepias syriaca`,COLD=="C" )
+####Asclepias first
+As.global<-drm(germination~DAY+END, data=`Asclepias syriaca`,fct = LL.3(c(NA,NA,NA)), type ="event")
+summary(As.global)
 
-global<-drm(germination~DAY+END, data =`Asclepias syriaca`,fct = LL.3(), type ="event")
-summary(global) ## asclepias the average is 0.92
+As.global<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Asclepias syriaca`,fct = LL.3(c(NA,.95,NA)), type ="event")
+summary(As.global)
+ED(As.global,c(50),"delta")
 
-goo<-drm(germination~DAY+END,INC, data = goop,fct = LL.3(c(NA,.9,NA)), type ="event") ##problem if this model estimates 
-summary(goo)
-goo2<-drm(germination~DAY+END,INC, data = goop,fct = LL.3(c(NA,NA,NA)), type ="event")
-summary(goo2)
+As.global.est<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Asclepias syriaca`,fct = LL.3(c(NA,NA,NA)), type ="event")
+summary(As.global)
+ED(As.global,c(50),"delta")
 
-goo50<-drm(germination~DAY+END,factor(INC):factor(COLD), data = goop,fct = LL.3(c(NA,.5,NA)), type ="event") 
-goo100<-drm(germination~DAY+END, data = goop,fct = LL.2(), type ="event") ##problem if this model estimates 
+AsO.mod<-drm(germination~DAY+END,INC, data=AsO,fct = LL.3(c(NA,NA,NA)), type ="event")
+ED(AsO.mod,c(50),"delta")
 
-ED(goo,c(50),"delta")
+summary(AsO.mod)
 
-ED(goo50,c(50),"delta")
-ED(goo100,c(50),"delta")
+##anemone
+Av.global<-drm(germination~DAY+END, data=`Anemone virginana`,fct = LL.3(), type ="event")
+summary(Av.global)
 
-summary(goo)
-plot(goo100,xlim=c(0,100), ylim=c(0,1),col="darkgreen",pch=20)
-axis(1, at=seq(0, 25, by=5), labels = TRUE)
-plot(goo,add=TRUE,xlim=c(0,100), ylim=c(0,1),col="red",pch=20)
-plot(goo50,add=TRUE,xlim=c(0,100), ylim=c(0,1),col="blue",pch=20)
+AvO<-dplyr::filter(`Anemone virginana`,COLD=="i")
+
+AvO.mod<-drm(germination~DAY+END,INC, data=AvO,fct = LL.3(c(NA,.99,NA)), type ="event")
+ED(AvO.mod,c(50),"delta")
+
+##oenethera
+`Oenethera biennis`<-filter(`Oenethera biennis`,DAY!=-Inf) ###remove the one row that is left censored
+On.global<-drm(germination~DAY+END, data=`Oenethera biennis`,fct = LL.3(), type ="event")
+summary(On.global)
+
+OnO<-dplyr::filter(`Oenethera biennis`,COLD=="i")
+
+OnO.mod<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Oenethera biennis`,fct = LL.3(c(NA,.90,NA)), type ="event")
+ED(OnO.mod,c(50),"delta")
+
+##crypto
+`Cryptotaenia canadensis`<-filter(`Cryptotaenia canadensis`,DAY!=-Inf) ###remove the one row that is left censored
+CR.global<-drm(germination~DAY+END, INC,data=`Cryptotaenia canadensis`,fct = LL.3(c(NA,NA,NA)), type ="event")
+summary(CR.global)
+ED(CR.global,c(50),"delta")
+plot(CR.global)
+segments(4.5769,0,4.5769,0.2,col="red")
+segments(5.385048,0,5.385048,0.38,col="blue")
+
+CR.global.foxed<-drm(germination~DAY+END, INC,data=`Cryptotaenia canadensis`,fct = LL.3(c(NA,1,NA)), type ="event")
+summary(CR.global.foxed)
+plot(CR.global.foxed)
+segments(4.59,0,4.59,0.2,col="red")
+segments(5.385048,0,5.385048,0.38,col="blue")
 
 
 
-ED(goo,(50),"delta")
+
+CR.H<-dplyr::filter(`Cryptotaenia canadensis`,INC=="H")
+
+CR.H.mod<-drm(germination~DAY+END,COLD, data=CR.H,fct = LL.3(c(NA,NA,NA)), type ="event")
+ED(CR.H.mod,c(50),"delta")
+summary(CR.H.mod)
+CR.L<-dplyr::filter(`Cryptotaenia canadensis`,INC=="L")
+CR.L.mod<-drm(germination~DAY+END,COLD, data=CR.L,fct = LL.3(c(NA,.73,NA)), type ="event")
+ED(CR.L.mod,c(50),"delta")
 
 
 

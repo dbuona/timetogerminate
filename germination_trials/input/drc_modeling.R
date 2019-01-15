@@ -18,6 +18,7 @@ d<-read.csv("germ_data_forDRC.csv",header= TRUE)
 unique(d$COLD)
 d<-filter(d, !Taxa %in% c("Phlox cuspidata","Impatiens capensis", "Carex grisea"))
 specieslist<-sort(unique(d$Taxa))
+d$DAY<-ifelse(d$DAY==-Inf,0,d$DAY)
 
 ###remove infinity rows with no left of right censoring
 nonstartcens<-filter(d,END==0 & germination==0)
@@ -25,9 +26,9 @@ noendcense<-filter(d,END==Inf & germination==0)
 d<-anti_join(d, nonstartcens)
 d<-anti_join(d,noendcense)
 
-####model without right censoring
-#d.nocen<-filter(d,DAY!=-Inf)
-#d.nocen<-filter(d,END!=Inf)
+###model without right censoring
+
+d.nocen<-filter(d,END!=Inf)
 #average ungerminated
 #dormy<-dplyr::filter(d,END==Inf)
 #mean(dormy$germination) #7.1 so on average germination percent was ~60
@@ -41,10 +42,15 @@ names(Y) <-(c(specieslist))
 list2env(Y, envir = .GlobalEnv)
 
 ####Asclepias first
-As.global<-drm(germination~DAY+END, data=`Asclepias syriaca`,fct = LL.3(c(NA,NA,NA)), type ="event")
+CC.L.G<-dplyr::filter(`Cryptotaenia canadensis`,INC=="L",COLD=="G")
+CC.L.G<-filter(CC.L.G,END!=0)
+drm(germination~DAY+END, data=CC.L.G,fct = LL.3(), type ="binomial")
+
+
+As.global<-drm(germination~DAY, data=`Asclepias syriaca`,fct = LL.3(c(NA,NA,NA)), type ="event")
 summary(As.global)
 
-As.global<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Asclepias syriaca`,fct = LL.3(c(NA,.95,NA)), type ="event")
+As.global<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Asclepias syriaca`,fct = LL.3(c(NA,21,NA)), type ="event")
 summary(As.global)
 ED(As.global,c(50),"delta")
 
@@ -52,10 +58,6 @@ As.global.est<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Asclepias
 summary(As.global)
 ED(As.global,c(50),"delta")
 
-AsO.mod<-drm(germination~DAY+END,INC, data=AsO,fct = LL.3(c(NA,NA,NA)), type ="event")
-ED(AsO.mod,c(50),"delta")
-
-summary(AsO.mod)
 
 ##anemone
 Av.global<-drm(germination~DAY+END, data=`Anemone virginana`,fct = LL.3(), type ="event")
@@ -63,11 +65,11 @@ summary(Av.global)
 
 AvO<-dplyr::filter(`Anemone virginana`,COLD=="i")
 
-AvO.mod<-drm(germination~DAY+END,INC, data=AvO,fct = LL.3(c(NA,.99,NA)), type ="event")
+AvO.mod<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Anemone virginana`,fct = LL.3(c(NA,.99,NA)), type ="event")
 ED(AvO.mod,c(50),"delta")
 
 ##oenethera
-`Oenethera biennis`<-filter(`Oenethera biennis`,DAY!=-Inf) ###remove the one row that is left censored
+ ###remove the one row that is left censored
 On.global<-drm(germination~DAY+END, data=`Oenethera biennis`,fct = LL.3(), type ="event")
 summary(On.global)
 
@@ -77,7 +79,7 @@ OnO.mod<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Oenethera bienn
 ED(OnO.mod,c(50),"delta")
 
 ##crypto
-`Cryptotaenia canadensis`<-filter(`Cryptotaenia canadensis`,DAY!=-Inf) ###remove the one row that is left censored
+`Cryptotaenia canadensis`<-filter(`Cryptotaenia canadensis`,DAY!=0) ###remove the one row that is left censored
 CR.global<-drm(germination~DAY+END, INC,data=`Cryptotaenia canadensis`,fct = LL.3(c(NA,NA,NA)), type ="event")
 summary(CR.global)
 ED(CR.global,c(50),"delta")

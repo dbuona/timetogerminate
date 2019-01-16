@@ -28,12 +28,13 @@ d<-anti_join(d,noendcense)
 
 ###model without right censoring
 
-d.nocen<-filter(d,END!=Inf)
+#d.nocen<-filter(d,END!=Inf)
 #average ungerminated
 #dormy<-dplyr::filter(d,END==Inf)
 #mean(dormy$germination) #7.1 so on average germination percent was ~60
 
 ### make each species its own data frame
+
 X<-split(d, with(d, d$Taxa), drop = TRUE)
 
 
@@ -41,29 +42,37 @@ Y <- lapply(seq_along(X), function(x) as.data.frame(X[[x]])[, 1:14])
 names(Y) <-(c(specieslist))
 list2env(Y, envir = .GlobalEnv)
 
-####Asclepias first
+####CR
 CC.L.G<-dplyr::filter(`Cryptotaenia canadensis`,INC=="L",COLD=="G")
 CC.L.G<-filter(CC.L.G,END!=0)
-drm(germination~DAY+END, data=CC.L.G,fct = LL.3(), type ="binomial")
+hmm<-drm(germination~DAY+END, data=CC.L.G,fct = LL.3(c(NA,NA,NA)), type ="event")
 
 
-As.global<-drm(germination~DAY, data=`Asclepias syriaca`,fct = LL.3(c(NA,NA,NA)), type ="event")
-summary(As.global)
-
-As.global<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Asclepias syriaca`,fct = LL.3(c(NA,21,NA)), type ="event")
+As.global<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Asclepias syriaca`,fct = LL.3(c(NA,.95,NA)), type ="event")
 summary(As.global)
 ED(As.global,c(50),"delta")
 
-As.global.est<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Asclepias syriaca`,fct = LL.3(c(NA,NA,NA)), type ="event")
-summary(As.global)
-ED(As.global,c(50),"delta")
+Cry<-filter(`Cryptotaenia canadensis`,END!="0")
+Cry<-filter(Cry,COLD!="O")
+Cry<-filter(Cry,COLD!="A")
 
+Cc.global<-drm(germination~DAY+END,factor(INC):factor(COLD), data=Cry,fct = LL.3(c(NA,.90,NA)), type ="event")
+ED(Cc.global,c(50),"delta")
 
-##anemone
-Av.global<-drm(germination~DAY+END, data=`Anemone virginana`,fct = LL.3(), type ="event")
+Av.global<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Anemone virginana`,fct = LL.3(c(NA,.90,NA)), type ="event")
 summary(Av.global)
+ED(Av.global,c(50),"delta")
 
-AvO<-dplyr::filter(`Anemone virginana`,COLD=="i")
+Sil.v<-filter(`Silene vulgaris`,END!=0)
+Sv.global<-drm(germination~DAY+END,factor(INC):factor(COLD), data=Sil.v,fct = LL.3(c(NA,.90,NA)), type ="event")
+ED(Sv.global,c(50),"delta")
+
+
+Pol<-filter(`Polygonum virginiatum`,END!=0)
+Pol<-filter(Pol,COLD != "O")
+Pol<-filter(Pol,COLD != "A")
+Pv.global<-drm(germination~DAY+END,factor(INC):factor(COLD), data=Pol,fct = LL.3(c(NA,.90,NA)), type ="event")
+ED(Pv.global,c(50),"delta")
 
 AvO.mod<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Anemone virginana`,fct = LL.3(c(NA,.99,NA)), type ="event")
 ED(AvO.mod,c(50),"delta")

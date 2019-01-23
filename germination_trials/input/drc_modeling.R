@@ -45,11 +45,32 @@ list2env(Y, envir = .GlobalEnv)
 ####CR
 CC.L.G<-dplyr::filter(`Cryptotaenia canadensis`,INC=="L",COLD=="G")
 CC.L.G<-filter(CC.L.G,END!=0)
-hmm<-drm(germination~DAY+END, data=CC.L.G,fct = LL.3(c(NA,NA,NA)), type ="event")
+hmm<-drm(germination~DAY+END, data=CC.L.G,fct = LL.3(c(NA,NA,NA)), type ="event",)
+
+?drm()
+As<-filter(`Asclepias syriaca`,INC=="H")
+As2<-filter(`Asclepias syriaca`,INC=="L")
+As.global<-drm(germination~DAY+END,factor(COLD):factor(INC), data=`Asclepias syriaca` ,fct = LL.3(c(NA,NA,NA)), type ="event",upperl =c(NA,1,NA))
+As.global2<-drm(germination~DAY+END,factor(COLD), data=As2 ,fct = LL.3(c(NA,NA,NA)), type ="event",upperl =c(NA,1,NA))
 
 
-As.global<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Asclepias syriaca`,fct = LL.3(c(NA,.95,NA)), type ="event")
 summary(As.global)
+coef(As.global)
+As.global$dataList
+par(mfrow=c(1,1))
+plot(As.global, xlab = "Time", ylab = "Proportion germinated", 
+     xlim=c(0, 25), ylim=c(0, 1), log="", lwd=1, cex=1.2, col="black",legendPos ="" )
+
+
+
+legend("bottomright", inset=c(-0.2,0), legend=c("A","B"), pch=c(1,3), title="Group")
+
+plot(As.global2,add=FALSE, xlab = "Time", ylab = "Proportion germinated", 
+      xlim=c(0, 25), ylim=c(0, 1), log="", lwd=1, cex=1.2,col="blue")
+legend("topright", inset=c(-0.2,0), legend=c("A","B"), pch=c(1,3), title="Group")
+
+
+
 ED(As.global,c(50),"delta")
 
 Cry<-filter(`Cryptotaenia canadensis`,END!="0")
@@ -59,7 +80,7 @@ Cry<-filter(Cry,COLD!="A")
 Cc.global<-drm(germination~DAY+END,factor(INC):factor(COLD), data=Cry,fct = LL.3(c(NA,.90,NA)), type ="event")
 ED(Cc.global,c(50),"delta")
 
-Av.global<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Anemone virginana`,fct = LL.3(c(NA,.90,NA)), type ="event")
+Av.global<-drm(germination~DAY+END,factor(INC):factor(COLD), data=`Anemone virginana`,fct = LL.3(c(NA,NA,NA)), type ="event")
 summary(Av.global)
 ED(Av.global,c(50),"delta")
 

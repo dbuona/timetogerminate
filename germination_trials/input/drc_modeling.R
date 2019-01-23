@@ -59,7 +59,7 @@ coef(As.global)
 As.global$dataList
 par(mfrow=c(1,1))
 plot(As.global, xlab = "Time", ylab = "Proportion germinated", 
-     xlim=c(0, 25), ylim=c(0, 1), log="", lwd=1, cex=1.2, col="black",legendPos ="" )
+     xlim=c(0, 25), ylim=c(0, 1), log="", lwd=1, cex=1.2, col="black")
 
 
 

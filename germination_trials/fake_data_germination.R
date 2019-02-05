@@ -6,6 +6,12 @@ graphics.off()
 library(drc)
 library(tidyverse)
 library(MCMCglmm)
+library(shinystan)
+library(rstan)
+options(mc.cores = parallel::detectCores())
+
+setwd("~/Documents/git/timetogerminate/germination_trials")
+
 ##use lognoral to simulate the data
 set.seed(613613)
 
@@ -17,26 +23,40 @@ return(data.frame(time=t, y=y))
   
 }
 
-germ(seq(0,24,by=3),rtnorm(1,.6,0.1,lower=0.4,upper=1),rnorm(1,-5,0.1),rnorm(1,15,1))
+germ(seq(0,24,by=3),rtnorm(1,12,1,lower=8,upper=20),rnorm(1,-5,0.1),rnorm(1,15,1))
 
 
 ##3 petridishes of the same treatment, there is probably a loop or apply function for this
 
-A<-germ(seq(0,24,by=3),rtnorm(1,.6,0.1,lower=0.4,upper=1),rnorm(1,-10,0.1),rnorm(1,15,1))
+A<-germ(seq(0,24,by=3),rtnorm(1,12,2,lower=8,upper=20),rnorm(1,-5,0.5),rnorm(1,15,2))
 A$dish<-"A"
-B<-germ(seq(0,24,by=3),rtnorm(1,.6,0.1,lower=0.4,upper=1),rnorm(1,-10,0.1),rnorm(1,15,1))
+B<-germ(seq(0,24,by=3),rtnorm(1,12,2,lower=8,upper=20),rnorm(1,-5,0.5),rnorm(1,15,2))
 B$dish<-"B"
-C<-germ(seq(0,24,by=3),rtnorm(1,0.6,0.1,lower=0.4,upper=1),rnorm(1,-10,0.1),rnorm(1,15,1))
+C<-germ(seq(0,24,by=3),rtnorm(1,12,2,lower=8,upper=20),rnorm(1,-5,0.5),rnorm(1,15,2))
 C$dish<-"C"
 
 #make your data
 d<-rbind(A,B,C)
+d$y<-round(d$y)
   
 mod<-drm(y~time,fct=LL.3(),data=d,type="continuous")
-lines(d$time,predict(mod),lty=2,col="red",lwd=3)
 summary(mod)
-plot(mod,ylim=c(0,1),xlim=c(0,24),log="",pch=16,type="all")
+plot(mod,ylim=c(0,20),xlim=c(0,24),log="",pch=16,type="all")
 
-###now now to change the chilling
+###now try it in stan
 
-?pch
+data.list <- with(d, 
+                  list(Y=y, 
+                    t = time, 
+                    N = nrow(d)
+                  )
+                  )
+
+germ.mod = stan('stan/fakeseedmodel.stan', data = data.list,
+                  iter = 2500, warmup=1500)
+
+summary(germ.mod)
+germ.mod
+
+launch_shinystan(germ.mod)
+

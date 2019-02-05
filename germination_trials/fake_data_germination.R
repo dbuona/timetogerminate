@@ -5,17 +5,38 @@ graphics.off()
 
 library(drc)
 library(tidyverse)
+library(MCMCglmm)
 ##use lognoral to simulate the data
 set.seed(613613)
 
 
-time<- seq(0, 25, by=3)
+###This make data folowing the log logistic function
+germ<-function(t,d,b,t50){
+y<- d/(1+((t/t50)^b))
+return(data.frame(time=t, y=y)) 
+  
+}
 
-germ<-round(rlnorm(9, meanlog = 0, sdlog = 1))
-cum.germ<-cumsum(germ)
-goo<-data.frame(cbind(time,germ,cum.germ))
-goo$unit<-"A"
+germ(seq(0,24,by=3),rtnorm(1,.6,0.1,lower=0.4,upper=1),rnorm(1,-5,0.1),rnorm(1,15,1))
 
-mod<-drm(cum.germ~time,data=goo,fct = LL.3(), type ="continuous")
+
+##3 petridishes of the same treatment, there is probably a loop or apply function for this
+
+A<-germ(seq(0,24,by=3),rtnorm(1,.6,0.1,lower=0.4,upper=1),rnorm(1,-10,0.1),rnorm(1,15,1))
+A$dish<-"A"
+B<-germ(seq(0,24,by=3),rtnorm(1,.6,0.1,lower=0.4,upper=1),rnorm(1,-10,0.1),rnorm(1,15,1))
+B$dish<-"B"
+C<-germ(seq(0,24,by=3),rtnorm(1,0.6,0.1,lower=0.4,upper=1),rnorm(1,-10,0.1),rnorm(1,15,1))
+C$dish<-"C"
+
+#make your data
+d<-rbind(A,B,C)
+  
+mod<-drm(y~time,fct=LL.3(),data=d,type="continuous")
+lines(d$time,predict(mod),lty=2,col="red",lwd=3)
 summary(mod)
-plot(mod)
+plot(mod,ylim=c(0,1),xlim=c(0,24),log="",pch=16,type="all")
+
+###now now to change the chilling
+
+?pch

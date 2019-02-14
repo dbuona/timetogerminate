@@ -17,13 +17,7 @@ parameters {
   real a_d;  //alpha for max germination
   real<lower=0>  sigma; //sigma
   
-  real<lower=0>  sigma_b_beta; 
-  real<lower=0>  sigma_b_d;
-  real<lower=0>  sigma_b_t50;
   
-  real<lower=0>  sigma_a_beta; 
-  real<lower=0>  sigma_a_d;
-  real<lower=0>  sigma_a_t50;
 
 } 
 
@@ -47,14 +41,6 @@ y_hat[i] =(b_chill_d*chill[i]+a_d)/(1+(((t[i])/(b_chill_t50*chill[i]+a_t50))^(b_
   b_chill_t50 ~normal(0,1);
   b_chill_d ~normal(0,1);
    sigma ~ normal(0, 10);
-  
-  sigma_b_beta ~ normal(0, 1);
-  sigma_b_d ~ normal(0, 1);
-  sigma_b_t50 ~ normal(0, 1);
-  
-   sigma_a_beta ~ normal(0, 10);
-  sigma_a_d ~ normal(0, 10);
-  sigma_a_t50 ~ normal(0, 10);
   // likelihood
   Y ~ normal(y_hat, sigma);
 }

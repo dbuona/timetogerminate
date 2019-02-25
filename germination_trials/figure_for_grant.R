@@ -50,5 +50,5 @@ plot(mod.3,ylim=c(0,20),xlim=c(0,25),log="",type="all",legendPos = c(15,5),col="
 plot(mod.3, broken = FALSE, type="confidence", add=TRUE, col="darkgreen")
 plot(mod.4,ylim=c(0,20),xlim=c(0,25),log="",type="all",legendPos = c(15,5),col="navyblue",pch=20,add=TRUE,cex=0.5)
 plot(mod.4, broken = FALSE, type="confidence", add=TRUE,col="navyblue")
-
+?plot.drc
 

@@ -5,6 +5,7 @@ options(stringsAsFactors = FALSE)
 graphics.off()
 
 library(tidyverse)
+library(ggthemes)
 library(drc)
 setwd("~/Documents/git/timetogerminate/germination_trials")
 real.data<-read.csv("input/daily_dat_nointerval.csv")
@@ -46,9 +47,15 @@ plot(mod.1, broken = TRUE, type="confidence", add=TRUE, col="darkgreen")
 plot(mod.2,ylim=c(0,20),xlim=c(0,25),log="",type="all",legendPos = c(15,5),col="navyblue",pch=20,add=TRUE,cex=0.5)
 plot(mod.2, broken = FALSE, type="confidence", add=TRUE,col="navyblue")
 
+
 plot(mod.3,ylim=c(0,20),xlim=c(0,25),log="",type="all",legendPos = c(15,5),col="darkgreen",pch=20,cex=0.5,ylab="",main="warm conditions")
 plot(mod.3, broken = FALSE, type="confidence", add=TRUE, col="darkgreen")
 plot(mod.4,ylim=c(0,20),xlim=c(0,25),log="",type="all",legendPos = c(15,5),col="navyblue",pch=20,add=TRUE,cex=0.5)
 plot(mod.4, broken = FALSE, type="confidence", add=TRUE,col="navyblue")
-?plot.drc
+
+
+C.canadensis<-as.factor(c(1,0,4,3,2,1,0,2,1,0,0,1,2,3,4,5,6,7,8,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14))
+E.divaricata<-as.factor(c(0,1,0,1,2,3,4,0,1,2,8,7,6,5,4,3,2,1,0,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0))
+
+ggplot(,aes(C.canadensis,E.divaricata))+geom_point(shape=16,size=3)+theme_bw()+ylab("# seeds/pot of C. canadensis")+xlab("# seeds/pot of E. divaricata")
 

@@ -41,14 +41,14 @@ mod.3<-drm(germ.cum~DAY,,fct=LL.3(c(NA,NA,NA)),data=comp2.asc,type="continuous")
 mod.4<-drm(germ.cum~DAY,,fct=LL.3(c(NA,NA,NA)),data=com2.sv,type="continuous")
 
 par(mfrow=c(1,2))
-par(mar=c(2,3,1.8,0.5))
-plot(mod.1,ylim=c(0,20),xlim=c(0,25),log="",type="all",legendPos = c(15,5),col="darkgreen",pch=20,cex=0.5, ylab="cumulative germination",main="cool conditions")
+par(mar=c(4,4,1.8,0.5))
+plot(mod.1,ylim=c(0,20),xlim=c(0,25),log="",type="all",legendPos = c(15,5),col="darkgreen",pch=20,cex=0.5,xlab="time (days)", ylab="cumulative germination",main="cool conditions")
 plot(mod.1, broken = TRUE, type="confidence", add=TRUE, col="darkgreen")
 plot(mod.2,ylim=c(0,20),xlim=c(0,25),log="",type="all",legendPos = c(15,5),col="navyblue",pch=20,add=TRUE,cex=0.5)
 plot(mod.2, broken = FALSE, type="confidence", add=TRUE,col="navyblue")
 
 
-plot(mod.3,ylim=c(0,20),xlim=c(0,25),log="",type="all",legendPos = c(15,5),col="darkgreen",pch=20,cex=0.5,ylab="",main="warm conditions")
+plot(mod.3,ylim=c(0,20),xlim=c(0,25),log="",type="all",legendPos = c(15,5),col="darkgreen",pch=20,cex=0.5,ylab="",main="warm conditions",xlab="time (days)")
 plot(mod.3, broken = FALSE, type="confidence", add=TRUE, col="darkgreen")
 plot(mod.4,ylim=c(0,20),xlim=c(0,25),log="",type="all",legendPos = c(15,5),col="navyblue",pch=20,add=TRUE,cex=0.5)
 plot(mod.4, broken = FALSE, type="confidence", add=TRUE,col="navyblue")

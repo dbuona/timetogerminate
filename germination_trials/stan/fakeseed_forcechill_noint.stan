@@ -39,15 +39,15 @@ y_hat[i] =(b_warm_d*warm[i]+b_chill_d*chill[i]+a_d)/(1+(((t[i])/(b_warm_t50*warm
   //beta ~ normal(0, 50); 
   //d ~ uniform(0, 30); 
   a_beta~normal(0,10);
-  a_t50~normal(0,10);
-  a_d ~ normal(0,10);
-  b_warm_beta ~normal(0,10);
-  b_warm_t50 ~normal(0,10);
-  b_warm_d ~normal(0,10);
+  a_t50~uniform(0,20);
+  a_d ~ uniform(0,10);
+  b_warm_beta ~normal(0,5);
+  b_warm_t50 ~normal(0,5);
+  b_warm_d ~normal(0,5);
   
-  b_chill_beta ~normal(0,10);
-  b_chill_t50 ~normal(0,10);
-  b_chill_d ~normal(0,10);
+  b_chill_beta ~normal(0,1);
+  b_chill_t50 ~normal(0,1);
+  b_chill_d ~normal(0,1);
   
   sigma ~ normal(0, 10);
  

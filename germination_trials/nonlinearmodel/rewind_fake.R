@@ -9,15 +9,17 @@ rm(list=ls())
 options(stringsAsFactors = FALSE)
 graphics.off()
 
-setwd("~/Documents/git/timetogerminate/germination_trials")
+if(length(grep("Lizzie", getwd())>0)) { 
+  setwd("~/Documents/git/projects/misc/dan/timetogerminate/germination_trials") 
+} else setwd("~/Documents/git/timetogerminate/germination_trials")
 
 library(rstan)
 library(tidyr)
 library(drc)
 library(dplyr)
 library(shinystan)
-
 library(extraDistr)
+
 time<-seq(0,24,by=3) #time of each trial
 treat<-c(0,1) # level of chilling, continuous data
 force<-c(0,1)# 2 levels of forching, low/high

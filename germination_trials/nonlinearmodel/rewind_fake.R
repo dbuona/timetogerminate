@@ -30,7 +30,7 @@ t50.b<--5 # slope of t50 with chilling
 t50.f<--1 #slope of t50 with forcing
 sigma_y <- 0.1
 
-beta.a<--4 #intercept of beta (shape paramenter)
+beta.a<--5 #intercept of beta (shape paramenter)
 beta.b<--2 # slope of beta with chilling
 beta.f<--1.5 # slope of beta with forcing
 
@@ -80,8 +80,8 @@ forceonly<-filter(df,chilltreat==0)### try to model just chilling for now.
 data.list.warm <- with(forceonly, 
                    list(Y=y, 
                         t = time,
-                        warm=forcetreat,
-                        N = nrow(forceonly)
+                       warm=forcetreat,
+                      N = nrow(forceonly)
                    )
 )
 
@@ -117,11 +117,11 @@ bin.sum[c("a_beta","a_t50","a_d","b_warm_beta","b_warm_t50","b_warm_d","b_chill_
 
 
 ### now try it with continuous values for chillin
-treat2<-c(0,28,56) # level of chilling, continuous data
+treat2<-c(0,1,2,4,5,6,7,8,9,10) # level of chilling, continuous data
 
-t50.b2<--0.07
-beta.b2<--0.02
-d.b2<-.15
+t50.b2<--1
+beta.b2<--0.75
+d.b2<-1.2
 
 df2<-data.frame(time=numeric(), y=numeric(),chilltreat=numeric(),forcetreat=numeric(),ID=numeric())  ##3why is this breaking?
 
@@ -142,17 +142,17 @@ ploty2<-ggplot(df2,aes(time,y))+geom_point(aes(color=as.factor(chilltreat),shape
 ploty2
 ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat),linetype=as.factor(forcetreat))) ### plot point with mean lines
 
+chillonly<-filter(df2,forcetreat==1)
 
-data.list.cont<-with(df2,
+data.list.cont<-with(chillonly,
                 list(Y=y,
                      t=time,
-                     warm=forcetreat,
                      chill=chilltreat,
-                     N=nrow(df2)
+                     N=nrow(chillonly)
                 )
 )
-germ.mod.warmchill.noint.cont = stan('stan/fakeseed_forcechill_noint.stan', data = data.list.cont,
-                                iter = 1000, warmup=800) 
+germ.mod.warmchill.noint.cont = stan('stan/fakeseed_chillonly.stan', data = data.list.cont,
+                                iter = 2000, warmup=1200) 
 cont.sum<-summary(germ.mod.warmchill.noint.cont)$summary #585 divergent transitions :(
 
 cont.sum[c("a_beta","a_t50","a_d","b_warm_beta","b_warm_t50","b_warm_d","b_chill_beta","b_chill_t50","b_chill_d","sigma"),]

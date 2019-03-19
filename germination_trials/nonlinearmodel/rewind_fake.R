@@ -20,6 +20,26 @@ library(dplyr)
 library(shinystan)
 library(extraDistr)
 
+######Chilling only
+time<-seq(0,24,by=3) #time of each trial
+treat<-c(0,1) # level of chilling, continuous data
+sigma_y <- 0.1
+
+t50.a<-20 #intercept of t50
+t50.b<--5 # slope of t50 with chilling
+
+beta.a<--5 #intercept of beta (shape paramenter)
+beta.b<--2 # slope of beta with chilling
+
+d.a<-5 # intercept of d (maximum germination)
+d.b<-10 #slope of d with chilling
+
+repz<-seq(1,50,by=1) ## number of replicates
+
+
+
+
+####Force and chill
 time<-seq(0,24,by=3) #time of each trial
 treat<-c(0,1) # level of chilling, continuous data
 force<-c(0,1)# 2 levels of forching, low/high
@@ -35,21 +55,44 @@ beta.b<--2 # slope of beta with chilling
 beta.f<--1.5 # slope of beta with forcing
 
 
-d.a<-2 # intercept of d (maximum germination)
+d.a<-5 # intercept of d (maximum germination)
 d.b<-10 #slope of d with chilling
-d.f<-4 # slope of d with forcing
+
 
 repz<-seq(1,50,by=1) ## number of replicates
 
+df<-data.frame(time=numeric(), y=numeric(),chilltreat=numeric(),ID=numeric())  ##3why is this breaking?
 
-# Trying running just this:  ##DB, rthis doesn't run, but I think it was just trouble shooting
-#l <- 1
-#  y<-(d.b*treat[i]+d.a)/(1+((time/(t50.a)^beta.b)))
-#  dfhere <- data.frame(time=time, y=y,treat=rep(treat[i], length(y)))
-#  df <- rbind(df, dfhere)
-# This tells you that in each loop of l you get ALL the time runs ... so this means the way your time loop works it does the above NINE TIMES
-# 9 * 9 * 2 treats = 162
-# So, now we know the time loop is the problem.... and actually it make me think that you just don't need it ...
+for (i in c(1:length(treat))){
+  y <- c()
+    for(k in c(1:length(repz))){ 
+      y<-(d.b*treat[i]+d.a)/(1+((time/(t50.b*treat[i]+t50.a))^(beta.b*treat[i]+beta.a)))
+      dfhere <- data.frame(time=time, y=rtnorm(length(y),y,sigma_y,a=0,b=Inf),chilltreat=rep(treat[i], length(y)),ID=rep(repz[k],length(y))) ## make a data frame for each level, this over rights so
+      
+      df <- rbind(df, dfhere) ## rbind it here for safty
+    }
+  }
+
+ploty<-ggplot(df,aes(time,y))+geom_point(aes(color=as.factor(chilltreat)))
+ploty
+ploty+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat))) ### plot point with mean lines
+
+data.list<-with(df,
+                list(Y=y,
+                     t=time,
+                     chill=chilltreat,
+                     N=nrow(df)
+                )
+)
+
+germ.mod.chill = stan('stan/fakeseed_chillonly.stan', data = data.list,
+                                iter = 3000, warmup=2000) 
+
+bin.sum<-summary(germ.mod.chill)$summary
+bin.sum[c("a_beta","a_t50","a_d","b_chill_beta","b_chill_t50","b_chill_d","sigma"),] ###returns the right paraments but seems to stuggle
+
+
+stop("not an error")
 
 
 ##This is the base loop 
@@ -74,23 +117,8 @@ ploty<-ggplot(df,aes(time,y))+geom_point(aes(color=as.factor(chilltreat),shape=a
 ploty
 ploty+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat),linetype=as.factor(forcetreat))) ### plot point with mean lines
 
-forceonly<-filter(df,chilltreat==0)### try to model just chilling for now.
-
-###try it in a stan model
-data.list.warm <- with(forceonly, 
-                   list(Y=y, 
-                        t = time,
-                       warm=forcetreat,
-                      N = nrow(forceonly)
-                   )
-)
 
 
-germ.mod.warmonly = stan('stan/fakeseed_forceonly.stan', data = data.list.warm,
-                 iter = 3000, warmup=2000) 
-
-warm.sum<-summary(germ.mod.warmonly)$summary
-warm.sum[c("a_beta","a_t50","a_d","b_warm_beta","b_warm_t50","b_warm_d","sigma"),]
 
 ##model is good when when chill is 0 and focing is 0,1
 

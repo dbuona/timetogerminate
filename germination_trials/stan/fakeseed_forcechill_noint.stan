@@ -26,9 +26,9 @@ parameters {
 } 
 
 transformed parameters {
-real y_hat[N];
-   for (i in 1:N)
-y_hat[i] =(b_warm_d*warm[i]+b_chill_d*chill[i]+a_d)/(1+(((t[i])/(b_warm_t50*warm[i]+b_chill_t50*chill[i]+a_t50))^(b_warm_beta*warm[i]+b_chill_beta*chill[i]+a_beta))); //log logistic equation where paramenters beta, t50 and d are represent as chilling sub mod
+real y_hat;
+
+y_hat =(b_warm_d*warm[i]+b_chill_d*chill[i]+a_d)/(1+(((t[i])/(b_warm_t50*warm[i]+b_chill_t50*chill[i]+a_t50))^(b_warm_beta*warm[i]+b_chill_beta*chill[i]+a_beta))); //log logistic equation where paramenters beta, t50 and d are represent as chilling sub mod
      
      }
  
@@ -53,7 +53,7 @@ y_hat[i] =(b_warm_d*warm[i]+b_chill_d*chill[i]+a_d)/(1+(((t[i])/(b_warm_t50*warm
  
  
   // likelihood
-  Y ~ normal(y_hat, sigma);//it seems like the model is having trouble with the normal distrubtion here. Should y actually be a log logtistic?
+  Y ~ lognormal(y_hat, sigma);//it seems like the model is having trouble with the normal distrubtion here. Should y actually be a log logtistic?
                             //maybe this would be helpful https://groups.google.com/forum/#!topic/stan-users/OexQuNGnsko
                             //or this https://mc-stan.org/docs/2_18/functions-reference/logistic-distribution.html
 }

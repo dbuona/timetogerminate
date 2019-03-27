@@ -2,9 +2,6 @@
 ###updated most recently by Dan on March 1 2019
 ##Purpose is to simulat germiantion data a kind to Dan's trial
 
-##next step, a thoughtful way to add error between replicates
-#1. I could add error on each parementer, I think using rnorm
-# or just add error to the final why value
 rm(list=ls())
 options(stringsAsFactors = FALSE)
 graphics.off()
@@ -12,7 +9,7 @@ graphics.off()
 if(length(grep("Lizzie", getwd())>0)) { 
   setwd("~/Documents/git/projects/misc/dan/timetogerminate/germination_trials") 
 } else setwd("~/Documents/git/timetogerminate/germination_trials")
-
+load("fake_germ_models")
 library(rstan)
 library(tidyr)
 library(drc)
@@ -23,59 +20,40 @@ library(extraDistr)
 ######Chilling only
 time<-seq(0,24,by=3) #time of each trial
 treat<-c(0,1) # level of chilling, continuous data
-sigma_y <- 0.1
+sigma_y <- 0.01
 
-t50.a<-20 #intercept of t50
+t50.a<-15 #intercept of t50
 t50.b<--5 # slope of t50 with chilling
 
-beta.a<--5 #intercept of beta (shape paramenter)
-beta.b<--2 # slope of beta with chilling
+beta.a<-6 #intercept of beta (shape paramenter)
+beta.b<-2 # slope of beta with chilling
 
 d.a<-5 # intercept of d (maximum germination)
 d.b<-10 #slope of d with chilling
 
 repz<-seq(1,50,by=1) ## number of replicates
 
-
-
-
-####Force and chill
-time<-seq(0,24,by=3) #time of each trial
-treat<-c(0,1) # level of chilling, continuous data
-force<-c(0,1)# 2 levels of forching, low/high
-
-##parameters
-t50.a<-20 #intercept of t50
-t50.b<--5 # slope of t50 with chilling
-t50.f<--1 #slope of t50 with forcing
-sigma_y <- 0.1
-
-beta.a<--5 #intercept of beta (shape paramenter)
-beta.b<--2 # slope of beta with chilling
-beta.f<--1.5 # slope of beta with forcing
-
-
-d.a<-5 # intercept of d (maximum germination)
-d.b<-10 #slope of d with chilling
-
-
-repz<-seq(1,50,by=1) ## number of replicates
-
+###for starters assme a 100% germination scenario, no (D parameter)
 df<-data.frame(time=numeric(), y=numeric(),chilltreat=numeric(),ID=numeric())  ##3why is this breaking?
 
 for (i in c(1:length(treat))){
   y <- c()
     for(k in c(1:length(repz))){ 
-      y<-(d.b*treat[i]+d.a)/(1+((time/(t50.b*treat[i]+t50.a))^(beta.b*treat[i]+beta.a)))
-      dfhere <- data.frame(time=time, y=rtnorm(length(y),y,sigma_y,a=0,b=Inf),chilltreat=rep(treat[i], length(y)),ID=rep(repz[k],length(y))) ## make a data frame for each level, this over rights so
+      #y<-(d.b*treat[i]+d.a)/(1+((time/(t50.b*treat[i]+t50.a))^-(beta.b*treat[i]+beta.a)))
+      y<-1/(1+((time/(t50.b*treat[i]+t50.a))^-(beta.b*treat[i]+beta.a)))
+      dfhere <- data.frame(time=time, y=rtnorm(length(y),y,sigma_y,a=0,b=1),chilltreat=rep(treat[i], length(y)),ID=rep(repz[k],length(y))) ## make a data frame for each level, this over rights so
       
       df <- rbind(df, dfhere) ## rbind it here for safty
     }
   }
 
+df$uniqueID<-paste(df$chilltreat,df$ID,sep="-")
 ploty<-ggplot(df,aes(time,y))+geom_point(aes(color=as.factor(chilltreat)))
 ploty
 ploty+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat))) ### plot point with mean lines
+
+
+hist(df$y)
 
 data.list<-with(df,
                 list(Y=y,
@@ -90,6 +68,13 @@ germ.mod.chill = stan('stan/fakeseed_chillonly.stan', data = data.list,
 
 bin.sum<-summary(germ.mod.chill)$summary
 bin.sum[c("a_beta","a_t50","a_d","b_chill_beta","b_chill_t50","b_chill_d","sigma"),] ###returns the right paraments but seems to stuggle
+
+
+
+
+
+
+
 
 
 stop("not an error")

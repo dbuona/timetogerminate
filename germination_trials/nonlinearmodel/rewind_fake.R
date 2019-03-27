@@ -63,8 +63,11 @@ data.list<-with(df,
                 )
 )
 
+
 germ.mod.chill = stan('stan/fakeseed_chillonly.stan', data = data.list,
                                 iter = 3000, warmup=2000) 
+
+ 
 
 bin.sum<-summary(germ.mod.chill)$summary
 bin.sum[c("a_beta","a_t50","a_d","b_chill_beta","b_chill_t50","b_chill_d","sigma"),] ###returns the right paraments but seems to stuggle

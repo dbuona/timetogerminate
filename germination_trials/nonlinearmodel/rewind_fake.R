@@ -6,10 +6,16 @@ rm(list=ls())
 options(stringsAsFactors = FALSE)
 graphics.off()
 
+loadmodels <- FALSE
+
 if(length(grep("Lizzie", getwd())>0)) { 
   setwd("~/Documents/git/projects/misc/dan/timetogerminate/germination_trials") 
 } else setwd("~/Documents/git/timetogerminate/germination_trials")
-load("fake_germ_models")
+
+if(loadmodels){
+load("fake_germ_models") # emw: What is this, do I need it?
+}
+
 library(rstan)
 library(tidyr)
 library(drc)
@@ -18,7 +24,7 @@ library(shinystan)
 library(extraDistr)
 
 ######Chilling only
-time<-seq(0,24,by=3) #time of each trial
+time<-seq(0,24,by=1) #time of each trial
 treat<-c(0,1) # level of chilling, continuous data
 sigma_y <- 0.01
 
@@ -66,7 +72,7 @@ data.list<-with(df,
 
 germ.mod.chill = stan('stan/fakeseed_chillonly.stan', data = data.list,
                                 iter = 3000, warmup=2000) 
-
+# emw: this model returns 3864 div trans for me and the rhat values are awful -- it is not converging at all --- are you sure it is running for you?
  
 
 bin.sum<-summary(germ.mod.chill)$summary
@@ -80,7 +86,7 @@ bin.sum[c("a_beta","a_t50","a_d","b_chill_beta","b_chill_t50","b_chill_d","sigma
 
 
 
-stop("not an error")
+stop("not an error") # emw ... assuming I don't run anything after this? Many errors below. 
 
 
 ##This is the base loop 
@@ -120,7 +126,7 @@ data.list<-with(df,
                 )
 
 germ.mod.warmchill.noint = stan('stan/fakeseed_forcechill_noint.stan', data = data.list,
-                         iter = 2000, warmup=1500) 
+                         iter = 6000, warmup=4000) 
 
 bin.sum<-summary(germ.mod.warmchill.noint)$summary
 bin.sum[c("a_beta","a_t50","a_d","b_warm_beta","b_warm_t50","b_warm_d","b_chill_beta","b_chill_t50","b_chill_d","sigma"),] ###whoohoo it works! but does it work with logitsitc?

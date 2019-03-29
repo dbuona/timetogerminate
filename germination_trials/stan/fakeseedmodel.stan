@@ -14,7 +14,7 @@ parameters {
 transformed parameters {
   real y_hat[N];
   for (i in 1:N) 
-    y_hat[i] = d/(1+((t[i]/t50)^beta));
+    y_hat[i] = d/(1+((t[i]/t50)^-beta));
     
  } 
  

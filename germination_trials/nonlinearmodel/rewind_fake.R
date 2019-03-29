@@ -59,8 +59,27 @@ ploty
 ploty+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat))) ### plot point with mean lines
 
 
-hist(df$y)
+### PART 1: NO TREATMENTS ###########
+notreat<-filter(df,chilltreat==1)
 
+data.list.notreat<-with(notreat,
+                list(Y=y,
+                     t=time,
+                     N=nrow(notreat)
+                     ))
+                
+###below are the same model coded in different ways. mod 1 ia good and returns proper parameners, mod 2 is baaad. 
+mod1= stan('stan/fakeseedmodel.stan', data = data.list.notreat,
+                      iter = 3000, warmup=2000) ###good mdel
+mod1.sum<-summary(mod1)$summary
+mod1.sum[c("beta","t50","d","sigma"),] 
+
+mod2= stan('stan/altfakeseed.model.stan', data = data.list.notreat,
+           iter = 3000, warmup=2000) ##1930 divergent transitions
+
+
+#######################M#########
+###Part II chilling (0,1) alters  t50 and beta but not d#################################
 data.list<-with(df,
                 list(Y=y,
                      t=time,
@@ -69,16 +88,20 @@ data.list<-with(df,
                 )
 )
 
+###below are the same model coded in different ways. 
+mod3 = stan('stan/fakeseedgoodchill.stan', data = data.list,
+                      iter = 3000, warmup=2000) 
 
 germ.mod.chill = stan('stan/fakeseed_chillonly.stan', data = data.list,
-                                iter = 3000, warmup=2000) 
+                                iter = 3000, warmup=2000) #360 divergent transitions after warmup
+                                                          #2829 transitions after warmup that exceeded the maximum treedepth
+
+
 # emw: this model returns 3864 div trans for me and the rhat values are awful -- it is not converging at all --- are you sure it is running for you?
- 
+#DB agreeed! 
 
 bin.sum<-summary(germ.mod.chill)$summary
-bin.sum[c("a_beta","a_t50","a_d","b_chill_beta","b_chill_t50","b_chill_d","sigma"),] ###returns the right paraments but seems to stuggle
-
-
+bin.sum[c("a_beta","a_t50","a_d","b_chill_beta","b_chill_t50","b_chill_d","sigma"),] 
 
 
 

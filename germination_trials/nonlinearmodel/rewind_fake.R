@@ -72,6 +72,7 @@ data.list.notreat<-with(notreat,
 mod1= stan('stan/fakeseedmodel.stan', data = data.list.notreat,
                       iter = 3000, warmup=2000) ###good mdel
 mod1.sum<-summary(mod1)$summary
+
 mod1.sum[c("beta","t50","d","sigma"),] 
 
 mod2= stan('stan/altfakeseed.model.stan', data = data.list.notreat,
@@ -89,12 +90,17 @@ data.list<-with(df,
 )
 
 ###below are the same model coded in different ways. 
-mod3 = stan('stan/fakeseedgoodchill.stan', data = data.list,
-                      iter = 3000, warmup=2000) 
+mod3 = stan('stan/fakeseedgoodchill.stan', data = data.list,                        ##4/1/19 
+                      iter = 3000, warmup=2000, control = list(max_treedepth = 15)) #16 divergent transitions after warmup
+                                    #3176  transitions after warmup that exceeded the maximum treedepth
+                                    # bad Rhats, but I broke it again worse trying to imrpove it.
+
+mod3.sum<-summary(mod3)$summary
+mod3.sum[c("a_beta","a_t50","d","b_beta","b_t50","sigma"),] 
 
 germ.mod.chill = stan('stan/fakeseed_chillonly.stan', data = data.list,
-                                iter = 3000, warmup=2000) #360 divergent transitions after warmup
-                                                          #2829 transitions after warmup that exceeded the maximum treedepth
+                                iter = 3000, warmup=2000),) 
+                                                          #
 
 
 # emw: this model returns 3864 div trans for me and the rhat values are awful -- it is not converging at all --- are you sure it is running for you?

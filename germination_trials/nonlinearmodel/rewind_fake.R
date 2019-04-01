@@ -13,7 +13,7 @@ if(length(grep("Lizzie", getwd())>0)) {
 } else setwd("~/Documents/git/timetogerminate/germination_trials")
 
 if(loadmodels){
-load("fake_germ_models") # emw: What is this, do I need it?
+load("fake_germ_models") # emw: What is this, do I need it? DB...no its only so I can load models but none currently work.
 }
 
 library(rstan)
@@ -26,7 +26,7 @@ library(extraDistr)
 ######Chilling only
 time<-seq(0,24,by=1) #time of each trial
 treat<-c(0,1) # level of chilling, continuous data
-sigma_y <- 0.01
+sigma_y <- 0.01 ## small signmal
 
 t50.a<-15 #intercept of t50
 t50.b<--5 # slope of t50 with chilling
@@ -40,7 +40,7 @@ d.b<-10 #slope of d with chilling
 repz<-seq(1,50,by=1) ## number of replicates
 
 ###for starters assme a 100% germination scenario, no (D parameter)
-df<-data.frame(time=numeric(), y=numeric(),chilltreat=numeric(),ID=numeric())  ##3why is this breaking?
+df<-data.frame(time=numeric(), y=numeric(),chilltreat=numeric(),ID=numeric())  ##generate fake data
 
 for (i in c(1:length(treat))){
   y <- c()
@@ -56,11 +56,11 @@ for (i in c(1:length(treat))){
 df$uniqueID<-paste(df$chilltreat,df$ID,sep="-")
 ploty<-ggplot(df,aes(time,y))+geom_point(aes(color=as.factor(chilltreat)))
 ploty
-ploty+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat))) ### plot point with mean lines
+ploty+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat))) ### plot point with mean lines these datas look good
 
 
 ### PART 1: NO TREATMENTS ###########
-notreat<-filter(df,chilltreat==1)
+notreat<-filter(df,chilltreat==1) ## do this for models with out any predictors)
 
 data.list.notreat<-with(notreat,
                 list(Y=y,

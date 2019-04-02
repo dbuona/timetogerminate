@@ -37,5 +37,5 @@ transformed parameters {
   //d ~ uniform(0,1); 
    sigma ~ normal(0,1);
   // likelihood
-to_vector(Y) ~ normal(y_hat, sigma);
+Y~ normal(y_hat, sigma);
 }

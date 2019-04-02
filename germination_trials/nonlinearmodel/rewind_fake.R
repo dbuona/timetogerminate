@@ -61,7 +61,7 @@ ploty+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat))
 
 ### PART 1: NO TREATMENTS ###########
 notreat<-filter(df,chilltreat==1) ## do this for models with out any predictors)
-
+ggplot(notreat,aes(time,y))+geom_point()
 data.list.notreat<-with(notreat,
                 list(Y=y,
                      t=time,
@@ -75,17 +75,24 @@ mod1.sum<-summary(mod1)$summary
 
 mod1.sum[c("beta","t50","d","sigma"),] 
 
-mod2= stan('stan/altfakeseed.model.stan', data = data.list.notreat,
-           iter = 3000, warmup=2000) ##1930 divergent transitions
+#mod2= stan('stan/altfakeseed.model.stan', data = data.list.notreat,
+ #          iter = 3000, warmup=2000) ##1930 divergent transitions
 
+##compare with drc
 
-#######################M#########
+mod1.drc<-drm(y~time,fct=LL.3(),data=notreat,type="continuous")
+summary(mod1.drc)
+#
+######################M#########
 ###Part II chilling (0,1) alters  t50 and beta but not d#################################
-data.list<-with(df,
+df.adj<-df
+df.adj$time<-ifelse(df.adj$time==0,0.0001,df.adj$time) ### I think the log logistic distrubtion can't handle when time=0 because it creata log of (0) situation
+                                                        ###this alwows germ mo    
+data.list<-with(df.adj,
                 list(Y=y,
                      t=time,
                      chill=chilltreat,
-                     N=nrow(df)
+                     N=nrow(df.adj)
                 )
 )
 
@@ -93,15 +100,20 @@ data.list<-with(df,
 mod3 = stan('stan/fakeseedgoodchill.stan', data = data.list,                        ##4/1/19 
                       iter = 3000, warmup=2000, control = list(max_treedepth = 15)) #16 divergent transitions after warmup
                                     #3176  transitions after warmup that exceeded the maximum treedepth
-                                    # bad Rhats, but I broke it again worse trying to imrpove it.
+                                    # bad Rhats, but I broke it again worse trying to imrpove it. Doesn't run in 24 hours
 
 mod3.sum<-summary(mod3)$summary
 mod3.sum[c("a_beta","a_t50","d","b_beta","b_t50","sigma"),] 
 
-germ.mod.chill = stan('stan/fakeseed_chillonly.stan', data = data.list,
-                                iter = 3000, warmup=2000),) 
-                                                          #
+mod3.drc<-drm(y~time,chilltreat,fct=LL.3(),data=df,type="continuous")
+summary(mod3.drc)
 
+mod4 = stan('stan/fakeseed_chillonly.stan', data = data.list,
+                                iter = 3000, warmup=2000,control = list(max_treedepth = 15)) ###  250 divergent transitions
+                                                                                              ##better rhats
+mod4.sum<-summary(mod4)$summary
+mod4.sum[c("a_beta","a_t50","b_chill_beta","b_chill_t50","sigma"),]                                                          #
+launch_shinystan(mod4)
 
 # emw: this model returns 3864 div trans for me and the rhat values are awful -- it is not converging at all --- are you sure it is running for you?
 #DB agreeed! 

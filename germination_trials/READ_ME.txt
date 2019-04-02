@@ -23,7 +23,7 @@ A.germination_cleaning.R- Main cleaning file
 stan:
   A. fakeseedmodel.stan-  loglogistic stan model a germination time curve with no treatment levels **runs and returns starter paramenters**
   B. altfakeseed.model.stan- same as above but a more complicted function- ***many divergent transitions**
-  C. fakeseed_chillonly.stan A model for germination courses with a 0,1 chilling treatment based on modified version of B ***2000+ divergent transitions***
+  C. fakeseed_chillonly.stan A model for germination courses with a 0,1 chilling treatment based on modified version of B, as of 4/2/19 now with alternative parameterization from wikipedia.  ***only throws ~40 divergent transitions***
   D. fakeseedgoodchill.stan A model for germination courses with a 0,1 chilling treatment based on modified version of A **300ish divergent transitions.
   E. fakeseed_forceonly.stan Same as C but for forcing
   F. fakeseed_forcechill_noint.stan A broken model to try to incorperate both forcing and chilling onto fake germinationd ata

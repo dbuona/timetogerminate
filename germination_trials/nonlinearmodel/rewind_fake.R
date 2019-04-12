@@ -82,7 +82,8 @@ mod1.drc<-drm(y~time,fct=LL.3(),data=notreat,type="continuous")
 summary(mod1.drc)
 # mattches
 ######################M#########
-
+hist(rnorm(1000,0,3))
+hist(rbeta(1000,2,2))
 ###Part II chilling (0,1) alters  t50 and beta but not d#################################
                                                           
 data.list<-with(df.adj,
@@ -94,9 +95,11 @@ data.list<-with(df.adj,
 )
 
 mod3 = stan('stan/fakeseedgoodchill.stan', data = data.list,  ###13 divergent transitions
-                      iter = 3000, warmup=2200) 
+                      iter = 3000, warmup=2000) 
 mod3.sum<-summary(mod3)$summary
 mod3.sum[c("a_t50","d","beta","b_t50","sigma"),] ###but very wrong parameter estimate for a_t50 and b_t50 and sigma.
+launch_shinystan(mod3)
+
 
 mod3.drc<-drm(y~time,chilltreat,fct=LL.3(),data=df,type="continuous") ### check it against drc
 summary(mod3.drc) ### this work

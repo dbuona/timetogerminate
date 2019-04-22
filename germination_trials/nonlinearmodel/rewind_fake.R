@@ -7,6 +7,7 @@ options(stringsAsFactors = FALSE)
 graphics.off()
 
 loadmodels <- FALSE
+runpart1 <- FALSE
 
 if(length(grep("Lizzie", getwd())>0)) { 
   setwd("~/Documents/git/projects/misc/dan/timetogerminate/germination_trials") 
@@ -23,17 +24,17 @@ library(dplyr)
 library(shinystan)
 library(extraDistr)
 
-######Chilling only
-time<-seq(0,24,by=1) #time of each trial
-treat<-c(0,1) # level of chilling, continuous data
+###### Chilling only
+time <-seq(0,24,by=1) #time of each trial
+treat <- c(0,1) # level of chilling, continuous data
 sigma_y <- 0.01 ## small signma
 
 #Start with data where only t50 changes
-t50.a<-15 #intercept of t50
-t50.b<--5 # slope of t50 with chilling
+t50.a <- 15 #intercept of t50
+t50.b <- -5 # slope of t50 with chilling
 
-beta.a<-6 #intercept of beta (shape paramenter)
-d.a<-0.9 # intercept of d (maximum germination %)
+beta.a <- 6 #intercept of beta (shape paramenter)
+d.a <- 0.9 # intercept of d (maximum germination %)
 
 repz<-seq(1,50,by=1) ## number of replicates
 
@@ -51,6 +52,7 @@ for (i in c(1:length(treat))){
     }
   }
 
+
 ###plot the trials
 ploty<-ggplot(df,aes(time,y))+geom_point(aes(color=as.factor(chilltreat)))
 ploty
@@ -60,7 +62,7 @@ df.adj<-df
 df.adj$time<-ifelse(df.adj$time==0,0.0001,df.adj$time) ###the log logistic can't handle time values of zero. I am not sure if this is the right way to handle this
 
 
-
+if(runpart1){
 ### PART 1: NO TREATMENTS ###########
 notreat<-filter(df.adj,chilltreat==1) ## do this for models with out any predictors
 ggplot(notreat,aes(time,y))+geom_point() #plot single treatment
@@ -77,11 +79,14 @@ mod1= stan('stan/fakeseedmodel.stan', data = data.list.notreat,
 mod1.sum<-summary(mod1)$summary
 mod1.sum[c("beta","t50","d","sigma"),] ### these parameters are correct
 
+
 ##compare with drc
 mod1.drc<-drm(y~time,fct=LL.3(),data=notreat,type="continuous")
 summary(mod1.drc)
-# mattches
-######################M#########
+# matches
+}
+
+###### Priors #########
 hist(rnorm(1000,0,3))
 hist(rbeta(1000,2,2))
 ###Part II chilling (0,1) alters  t50 and beta but not d#################################
@@ -94,10 +99,19 @@ data.list<-with(df.adj,
                 )
 )
 
-mod3 = stan('stan/fakeseedgoodchill.stan', data = data.list,  ###13 divergent transitions
-                      iter = 3000, warmup=2000) 
+mod3 = stan('stan/fakeseedgoodchill.stan', data = data.list, 
+                      iter = 6000, warmup=5000, chain=1)
+
+mod3.alt = stan('stan/fakeseedgoodchill_alt.stan', data = data.list, 
+                      iter = 6000, warmup=5000, chain=1) # this runs, but I did get divergent transitions sometimes when increasing chain number unless I had high iter
+summary(mod3.alt)$summary[c("a_t50","d","beta","b_t50","sigma"),]
+
+mod3.alt.mega = stan('stan/fakeseedgoodchill_alt.stan', data = data.list, 
+                      iter = 10000, warmup=9000, chain=4)
+summary(mod3.alt.mega)$summary[c("a_t50","d","beta","b_t50","sigma"),]
+
 mod3.sum<-summary(mod3)$summary
-mod3.sum[c("a_t50","d","beta","b_t50","sigma"),] ###but very wrong parameter estimate for a_t50 and b_t50 and sigma.
+mod3.sum[c("a_t50","d","beta","b_t50","sigma"),] ### but very wrong parameter estimate for a_t50 and b_t50 and sigma.
 launch_shinystan(mod3)
 
 

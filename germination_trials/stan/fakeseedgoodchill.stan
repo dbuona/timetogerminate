@@ -31,8 +31,8 @@ y_hat[i] = d/1+pow((t[i]/t50),-beta); //or it can be written
  
  model {
   // priors
-  a_t50~ normal(0,3); // truncations add CDF, don't need if just adding constants (on right side)
-  b_t50 ~ normal (0,3);
+  a_t50~ normal(0,8); // truncations add CDF, don't need if just adding constants (on right side)
+  b_t50 ~ normal (0,8);
   beta ~ normal(0, 3); 
   d ~  beta(2,2);
    sigma ~ normal(0,.5);

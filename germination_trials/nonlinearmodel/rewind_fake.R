@@ -35,13 +35,19 @@ t50.a <- 15 #intercept of t50
 t50.cb <- -1 # slope of t50 with chilling
 t50.fb<--.5 # slope of t50 with forcing
 
-beta.a <- 5 #intercept of beta (shape paramenter)
-beta.cb<-.66 #slope of beta chilling
-beta.fb<-.33 #slope of beta forcing
+beta.a <- 4 #intercept of beta (shape paramenter)
+beta.cb<-.5 #slope of beta chilling
+beta.fb<-1 #slope of beta forcing
 
 d.a <- 0.4 # intercept of d (maximum germination %)
-d.cb<-0.07 # slope of d chilling
-d.fb<-0.03 # slope of d forcing
+d.cb<-0.03 # slope of d chilling
+d.fb<-0.3 # slope of d forcing
+
+#Interactions
+d.cxf<--0.02
+t50.cxf<-.5
+b.cxf<--.2
+
 repz<-seq(1,50,by=1) ## number of replicates
 
 
@@ -54,7 +60,7 @@ for (j in c(1:length(forcetreat))){
 for (i in c(1:length(chilltreat))){
   y <- c()
   for(k in c(1:length(repz))){ 
-    y<-(d.fb*forcetreat[j]+d.cb*chilltreat[i]+d.a)/(1+((time/(t50.fb*forcetreat[j]+t50.cb*chilltreat[i]+t50.a))^-(beta.fb*forcetreat[j]+beta.cb*chilltreat[i]+beta.a)))
+    y<-(d.fb*forcetreat[j]+d.cb*chilltreat[i]+d.cxf*(forcetreat[j]*chilltreat[i])+d.a)/(1+((time/(t50.fb*forcetreat[j]+t50.cb*chilltreat[i]+t50.cxf*(forcetreat[j]*chilltreat[i])+t50.a))^-(beta.fb*forcetreat[j]+beta.cb*chilltreat[i]+b.cxf*(forcetreat[j]*chilltreat[i])+beta.a)))
     #y<-(d.b*treat[i]+d.a)/(1+((time/(t50.b*treat[i]+t50.a))^-(beta.a)))
     dfhere2 <- data.frame(time=time, y=rtnorm(length(y),y,sigma_y,a=0,b=Inf),chilltreat=rep(chilltreat[i], length(y)),forcetreat=rep(forcetreat[j], length(y)),ID=rep(repz[k],length(y)))
     
@@ -63,10 +69,14 @@ for (i in c(1:length(chilltreat))){
 }
 }
 
+
 ploty2<-ggplot(df2,aes(time,y))+geom_point(aes(color=as.factor(chilltreat),shape=as.factor(forcetreat))) #plot fake data
 ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat),linetype=as.factor(forcetreat))) # plot fake data with average lines
 
 df2$y<-ifelse(df2$y>=1,1,df2$y) # correct any data what was more than 100% germiantion to 100%
+
+ploty2<-ggplot(df2,aes(time,y))+geom_point(aes(color=as.factor(chilltreat),shape=as.factor(forcetreat))) #plot fake data
+ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat),linetype=as.factor(forcetreat))) # plot fake data with average lines
 
 df.adj2<-df2
 df.adj2$time<-ifelse(df.adj2$time==0,0.0001,df.adj2$time) ### change time=0 to .0001 because models struggle to fit zero values
@@ -80,6 +90,7 @@ data.list2<-with(df.adj2,
                      N=nrow(df.adj2) # datalist
                 )
 )
+
 mod4.alt = stan('stan/fakeseedgoodchill_alt2param.stan', data = data.list2, 
                 iter = 6000, warmup=5000, chain=1) # try model on one chaian
 summary(mod4.alt)$summary[c("a_t50","a_d","a_beta","bf_beta","bf_t50","bf_d","bc_beta","bc_t50","bc_d","sigma"),]
@@ -89,53 +100,41 @@ mod4.alt.mega = stan('stan/fakeseedgoodchill_alt2param.stan', data = data.list2,
 
 summary(mod4.alt.mega)$summary[c("a_t50","a_d","a_beta","bf_beta","bf_t50","bf_d","bc_beta","bc_t50","bc_d","sigma"),]
 launch_shinystan(mod4.alt.mega) # model fits
+
+#interaction
+modintxn = stan('stan/fakeseedgoodchill_winters.stan', data = data.list2, 
+                iter = 6000, warmup=5000, chain=1)
+summary(modintxn)$summary[c("a_d","bc_d","bf_d","a_beta","bc_beta","bf_beta","a_t50","bc_t50","bf_t50","inter_d","inter_beta","inter_t50","sigma"),]
+
+Y_mean <- rstan::extract(modintxn, pars=c("Y_mean"))
+Y_mean_cred <- apply(Y_mean$Y_mean, 2, quantile, c(0.05, 0.95))
+Y_mean_mean <- apply(Y_mean$Y_mean, 2, mean)
+
+Y_pred <- rstan::extract(modintxn, "Y_pred")
+Y_pred_cred <- apply(Y_pred$Y_pred, 2, quantile, c(0.05, 0.95))
+Y_pred_mean <- apply(Y_pred$Y_pred, 2, mean)
+df.adj2$y ~ df.adj2$time
+plot(c(0,20),c(0,1), xlab="time", ylab="germination", 
+     ylim=c(0, 1),xlim=c(0,20), main="Non-linear Growth Curve")
+lines(df.adj2$time, Y_mean_mean)
+points(df.adj2$time, Y_pred_mean, pch=19, col=4)
+lines(df.adj2$time, Y_mean_cred[1,], col=4)
+lines(df.adj2$time, Y_mean_cred[2,], col=4)
+lines(df.adj2$time, Y_pred_cred[1,], col=2)
+lines(df.adj2$time, Y_pred_cred[2,], col=2)
+legend(x="bottomright", bty="n", lwd=2, lty=c(NA, NA, 1, 1,1),
+       legend=c("observation", "prediction", "mean prediction",
+                "90% mean cred. interval", "90% pred. cred. interval"),
+       col=c(1,1,1,4,2),  pch=c(1, 19, NA, NA, NA))
+
+
+modintxn.mega = stan('stan/fakeseedgoodchill_winters.stan', data = data.list2, 
+                iter = 12000, warmup=11000, chain=4)
+summary(modintxn.mega)$summary[c("a_d","bc_d","bf_d","a_beta","bc_beta","bf_beta","a_t50","bc_t50","bf_t50","inter_d","inter_beta","inter_t50","sigma"),] #horrible Rhats
+
+
+
 save.image("fake_germ_models") 
-
-###try this model on the real data for asclepias
-realdat<-read.csv("input/daily_dat_nointerval.csv")
-Ascp<-filter(realdat, Taxa=="Asclepias syriaca")
-Ascp$germ_perc<-Ascp$germ_num/Ascp$tot_seed
-Ascp$germ_perc<-ifelse(Ascp$germ_perc>1,1,Ascp$germ_perc)
-goober<-Ascp
-
-##make chilling numeric
-goober$chill_time<-NA
-goober<- within(goober, chill_time[COLD=="0" ]<-0)
-goober<- within(goober, chill_time[COLD=="A" ]<-14)
-goober<- within(goober, chill_time[COLD=="B" ]<-28)
-goober<- within(goober, chill_time[COLD=="C" ]<-35)
-goober<- within(goober, chill_time[COLD=="D" ]<-42)
-goober<- within(goober, chill_time[COLD=="E" ]<-49)
-goober<- within(goober, chill_time[COLD=="f" ]<-56)
-goober<- within(goober, chill_time[COLD=="G" ]<-63)
-goober<- within(goober, chill_time[COLD=="H" ]<-77)
-goober<- within(goober, chill_time[COLD=="i" ]<-91)
-goober$chillweeks<-goober$chill_time/7 # make chilling weeks instead of days
-
-goober$force<-NA # make forcing numeric
-goober<- within(goober, force[INC=="L"]<-0)
-goober<- within(goober, force[INC=="H"]<-1)
-
-
-goober$DAY<-ifelse(goober$DAY==0,0.0001,goober$DAY) # elimiate 0 values as above
-data.asc<-with(goober,
-                 list(Y=germ_perc,
-                      t=DAY,
-                      chill=chillweeks,
-                      force=force,
-                      N=nrow(goober)
-                 )
-)
-
-ploty.asc<-ggplot(goober,aes(DAY,germ_perc))+geom_point(aes(color=as.factor(chillweeks),shape=as.factor(force))) # plot asclpeias data
-ploty.asc+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chillweeks),linetype=as.factor(force)))
-
-mod.asc.mega = stan('stan/fakeseedgoodchill_alt2param.stan', data = data.asc, 
-                     iter = 10000, warmup=9000, chain=4) ## run model
-
-summary(mod.asc.mega)$summary[c("a_d","bf_d","bc_d","a_t50","bf_t50","bc_t50","a_beta","bf_beta","bc_beta","sigma"),] ## some bad rhats, maybe change priors?
-launch_shinystan(mod.asc) 
-
 stop("Not an error, just everything below is older code that was used to build current edition")
 #######################################Older editiions below
 ### generate fake data with only chilling and t50 beta

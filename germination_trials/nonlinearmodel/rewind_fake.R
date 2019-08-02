@@ -73,10 +73,9 @@ for (i in c(1:length(chilltreat))){
 ploty2<-ggplot(df2,aes(time,y))+geom_point(aes(color=as.factor(chilltreat),shape=as.factor(forcetreat))) #plot fake data
 ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat),linetype=as.factor(forcetreat))) # plot fake data with average lines
 
-df2$y<-ifelse(df2$y>=1,1,df2$y) # correct any data what was more than 100% germiantion to 100%
-
-ploty2<-ggplot(df2,aes(time,y))+geom_point(aes(color=as.factor(chilltreat),shape=as.factor(forcetreat))) #plot fake data
-ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat),linetype=as.factor(forcetreat))) # plot fake data with average lines
+#df2$y<-ifelse(df2$y>=1,1,df2$y) # don't need this with current paraments correct any data what was more than 100% germiantion to 100%
+#ploty2<-ggplot(df2,aes(time,y))+geom_point(aes(color=as.factor(chilltreat),shape=as.factor(forcetreat))) #plot fake data
+#ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat),linetype=as.factor(forcetreat))) # plot fake data with average lines
 
 df.adj2<-df2
 df.adj2$time<-ifelse(df.adj2$time==0,0.0001,df.adj2$time) ### change time=0 to .0001 because models struggle to fit zero values
@@ -91,48 +90,73 @@ data.list2<-with(df.adj2,
                 )
 )
 
-mod4.alt = stan('stan/fakeseedgoodchill_alt2param.stan', data = data.list2, 
+#Models with no interactions
+#mod4.alt = stan('stan/fakeseedgoodchill_alt2param.stan', data = data.list2, 
                 iter = 6000, warmup=5000, chain=1) # try model on one chaian
-summary(mod4.alt)$summary[c("a_t50","a_d","a_beta","bf_beta","bf_t50","bf_d","bc_beta","bc_t50","bc_d","sigma"),]
+#summary(mod4.alt)$summary[c("a_t50","a_d","a_beta","bf_beta","bf_t50","bf_d","bc_beta","bc_t50","bc_d","sigma"),]
 
-mod4.alt.mega = stan('stan/fakeseedgoodchill_alt2param.stan', data = data.list2, 
+#mod4.alt.mega = stan('stan/fakeseedgoodchill_alt2param.stan', data = data.list2, 
                      iter = 10000, warmup=9000, chain=4) # try full model
 
-summary(mod4.alt.mega)$summary[c("a_t50","a_d","a_beta","bf_beta","bf_t50","bf_d","bc_beta","bc_t50","bc_d","sigma"),]
-launch_shinystan(mod4.alt.mega) # model fits
+#summary(mod4.alt.mega)$summary[c("a_t50","a_d","a_beta","bf_beta","bf_t50","bf_d","bc_beta","bc_t50","bc_d","sigma"),]
+#launch_shinystan(mod4.alt.mega) # model fits
 
-#interaction
+#interaction model
 modintxn = stan('stan/fakeseedgoodchill_winters.stan', data = data.list2, 
-                iter = 6000, warmup=5000, chain=1)
+                iter = 6000, warmup=5000, chain=1) #1 chain only
 summary(modintxn)$summary[c("a_d","bc_d","bf_d","a_beta","bc_beta","bf_beta","a_t50","bc_t50","bf_t50","inter_d","inter_beta","inter_t50","sigma"),]
-
-Y_mean <- rstan::extract(modintxn, pars=c("Y_mean"))
-Y_mean_cred <- apply(Y_mean$Y_mean, 2, quantile, c(0.05, 0.95))
-Y_mean_mean <- apply(Y_mean$Y_mean, 2, mean)
-
-Y_pred <- rstan::extract(modintxn, "Y_pred")
-Y_pred_cred <- apply(Y_pred$Y_pred, 2, quantile, c(0.05, 0.95))
-Y_pred_mean <- apply(Y_pred$Y_pred, 2, mean)
-df.adj2$y ~ df.adj2$time
-plot(c(0,20),c(0,1), xlab="time", ylab="germination", 
-     ylim=c(0, 1),xlim=c(0,20), main="Non-linear Growth Curve")
-lines(df.adj2$time, Y_mean_mean)
-points(df.adj2$time, Y_pred_mean, pch=19, col=4)
-lines(df.adj2$time, Y_mean_cred[1,], col=4)
-lines(df.adj2$time, Y_mean_cred[2,], col=4)
-lines(df.adj2$time, Y_pred_cred[1,], col=2)
-lines(df.adj2$time, Y_pred_cred[2,], col=2)
-legend(x="bottomright", bty="n", lwd=2, lty=c(NA, NA, 1, 1,1),
-       legend=c("observation", "prediction", "mean prediction",
-                "90% mean cred. interval", "90% pred. cred. interval"),
-       col=c(1,1,1,4,2),  pch=c(1, 19, NA, NA, NA))
 
 
 modintxn.mega = stan('stan/fakeseedgoodchill_winters.stan', data = data.list2, 
-                iter = 12000, warmup=11000, chain=4)
+                     iter = 10000, warmup= 9000, chain=4) ## chains
 summary(modintxn.mega)$summary[c("a_d","bc_d","bf_d","a_beta","bc_beta","bf_beta","a_t50","bc_t50","bf_t50","inter_d","inter_beta","inter_t50","sigma"),] #horrible Rhats
+(modintxn.mega)
+
+### This was an attempt add ad PP checks to the model, not useful yet
+#Y_mean <- rstan::extract(modintxn, pars=c("Y_mean"))
+#Y_mean_cred <- apply(Y_mean$Y_mean, 2, quantile, c(0.05, 0.95))
+#Y_mean_mean <- apply(Y_mean$Y_mean, 2, mean)
+
+#Y_pred <- rstan::extract(modintxn, "Y_pred")
+#Y_pred_cred <- apply(Y_pred$Y_pred, 2, quantile, c(0.05, 0.95))
+#Y_pred_mean <- apply(Y_pred$Y_pred, 2, mean)
+#df.adj2$y ~ df.adj2$time
+#plot(c(0,20),c(0,1), xlab="time", ylab="germination", 
+ #    ylim=c(0, 1),xlim=c(0,20), main="Non-linear Growth Curve")
+#lines(df.adj2$time, Y_mean_mean)
+#points(df.adj2$time, Y_pred_mean, pch=19, col=4)
+#lines(df.adj2$time, Y_mean_cred[1,], col=4)
+#lines(df.adj2$time, Y_mean_cred[2,], col=4)
+#lines(df.adj2$time, Y_pred_cred[1,], col=2)
+#lines(df.adj2$time, Y_pred_cred[2,], col=2)
+#legend(x="bottomright", bty="n", lwd=2, lty=c(NA, NA, 1, 1,1),
+#       legend=c("observation", "prediction", "mean prediction",
+ #               "90% mean cred. interval", "90% pred. cred. interval"),
+#       col=c(1,1,1,4,2),  pch=c(1, 19, NA, NA, NA))
+
+#prior,predctive check also not active yet
+a_t50<-rnorm(1e4,20, 10)
+bc_t50<-rnorm(1e,4,0, 5)
+bf_t50<-rnorm(1e4,0,5)
+a_beta<- rnorm(1e4,3, 1) 
+bc_beta <- rnorm (1e4,1,.5)
+bf_beta <- rnorm (1e4,1,.5)
+a_d <- runif(1e4,0, 1) 
+bc_d <- rnorm(1e4,0.5, 0.1)
+bf_d <- rnorm(1e4,0.5, 0.1)
+inter_t50 <- rnorm(1e4,0,5)
+inter_beta <- rnorm(1e4,2,1)
+inter_d <- rnorm(1e4,0.5, 0.1) 
+
+y_hat<-rnorm(1000,(a_d+bc_d+bf_d+inter_d)/(1+((time/(a_t50+bc_t50.+bf_t50+inter_t50))^-(bf_beta+bf_beta+inter_beta+a_beta))),0)
+sigma <- rnorm(1e4,1,1)
 
 
+modintxn.mega = stan('stan/fakeseedgoodchill_winters.stan', data = data.list2, 
+                iter = 8000, warmup= 7000, chain=4)
+summary(modintxn.mega)$summary[c("a_d","bc_d","bf_d","a_beta","bc_beta","bf_beta","a_t50","bc_t50","bf_t50","inter_d","inter_beta","inter_t50","sigma"),] #horrible Rhats
+(modintxn.mega)
+pairs(modintxn)
 
 save.image("fake_germ_models") 
 stop("Not an error, just everything below is older code that was used to build current edition")

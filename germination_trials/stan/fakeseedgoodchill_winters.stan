@@ -43,18 +43,18 @@ transformed parameters {
  model {
   // priors
   a_t50 ~ normal(20, 10); // previous prior did not reach to 15 ...
-  bc_t50 ~ normal(0, 10);
-  bf_t50 ~ normal(0,10);
-  a_beta ~ normal(0, 50); 
-  bc_beta ~ normal (0,10);
-  bf_beta ~ normal (0,10);
-  a_d ~ normal(0.5, 0.5); 
-  bc_d ~ normal(0.5, 0.5);
-  bf_d ~ normal(0.5, 0.5);
-  inter_t50 ~ normal(0,10);
-  inter_beta ~ normal(0,10);
-  inter_d ~ normal (0.5, 0.5); 
-  sigma ~ normal(0,1);
+  bc_t50 ~ normal(0, 5);
+  bf_t50 ~ normal(0,5);
+  a_beta ~ normal(3, 1); 
+  bc_beta ~ normal (1,.5);
+  bf_beta ~ normal (1,.5);
+  a_d ~ uniform(0, 1); 
+  bc_d ~ normal(0.5, 0.1);
+  bf_d ~ normal(0.5, 0.1);
+  inter_t50 ~ normal(0,5);
+  inter_beta ~ normal(2,1);
+  inter_d ~ normal (0.5, 0.1); 
+  sigma ~ uniform (0,1);
   // likelihood
   Y ~ normal(y_hat, sigma);
 }
@@ -69,3 +69,4 @@ generated quantities {
     Y_pred[i] = normal_rng(Y_mean[i], sigma); // Posterior predictive distribution 
 }
 }
+

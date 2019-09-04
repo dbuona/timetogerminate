@@ -41,6 +41,18 @@ realdat<- within(realdat, force[INC=="H"]<-1)
 
 realdat$DAY<-ifelse(realdat$DAY==0,0.0001,realdat$DAY) #elimiate 0 values for log logistic dist
 
+realdatshorty<- filter(realdat,!Taxa %in% c("Phlox cuspidata","Impatiens capensis","Carex grisea"))
+jpeg("figures/raw_germy.jpeg",res=200,width=1500,height=800)
+ploty<-ggplot(realdatshorty,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) #plot fake data
+ploty+geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
+dev.off()
+
+candies<-filter(realdatshorty, Taxa %in% c("Polygonum virginiatum","Cryptotaenia canadensis","Eurbia diviricata","Anemone virginana"))
+jpeg("figures/woodspecies.jpeg",res=200,width=1500,height=800)
+ploty2<-ggplot(candies,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) #plot fake data
+ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
+dev.off()
+#"Hesperis matronalis", "Asclepias syriaca","Oenethera biennis","Eurbia diviricata","Hesperis matronalis","Cryptotaenia canadensis","Eurbia diviricata"
 specieslist<-sort(unique(realdat$Taxa))
 X<-split(realdat, with(realdat, realdat$Taxa), drop = TRUE)
 Y <- lapply(seq_along(X), function(x) as.data.frame(X[[x]])[, 1:20]) 

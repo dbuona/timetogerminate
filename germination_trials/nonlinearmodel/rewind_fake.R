@@ -26,25 +26,25 @@ library(extraDistr)
 
 ##The code below genrates fake data with 10 levels of chilling and 2 levels of forcing, with no interactions between treatments.
 time <-seq(0,24,by=1) #time of each trial
-chilltreat <- c(0,1,2,3,4,5,6,7,8,9,10) # level of chilling, continuous data
+chilltreat <- c(0,1,2,3,4,5,6)#,7,8,9,10) # level of chilling, continuous data
 forcetreat<-c(0,1) #levels of forgince
 sigma_y <- 0.01 ## small signma
 
 
 t50.a <- 15 #intercept of t50
-t50.cb <- -1 # slope of t50 with chilling
-t50.fb<--.5 # slope of t50 with forcing
+t50.cb <- -2 # slope of t50 with chilling
+t50.fb<--1 # slope of t50 with forcing
 
 beta.a <- 4 #intercept of beta (shape paramenter)
-beta.cb<-.5 #slope of beta chilling
-beta.fb<-1 #slope of beta forcing
+beta.cb<-1 #slope of beta chilling
+beta.fb<-1.5 #slope of beta forcing
 
-d.a <- 0.4 # intercept of d (maximum germination %)
-d.cb<-0.03 # slope of d chilling
-d.fb<-0.3 # slope of d forcing
+d.a <- 0.3 # intercept of d (maximum germination %)
+d.cb<-0.1 # slope of d chilling
+d.fb<-0.25 # slope of d forcing
 
 #Interactions
-d.cxf<--0.02
+d.cxf<--0.1
 t50.cxf<-.5
 b.cxf<--.2
 
@@ -73,6 +73,7 @@ for (i in c(1:length(chilltreat))){
 ploty2<-ggplot(df2,aes(time,y))+geom_point(aes(color=as.factor(chilltreat),shape=as.factor(forcetreat))) #plot fake data
 ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat),linetype=as.factor(forcetreat))) # plot fake data with average lines
 
+
 #df2$y<-ifelse(df2$y>=1,1,df2$y) # don't need this with current paraments correct any data what was more than 100% germiantion to 100%
 #ploty2<-ggplot(df2,aes(time,y))+geom_point(aes(color=as.factor(chilltreat),shape=as.factor(forcetreat))) #plot fake data
 #ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat),linetype=as.factor(forcetreat))) # plot fake data with average lines
@@ -92,11 +93,11 @@ data.list2<-with(df.adj2,
 
 #Models with no interactions
 #mod4.alt = stan('stan/fakeseedgoodchill_alt2param.stan', data = data.list2, 
-                iter = 6000, warmup=5000, chain=1) # try model on one chaian
+ #               iter = 6000, warmup=5000, chain=1) # try model on one chaian
 #summary(mod4.alt)$summary[c("a_t50","a_d","a_beta","bf_beta","bf_t50","bf_d","bc_beta","bc_t50","bc_d","sigma"),]
 
 #mod4.alt.mega = stan('stan/fakeseedgoodchill_alt2param.stan', data = data.list2, 
-                     iter = 10000, warmup=9000, chain=4) # try full model
+  #                   iter = 10000, warmup=9000, chain=4) # try full model
 
 #summary(mod4.alt.mega)$summary[c("a_t50","a_d","a_beta","bf_beta","bf_t50","bf_d","bc_beta","bc_t50","bc_d","sigma"),]
 #launch_shinystan(mod4.alt.mega) # model fits
@@ -108,7 +109,7 @@ summary(modintxn)$summary[c("a_d","bc_d","bf_d","a_beta","bc_beta","bf_beta","a_
 
 
 modintxn.mega = stan('stan/fakeseedgoodchill_winters.stan', data = data.list2, 
-                     iter = 10000, warmup= 9000, chain=4) ## chains
+                     iter = 6000, warmup= 5000, chain=4) ## chains
 summary(modintxn.mega)$summary[c("a_d","bc_d","bf_d","a_beta","bc_beta","bf_beta","a_t50","bc_t50","bf_t50","inter_d","inter_beta","inter_t50","sigma"),] #horrible Rhats
 (modintxn.mega)
 

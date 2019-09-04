@@ -8,51 +8,71 @@ if(length(grep("Lizzie", getwd())>0)) {
 
 
 library(rstan)
+library(brms)
+#parameters alpha b1, b2, beta, sigma
+default.parameter.values<-c(4.13,4.4,11.6,.5,0.1)
+results<-array(NA)
+
+model.fuction<-
+
+Di_c<-c(5,4,3,2,1,0,10,8,6,4,2,0,20,16,12,8,4,0)
+Di_h<-c(0,1,2,3,4,5,0,2,4,6,8,10,0,4,8,12,16,20)
+Di_c<-rep(Di_c,2)
+Di_h<-rep(Di_h,2)
+
+plot(Di_c~Di_h)
+
+Gt_h<-c(rep(2,18),rep(8,18))
+Gt_c<-c(rep(10,18),rep(4,18))
 
 
-D_c<-c(5,4,3,2,1,0,10,8,6,4,2,0,20,16,12,8,4,0,5,4,3,2,1,0,10,8,6,4,2,0,20,16,12,8,4,0) #densities I'd use
-D_e<-c(0,1,2,3,4,5,0,2,4,6,8,10,0,4,8,12,16,20,0,1,2,3,4,5,0,2,4,6,8,10,0,4,8,12,16,20)#densities I'd use
-T_c<-c(4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10)
-T_e<-c(8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10)
-#D_c<-c(10,20,18,26) ## desities from Connoley and Wayne
-#D_e<-c(20,10,36,18) ## desities from Connoley and Wayne 
-  
-hist(rnorm(1000,8,5))
+#Rs<-1/(a_o+b1*ys+(b2((Wp/Ws)^B)*yp))
 
-plot(D_c,D_e)
+###this should be my eqution
+#Rc<-1/A+Bdi_c*Di_c+(Bdi_h*((Gt_h/Gt_c)^Beta)*Di_h)
+
  ## parementers based on Table 5 in Connolly and Wayne 1996
-b1<--11.6
-b2<--4
-a<-4.1
-sigma<-.1
-B<- 0.25 
+Bdi_c<--4.4
+Bdi_h<--11.6
+A<-4.13
+sigma<-1
+#Beta<- 0.51 
+hist(rnorm(1000,0,3))
 
-repz<-1:100
-df<-data.frame(C_density=numeric(),E_density=numeric(),T_c=numeric(),T_e=numeric(),RG_C=numeric(),ID=numeric())
+
+
+
+
+repz<-1:5
+df<-data.frame(C_density=numeric(),H_density=numeric(),Rc=numeric(),ID=numeric())
 for(k in c(1:length(repz))){ 
   y <- c()
-for (i in c(1:length(D_c))){
-#  y <- c()
-#for (j in c(1:length(D_e))){ 
-y<-1/(a+b1*D_c[i]+(b2*((T_c[i]/T_e[i])^B)*D_e[i]))
-dfhere <- data.frame(C_density=rep(D_c[i],length(y)),E_density=rep(D_e[i],length(y)),T_c=rep(T_c[i],length(y)),T_e=rep(T_e[i],length(y)),RG_C=rnorm(length(y),y,sigma),ID=rep(repz[k],length(y)))
+for (i in c(1:length(Di_c))){
+  y<-c()
+  for (j in c(1:length(Di_h))){
+y<-A+Bdi_c*Di_c[i]+Bdi_h*Di_h[j]
+dfhere <- data.frame(C_density=rep(Di_c[i],length(y)),H_density=rep(Di_h[i],length(y)),Rc=rnorm(length(y),y,sigma),ID=rep(repz[k],length(y)))
 df <- rbind(df, dfhere)
 }
 }
-#}
+}
+
 
 data.list<-with(df,
-                 list(Y=RG_C,
+                 list(Y=Rc,
                      Den_c=C_density,
-                      Den_e=E_density,
-                     T_e=T_e,
-                     T_c=T_c,
+                      Den_e=H_density,
+                     #T_e=Gt_h,
+                     #T_c=Gt_c,
                       N=nrow(df) # datalist
                  )
 )
 
+#brm(Rc~C_density+H_density,data=df)
+#modq<-lm(Rc~(C_density+H_density),data=df)
+summary(modq)
 
 respmod1 = stan('responsemod_fake.stan', data = data.list, 
-                          iter = 5000, warmup=4000, chain=4)
+                          iter = 3000, warmup=2000, chain=4)
 
-summary(respmod1)$summary[c("alpha","beta_c","beta_e","B","sigma"),]
+summary(respmod1)$summary[c("alpha","beta_c","beta_e","sigma"),]

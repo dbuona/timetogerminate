@@ -1,0 +1,164 @@
+\documentclass[11pt]{article}
+\usepackage[top=1.0in, bottom=1.0in, left=1 in, right=1 in]{geometry}
+\renewcommand{\baselinestretch}{1.1}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{amsmath}
+\bibliographystyle{..//refs/styles/nature.bst}
+\def\labelitemi{--}
+\parindent=12
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Daniel Buonaiuto}
+\lhead{DAC meeting}
+
+\begin{document}
+\subsection*{Chapter 1: Reconciling historic hypotheses regarding flower-leaf sequences in temperate forests for fundamental and global change biology}
+
+ \textbf{Project Overview:}\\
+ \indent In this project, I investigate how two overlooked aspects of the biology of flower-leaf sequences; quantitative inter-specific variation and intra-specific variation, can be utilized to better evaluate long-standing hypotheses about this phenological trait and contribute to a new research agenda for the study of FLSs. I demonstrate the utility of this new approach by modeling the association between FLS patterns and other traits predicted by the FLS hypotheses with multiple intra- and inter-specific datasets that vary in their temporal, taxonomic and geographic scope. I synthesize these results to provide a comprehensive picture of the trends and anomalies in FLS patterns and make suggestions for future study.\\
+\\
+ \textbf{Main Findings:} 
+\begin{enumerate}
+\item Early flowering and wind-pollination are associated with flower-first FLS across all the case studies.
+\item The strength of these associations varies significantly depending on how flowering-first is defined.
+\item Future work should investigate the proximate causes and fitness implications of FLS variation.  
+\end{enumerate}
+ \textbf{Status:}\\
+\indent This manuscript is in the final stages of internal revisions among co-authors. To be submitted as a `` Perspectives" style article to \textit{New Phytologist}.
+
+
+\subsection*{Chapter 2a: Differential sensitivity to environmental cues dictates variability in flower-leaf phenological sequences in temperate trees and shrubs}
+\textbf{Project Overview:}\\
+\indent In this project I tested a hypothesis suggesting that individual FLS variation is a product of differential sensitivity to environment cues for reproductive and vegetative phenology. Using growth chambers, I exposed twig cuttings from 12 deciduous woody species to different combinations of cold stratification, forcing and photoperiod treatments (for an eight way fully-factorial design), and analyzed the responses for flowering and leaf phenology using Bayesian, hierarchical linear models.\\
+\\
+\textbf{Main Findings:}
+\begin{enumerate}
+\item Both floral and foliate phenophases respond most strongly to chilling and forcing. For both phases there is a negative interaction between forcing and chill, indicating that forcing and chilling can compensate for each other.
+\item The flowering response is less sensitive to forcing and chilling and their interaction than the leaf response. Time to flowering decreases as photoperiod increases regardless of other treatment, but this association is not present in the vegetative response.
+\item There are differences between species, but I haven't found any clear patterns that correlate with any other life-history or functional traits.
+\end{enumerate}
+
+\textbf{Status:}\\
+\indent I completed the experiment in spring of 2018. I completed the data analyses from this experiment in March 2019. I am currently in the process of writing a paper with analyses for this project.\\
+\\
+\textbf{Next Steps:}
+\begin{enumerate}
+\item Compare experimental findings to observational data from \textit{Vaccinium corymbosum} at Harvard Forest.
+\item Write paper.
+\end{enumerate}
+
+\subsection*{Chapter 2b: Untangling the effects of thermo- and photo- periodicity in controlled-environment experiments}
+ \textbf{Project Overview:}\\
+\indent In this project, I review possible combinations of photo- and thermo-period programs for controlled-environment studies and present the benefits and inference challenges that arise from each design. I then compare the estimated effects of forcing and photoperiod between a coupled and uncouple thermo-photo-period design with identical treatments.\\
+\\
+\textbf{Main Findings:}
+\begin{enumerate}
+\item Coupled thermo-photo-period are the best designs for simulating natural conditions, but not ideal for estimating the true effect of each treatment.
+\item An uncoupled design in which the lag between thermo- and photo-period occurs in the evening is theoretically the best for estimating true effect sizes, but as far as I know, this design has never been used in any experiments.
+\item I predicted a difference in effect size of ~3.0, and observed a difference of 4.15, (sd 2.66), between a coupled and uncoupled experiment.
+\end{enumerate}
+\textbf{Status:}\\ \indent I completed the analyses and figures for this project in the spring of 2019 and a draft of a paper for this project is underway.\\
+\\
+\textbf{Next steps:}
+\begin{enumerate}
+\item Work with Megan Donahue on presenting the mathematical calculations for the differences between the periodicity programs.
+\item Write paper.
+\end{enumerate}
+
+\subsection*{Chapter 3: Temperature variation alters germination rank of woodland herbaceous communities}
+\textbf{Project Overview:}\\
+\indent In this project I investigate the germination dynamics of a suite of herbaceous species in response to high resolution variation in cold stratification time and two different incubation temperatures. I predict that this temperature variability will generate variation in germination capacity and rank among species, suggesting temperature variability helps maintain species coexistence in these communities.\\
+\\
+\textbf{Main Findings:}
+\begin{enumerate}
+\item Modeling germination is complicated and controversial in the literature. Survival models are not necessarily appropriate for seeds which can re-enter dormancy. Dose-response models cannot handle left-censoring which is common with cold stratification.
+\item I have been developing a Bayesian 3-parameter log-logistic model that estimates temperature effects on the maximum germination percentage, time to 50\% germination and slope of the growth curve. 
+\end{enumerate}
+\textbf{Status:}\\
+\indent I complete the experimental portion of this project in February 2019. The analysis of these data is underway and on going.\\
+\\
+\textbf{Next steps:}
+\begin{enumerate}
+\item Trouble-shoot and tune model-fitting on simulated data.
+\item Run models on real data
+\item Synthesize findings in the context of climate fluctuations
+\end{enumerate}
+
+
+\subsection*{Chapter 4: Seasonal priority effects (might) alter inter-specific competition among herbaceous plants}
+\textbf{Project Overview:}\\
+\indent In chapter three I determined that variable climate conditions alter the germination rank of herbaceous species. In this project, I will evaluate how these changes in germination rank affect inter-specific competition in a pairwise competition experiment.\\
+\\
+\textbf{Status:}\\
+\indent I have selected candidate species for the experiment, and am currently simulating response surface designs in R to determine the size and replication needed for this experiment.\\
+\\
+\textbf{Next steps:}
+\begin{enumerate}
+\item Pre-trials will begin October 1, 2019.
+\item I expect the experiment to begin by December 2019, and conclude in the spring of 2020.
+\end{enumerate}
+
+\subsection*{Additional Projects and Considerations}
+\begin{itemize}
+\item Since entering the PhD program , I have worked with the Wolkovich lab on a meta-analysis about phenology in controlled-environment experiments. Two manuscripts have been submitted from this project with a third in process. This project is ongoing.
+\item Along with Cat Chamberlain, I have maintained observations in the Wolkovich lab common garden plot at Weld Hill. We plant to continue monitoring this garden for the duration of our PhDs.
+\item I had a baby in April of 2019, and had limited work hours for the first part of the summer.
+
+\end{itemize}
+\subsection*{Courses and Teaching}
+\subsubsection*{Courses}
+\textbf{OEB 103:} Plant Systematics and Evolution (S19)\\
+\textbf{OEB 203:} Community/Ecosystem Ecology (S19)\\
+\textbf{OEB 201:}	Intro to design and models (F18)\\
+\textbf{OEB 53:} Evolutionary Biology (S17)\\
+\textbf{OEB 278:} Adaptation (S17)\\
+\textbf{OEB 212R:} Adv Topics in Plant Physiology (F16)\\
+
+\subsubsection*{Teaching}
+\textbf{SPU 22:} From the Big Bang to the Brontosaurus and Beyond (S18,S19)\\
+\textbf{OEB 55:} Ecology: Populations, Communities and Ecosystems (S20)\\
+
+\subsection*{Timeline:}
+Fall 2019: 
+\begin{enumerate}
+\item Submit chapter 1
+\item Complete draft of chapter 2a
+\item Fix ideal chapter 3 model on simulations
+\item Begin experiment for chapter 4
+\end{enumerate}
+Spring-Summer 2020:
+\begin{enumerate}
+\item Submit paper for chapter 2a
+\item Complete and submit paper for chapter 2b
+\item Chapter 3 analysis on real data
+\item Continue chapter 4 experiment
+\item Teach: OEB 55
+\end{enumerate}
+Fall 2020:
+\begin{enumerate}
+\item Continue chapter 3 analysis
+\item Begin Chapter 4 analysis
+\item Teach ?
+\end {enumerate}
+Spring-Summer 2021:
+\begin{enumerate}
+\item Continue chapter 3 analysis
+\item Begin chapter 4 analysis
+\item Teach OEB 55 or OEB 52
+\end {enumerate}
+Fall 2021:
+\begin{enumerate}
+\item Complete chapter 3 analysis and write paper.
+\item Continue chapter 4 analysis.
+\item Teach?
+\end{enumerate}
+Spring 2022:
+\begin{enumerate}
+\item Complete chapter 4
+\item Defend dissertation
+\end{enumerate}
+
+\end{document}

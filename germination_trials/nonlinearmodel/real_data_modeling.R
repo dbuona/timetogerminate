@@ -59,21 +59,31 @@ Y <- lapply(seq_along(X), function(x) as.data.frame(X[[x]])[, 1:20])
 names(Y) <-(c(specieslist))
 list2env(Y, envir = .GlobalEnv)
 
-data.silene.vulgaris<-with(`Silene vulgaris`,
+crypto.cold<-filter(`Cryptotaenia canadensis`,INC=="L")
+
+data.cryto.cold<-with(crypto.cold,
                list(Y=germ_perc,
                     t=DAY,
                     chill=chillweeks,
-                    force=force,
-                    N=nrow(`Silene vulgaris`)
+                    N=nrow(crypto.cold)
                )
 )
 
-mod.silene.vulgaris= stan('stan/fakeseedgoodchill_winters.stan', data = data.silene.vulgaris, 
-                    iter = 10000, warmup=9000 , chain=4,control=list(adapt_delta=0.95)) ## run model
-summary(mod.silene.vulgaris)$summary[c("a_d","bc_d","bf_d","a_beta","bc_beta","bf_beta","a_t50","bc_t50","bf_t50","inter_d","inter_beta","inter_t50","sigma"),]
 
+mod.crypto.cold= stan('stan/fakeseedgoodchill_alt.stan', data = data.cryto.cold, 
+                    iter = 4000, warmup=3000 , chain=4) ## run model
+summary(mod.crypto.cold)$summary[c("a_d","b_d","a_beta","b_beta","a_t50","b_t50","sigma"),]
 
-save.image("real_germ_models") 
+crypto.warm<-filter(`Cryptotaenia canadensis`,INC=="H")
 
+data.cryto.warm<-with(crypto.warm,
+                      list(Y=germ_perc,
+                           t=DAY,
+                           chill=chillweeks,
+                           N=nrow(crypto.warm)
+                      )
+)
 
-
+mod.crypto.warm= stan('stan/fakeseedgoodchill_alt.stan', data = data.cryto.warm, 
+                      iter = 4000, warmup=3000 , chain=4) ## run model
+summary(mod.crypto.warm)$summary[c("a_d","b_d","a_beta","b_beta","a_t50","b_t50","sigma"),]

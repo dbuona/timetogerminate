@@ -42,18 +42,18 @@ transformed parameters {
  
  model {
   // priors
-  a_t50 ~ normal(20, 10); // previous prior did not reach to 15 ...
-  bc_t50 ~ normal(0, 5);
-  bf_t50 ~ normal(0,5);
-  a_beta ~ normal(3, 1); 
+  a_t50 ~ normal(15, 2); // previous prior did not reach to 15 ...
+  bc_t50 ~ normal(-2, 2);
+  bf_t50 ~ normal(-1,1);
+  a_beta ~ normal(4, 1); 
   bc_beta ~ normal (1,.5);
   bf_beta ~ normal (1,.5);
   a_d ~ uniform(0, 1); 
-  bc_d ~ normal(0.5, 0.1);
-  bf_d ~ normal(0.5, 0.1);
-  inter_t50 ~ normal(0,5);
-  inter_beta ~ normal(2,1);
-  inter_d ~ normal (0.5, 0.1); 
+  bc_d ~ normal(0.5, 0.3);
+  bf_d ~ normal(0.5, 0.3);
+  inter_t50 ~ normal(.5,.3);
+  inter_beta ~ normal(.2,.3);
+  inter_d ~ normal (0.2, .3); 
   sigma ~ uniform (0,1);
   // likelihood
   Y ~ normal(y_hat, sigma);

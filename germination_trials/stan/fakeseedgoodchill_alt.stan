@@ -6,8 +6,10 @@ data {
 } 
 
 parameters {
-  real <lower=0,upper=1> d; 
-  real<lower=0> beta;
+  real <lower=0,upper=1> a_d;
+  real b_d;
+  real<lower=0> a_beta;
+  real b_beta;
   real<lower=0> a_t50;
   real b_t50;
   real<lower=0>  sigma;
@@ -17,16 +19,29 @@ transformed parameters {
   vector<lower=0>[N] y_hat;
   
   for (i in 1:N)
-     y_hat[i] = d/(1+exp(-beta * (log(t[i]) - log(a_t50+b_t50*chill[i]))));
+     y_hat[i] = (a_d+b_d*chill[i])/(1+exp(-(a_beta+b_beta*chill[i]) * (log(t[i]) - log(a_t50+b_t50*chill[i]))));
  } 
  
  model {
   // priors
   a_t50 ~ normal(20, 10); // previous prior did not reach to 15 ...
   b_t50 ~ normal(0, 3);
-  beta ~ normal(0, 50); 
-  d ~ normal(0.5, 0.5); 
+  a_beta ~ normal(0, 50);
+  b_beta ~ normal (0,3);
+  a_d ~ normal(0.5, 0.5);
+  b_d ~ normal(0,1);
   sigma ~ normal(0,1);
   // likelihood
   Y ~ normal(y_hat, sigma);
+}
+
+generated quantities {
+ vector[N] Y_mean; 
+  vector[N] Y_pred; 
+  for(i in 1:N){
+    // Posterior parameter distribution of the mean
+    Y_mean[i] = (a_d+b_d*chill[i])/(1+exp(-(a_beta+b_beta*chill[i]) * (log(t[i]) - log(a_t50+b_t50*chill[i]))));
+    
+    Y_pred[i] = normal_rng(Y_mean[i], sigma); // Posterior predictive distribution 
+}
 }

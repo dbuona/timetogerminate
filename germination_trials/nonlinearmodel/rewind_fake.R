@@ -14,11 +14,11 @@ if(length(grep("Lizzie", getwd())>0)) {
 } else setwd("~/Documents/git/timetogerminate/germination_trials")
 
 library(rstan)
-library(tidyr)
-library(drc)
-library(dplyr)
-library(shinystan)
-library(extraDistr)
+#library(tidyr)
+#library(drc)
+#library(dplyr)
+#library(shinystan)
+#library(extraDistr)
 ### 9/12/19 new plan: for real data. run a chilling model on subset of data at each forcing level, so we just need to simulate data for chilling
 time <-seq(0,24,by=1) #time of each trial
 chilltreat <- c(0,1,2,3,4,5,6,7,8,9,10)
@@ -53,8 +53,8 @@ df2<-data.frame(time=numeric(), y=numeric(),chilltreat=numeric(),ID=numeric())  
   }
 
 
-ploty2<-ggplot(df2,aes(time,y))+geom_point(aes(color=as.factor(chilltreat))) #plot fake data
-ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat))) # plot fake data with average lines
+#ploty2<-ggplot(df2,aes(time,y))+geom_point(aes(color=as.factor(chilltreat))) #plot fake data
+#ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat))) # plot fake data with average lines
 
 
 df.adj2<-df2
@@ -70,9 +70,10 @@ data.list2<-with(df.adj2,
 
 
 
-modchill..mega = stan('stan/fakeseedgoodchill_alt.stan', data = data.list2, 
-                  iter = 4000, warmup=3000, chain=4)
+modchill.mega = stan('stan/fakeseedgoodchill_alt.stan', data = data.list2, 
+                  iter = 10000, warmup=9000, chain=4)
 
+stop("not an error")
 ########################################
 
 t50.a <- 15 #intercept of t50

@@ -42,16 +42,35 @@ realdat<- within(realdat, force[INC=="H"]<-1)
 realdat$DAY<-ifelse(realdat$DAY==0,0.0001,realdat$DAY) #elimiate 0 values for log logistic dist
 
 realdatshorty<- filter(realdat,!Taxa %in% c("Phlox cuspidata","Impatiens capensis","Carex grisea"))
-jpeg("figures/raw_germy.jpeg",res=200,width=1500,height=800)
-ploty<-ggplot(realdatshorty,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) #plot fake data
-ploty+geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
-dev.off()
+#jpeg("figures/raw_germy.jpeg",res=200,width=1500,height=800)
+#ploty<-ggplot(realdatshorty,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) #plot fake data
+#ploty+geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
+#dev.off()
 
-candies<-filter(realdatshorty, Taxa %in% c("Polygonum virginiatum","Cryptotaenia canadensis","Eurbia diviricata","Anemone virginana"))
-jpeg("figures/woodspecies.jpeg",res=200,width=1500,height=800)
-ploty2<-ggplot(candies,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) #plot fake data
-ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
-dev.off()
+candies<-filter(realdatshorty, Taxa %in% c("Hesperis matronalis", "Asclepias syriaca"))
+#jpeg("figures/woodspecies.jpeg",res=200,width=1500,height=800)
+candies<-filter(candies,chillweeks==5)
+
+ggplot(candies,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) +geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
+drm(germ_perc~DAY,factor(INC):factor(Taxa), data=candies,fct = LL.3(), type ="continuous")
+
+candies2<-filter(realdatshorty, Taxa %in% c("Polygonum virginiatum", "Eurbia diviricata"))
+ggplot(candies2,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) +geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
+candies2<-filter(candies2,chillweeks %in% c(6,9))
+drm(germ_perc~DAY,factor(INC):factor(Taxa), data=candies2,fct = LL.3(), type ="continuous")
+
+
+candies3<-filter(realdatshorty, Taxa %in% c("Cryptotaenia canadensis", "Polygonum virginiatum"))
+ggplot(candies3,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) +geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
+candies3<-filter(candies3,chillweeks %in% c(8))
+#candies3<-filter(candies3,force==0)
+drm(germ_perc~DAY,factor(force):factor(Taxa), data=candies3,fct = LL.3(), type ="continuous")
+
+candies4<-filter(realdatshorty, Taxa %in% c("Asclepias syriaca","Silene vulgaris"))
+ggplot(candies4,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) +geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
+candies4<-filter(candies4,chillweeks %in% c(6))
+drm(germ_perc~DAY,factor(INC):factor(Taxa), data=candies4,fct = LL.3(), type ="continuous")
+#dev.off()
 #"Hesperis matronalis", "Asclepias syriaca","Oenethera biennis","Eurbia diviricata","Hesperis matronalis","Cryptotaenia canadensis","Eurbia diviricata"
 specieslist<-sort(unique(realdat$Taxa))
 X<-split(realdat, with(realdat, realdat$Taxa), drop = TRUE)

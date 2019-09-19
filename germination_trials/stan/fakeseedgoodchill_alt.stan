@@ -24,13 +24,14 @@ transformed parameters {
  
  model {
   // priors
-  a_t50 ~ normal(20, 10); // previous prior did not reach to 15 ...
+  a_t50 ~ normal(20, 5); // previous prior did not reach to 15 ...
   b_t50 ~ normal(0, 3);
-  a_beta ~ normal(0, 50);
-  b_beta ~ normal (0,3);
+  a_beta ~ normal(0, 5);
+  b_beta ~ normal (0,1);
   a_d ~ normal(0.5, 0.5);
-  b_d ~ normal(0,1);
-  sigma ~ normal(0,1);
+  b_d ~ normal(0,.5);
+ // sigma ~ normal(0,.1); //sigma for fake data
+ sigma ~ normal(0, 1) ; //real plants
   // likelihood
   Y ~ normal(y_hat, sigma);
 }

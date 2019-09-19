@@ -90,7 +90,7 @@ data.cryto.cold<-with(crypto.cold,
 
 
 mod.crypto.cold= stan('stan/fakeseedgoodchill_alt.stan', data = data.cryto.cold, 
-                    iter = 4000, warmup=3000 , chain=4) ## run model
+                    iter = 9000, warmup=7000 , chain=4) ## run model
 summary(mod.crypto.cold)$summary[c("a_d","b_d","a_beta","b_beta","a_t50","b_t50","sigma"),]
 
 crypto.warm<-filter(`Cryptotaenia canadensis`,INC=="H")

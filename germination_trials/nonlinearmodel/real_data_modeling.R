@@ -57,16 +57,17 @@ drm(germ_perc~DAY,factor(INC):factor(Taxa), data=candies,fct = LL.3(), type ="co
 candies2<-filter(realdatshorty, Taxa %in% c("Polygonum virginiatum", "Eurbia diviricata"))
 ggplot(candies2,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) +geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
 candies2<-filter(candies2,chillweeks %in% c(6,9))
-drm(germ_perc~DAY,factor(INC):factor(Taxa), data=candies2,fct = LL.3(), type ="continuous")
+candies2<-filter(candies2,force==1)
+drm(germ_perc~DAY,factor(chillweeks):factor(Taxa), data=candies2,fct = LL.3(), type ="continuous")
 
 
-candies3<-filter(realdatshorty, Taxa %in% c("Cryptotaenia canadensis", "Polygonum virginiatum"))
+candies3<-filter(realdatshorty, Taxa %in% c("Hesperis matronalis", "Cryptotaenia canadensis"))
 ggplot(candies3,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) +geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
-candies3<-filter(candies3,chillweeks %in% c(8))
-#candies3<-filter(candies3,force==0)
-drm(germ_perc~DAY,factor(force):factor(Taxa), data=candies3,fct = LL.3(), type ="continuous")
+candies3<-filter(candies3,chillweeks %in% c(5,8))
+candies3<-filter(candies3,force==0)
+drm(germ_perc~DAY,factor(chillweeks):factor(Taxa), data=candies3,fct = LL.3(c(NA,.8,NA)), type ="continuous")
 
-candies4<-filter(realdatshorty, Taxa %in% c("Asclepias syriaca","Silene vulgaris"))
+candies4<-filter(realdatshorty, Taxa %in% c(,"))
 ggplot(candies4,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) +geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
 candies4<-filter(candies4,chillweeks %in% c(6))
 drm(germ_perc~DAY,factor(INC):factor(Taxa), data=candies4,fct = LL.3(), type ="continuous")

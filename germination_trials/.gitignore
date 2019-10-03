@@ -1,0 +1,5 @@
+*.Rdata
+*.log
+*.synctex.gz
+*.rds
+

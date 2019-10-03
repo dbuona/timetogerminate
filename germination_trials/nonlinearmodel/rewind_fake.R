@@ -13,15 +13,17 @@ if(length(grep("Lizzie", getwd())>0)) {
   setwd("~/Documents/git/projects/misc/dan/timetogerminate/germination_trials") 
 } else setwd("~/Documents/git/timetogerminate/germination_trials")
 
+#mod1<-readRDS("modchill.mega.rds")
+
 library(rstan)
 #library(tidyr)
 #library(drc)
 #library(dplyr)
 #library(shinystan)
-#library(extraDistr)
+library(extraDistr)
 ### 9/12/19 new plan: for real data. run a chilling model on subset of data at each forcing level, so we just need to simulate data for chilling
 time <-seq(0,24,by=1) #time of each trial
-chilltreat <- c(0,1,2,3,4,5,6,7,8,9,10)
+chilltreat <- c(0,1,2,3,4,5,6,7,8)#,9,10)
 sigma_y <- 0.01 ## small signma
 
 
@@ -30,13 +32,13 @@ sigma_y <- 0.01 ## small signma
 t50.a <- 20 #intercept of t50
 t50.cb <- -1.5 # slope of t50 with chilling
 
-beta.a <- 4 #intercept of beta (shape paramenter)
-beta.cb<-.5 #slope of beta chilling
+beta.a <- 7 #intercept of beta (shape paramenter)
+beta.cb<-.3 #slope of beta chilling
 
 d.a <- 0.2 # intercept of d (maximum germination %)
 d.cb<-0.07 # slope of d chilling
 
-repz<-seq(1,50,by=1)
+repz<-seq(1,3,by=1)
 
 df2<-data.frame(time=numeric(), y=numeric(),chilltreat=numeric(),ID=numeric())  ##generate fake data
 
@@ -53,8 +55,8 @@ df2<-data.frame(time=numeric(), y=numeric(),chilltreat=numeric(),ID=numeric())  
   }
 
 
-#ploty2<-ggplot(df2,aes(time,y))+geom_point(aes(color=as.factor(chilltreat))) #plot fake data
-#ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat))) # plot fake data with average lines
+ploty2<-ggplot(df2,aes(time,y))+geom_point(aes(color=as.factor(chilltreat))) #plot fake data
+ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat))) # plot fake data with average lines
 
 
 df.adj2<-df2
@@ -72,6 +74,21 @@ data.list2<-with(df.adj2,
 
 modchill.mega = stan('stan/fakeseedgoodchill_alt.stan', data = data.list2, 
                   iter = 10000, warmup=9000, chain=4)
+library(xtable)
+sumtab<-xtable(summary(modchill.mega)$summary[c("a_d","b_d","a_beta","b_beta","a_t50","b_t50","sigma"),])
+print.xtable(sumtab, type="latex", file="nonlinearmodel/fakedatasum.tex")
+
+saveRDS(modchill.mega, "modchill.mega.rds")
+
+summary(mod1)$summary[c("a_d","b_d","a_beta","b_beta","a_t50","b_t50","sigma"),]
+y<-data.list2$Y
+y_pred <- rstan::extract(modchill.mega, "Y_pred")
+
+jpeg("nonlinearmodel/pp_checks/fake_data.jpeg",width = 5, height = 6, units = 'in', res = 300)
+par(mfrow=c(1,2))
+hist(y, breaks=10, xlab="real data germination response", main="PP_check")
+hist(y_pred[[1]][1,], breaks=10, xlab="PPC germ perc", main="")
+dev.off()
 
 stop("not an error")
 ########################################

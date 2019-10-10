@@ -23,7 +23,7 @@ library(rstan)
 library(extraDistr)
 ### 9/12/19 new plan: for real data. run a chilling model on subset of data at each forcing level, so we just need to simulate data for chilling
 time <-seq(0,24,by=1) #time of each trial
-chilltreat <- c(0,1,2,3,4,5,6,7,8)#,9,10)
+chilltreat <- c(0,1,2,3,4,5,6,7,8,9,10) ### it work
 sigma_y <- 0.01 ## small signma
 
 
@@ -73,7 +73,8 @@ data.list2<-with(df.adj2,
 
 
 modchill.mega = stan('stan/fakeseedgoodchill_alt.stan', data = data.list2, 
-                  iter = 10000, warmup=9000, chain=4)
+                  iter = 10000, warmup=9000, chain=4,init=0)
+
 library(xtable)
 sumtab<-xtable(summary(modchill.mega)$summary[c("a_d","b_d","a_beta","b_beta","a_t50","b_t50","sigma"),])
 print.xtable(sumtab, type="latex", file="nonlinearmodel/fakedatasum.tex")
@@ -90,6 +91,7 @@ hist(y, breaks=10, xlab="real data germination response", main="PP_check")
 hist(y_pred[[1]][1,], breaks=10, xlab="PPC germ perc", main="")
 dev.off()
 
+save.image("fake_germ_models") 
 stop("not an error")
 ########################################
 

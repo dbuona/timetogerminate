@@ -16,15 +16,36 @@ library(brms)
 setwd("~/Documents/git/timetogerminate/germination_trials/input")
 
 d<-read.csv("..//survival_analysis/surival_dat_nointerval.csv")
+
+realdat<-d
+realdat$chill_time<-NA
+realdat<- within(realdat, chill_time[COLD=="0" ]<-0)
+realdat<- within(realdat, chill_time[COLD=="A" ]<-14)
+realdat<- within(realdat, chill_time[COLD=="B" ]<-28)
+realdat<- within(realdat, chill_time[COLD=="C" ]<-35)
+realdat<- within(realdat, chill_time[COLD=="D" ]<-42)
+realdat<- within(realdat, chill_time[COLD=="E" ]<-49)
+realdat<- within(realdat, chill_time[COLD=="f" ]<-56)
+realdat<- within(realdat, chill_time[COLD=="G" ]<-63)
+realdat<- within(realdat, chill_time[COLD=="H" ]<-77)
+realdat<- within(realdat, chill_time[COLD=="i" ]<-91)
+realdat$chillweeks<-realdat$chill_time/7 # make chilling weeks instead of days
+
+realdat$force<-NA # make forcing numeric
+realdat<- within(realdat, force[INC=="L"]<-0)
+realdat<- within(realdat, force[INC=="H"]<-1)
+
 #d$DAY<-ifelse(d$DAY==0,0.001,d$DAY)
 
-as<-filter(d,Taxa=="Asclepias syriaca")
+as<-filter(realdat,Taxa=="Asclepias syriaca")
 
-as.warm.rest<-filter(as, COLD %in% c("D"))
-priorz<-get_prior(DAY | cens(germinated)~INC,data=as.warm.rest,family = weibull())
 
-fit2 <- brm(DAY | cens(germinated)~INC, 
-            data=as.warm.rest, family = weibull(), ,prior=priorz) ##
+
+priorz<-get_prior(DAY | cens(germinated)~force+chillweeks,data=as,family = lognormal(link = "identity", link_sigma = "log"))
+
+fit2 <- brm(DAY | cens(germinated)~force+chillweeks, 
+            data=as, family = lognormal(link = "identity", link_sigma = "log") ,prior=priorz,iter=6000,warmup = 5000) ##
+?brmsfamily()
 launch_shinystan(fit2)
 summary(fit2)
 ###nonlinear mixed effect model: 

@@ -26,7 +26,7 @@ library(extraDistr)
 ### 9/12/19 new plan: for real data. run a chilling model on subset of data at each forcing level, so we just need to simulate data for chilling
 time <-seq(0,24,by=1) #time of each trial
 chilltreat <- c(0,1,2,3,4,5,6,7,8,9,10) ### it work
-sigma_y <- 0.3 ## small signma
+sigma_y <- 0.08 ## bigger signma
 
 
 
@@ -64,5 +64,16 @@ ploty2+geom_line(stat = "summary", fun.y = mean, aes(color=as.factor(chilltreat)
 df.adj2<-df2
 df.adj2$time<-ifelse(df.adj2$time==0,0.0001,df.adj2$time) ### change time=0 to .0001 because models struggle to fit zero values
 
+hist(df.adj2$y)
 
+data.list2<-with(df.adj2,
+                 list(Y=y,
+                      t=time,
+                      chill=chilltreat,
+                      N=nrow(df.adj2) # datalist
+                 ))
 
+modchill.mega.dirty = stan('stan/fakeseedgoodchill_alt.stan', data = data.list2, 
+                     iter = 10000, warmup=9000, chain=4,init=0) #3488 DT when sigma is 0.3
+                                                                # 61 when sigma is 0.1
+                                                                #works with sigma 0.05,0.8

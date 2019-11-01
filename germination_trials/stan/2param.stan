@@ -6,43 +6,40 @@ data {
 } 
 
 parameters {
-  real <lower=0,upper=1> a_d;
-  real b_d;
   real<lower=0> a_beta;
-  real b_beta;
+  real<lower=0> b_beta;
   real<lower=0> a_t50;
   real b_t50;
-  real<lower=0>  sigma;
+  real<lower=0, upper=1>  sigma;
 } 
 
 transformed parameters {
   vector<lower=0, upper=1>[N] y_hat;
   
   for (i in 1:N)
-     y_hat[i] = (a_d+b_d*chill[i])/(1+exp(-(a_beta+b_beta*chill[i]) * (log(t[i]) - log(a_t50+b_t50*chill[i]))));
- } 
- 
- model {
+    y_hat[i] = (1)/(1+exp(-(a_beta+b_beta*chill[i]) * (log(t[i]) - log(a_t50+b_t50*chill[i]))));
+} 
+
+model {
   // priors
-  a_t50 ~ normal(25, 5); // fake
-  b_t50 ~ normal(0, 3);
+  a_t50 ~ normal(30, 15); // fake
+  b_t50 ~ normal(-3, 3);
   a_beta ~ normal(1, 4); //fake data
-  b_beta ~ normal (0,1);
-  a_d ~ uniform(0, 1);
-  b_d ~ uniform(0,.5);
+  b_beta ~ normal (0,2);
+
   //sigma ~ normal(0,.1); //sigma for fake data
- sigma ~ normal(0, 1) ; //real plants
+  sigma ~ normal(0, .3) ; //real plants
   // likelihood
   Y ~ normal(y_hat, sigma);
 }
 
 generated quantities {
- vector[N] Y_mean; 
+  vector[N] Y_mean; 
   vector[N] Y_pred; 
   for(i in 1:N){
     // Posterior parameter distribution of the mean
-    Y_mean[i] = (a_d+b_d*chill[i])/(1+exp(-(a_beta+b_beta*chill[i]) * (log(t[i]) - log(a_t50+b_t50*chill[i]))));
+    Y_mean[i] = (1)/(1+exp(-(a_beta+b_beta*chill[i]) * (log(t[i]) - log(a_t50+b_t50*chill[i]))));
     
     Y_pred[i] = normal_rng(Y_mean[i], sigma); // Posterior predictive distribution 
-}
+  }
 }

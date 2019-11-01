@@ -47,16 +47,16 @@ realdatshorty<- filter(realdat,!Taxa %in% c("Phlox cuspidata","Impatiens capensi
 #ploty+geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
 #dev.off()
 
-candies<-filter(realdatshorty, Taxa %in% c("Hesperis matronalis", "Asclepias syriaca"))
+#candies<-filter(realdatshorty, Taxa %in% c("Hesperis matronalis", "Asclepias syriaca"))
 #jpeg("figures/woodspecies.jpeg",res=200,width=1500,height=800)
-candies<-filter(candies,chillweeks==5)
+#candies<-filter(candies,chillweeks==5)
 
-ggplot(candies,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) +geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
-drm(germ_perc~DAY,factor(INC):factor(Taxa), data=candies,fct = LL.3(), type ="continuous")
+#ggplot(candies,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) +geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
+#drm(germ_perc~DAY,factor(INC):factor(Taxa), data=candies,fct = LL.3(), type ="continuous")
 
-candies2<-filter(realdatshorty, Taxa %in% c("Polygonum virginiatum", "Cryptotaenia canadensis"))
-ggplot(candies2,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) +geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
-candies2<-filter(candies2,chillweeks %in% c(6,9,13))
+#candies2<-filter(realdatshorty, Taxa %in% c("Polygonum virginiatum", "Cryptotaenia canadensis"))
+#ggplot(candies2,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) +geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
+#candies2<-filter(candies2,chillweeks %in% c(6,9,13))
 #candies2<-filter(candies2,force==1)
 #drm(germ_perc~DAY,factor(chillweeks):factor(Taxa), data=candies2,fct = LL.3(), type ="continuous")
 
@@ -183,9 +183,13 @@ data.crypto.cold<-with(crypto.cold,
 )
 
 
-mod.crypto.cold= stan('stan/fakeseedgoodchill_alt.stan', data = data.crypto.cold, 
-                     iter = 10000, warmup=9000 , chain=4, init=c(0,1)) ## 0 divergent transition, but bad rhats and neff
-summary(mod.crypto.cold)$summary[c("a_d","b_d","a_beta","b_beta","a_t50","b_t50","sigma"),]
+mod.crypto.cold= stan('stan/2param.stan', data = data.crypto.cold, 
+                     iter = 6000, warmup=5000 , chain=2) 
+
+## 0 divergent transition, but bad rhats and neff
+summary(mod.crypto.cold)$summary[c("a_beta","b_beta","a_t50","b_t50","sigma"),]
+
+
 
 crypto.warm<-filter(`Cryptotaenia canadensis`,INC=="H")
 
@@ -198,9 +202,10 @@ data.crypto.warm<-with(crypto.warm,
 )
 
 
-mod.crypto.warm= stan('stan/fakeseedgoodchill_alt.stan', data = data.crypto.warm, 
-                      iter = 9000, warmup=8000 , chain=4) ## 0 divergent transition, good rhats
-summary(mod.crypto.warm)$summary[c("a_d","b_d","a_beta","b_beta","a_t50","b_t50","sigma"),]
+mod.crypto.warm= stan('stan/2param.stan', data = data.crypto.warm, 
+                      iter = 9000, warmup=8000 , chain=2) ## 0 divergent transition, good rhats
+
+summary(mod.crypto.warm)$summary[c("a_beta","b_beta","a_t50","b_t50","sigma"),]
 
 y.crypto.warm<-data.crypto.warm$Y
 y_pred.crypto.warm <- rstan::extract(mod.crypto.warm, "Y_pred")

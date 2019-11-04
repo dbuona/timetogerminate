@@ -47,7 +47,9 @@ realdatshorty<- filter(realdat,!Taxa %in% c("Phlox cuspidata","Impatiens capensi
 
 fgp.dat<-filter(realdatshorty,DAY==25)
 
-#full.fgp.mod<-brms::brm(germ_perc~force*chillweeks+(force*chillweeks|Taxa),data=fgp.dat,iter=4000,warmup=3000)
+full.fgp.mod<-brms::brm(germ_perc~force*chillweeks+(force*chillweeks|Taxa),data=fgp.dat,iter=4000,warmup=3000)
+
+ranef(full.fgp.mod)
 
 ggplot(fgp.dat,aes(chillweeks,germ_perc))+
   geom_smooth(method="loess",level=0.9,aes(color=as.factor(force),fill = as.factor(force)))+
@@ -56,20 +58,26 @@ ggplot(fgp.dat,aes(chillweeks,germ_perc))+
   ylim(-.3,1.3)+theme_linedraw()+geom_point(aes(color=as.factor(force)),size=0.5)+geom_vline(aes(xintercept=8),color="gray",size=2)
 
 
-Cc.fgp<-filter(fgp.dat,Taxa=="Cryptotaenia canadensis")
-ggplot(Cc.fgp,aes(chillweeks,germ_perc))+geom_point(aes(color=as.factor(force)),size=0.2,shape=1)+geom_smooth(method="loess", aes(color=as.factor(force)),size=1.2)+theme_minimal(base_size = 6)
+unique(fgp.dat$Taxa)
+Cc<-filter(fgp.dat,Taxa=="Cryptotaenia canadensis")
 
-unique(Cc.fgp$chillweeks)
-Cc.0<-filter(Cc.fgp,chillweeks==c(0))
-Cc.2<-filter(Cc.fgp,chillweeks==c(0,2))
-Cc.4<-filter(Cc.fgp,chillweeks==c(0,2,4))
-Cc.5<-filter(Cc.fgp,chillweeks==c(0,2,4,5))
-Cc.6<-filter(Cc.fgp,chillweeks==c(0,2,3,4,5,6))
-Cc.6
+CC.C<-filter(Cc, force==0)
+CC.C.loes<-ggplot(CC.C,aes(chillweeks,germ_perc))+geom_point(color="royalblue")+geom_smooth(method="loess",level=0.9,fill="royalblue")+theme_linedraw()
+CC.C.lm<-ggplot(CC.C,aes(chillweeks,germ_perc))+geom_point(color="royalblue")+geom_smooth(method="lm",level=0.9,fill="royalblue")+theme_linedraw()
 
-zero<-brms::brm(germ_perc~force*chillweeks,data=Cc.0,iter=4000,warmup=3000)
+CC.C.mod.glm<-glm(germ_perc~chillweeks,CC.C,family=binomial(link = "logit"))
 
 
+CC.C.break.glm<-segmented(CC.C.mod.glm,seg.Z=~chillweeks,npsi=2)
+seg.glm<-plot.segmented(CC.C.break.glm,main="GLM")
 
+CC.C.mod.lm<-lm(germ_perc~chillweeks,CC.C)
+
+
+
+CC.C.break.lm<-segmented(CC.C.mod.lm,seg.Z=~chillweeks,npsi=2)
+seg.lm<-plot.segmented(CC.C.break.lm,main="LM")
+
+par(mfrow=c(1,2))
 
 

@@ -15,6 +15,9 @@ library(extraDistr)
 library(bayesplot)
 library(lme4)
 library(tibble)
+library(segmented)
+library(RColorBrewer)
+library(brms)
 
 realdat<-read.csv("input/daily_dat_nointerval.csv")
 
@@ -45,11 +48,10 @@ realdat$DAY<-ifelse(realdat$DAY==0,0.0001,realdat$DAY) #elimiate 0 values for lo
 
 realdatshorty<- filter(realdat,!Taxa %in% c("Phlox cuspidata","Impatiens capensis"))
 
-fgp.dat<-filter(realdatshorty,DAY==25)
+fgp.dat<-filter(realdatshorty,DAY==25) ### this makes a dataset of only final germination percentate
 
-full.fgp.mod<-brms::brm(germ_perc~force*chillweeks+(force*chillweeks|Taxa),data=fgp.dat,iter=4000,warmup=3000)
+#full.fgp.mod<-brms::brm(germ_perc~force*chillweeks+(force*chillweeks|Taxa),data=fgp.dat,iter=4000,warmup=3000)
 
-ranef(full.fgp.mod)
 
 ggplot(fgp.dat,aes(chillweeks,germ_perc))+
   geom_smooth(method="loess",level=0.9,aes(color=as.factor(force),fill = as.factor(force)))+
@@ -57,27 +59,167 @@ ggplot(fgp.dat,aes(chillweeks,germ_perc))+
   scale_color_manual(values=c("royalblue","firebrick1"))+geom_hline(aes(yintercept=0),color="black")+geom_hline(aes(yintercept=1),color="black")+
   ylim(-.3,1.3)+theme_linedraw()+geom_point(aes(color=as.factor(force)),size=0.5)+geom_vline(aes(xintercept=8),color="gray",size=2)
 
-
+###Identify breakpoints in linear relationship for forest species
 unique(fgp.dat$Taxa)
 Cc<-filter(fgp.dat,Taxa=="Cryptotaenia canadensis")
+Pv<-filter(fgp.dat,Taxa=="Polygonum virginiatum")
+Ed<-filter(fgp.dat,Taxa=="Eurbia diviricata")
+Hm<-filter(fgp.dat,Taxa=="Hesperis matronalis")
+Ss<-filter(fgp.dat,Taxa=="Silene stellata")
+Av<-filter(fgp.dat,Taxa=="Anemone virginana")
+Td<-filter(fgp.dat,Taxa=="Thalictrum dioicum")
 
-CC.C<-filter(Cc, force==0)
-CC.C.loes<-ggplot(CC.C,aes(chillweeks,germ_perc))+geom_point(color="royalblue")+geom_smooth(method="loess",level=0.9,fill="royalblue")+theme_linedraw()
-CC.C.lm<-ggplot(CC.C,aes(chillweeks,germ_perc))+geom_point(color="royalblue")+geom_smooth(method="lm",level=0.9,fill="royalblue")+theme_linedraw()
+CC.mod.lm<-lm(germ_perc~chillweeks*force,Cc)
+Pv.mod.lm<-lm(germ_perc~chillweeks*force,Pv)
+Ed.mod.lm<-lm(germ_perc~chillweeks*force,Ed)
+Hm.mod.lm<-lm(germ_perc~chillweeks*force,Hm)
+Ss.mod.lm<-lm(germ_perc~chillweeks*force,Ss)
+Av.mod.lm<-lm(germ_perc~chillweeks*force,Av)
+Td.mod.lm<-lm(germ_perc~chillweeks*force,Td)
 
-CC.C.mod.glm<-glm(germ_perc~chillweeks,CC.C,family=binomial(link = "logit"))
+CC.break.lm<-segmented(CC.mod.lm,seg.Z=~chillweeks,npsi=1,seed=613)
+PV.break.lm<-segmented(Pv.mod.lm,seg.Z=~chillweeks,npsi=2,seed=613)
+ED.break.lm<-segmented(Ed.mod.lm,seg.Z=~chillweeks,npsi=1,seed=613)
+HM.break.lm<-segmented(Hm.mod.lm,seg.Z=~chillweeks,npsi=1,seed=613)
+SS.break.lm<-segmented(Ss.mod.lm,seg.Z=~chillweeks,npsi=1,seed=613)
+AV.break.lm<-segmented(Av.mod.lm,seg.Z=~chillweeks,npsi=1,seed=613)
+TD.break.lm<-segmented(Td.mod.lm,seg.Z=~chillweeks,npsi=1,seed=613)
+brewer.pal(n=7, "Dark2")
+summary(CC.break.lm)[9] #adjr2 from 0.36-0.89
+summary(PV.break.lm)[9]
+summary(ED.break.lm)[9]
+summary(HM.break.lm)[9]
+
+summary(AV.break.lm)[9]
+summary(TD.break.lm)[9]
+
+#uuper break point
+summary(CC.break.lm) #7.552
+summary(PV.break.lm) #7.2
+summary(ED.break.lm) #7
+summary(HM.break.lm) #2.36
+summary(AV.break.lm) #6.5
+summary(TD.break.lm) # 7.27
+
+###most break around 7.5
+
+###Run a model to show that chill doesn't generally affect final germ percentage after 7.5 weeks 
+realdat.aftr<-filter(realdat, chillweeks>7) ## run this model to confirm chillweeks dont affect final germ perc after 7 weeks
+ger.perc.upper<-brms::brm(germ_perc~chillweeks*force+(1|Taxa),data=realdat.aftr)
+summary(ger.perc.upper)
+
+####check individual species for same as above
+Cc.maxy<-dplyr::filter(Cc,chillweeks>7.5)
+range(Cc.maxy$germ_perc)
+summary(lm(germ_perc~chillweeks*force,Cc.maxy))
+##
+Pv.maxy<-dplyr::filter(Pv,chillweeks>7.2)
+summary(lm(germ_perc~chillweeks*force,Pv.maxy))##no effect of chilll
+
+Ed.maxy<-dplyr::filter(Ed,chillweeks>7)
+summary(lm(germ_perc~chillweeks*force,Ed.maxy))
+
+### Now investigate germination time
+d<-read.csv("survival_analysis/surival_dat_nointerval.csv")
+d$chill_time<-NA
+d<- within(d, chill_time[COLD=="0" ]<-0)
+d<- within(d, chill_time[COLD=="A" ]<-14)
+d<- within(d, chill_time[COLD=="B" ]<-28)
+d<- within(d, chill_time[COLD=="C" ]<-35)
+d<- within(d, chill_time[COLD=="D" ]<-42)
+d<- within(d, chill_time[COLD=="E" ]<-49)
+d<- within(d, chill_time[COLD=="f" ]<-56)
+d<- within(d, chill_time[COLD=="G" ]<-63)
+d<- within(d, chill_time[COLD=="H" ]<-77)
+d<- within(d, chill_time[COLD=="i" ]<-91)
+d$chillweeks<-d$chill_time/7 # make chilling weeks instead of days
+
+d$force<-NA # make forcing numeric
+d<- within(d, force[INC=="L"]<-0)
+d<- within(d, force[INC=="H"]<-1)
+d$censored<-ifelse(d$germinated==1,0,1)
+d$censored<-ifelse(d$DAY==0.001 & d$germinated==1,-1,d$censored)
+
+d.aftr<-filter(d,chillweeks>7.5) ## ronly after 7.5 weeks
+d.aftr.1<-filter(d.aftr,germinated==1) #remove spcies that didnt germinate
+ger.time.upper<-brms::brm(DAY~chillweeks*force+(1|Taxa),data=d.aftr.1) ### effectively a mgt model
+summary(ger.time.upper)
+
+priorz<-brms::get_prior(DAY | cens(censored)~chillweeks*force+(1|Taxa),data=d.aftr,family= lognormal, inits = "0")
+ger.survial.upper<-brms::brm(DAY | cens(censored)~chillweeks*force+(1|Taxa), 
+    data=d.aftr, family =lognormal, inits = "0" ,prior=priorz,iter=6000,warmup = 5000, chains=4) ##
+summary(ger.survial.upper)
+Cc.time<-filter(d,Taxa=="Cryptotaenia canadensis")
+Cc.time<-filter(Cc.time, chillweeks>7.5)
+Cc.time<-filter(Cc.time,germinated==1)
+summary(lm(DAY~chillweeks*force,data=Cc.time))## yes
+
+Pv.time<-filter(d,Taxa=="Polygonum virginiatum")
+Pv.time<-filter(Pv.time, chillweeks>7.2)
+Pv.time<-filter(Pv.time,germinated==1)
+summary(lm(DAY~chillweeks*force,data=Pv.time))## yes
+
+Ed.time<-filter(d,Taxa=="Eurbia diviricata")
+Ed.time<-filter(Ed.time, chillweeks>7)
+Ed.time<-filter(Ed.time,germinated==1)
+summary(lm(DAY~chillweeks*force,data=Ed.time))## yes
+
+Hm.time<-filter(d,Taxa=="Hesperis matronalis")
+Hm.time<-filter(Hm.time, chillweeks>2.3)
+Hm.time<-filter(Hm.time,germinated==1)
+summary(lm(DAY~chillweeks*force,data=Hm.time))## yes
+
+Td.time<-filter(d,Taxa=="Thalictrum dioicum")
+Td.time<-filter(Td.time, chillweeks>7.2)
+Td.time<-filter(Td.time,germinated==1)
+summary(lm(DAY~chillweeks*force,data=Td.time))
 
 
-CC.C.break.glm<-segmented(CC.C.mod.glm,seg.Z=~chillweeks,npsi=2)
-seg.glm<-plot.segmented(CC.C.break.glm,main="GLM")
-
-CC.C.mod.lm<-lm(germ_perc~chillweeks,CC.C)
+range(Pv.maxy$germ_perc)
+summary(lm(germ_perc~chillweeks*force,Pv.maxy))
 
 
+plot.segmented(CC.break.lm,conf.level =.9,shade=FALSE,col="#D95F02",ylim=c(0,1.2),lwd=4,ylab="Effect of stratification on germination %",xlab="Weeks of stratification")
+plot.segmented(PV.break.lm,conf.level =.9,add=TRUE,col="#66A61E",lwd=4)
+plot.segmented(ED.break.lm,conf.level =.9,add=TRUE,col="#7570B3",lwd=4)
+plot.segmented(HM.break.lm,conf.level =.9,add=TRUE,col="#E7298A",lwd=4)
+plot.segmented(SS.break.lm,conf.level =.9,add=TRUE,col="#E6AB02",lwd=4)
+plot.segmented(AV.break.lm,conf.level =.9,add=TRUE,col="#1B9E77",lwd=4)
+plot.segmented(TD.break.lm,conf.level =.9,add=TRUE,col="#A6761D",lwd=4)
 
-CC.C.break.lm<-segmented(CC.C.mod.lm,seg.Z=~chillweeks,npsi=2)
-seg.lm<-plot.segmented(CC.C.break.lm,main="LM")
 
-par(mfrow=c(1,2))
+###nonlinerar
+
+CC.mod.glm<-glm(germ_perc~chillweeks*force,family=binomial,Cc)
+Pv.mod.glm<-glm(germ_perc~chillweeks*force,family=binomial,Pv)
+Ed.mod.glm<-glm(germ_perc~chillweeks*force,family=binomial,Ed)
+Hm.mod.glm<-glm(germ_perc~chillweeks*force,family=binomial,Hm)
+Ss.mod.glm<-glm(germ_perc~chillweeks*force,family=binomial,Ss)
+Av.mod.glm<-glm(germ_perc~chillweeks*force,family=binomial,Av)
+Td.mod.glm<-glm(germ_perc~chillweeks*force,family=binomial,Td)
+
+CC.break.glm<-segmented(CC.mod.glm,seg.Z=~chillweeks,npsi=2,seed=613)
+PV.break.glm<-segmented(Pv.mod.glm,seg.Z=~chillweeks,npsi=2,seed=613)
+ED.break.glm<-segmented(Ed.mod.glm,seg.Z=~chillweeks,npsi=2,seed=613)
+HM.break.glm<-segmented(Hm.mod.glm,seg.Z=~chillweeks,npsi=2,seed=613)
+SS.break.glm<-segmented(Ss.mod.glm,seg.Z=~chillweeks,npsi=2,seed=613)
+AV.break.glm<-segmented(Av.mod.glm,seg.Z=~chillweeks,npsi=2,seed=613)
+TD.break.glm<-segmented(Td.mod.glm,seg.Z=~chillweeks,npsi=2,seed=613)
+brewer.pal(n=7, "Dark2")
+#uuper break point
+summary(CC.break.glm)#7.03
+summary(PV.break.glm) #7.095
+summary(ED.break.glm)#7
+summary(HM.break.glm) #9.3
+summary(AV.break.glm) #6.5
+summary(TD.break.glm) # 7.27
 
 
+plot.segmented(CC.break.glm,conf.level =.9,shade=FALSE,col="#D95F02",ylim=c(-6,7),lwd=4)
+plot.segmented(PV.break.glm,conf.level =.9,add=TRUE,col="#66A61E",lwd=4)
+plot.segmented(ED.break.glm,conf.level =.9,add=TRUE,col="#7570B3",lwd=4)
+plot.segmented(HM.break.glm,conf.level =.9,add=TRUE,col="#E7298A",lwd=4)
+plot.segmented(SS.break.glm,conf.level =.9,add=TRUE,col="#E6AB02",lwd=4)
+plot.segmented(AV.break.glm,conf.level =.9,add=TRUE,col="#1B9E77",lwd=4)
+plot.segmented(TD.break.glm,conf.level =.9,add=TRUE,col="#A6761D",lwd=4)
+?plot.segmented()

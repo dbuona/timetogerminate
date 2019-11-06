@@ -1,0 +1,133 @@
+\documentclass{article}
+
+\begin{document}
+
+
+\subsection{How will Stratification regimes change with climate change}
+\begin{itemize}
+\item Could go up down or shift in time
+\item Demonstrate with Harvard forest soil warming plot
+\end{itemize}
+<<>>=
+rm(list=ls())
+options(stringsAsFactors = FALSE)
+graphics.off()
+library(dplyr)
+library(chillR)
+library(tibble)
+library(broom)
+library(brms)
+setwd("~/Documents/git/timetogerminate/germination_trials/input")
+d<-read.csv(file="hf018-03-soil-temp.csv")
+
+colnames(d)
+
+
+
+
+
+
+@
+\section{How will this impace species and communites?}
+
+\subsection{Physiology:}
+\subsubsection{Stratification requirement: What is it really?}
+\begin{itemize}
+\item My guess is that its ambiguous but: Amount of chilling need to acheive a reasonable germination percentage
+\item Does stratification still impact the germination of species that don't have a germination requirement?
+
+How does startifiaction impact final germination pecentage?
+G and GxE interactions
+interactions with other climate conditions like incubation temperates
+Assumption: any seeds that do not germination within 25 day window cant this season.
+<<>>=
+#format final germ percent data
+
+loadmodels <- FALSE
+runpart1 <- FALSE
+if(loadmodels){
+  load("fgp.Rdata")
+}
+
+if(runpart1){
+realdat<-read.csv("daily_dat_nointerval.csv")
+
+##clean data
+realdat$germ_perc<-NA
+realdat$germ_perc<-realdat$germ_num/realdat$tot_seed
+realdat$germ_perc<-ifelse(realdat$germ_perc>1,1,realdat$germ_perc)
+
+##make chilling numeric
+realdat$chill_time<-NA
+realdat<- within(realdat, chill_time[COLD=="0" ]<-0)
+realdat<- within(realdat, chill_time[COLD=="A" ]<-14)
+realdat<- within(realdat, chill_time[COLD=="B" ]<-28)
+realdat<- within(realdat, chill_time[COLD=="C" ]<-35)
+realdat<- within(realdat, chill_time[COLD=="D" ]<-42)
+realdat<- within(realdat, chill_time[COLD=="E" ]<-49)
+realdat<- within(realdat, chill_time[COLD=="f" ]<-56)
+realdat<- within(realdat, chill_time[COLD=="G" ]<-63)
+realdat<- within(realdat, chill_time[COLD=="H" ]<-77)
+realdat<- within(realdat, chill_time[COLD=="i" ]<-91)
+realdat$chillweeks<-realdat$chill_time/7 # make chilling weeks instead of days
+
+realdat$force<-NA # make forcing numeric
+realdat<- within(realdat, force[INC=="L"]<-0)
+realdat<- within(realdat, force[INC=="H"]<-1)
+
+realdat$DAY<-ifelse(realdat$DAY==0,0.0001,realdat$DAY) #elimiate 0 values for log logistic dist
+
+realdatshorty<- filter(realdat,!Taxa %in% c("Phlox cuspidata","Impatiens capensis","Carex grisea","Carex grayi"))
+unique(realdatshorty$Taxa)
+fgp.dat<-filter(realdatshorty,DAY==25)
+
+
+specieslist <- unique(fgp.dat$Taxa)
+sp.short<-c("Oenethera biennis"    ,   "Cryptotaenia canadensis")
+
+df<-data.frame(Predictor=character(),fixed.Estimate=numeric(),fixed.Est.Error=numeric(), fixed.l.95..CI=numeric(), fixed.u.95..CI=numeric(),fixed.Eff.Sample=numeric(),fixed.Rhat=numeric(),Taxa=character())
+
+for (sp in seq_along(sp.short)){
+    dataonesp <- subset(fgp.dat, Taxa==specieslist[sp])
+    model <- brm(germ_perc~chillweeks*force, data=dataonesp)
+    dfhere<-rownames_to_column(as.data.frame(summary(model)[14]),"Predictor") 
+    
+    dfhere$Taxa<-specieslist[sp] 
+     df <- rbind(df, dfhere)
+  }
+
+goo<-as.data.frame(summary(model)[14])
+colnames(goo)
+
+effective_sample(model)
+goo<-as.data.frame(rhat(model))
+strat.treats<-c(2,4,6,8,10,12)
+new.data <- data.frame(Taxa = factor(c(rep(unique(fgp.dat$Taxa),6))),
+                                chillweeks = c(rep(strat.treats,each=10)),
+                                force = c(rep(c(0,1),each=60)))
+
+                       daty<-(predict(full.fgp.mod, newdata = new.data,prob=c(.05,0.95)))
+daty<-cbind(daty,new.data)
+
+ggplot(daty,aes(x=chillweeks,y=Estimate))+
+  geom_bar(stat="identity",position="dodge",aes(fill=as.factor(force)))+
+  scale_fill_manual(values=c("royalblue","goldenrod1"))+
+  facet_wrap(~Taxa,ncol=5)+theme_linedraw()
+
+aftr.fgp.data<-filter(fgp.dat,chillweeks>8)
+aftr.fgp.mod<-brms::brm(germ_perc~force*chillweeks+(chillweeks|Taxa),data=aftr.fgp.data,iter=4000,warmup=3000)
+summary(aftr.fgp.mod)
+save.image(file="fgp.Rdata")
+}
+@
+
+
+2 pannel figure A) effect sizes and predicted germination responses at 4,6,8,12 weeks of chilling
+
+There is: 1. a minimum amount of chilling below which there is no germination for some species. 
+
+2. A maximum above which germination percentage isn't effected
+Figure here showing impact of strat at greater than 
+
+
+\end{document}

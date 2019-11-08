@@ -5,9 +5,10 @@ options(stringsAsFactors = FALSE)
 library(survival)
 library(ggplot2)
 library(dplyr)
+library(tidyr)
 library("ggfortify")
-library("coxme")
 library("icenReg")
+
 library("emmeans")
 
 ###make a small data set
@@ -22,52 +23,31 @@ library("emmeans")
 ###This seems to work
 setwd("~/Documents/git/timetogerminate/germination_trials/input")
 daily.dat<-read.csv("daily_dat_nointerval.csv",header=TRUE)
-d<-read.csv("germ_data_forDRC.csv",header= TRUE)
-goober<-uncount(d,germination,.remove=FALSE)
+
+###Note: not worrying about interval censoring right now so skip
+#d<-read.csv("germ_data_forDRC.csv",header= TRUE)
+#goober<-uncount(d,germination,.remove=FALSE)
 
 
-goober$DAY<-ifelse(goober$DAY==-Inf,NA,goober$DAY)
-goober$END<-ifelse(goober$END==Inf,NA,goober$END)
-goober$censor<-ifelse(goober$END==0,2,1)
-goober<- within(goober, censor[DAY==25 ]<-0)
-goober$chill_time<-NA
-goober<- within(goober, chill_time[COLD=="O" ]<-0)
-goober<- within(goober, chill_time[COLD=="A" ]<-14)
-goober<- within(goober, chill_time[COLD=="B" ]<-28)
-goober<- within(goober, chill_time[COLD=="C" ]<-35)
-goober<- within(goober, chill_time[COLD=="D" ]<-42)
-goober<- within(goober, chill_time[COLD=="E" ]<-49)
-goober<- within(goober, chill_time[COLD=="f" ]<-56)
-goober<- within(goober, chill_time[COLD=="G" ]<-63)
-goober<- within(goober, chill_time[COLD=="H" ]<-77)
-goober<- within(goober, chill_time[COLD=="i" ]<-91)
+#goober$END<-ifelse(goober$END==Inf,NA,goober$END)
+#goober$censor<-ifelse(goober$END==0,2,1)
+#goober<- within(goober, censor[DAY==25 ]<-0)
+#goober$chill_time<-NA
+#goober<- within(goober, chill_time[COLD=="O" ]<-0)
+#goober<- within(goober, chill_time[COLD=="A" ]<-14)
+#goober<- within(goober, chill_time[COLD=="B" ]<-28)
+#goober<- within(goober, chill_time[COLD=="C" ]<-35)
+#goober<- within(goober, chill_time[COLD=="D" ]<-42)
+#goober<- within(goober, chill_time[COLD=="E" ]<-49)
+#goober<- within(goober, chill_time[COLD=="f" ]<-56)
+#goober<- within(goober, chill_time[COLD=="G" ]<-63)
+#goober<- within(goober, chill_time[COLD=="H" ]<-77)
+#goober<- within(goober, chill_time[COLD=="i" ]<-91)#
 
-goober$warmT<-NA
-goober<- within(goober, warmT[INC=="H" ]<-25)
-goober<- within(goober, warmT[INC=="L" ]<-20)
-write.csv(goober,"interval_survival_data.csv")
-
-
-Cry<-filter(goober,Taxa=="Cryptotaenia canadensis")
-
-
-Cry<-filter(Cry,DAY!=0)##removes left censoring
-#gooby<-filter(Cry,!is.na(END))
-#Cry1<-filter(Cry,COLD=="O")
-
-Surv.Obj <- Surv(Cry$DAY, Cry$END,type = 'interval2')
-mod2 <- survreg(Surv.Obj ~ warmT+chill_time, dist = "lognormal", data = Cry) ##This model throughs out left censoring, and assumes all right censored individuals will germinat
-summary(mod2)
-emmeans(mod2, ~ INC+COLD, transform = "response")
-
-km <- survreg(Surv.Obj ~INC+COLD,data=Cry)
-emmeans(km, ~ INC+COLD, transform = "response")
-
-#fit <- ic_sp(cbind(DAY, END) ~ INC,   data = Cry, model = 'ph', bs_samples = 10)
-
-#summary(fit)
-#?ic_sp()
-
+#goober$warmT<-NA
+#goober<- within(goober, warmT[INC=="H" ]<-25)
+#goober<- within(goober, warmT[INC=="L" ]<-20)
+#write.csv(goober,"interval_survival_data.csv")
 
 ####converts toruvival anaysis
 goo<-uncount(daily.dat,germ.daily,.remove=FALSE)
@@ -98,4 +78,4 @@ goober$warmT<-NA
 goober<- within(goober, warmT[INC=="H" ]<-25)
 goober<- within(goober, warmT[INC=="L" ]<-20)
 
-write.csv(goober,"surival_dat_nointerval.csv")
+write.csv(goober,"surival_dat_nointerval.csv") ###not this data sheet throws out any seeds that were moldy

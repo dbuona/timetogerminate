@@ -39,6 +39,9 @@ realdat$force<-NA # make forcing numeric
 realdat<- within(realdat, force[INC=="L"]<-0)
 realdat<- within(realdat, force[INC=="H"]<-1)
 
+write.csv(realdat,"germ_perc_data.csv", row.names = FALSE)
+
+
 realdat$DAY<-ifelse(realdat$DAY==0,0.0001,realdat$DAY) #elimiate 0 values for log logistic dist
 
 realdatshorty<- filter(realdat,!Taxa %in% c("Phlox cuspidata","Impatiens capensis","Carex grisea"))

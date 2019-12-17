@@ -54,11 +54,78 @@ fgp.dat<-filter(realdatshorty,DAY==25) ### this makes a dataset of only final ge
 
 
 ggplot(fgp.dat,aes(chillweeks,germ_perc))+
-  geom_smooth(method="loess",level=0.9,aes(color=as.factor(force),fill = as.factor(force)))+
+  geom_smooth(method="lm",level=0.9,aes(color=as.factor(force),fill = as.factor(force)))+
   facet_wrap(~Taxa)+scale_fill_manual(values=c("royalblue","firebrick1"))+
   scale_color_manual(values=c("royalblue","firebrick1"))+geom_hline(aes(yintercept=0),color="black")+geom_hline(aes(yintercept=1),color="black")+
   ylim(-.3,1.3)+theme_linedraw()+geom_point(aes(color=as.factor(force)),size=0.5)+geom_vline(aes(xintercept=8),color="gray",size=2)
 
+
+
+
+fgp.dat.crypto<-filter(fgp.dat,Taxa=="Cryptotaenia canadensis")
+fgp.dat.poly<-filter(fgp.dat,Taxa=="Polygonum virginiatum")
+fgp.dat.eury<-filter(fgp.dat,Taxa=="Eurbia diviricata")
+
+ggplot(fgp.dat.crypto,aes(chillweeks,germ_perc))+stat_summary(aes(color=as.factor(force)))
+ggplot(fgp.dat.poly,aes(chillweeks,germ_perc))+stat_summary(aes(color=as.factor(force)))
+ggplot(fgp.dat.eury,aes(chillweeks,germ_perc))+stat_summary(aes(color=as.factor(force)))
+
+cryptoafter<-filter(fgp.dat.crypto,chillweeks>=7)
+cryptobefore<-filter(fgp.dat.crypto,chillweeks<7)
+
+
+polyafter<-filter(fgp.dat.poly,chillweeks>=7)
+polybefore<-filter(fgp.dat.poly,chillweeks<7)
+euryafter<-filter(fgp.dat.eury,chillweeks>=7)
+eurybefore<-filter(fgp.dat.eury,chillweeks<7)
+
+
+summary(lm(germ_perc~chillweeks*force,data=fgp.dat.crypto))
+summary(lm(germ_perc~chillweeks*force,data=cryptobefore))
+summary(lm(germ_perc~chillweeks*force,data=cryptoafter))
+
+summary(lm(germ_perc~chillweeks*force,data=fgp.dat.poly))
+summary(lm(germ_perc~chillweeks*force,data=polybefore))
+summary(lm(germ_perc~chillweeks*force,data=polyafter))
+
+summary(lm(germ_perc~chillweeks*force,data=fgp.dat.eury))
+summary(lm(germ_perc~chillweeks*force,data=eurybefore))
+summary(lm(germ_perc~chillweeks*force,data=euryafter))
+
+crypto.full.after<-filter(realdat,Taxa=="Cryptotaenia canadensis")
+crypto.full.after<-filter(crypto.full.after,chillweeks>=7)
+
+poly.full.after<-filter(realdat,Taxa=="Polygonum virginiatum")
+poly.full.after<-filter(poly.full.after,chillweeks>=7)
+
+plates<-unique(crypto.full.after$plate_num)
+df<-data.frame(plate_num=numeric(),chillweeks=numeric(),force=numeric(), MGT=numeric())
+
+for (p in seq_along(plates)){
+dataoneplate <- subset(crypto.full.after, plate_num==plates[p])
+MGT[p]<-sum(dataoneplate$DAY*dataoneplate$germ.daily)/20
+dfhere <- data.frame(plate_num=plates[p],chillweeks=dataoneplate$chillweeks, force=dataoneplate$force,MGT=MGT[p])
+   df <- rbind(df, dfhere) ## rbind it here for safty
+}
+
+plates2<-unique(poly.full.after$plate_num)
+df2<-data.frame(plate_num=numeric(),chillweeks=numeric(),force=numeric(), MGT=numeric())
+
+for (p in seq_along(plates2)){
+  dataoneplate <- subset(poly.full.after, plate_num==plates2[p])
+  MGT[p]<-sum(dataoneplate$DAY*dataoneplate$germ.daily)/20
+  dfhere2 <- data.frame(plate_num=plates2[p],chillweeks=dataoneplate$chillweeks, force=dataoneplate$force,MGT=MGT[p])
+  df2 <- rbind(df2, dfhere2) ## rbind it here for safty
+}
+
+
+df<-df %>% distinct()
+df2<-df2 %>% distinct()
+
+df$adjchill<-df$chillweeks-7
+df2$adjchill<-df2$chillweeks-7
+summary(lm(MGT~adjchill*force,data=df))
+summary(lm(MGT~adjchill*force,data=df2))
 ###Identify breakpoints in linear relationship for forest species
 unique(fgp.dat$Taxa)
 Cc<-filter(fgp.dat,Taxa=="Cryptotaenia canadensis")

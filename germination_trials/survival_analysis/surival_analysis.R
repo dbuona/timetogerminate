@@ -33,17 +33,13 @@ d$censored<-ifelse(d$DAY==0.00001 & d$germinated==1,-1,d$censored)
 
 
 ##try weibull
-priorz<-get_prior(DAY | cens(censored)~chillweeks*force+(chillweeks*force|Taxa),data=d,family= lognormal, inits = "0")
+crypto<-filter(d,Taxa=="Cryptotaenia canadensis")
 
-fit2 <- brm(DAY | cens(censored)~chillweeks*force+(chillweeks*force|Taxa), 
-            data=d, family =   lognormal, inits = "0" ,prior=priorz,iter=8000,warmup = 7000, chains=4) ## 8 divergent trainsitions
+priorz.wei<-get_prior(DAY | cens(censored)~chillweeks*force,data=crypto,family= weibull())
 
-priorz.wei<-get_prior(DAY | cens(censored)~chillweeks*force+(chillweeks*force|Taxa),data=d,family= weibull(), inits = "0")
+fit.wei.crypto <- brm(DAY | cens(censored)~chillweeks*force, data=crypto, family =   weibull(),inits=0 ,prior=priorz.wei,iter=4000,warmup = 3000, chains=4) 
 
-fit.wei <- brm(DAY | cens(censored)~chillweeks*force+(chillweeks*force|Taxa), 
-            data=d, family =   weibull(), inits = "0" ,prior=priorz.wei,iter=8000,warmup = 7000, chains=4) ## 8 divergent trainsitions
 
-loo(fit2,fit.wei)
 
 
 summary(fit.wei)
@@ -58,15 +54,22 @@ exp(4.544279) ## 94
 
 exp(4.307620-0.24874228*9) 7.9
 
-pred.weeks<-c(0,9)
-pred.force<-c(0)
-new.data <- data.frame(Taxa = c("Cryptotaenia canadensis","Cryptotaenia canadensis"),
-                       chillweeks = c(rep(pred.weeks,each=1)),
-                       force = c(rep(pred.force,each=1)))
+pred.weeks<-c(0,12)
+pred.force<-c(0,5)
+new.data <- data.frame(chillweeks = c(rep(pred.weeks,2)),
+                       force = c(rep(pred.force,each=2)))
 
-
-
-
+daty.wei<-predict(fit.wei.crypto,probs =c(0.25,.75),newdata=new.data)### something is wrong with error
+daty.wei<-cbind(daty.wei,new.data)
+dev.new()
+ggplot(daty.wei,aes(x=Estimate,y=0))+
+  xlim(-0,120)+ylim(-5,20)+geom_point(size=4)+
+  geom_vline(aes(xintercept=Estimate))+
+  facet_grid(as.factor(force)~as.factor(chillweeks))+theme_linedraw()+
+  scale_colour_brewer( type = "qual", palette = "Dark2", direction = 1)+
+  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y=element_blank())+
+  labs(x="Model Estimated Days to 50% Germination")
+dev.off()
 
 
 ###predict and plot

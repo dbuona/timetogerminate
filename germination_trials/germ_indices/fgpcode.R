@@ -18,7 +18,7 @@ library(tibble)
 library(segmented)
 library(RColorBrewer)
 library(brms)
-
+library(grid)
 realdat<-read.csv("input/daily_dat_nointerval.csv")
 
 ##clean data
@@ -42,11 +42,11 @@ realdat$chillweeks<-realdat$chill_time/7 # make chilling weeks instead of days
 
 realdat$force<-NA # make forcing numeric
 realdat<- within(realdat, force[INC=="L"]<-0)
-realdat<- within(realdat, force[INC=="H"]<-1)
+realdat<- within(realdat, force[INC=="H"]<-5)
 
 realdat$DAY<-ifelse(realdat$DAY==0,0.0001,realdat$DAY) #elimiate 0 values for log logistic dist
 
-realdatshorty<- filter(realdat,!Taxa %in% c("Phlox cuspidata","Impatiens capensis"))
+realdatshorty<- filter(realdat,Taxa %in% c("Cryptotaenia canadensis","Polygonum virginiatum","Eurbia diviricata")) #These 3 sp show a strong chill responmse
 
 fgp.dat<-filter(realdatshorty,DAY==25) ### this makes a dataset of only final germination percentate
 
@@ -60,19 +60,35 @@ ggplot(fgp.dat,aes(chillweeks,germ_perc))+
   ylim(-.3,1.3)+theme_linedraw()+geom_point(aes(color=as.factor(force)),size=0.5)+geom_vline(aes(xintercept=8),color="gray",size=2)
 
 
+fgp.dat.cool<-filter(fgp.dat,force==0)
+ggplot(fgp.dat.cool,aes(chillweeks,germ_perc))+stat_summary(aes(color=Taxa))+geom_vline(aes(xintercept=7))
 
+fgp.dat.cool.before<-filter(fgp.dat.cool,chillweeks<=7)
+fgp.dat.cool.after<-filter(fgp.dat.cool,chillweeks>=7)
 
-fgp.dat.crypto<-filter(fgp.dat,Taxa=="Cryptotaenia canadensis")
-fgp.dat.poly<-filter(fgp.dat,Taxa=="Polygonum virginiatum")
-fgp.dat.eury<-filter(fgp.dat,Taxa=="Eurbia diviricata")
+fgp.dat.cool$thresh<-ifelse(fgp.dat.cool$chillweeks>7.9,"after","before")
+ggplot(data=fgp.dat.cool,aes(x=chillweeks,y=germ_perc))+
+  geom_smooth(method="lm",aes(color=Taxa,linetype=thresh,fill=Taxa),alpha=0.1,size=.3)+scale_linetype_manual(values=c("solid","solid"))+
+  stat_summary(aes(color=Taxa))+geom_vline(aes(xintercept=7))
 
-ggplot(fgp.dat.crypto,aes(chillweeks,germ_perc))+stat_summary(aes(color=as.factor(force)))
-ggplot(fgp.dat.poly,aes(chillweeks,germ_perc))+stat_summary(aes(color=as.factor(force)))
-ggplot(fgp.dat.eury,aes(chillweeks,germ_perc))+stat_summary(aes(color=as.factor(force)))
+a<-ggplot()+
+  geom_smooth(data=fgp.dat.cool,method="lm",aes(x=chillweeks,y=germ_perc,color=Taxa,fill=Taxa),alpha=0.1,size=.3)+geom_hline(yintercept=1)+
+  geom_hline(yintercept=0)+stat_summary(data=fgp.dat.cool,aes(x=chillweeks,y=germ_perc,color=Taxa))+geom_vline(aes(xintercept=7),linetype="dotted")+
+  ylim(0,1.2)
+  
+b<-ggplot()+
+  geom_smooth(data=fgp.dat.cool.before,method="lm",aes(x=chillweeks,y=germ_perc,color=Taxa,fill=Taxa),alpha=0.1,size=.3)+
+  geom_smooth(data=fgp.dat.cool.after,method="lm",aes(x=chillweeks,y=germ_perc,color=Taxa,fill=Taxa),alpha=0.1,size=.3)+
+  stat_summary(data=fgp.dat.cool,aes(x=chillweeks,y=germ_perc,color=Taxa))+geom_vline(aes(xintercept=7),linetype="dotted")+geom_hline(yintercept=1)+
+  geom_hline(yintercept=0)+ylim(0,1.2)
 
+ggpubr::ggarrange(a,b,common.legend = TRUE)
+
+fgp.dat.crypto<-filter(fgp.dat.cool,Taxa=="Cryptotaenia canadensis")
+fgp.dat.poly<-filter(fgp.dat.cool,Taxa=="Polygonum virginiatum")
+fgp.dat.eury<-filter(fgp.dat.cool,Taxa=="Eurbia diviricata")
 cryptoafter<-filter(fgp.dat.crypto,chillweeks>=7)
 cryptobefore<-filter(fgp.dat.crypto,chillweeks<7)
-
 
 polyafter<-filter(fgp.dat.poly,chillweeks>=7)
 polybefore<-filter(fgp.dat.poly,chillweeks<7)
@@ -80,33 +96,37 @@ euryafter<-filter(fgp.dat.eury,chillweeks>=7)
 eurybefore<-filter(fgp.dat.eury,chillweeks<7)
 
 
-summary(lm(germ_perc~chillweeks*force,data=fgp.dat.crypto))
-summary(lm(germ_perc~chillweeks*force,data=cryptobefore))
-summary(lm(germ_perc~chillweeks*force,data=cryptoafter))
+summary(lm(germ_perc~chillweeks,data=fgp.dat.crypto))
+summary(lm(germ_perc~chillweeks,data=cryptobefore))
+summary(lm(germ_perc~chillweeks,data=cryptoafter))
 
-summary(lm(germ_perc~chillweeks*force,data=fgp.dat.poly))
-summary(lm(germ_perc~chillweeks*force,data=polybefore))
-summary(lm(germ_perc~chillweeks*force,data=polyafter))
+summary(lm(germ_perc~chillweeks,data=fgp.dat.poly))
+summary(lm(germ_perc~chillweeks,data=polybefore))
+summary(lm(germ_perc~chillweeks,data=polyafter))
 
-summary(lm(germ_perc~chillweeks*force,data=fgp.dat.eury))
-summary(lm(germ_perc~chillweeks*force,data=eurybefore))
-summary(lm(germ_perc~chillweeks*force,data=euryafter))
+summary(lm(germ_perc~chillweeks,data=fgp.dat.eury))
+summary(lm(germ_perc~chillweeks,data=eurybefore))
+summary(lm(germ_perc~chillweeks,data=euryafter))
+
+
 
 crypto.full.after<-filter(realdat,Taxa=="Cryptotaenia canadensis")
 crypto.full.after<-filter(crypto.full.after,chillweeks>=7)
-
 poly.full.after<-filter(realdat,Taxa=="Polygonum virginiatum")
 poly.full.after<-filter(poly.full.after,chillweeks>=7)
 
-plates<-unique(crypto.full.after$plate_num)
-df<-data.frame(plate_num=numeric(),chillweeks=numeric(),force=numeric(), MGT=numeric())
+shorty.after<-filter(realdatshorty,force==0)
+shorty.after<-filter(shorty.after,chillweeks>=7)
+plates<-unique(shorty.after$plate_num)
+df<-data.frame(plate_num=numeric(),chillweeks=numeric(),Taxa=character(), MGT=numeric())
 
 for (p in seq_along(plates)){
-dataoneplate <- subset(crypto.full.after, plate_num==plates[p])
-MGT[p]<-sum(dataoneplate$DAY*dataoneplate$germ.daily)/20
-dfhere <- data.frame(plate_num=plates[p],chillweeks=dataoneplate$chillweeks, force=dataoneplate$force,MGT=MGT[p])
+dataoneplate <- subset(shorty.after, plate_num==plates[p])
+MGT<-sum(dataoneplate$DAY*dataoneplate$germ.daily)/20
+dfhere <- data.frame(plate_num=plates[p],chillweeks=dataoneplate$chillweeks, Taxa=dataoneplate$Taxa,MGT=MGT)
    df <- rbind(df, dfhere) ## rbind it here for safty
 }
+
 
 plates2<-unique(poly.full.after$plate_num)
 df2<-data.frame(plate_num=numeric(),chillweeks=numeric(),force=numeric(), MGT=numeric())
@@ -124,6 +144,16 @@ df2<-df2 %>% distinct()
 
 df$adjchill<-df$chillweeks-7
 df2$adjchill<-df2$chillweeks-7
+
+d<-ggplot()+ geom_smooth(data=fgp.dat.cool.after,method="lm",aes(x=chillweeks,y=germ_perc,color=Taxa,fill=Taxa),alpha=0.1,size=.3)+
+  stat_summary(data=fgp.dat.cool.after,aes(x=chillweeks,y=germ_perc,color=Taxa))+geom_vline(aes(xintercept=7),linetype="dotted")+geom_hline(yintercept=1)+
+  geom_hline(yintercept=0)+ylim(0,1.1)
+c<-ggplot()+
+  geom_smooth(data=df,method="lm",aes(x=chillweeks,y=MGT,color=Taxa,fill=Taxa),alpha=0.1,size=.3)+geom_point(data=df,aes(x=chillweeks,y=MGT,color=Taxa))
+vp <- viewport(width = 0.5, height = 0.3, x = 0.43, y = .99,just=c("left","top"))
+c
+print(d, vp = vp )
+
 summary(lm(MGT~adjchill*force,data=df))
 summary(lm(MGT~adjchill*force,data=df2))
 ###Identify breakpoints in linear relationship for forest species

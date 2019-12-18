@@ -82,8 +82,9 @@ b<-ggplot()+
   stat_summary(data=fgp.dat.cool,aes(x=chillweeks,y=germ_perc,color=Taxa))+geom_vline(aes(xintercept=7),linetype="dotted")+geom_hline(yintercept=1)+
   geom_hline(yintercept=0)+ylim(0,1.2)
 
+jpeg("figures/germ_perc_plot.jpeg",width = 7,height = 5,units = "in",res=150)
 ggpubr::ggarrange(a,b,common.legend = TRUE)
-
+dev.off()
 fgp.dat.crypto<-filter(fgp.dat.cool,Taxa=="Cryptotaenia canadensis")
 fgp.dat.poly<-filter(fgp.dat.cool,Taxa=="Polygonum virginiatum")
 fgp.dat.eury<-filter(fgp.dat.cool,Taxa=="Eurbia diviricata")
@@ -146,14 +147,16 @@ df$adjchill<-df$chillweeks-7
 df2$adjchill<-df2$chillweeks-7
 
 d<-ggplot()+ geom_smooth(data=fgp.dat.cool.after,method="lm",aes(x=chillweeks,y=germ_perc,color=Taxa,fill=Taxa),alpha=0.1,size=.3)+
-  stat_summary(data=fgp.dat.cool.after,aes(x=chillweeks,y=germ_perc,color=Taxa))+geom_vline(aes(xintercept=7),linetype="dotted")+geom_hline(yintercept=1)+
-  geom_hline(yintercept=0)+ylim(0,1.1)
+  stat_summary(data=fgp.dat.cool.after,aes(x=chillweeks,y=germ_perc,color=Taxa),size=.1)+geom_vline(aes(xintercept=7),linetype="dotted")+geom_hline(yintercept=1)+
+  geom_hline(yintercept=0)+ylim(0,1.1)+theme(legend.position="none")
 c<-ggplot()+
-  geom_smooth(data=df,method="lm",aes(x=chillweeks,y=MGT,color=Taxa,fill=Taxa),alpha=0.1,size=.3)+geom_point(data=df,aes(x=chillweeks,y=MGT,color=Taxa))
-vp <- viewport(width = 0.5, height = 0.3, x = 0.43, y = .99,just=c("left","top"))
+  geom_smooth(data=df,method="lm",aes(x=chillweeks,y=MGT,color=Taxa,fill=Taxa),alpha=0.1,size=.7)+geom_point(data=df,aes(x=chillweeks,y=MGT,color=Taxa))+
+
+vp <- viewport(width = 0.3, height = 0.4, x = 0.35, y = .99,just=c("left","top"))
+jpeg("figures/MGT_plot.jpeg",width = 7,height = 5,units = "in",res=150)
 c
 print(d, vp = vp )
-
+dev.off()
 summary(lm(MGT~adjchill*force,data=df))
 summary(lm(MGT~adjchill*force,data=df2))
 ###Identify breakpoints in linear relationship for forest species

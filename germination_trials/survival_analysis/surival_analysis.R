@@ -33,42 +33,49 @@ d$censored<-ifelse(d$DAY==0.00001 & d$germinated==1,-1,d$censored)
 
 
 ##try weibull
-crypto<-filter(d,Taxa=="Cryptotaenia canadensis")
 
-priorz.wei<-get_prior(DAY | cens(censored)~chillweeks*force,data=crypto,family= weibull())
+priorz.wei<-get_prior(DAY | cens(censored)~chillweeks+force+(chillweeks+force|Taxa),data=d,family= weibull())
 
-fit.wei.crypto <- brm(DAY | cens(censored)~chillweeks*force, data=crypto, family =   weibull(),inits=0 ,prior=priorz.wei,iter=4000,warmup = 3000, chains=4) 
-
+fit.wei.all<- brm(DAY | cens(censored)~chillweeks+force+(chillweeks+force|Taxa), data=d, family =   weibull(),inits=0 ,prior=priorz.wei,iter=4000,warmup = 3000, chains=4) 
 
 
 
-summary(fit.wei)
-coef(fit.wei,probs =c(0.25,.75))
+
+summary(fit.wei.all)
+coef(fit.wei.all,probs =c(0.25,.75))
 
 brmsfamily("weibull")
 
-exp(4.307620) #74 days
+exp(3.009708) #74 days
 exp(0.11582958)#1.12
 exp(4.092365) ##59
 exp(4.544279) ## 94
 
 exp(4.307620-0.24874228*9) 7.9
 
-pred.weeks<-c(0,12)
+pred.weeks<-c(4,8,12,16)
 pred.force<-c(0,5)
-new.data <- data.frame(chillweeks = c(rep(pred.weeks,2)),
-                       force = c(rep(pred.force,each=2)))
+unique(d$Taxa)
+new.data <- data.frame(Taxa=c(rep(c("Cryptotaenia canadensis","Polygonum virginiatum","Eurbia diviricata","Hesperis matronalis"),each=4,2)),
+  chillweeks = c(rep(pred.weeks,8)),
+                       force = c(rep(pred.force,each=16)))
 
-daty.wei<-predict(fit.wei.crypto,probs =c(0.25,.75),newdata=new.data)### something is wrong with error
-daty.wei<-cbind(daty.wei,new.data)
+daty.wei.all<-predict(fit.wei.all,probs =c(0.25,.75),newdata=new.data)### something is wrong with error
+daty.wei<-cbind(daty.wei.all,new.data)
 dev.new()
-ggplot(daty.wei,aes(x=Estimate,y=0))+
-  xlim(-0,120)+ylim(-5,20)+geom_point(size=4)+
+
+pd<-position_dodge(width=0.4)
+ggplot(daty.wei,aes(x=chillweeks,y=Estimate))+geom_point(aes(color=Taxa),position=pd)+
+  ggplot2::geom_errorbar(aes(ymax=Q75,ymin=Q25,color=Taxa),width=0,position=pd)+
+  facet_wrap(~as.factor(force))+theme_bw()+ylim(0,25)
+ 
+
   geom_vline(aes(xintercept=Estimate))+
   facet_grid(as.factor(force)~as.factor(chillweeks))+theme_linedraw()+
   scale_colour_brewer( type = "qual", palette = "Dark2", direction = 1)+
   theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y=element_blank())+
   labs(x="Model Estimated Days to 50% Germination")
+
 dev.off()
 
 

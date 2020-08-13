@@ -53,8 +53,8 @@ mody<-function(x) {
   }
 
 mody.aher<- function(x){
-  the_fit <- drm(germination~DAY+END, data=x ,fct = LL.3(), type ="event")
-  setNames(data.frame(t(coef(the_fit))), c("b", "d","e"))
+  the_fit <- drm(germination~DAY+END, data=x ,fct = LL.2(), type ="event")
+  setNames(data.frame(t(coef(the_fit))), c("b","e"))
 }
 
 ###Think about changing things in drmc

@@ -149,8 +149,7 @@ df2$adjchill<-df2$chillweeks-7
 d<-ggplot()+ geom_smooth(data=fgp.dat.cool.after,method="lm",aes(x=chillweeks,y=germ_perc,color=Taxa,fill=Taxa),alpha=0.1,size=.3)+
   stat_summary(data=fgp.dat.cool.after,aes(x=chillweeks,y=germ_perc,color=Taxa),size=.1)+geom_vline(aes(xintercept=7),linetype="dotted")+geom_hline(yintercept=1)+
   geom_hline(yintercept=0)+ylim(0,1.1)+theme(legend.position="none")
-c<-ggplot()+
-  geom_smooth(data=df,method="lm",aes(x=chillweeks,y=MGT,color=Taxa,fill=Taxa),alpha=0.1,size=.7)+geom_point(data=df,aes(x=chillweeks,y=MGT,color=Taxa))+
+c<-ggplot()+geom_smooth(data=df,method="lm",aes(x=chillweeks,y=MGT,color=Taxa,fill=Taxa),alpha=0.1,size=.7)+geom_point(data=df,aes(x=chillweeks,y=MGT,color=Taxa))
 
 vp <- viewport(width = 0.3, height = 0.4, x = 0.35, y = .99,just=c("left","top"))
 jpeg("figures/MGT_plot.jpeg",width = 7,height = 5,units = "in",res=150)

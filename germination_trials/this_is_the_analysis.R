@@ -161,7 +161,7 @@ Cpredictionall$germination[which(Cpredictionall$Estimate<.80 & Cpredictionall$Es
 Cpredictionall$germination[which(Cpredictionall$Estimate<.50 & Cpredictionall$Estimate>=.20 )]<-"20-50%"
 Cpredictionall$germination[which(Cpredictionall$Estimate<.20)]<-"<20%"
 
-write.csv(Cpredictionall,"dogoober.csv") ### do some excell stuff
+#write.csv(Cpredictionall,"dogoober.csv") ### do some excell stuff
 
 
 
@@ -196,12 +196,3 @@ ggplot(PVse,aes(year,seedbank))+geom_line(aes(color=Taxa))+facet_wrap(~scenario)
 
 
 ##simular seed bank dynamics
-scenario<-(
-
-  ifelese(scenario==reg,chill= rnorm(1,79.2,26.63)),chill=  
-year<-1:4
-
-
-(rnorm(100,79.2,26.63)
-  
-  ,rnorm(100,47.73,25.7))

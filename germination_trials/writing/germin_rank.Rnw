@@ -1,0 +1,68 @@
+\documentclass{article}
+
+\begin{document}
+
+\section{Introduction}
+
+\noindent A core task of community ecology is explain patterns of community assembly across a diversity of ecosystems \citep{}. A central tenent of community assembly theory is that the order of arrival of species to a community mediates inter-specific interactions and can dictate the tradjectory of community structure in the long term \citep{Fukami2015}. These historical contigencies, known as priority effects \citep{}, have been shown to alter the structure and function of communities, even driving communities to alternate stable states \citep{Fukami2011}.\\
+
+\noindent In many ecosystems across the temperate regions of the globe, plant communities must re-assemble each spring after a period of winter dormancy. In these communites, priority effects are largely the product of the rate at which dormant plants resume growth and seeds germinate when favorable conditions return, rather than the the timing of the arrival of these propagules, which in many cases occurs in the autumn prior to the dormant season \citep{}.
+
+\noindent% Like traditional historical contigencies, 
+This subcategory of priority effects, known as seasonal priority effects SPEs \citep{Wainwright2012} or short-term priorty \citep{Young2017} %can operate though niche preemption, in which the species with earlier activity reduces the amount of resources available for species with more delayed activity, or niche modification, in which earlier actors modify the environment, determining the growth conditions that later acting species will experience \citep{Fukami2015}. These dynamics 
+have been demonstrated in a number of observational studies in which competitivive dominance and/or invasion success is  associated with rapid germination or early phenology \citep{}, and experiments that stagger the planting time of competing species have demonstrated that SPEs mechanistically effect competitive outcomes among species \citep{}. However...\\
+
+\noindent In most natural systems, the timing of germination is dicated by environmental cues which means interannaul variation in envirnmental cues should correlate with interannual germination success. If species have unique germination rate responses to their environment than the strength of priority effects should vary over time which  can lead to coexistnace via the storage effect \citep{}. However any sustained alterations to environmental cues, like anthropogenic climate change, have potetial to disrupt these dynamics, shifting the balance of species' interactions, impacting population demography, community composition and ecosystem functions.\\
+
+Predicting these community dynamics with climate change require quantifying the magnitude of diffrences in germination rate responses among species, however, the importance of SPE's in determining interactions amongs species likely varies among habitat types \citep{}. To date, most studies investigate SPEs occur in annual desert and grassland communities where germination is primirly controlled by water availability \citep{}. In many other temperate systems, temperature is the primary cue for germination \citep{} and is unknown if differences in germination rate responses to temperature are significant enough to generate similar magnitude variation in germination rank to expect SPEs to impact community dynamics.\\ 
+
+There is particular uncertainty regarding the roles of germination SPEs in temperate forests.
+\begin{enumerate}
+\item In temperate forest most species are perrenials (germination matters less for coexistance)
+\item Physiological dormancy is common temperature (stratification and incubation) is the main driver of germination.
+
+
+\subsection{Our study}
+\begin{enumerate}
+\item While assumptions of the storage effect need to be evaluated in temperate forests, we focus evaluating the extent to which species have unique vital rate responses to their spatial environment, and those differences may impact priorty effect. First, we performed a germination study to quantify unique vital rate responses to stratification and incubation temperatures for a suite of temperate herbaceous species to evlaute the potential for germination rank shifts with climate. The we extended to literture review of Young 2017 to evluate whether or not germination differences on this scale might influnce priority effect 
+\end{enumerate}
+
+\section*{Methods}
+\subsection*{Species}
+\begin{enumerate}
+\item Mix of field and forest species because seed bank of forest is often old field
+\item Mix of dormancy classes
+\end{enumerate}
+\subsection{Experimental Methods}
+\subsection{Data anaylsis}
+I think we're going with the survival model. I'll just mention survial models assume everything germinations, which is a bad assumption so we decided anything that the t50 was greater than 30 days (or other) did not germination higher than that.
+
+\subsection{extension of literature review}
+\begin{enumerate}
+\item search terms, how many studies in Young 2017
+\item how many we added
+\end{enumerate}
+
+\section*{Results}
+\begin{enumerate}
+\item table 1: Matrix of species differences under cliamte change and reguar conditions
+\item figure 1: mu plots, shape
+\item plot of germination ranks under each scenario
+\item 3d plots with t50, temperature and stratification for each species?
+\item Supp table of lit reivew with quantification of reponses (x out of y studies found priority effects with germination dfferences of <7 days, 7-21 days etc)
+\end{enumerate}
+
+
+\section*{Discussion}
+\begin{itemize}
+\item Yes, it seem like the differences are big enough to alter germination rank
+\item Next, we have to investigate if these differences drive performance differnces (priority effects)
+\item Our study didn't include risks to early germination--stabalizing selection on germiantion time.
+\item Germination may be less important in forest systems But germination may become more important as the need to migrate or distubrance regimes change.
+\item Population differences, maternial effects etc not accounted for.
+\item in forest germinations compete with ramets not just other seeds.
+\item These reulst should fit into larger deomography models that include survial, reproductive output etc.
+\end{itemize}
+
+
+\end{document}

@@ -13,3 +13,4 @@ germination_trials/.Rhistory
 *.bbl
 *.aux
 *.gz
+*.Rda

@@ -1,4 +1,4 @@
-\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass[11pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
 % maxwidth is the original width if it is less than linewidth
 % otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -49,34 +49,62 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt}
+%Required: You must have these
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{natbib}
+\usepackage{pdflscape}
+\usepackage{array}
+\usepackage{authblk}
+\usepackage{gensymb}
+\usepackage{amsmath}
+%\usepackage[backend=bibtex]{biblatex}
+\usepackage[small]{caption}
+
+\setkeys{Gin}{width=0.8\textwidth}
+\setlength{\captionmargin}{30pt}
+\setlength{\abovecaptionskip}{10pt}
+\setlength{\belowcaptionskip}{10pt}
+
+ \topmargin -1.5cm 
+ \oddsidemargin -0.04cm 
+ \evensidemargin -0.04cm 
+ \textwidth 16.59cm
+ \textheight 21.94cm 
+ \parskip 7.2pt 
+\renewcommand{\baselinestretch}{1.6} 	
+\parindent 0pt
+\usepackage{setspace}
+\usepackage{lineno}
+
+\bibliographystyle{..//refs/styles/besjournals.bst}
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+%\externaldocument{SUPP_FLS_flobud}
+
+\title{Differences in germination responses to environmental variation among species suggests the potential for strong seasonal priory effects in herbaceous forest communities}
+\date{}
+\author{}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
-
+\maketitle
+\linenumbers
 \section{Introduction}
-\subsection{Relative timing of germination, species interactions, and climate change}
-\begin{enumerate}
-\item The relative timing of germination is an important mechanism of species interactions; competition is often fiercest in early ontogony and chance of survival low.
-\item Competitivive dominance and/or invasion success is often associated with rapid germination.
-\item And this has been show to be mechaninsitic in experiments that staggered planting.
-\item In most natural systems, the timing of germination is dicated by environmental cues rather than time of arival. Which means interannaul variation in envirnmental cues should correlate with interannual germination success.
-\item If species have unique vital rate responses to their environment than 1) this can lead to coexistnace via the storage effect and 2) sustained alterations to environmental cues, ie, climate change has potetial to alter the relative timing of germination among species(hereafter: germination rank). 
-\item Depending on the strength differences among species (priority effects), cliamte change could amplify these differences and permantly alter community level germination ranks, shifting the balance of species' interactions, impacting demography and community processes.
-\end{enumerate}
-\subsection{Evidence for these dynamics}
-\begin{enumerate}
-\item These dynamics have been show in annual desert and grassland systems where germination is primirly controlled by water availability. Give some examples.
-However it is unclear whether these seasonal priorty effects on germination matter in temperate forest systems.
-\end{enumerate}
-\subsection{Why temperate forests may be different}
-\begin{enumerate}
-\item In temperate forest most species are perrenials (germination matters less for coexistance)
-\item Physiological dormancy is common temperature (stratification and incubation) is the main driver of germination.
-\item it is unclear the dfferences vital response rates to temperature are large enough to alter germination rank enough to impact priority effects/species interactions. 
-\end{enumerate}
-\subsection{Our study}
-\begin{enumerate}
-\item While assumptions of the storage effect need to be evaluated in temperate forests, we focus evaluating the extent to which species have unique vital rate responses to their spatial environment, and those differences may impact priorty effect. First, we performed a germination study to quantify unique vital rate responses to stratification and incubation temperatures for a suite of temperate herbaceous species to evlaute the potential for germination rank shifts with climate. The we extended to literture review of Young 2017 to evluate whether or not germination differences on this scale might influnce priority effect 
-\end{enumerate}
+
+\noindent A core task of community ecology is explain patterns of community assembly across a diversity of ecosystems \citep{Weiher:2011aa}. A central tenet of community assembly theory is that the order of arrival of species to a community mediates inter-specific interactions and can dictate the trajectory of community structure in the long term \citep{Fukami2015}. These historical contingencies, known as priority effects, have been shown to alter the structure and function of communities, even driving communities to alternate stable states \citep{Fukami2011}.\\
+
+\noindent In many ecosystems across the temperate regions of the globe, plant communities must re-assemble each spring after a period of winter dormancy. In these communities, priority effects are largely the product of the rate at which dormant plants and seeds respond to their environment and resume growth or germinate when favorable conditions return\citep{Rudolf:2019aa}, rather than the the timing of the arrival of these propagules, which in many cases occurs in the autumn prior to the dormant season \citep{Howe:1982aa,Baskin:1988aa}.
+
+\noindent% Like traditional historical contigencies, 
+The importance of this subcategory of priority effects, known as seasonal priority effects SPEs \citep{Wainwright_2011} or short-term priory \citep{Young:2017aa} to seasonal assembly depends on the magnitude of interspecific differences in germination rate responses to environment. If species have sufficiently different germination rate responses to their environment than the strength of priority effects should vary over time which, can lead to inter-specific coexistence via the storage effect \citep{Towers:2020aa}.\\%SPEs can operate though niche preemption, in which the species with earlier activity reduces the amount of resources available for species with more delayed activity, or niche modification, in which earlier actors modify the environment, determining the growth conditions that later acting species will experience \citep{Fukami2015}. \\
+
+\noindent These dynamics have been primarily demonstrated through experiments that stagger the planting time of competing species to evaluate whether SPEs mechanistically effect competitive outcomes among species \citep{Young:2017aa,Letten:2018aa}. A recent review paper by \citet{Weidlich:2020aa} reported that of 42 out of the 43 studies they evaluated found evidence for priority effects, and 18 of those studies (42\%) included planting interval treatments of less than 1 month, which can approximate the time scale of SPEs. \\
+
+\noident While this evidence suggests priority effects may be important in regulating community interactions, it is unclear to what extent these patterns are broadly generalizable. First, almost all mechanistic tests for SPEs to date have been performed using species from temperate grasslands \citep{Weidlich:2020aa}, whose germination behavior may differ substantially from taxa in other habitats \citep{Tudela-Isanta:2018aa}. Second, it is largely unknown if the magnitude temporal lags applied in staggered planting experiments can be generated under nature conditions. In most natural systems, the timing of germination is dictated by environmental cues---temperature (both cool stratification temperatures to break dormancy and warm incubation temperatures to stimulate germination), moisture and light availability \citep{Bewley1997,Fenner2000}. Shared cue use may constrain differences in germination rate responses among species if species utilize cues in the same way. Broadly characterizing the importance of SPEs in community assembly will require quantifying the magnitude of differences in germination rate responses among a diversity of species across a variety of habitats.\\
+
+\noindent This effort is particularly important and timely as anthropogenic climatic change is altering the germination environments of species across the globe \citep{Walck2011}.  Such sustained alterations to environmental cues have potential to disrupt SPEs, shifting balances of species' interactions, and impacting population demography, community composition and ecosystem functions.\\ 
+
+In this study, we quantified the differences in germination rate responses to temperature for a suite of herbaceous species found in temperate forests with full-factorial growth-chamber experiment in which we manipulated the duration of stratification duration and incubation temperatures to test whether variation in germination order generated by environmental variability can be on the same magnitude as planting intervals from staggered planting experiments to expect strong priory effects.
 
 \section*{Methods}
 \subsection*{Species}
@@ -85,8 +113,8 @@ However it is unclear whether these seasonal priorty effects on germination matt
 \item Mix of dormancy classes
 \end{enumerate}
 \subsection{Experimental Methods}
-\subsection{Data anaylsis}
-I think we're going with the survival model. I'll just mention survial models assume everything germinations, which is a bad assumption so we decided anything that the t50 was greater than 30 days (or other) did not germination higher than that.
+\subsection{Data analysis}
+I think we're going with the survival model. I'll just mention survival models assume everything germination, which is a bad assumption so we decided anything that the t50 was greater than 30 days (or other) did not germination higher than that.
 
 \subsection{extension of literature review}
 \begin{enumerate}
@@ -96,23 +124,32 @@ I think we're going with the survival model. I'll just mention survial models as
 
 \section*{Results}
 \begin{enumerate}
-\item table 1: Matrix of species differences under cliamte change and reguar conditions
+\item table 1: Matrix of species differences under climate change and regular conditions
 \item figure 1: mu plots, shape
 \item plot of germination ranks under each scenario
-\item Supp table of lit reivew with quantification of reponses (x out of y studies found priority effects with germination dfferences of <7 days, 7-21 days etc)
+\item 3d plots with t50, temperature and stratification for each species?
+\item Supp table of lit review with quantification of responses (x out of y studies found priority effects with germination differences of <7 days, 7-21 days etc)
 \end{enumerate}
 
 
 \section*{Discussion}
 \begin{itemize}
 \item Yes, it seem like the differences are big enough to alter germination rank
-\item Next, we have to investigate if these differences drive performance differnces (priority effects)
-\item Our study didn't include risks to early germination--stabalizing selection on germiantion time.
-\item Germination may be less important in forest systems But germination may become more important as the need to migrate or distubrance regimes change.
-\item Population differences, maternial effects etc not accounted for.
-\item in forest germinations compete with ramets not just other seeds.
-\item These reulst should fit into larger deomography models that include survial, reproductive output etc.
+\item Next, we have to investigate if these differences drive performance differences (priority effects)
+\item Our study didn't include risks to early germination--stabilizing selection on germination time.
+\item Germination may be less important in forest systems But germination may become more important as the need to migrate or disturbance regimes change.
+\item Population differences, maternal effects etc not accounted for.
+\item in forest germination compete with tamers not just other seeds.
+\item These result should fit into larger demography models that include survival, reproductive output etc.
 \end{itemize}
+\bibliography{..//refs/germination.bib} 
+\section*{Figures}
+\begin{figure}[h!]
+    \centering
+ \includegraphics[width=\textwidth]{..//figures/AFTplots.jpeg} 
+    \caption{} 
+    \label{fig:AFT}
+\end{figure}
 
 
 \end{document}

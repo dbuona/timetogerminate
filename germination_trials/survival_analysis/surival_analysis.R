@@ -14,7 +14,7 @@ library(lme4)
 library(brms)
 library(ggstance)
 setwd("~/Documents/git/timetogerminate/germination_trials/input")
-load("survmodel")
+load("survmodel.Rda")
 
 d<-read.csv("..//survival_analysis/surival_dat_nointerval.csv")
 d$DAY<-ifelse(d$DAY==0,0.00001,d$DAY)
@@ -42,121 +42,356 @@ fit.wei.all<- brm(DAY | cens(censored)~chillweeks+force+(chillweeks+force|Taxa),
 
 
 summary(fit.wei.all)
-coef(fit.wei.all,probs =c(0.25,.75))
+coef(fit.wei.all,probs =c(0.55,0.25,.75,.945))
 
 brmsfamily("weibull")
 
-exp(3.009708) #74 days
-exp(0.11582958)#1.12
-exp(4.092365) ##59
-exp(4.544279) ## 94
-
-exp(4.307620-0.24874228*9) 7.9
-
-pred.weeks<-c(4,8,12,16)
+###########################
+###### make plot 1############
+pred.weeks<-c(1:16)
 pred.force<-c(0,5)
 unique(d$Taxa)
-new.data <- data.frame(Taxa=c(rep(c("Cryptotaenia canadensis","Polygonum virginiatum","Eurbia diviricata","Hesperis matronalis"),each=4,2)),
-  chillweeks = c(rep(pred.weeks,8)),
-                       force = c(rep(pred.force,each=16)))
+new.data <- data.frame(Taxa=c(rep(c(unique(d$Taxa)),each=16,2)),
+  chillweeks = c(rep(pred.weeks,22)), force = c(rep(pred.force,each=352)))
 
-daty.wei.all<-predict(fit.wei.all,probs =c(0.25,.75),newdata=new.data)### something is wrong with error
+
+
+daty.wei.all<-fitted(fit.wei.all,probs =c(0.055,0.25,.75,.945),newdata=new.data)### something is wrong with error
 daty.wei<-cbind(daty.wei.all,new.data)
-dev.new()
+daty.wei$incubation<-ifelse(daty.wei$force==0,"20/10","25/15")
 
-pd<-position_dodge(width=0.4)
-ggplot(daty.wei,aes(x=chillweeks,y=Estimate))+geom_point(aes(color=Taxa),position=pd)+
-  ggplot2::geom_errorbar(aes(ymax=Q75,ymin=Q25,color=Taxa),width=0,position=pd)+
-  facet_wrap(~as.factor(force))+theme_bw()+ylim(0,25)
+
+
+pd<-position_dodge(width=0.1)
+
+library(RColorBrewer)
+# Define the number of colors you want
+nb.cols <- 11
+mycolors <- colorRampPalette(brewer.pal(8, "Set1"))(nb.cols)
+a<-ggplot()+
+  geom_line(data=daty.wei,aes(x=chillweeks,y=Estimate,color=Taxa),size=1)+
+
+ geom_line(data=daty.wei,aes(x=chillweeks,y=Q25,color=Taxa),size=.5,alpha=0.5)+
+  geom_line(data=daty.wei,aes(x=chillweeks,y=Q75,color=Taxa),size=.5,alpha=0.5)+
+  geom_line(data=daty.wei,aes(x=chillweeks,y=Q5.5,color=Taxa),size=.5,alpha=0.5,linetype="dashed")+
+  geom_line(data=daty.wei,aes(x=chillweeks,y=Q94.5,color=Taxa),size=.5,alpha=0.5,linetype="dashed")+##geom_point(aes(color=Taxa),position=pd)+
+  #ggplot2::geom_errorbar(aes(ymax=Q75,ymin=Q25,color=Taxa),width=0,position=pd)+
+  facet_wrap(~incubation,nrow = 2)+ggthemes::theme_base(base_size = 11)+scale_color_manual(values = mycolors)+ylim(0,60)+
+  labs(y="Model Estimated Days to 50% Germination",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"))
  
 
-  geom_vline(aes(xintercept=Estimate))+
-  facet_grid(as.factor(force)~as.factor(chillweeks))+theme_linedraw()+
-  scale_colour_brewer( type = "qual", palette = "Dark2", direction = 1)+
-  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y=element_blank())+
-  labs(x="Model Estimated Days to 50% Germination")
+###############################
+###### make plot 2############
+##########################
+pred.weeks2<-c(8,12)
+pred.force2<-c(5,0)
+unique(d$Taxa)
+new.data2 <- data.frame(Taxa=c(rep(c(unique(d$Taxa)), 2)),
+                       chillweeks = c(rep(pred.weeks2,each=11)), force = c(rep(pred.force2,each=11)))
 
+daty.wei.all2<-fitted(fit.wei.all,probs =c(0.055,0.25,.75,.945),newdata=new.data2)### something is wrong with error
+daty.wei2<-cbind(daty.wei.all2,new.data2)
+
+daty.wei2$scenario<-ifelse(daty.wei2$chillweeks==12,"average","warming")
+b<-ggplot(daty.wei2,aes(scenario,Estimate))+geom_point(aes(color=Taxa),position=pd)+
+  ggplot2::geom_errorbar(aes(ymax=Q75,ymin=Q25,color=Taxa),width=0,position=pd)+
+  ggplot2::geom_errorbar(aes(ymax=Q5.5,ymin=Q94.5,color=Taxa),width=0,linetype="dashed",position=pd)+
+  ylim(0,42)+
+  ggthemes::theme_base(base_size = 11)+scale_color_manual(values = mycolors)+
+  geom_line(aes(x=as.factor(scenario),y=Estimate,group=Taxa,color=Taxa),linetype="dotted")+
+  labs(y="Model Estimated Days to 50% Germination",x="scenario")
+
+jpeg("..//figures/AFTplots.jpeg",height=8,width=10, units="in",res=300)
+ggpubr::ggarrange(a,b,common.legend = TRUE,nrow=1,widths = c(.7,.3),legend="bottom",labels = c("a)","b)"))
 dev.off()
 
+###########table###############
+Taxa=unique(daty.wei2$Taxa)
+HP<-data.frame(Taxa=unique(daty.wei2$Taxa),HP_warm=c(
+daty.wei2[1,1]-daty.wei2[1,1],
+daty.wei2[1,1]-daty.wei2[2,1],
+daty.wei2[1,1]-daty.wei2[3,1],
+daty.wei2[1,1]-daty.wei2[4,1],
+daty.wei2[1,1]-daty.wei2[5,1],
+daty.wei2[1,1]-daty.wei2[6,1],
+daty.wei2[1,1]-daty.wei2[7,1],
+daty.wei2[1,1]-daty.wei2[8,1],
+daty.wei2[1,1]-daty.wei2[9,1],
+daty.wei2[1,1]-daty.wei2[10,1],
+daty.wei2[1,1]-daty.wei2[11,1]))
 
-###predict and plot
-Field<-c("Oenethera biennis","Silene vulgaris","Asclepias syriaca")
-Forest<-c("Anemone virginana","Carex grayi","Cryptotaenia canadensis","Eurbia diviricata","Hesperis matronalis","Polygonum virginiatum","Silene stellata","Thalictrum dioicum")
+HP$SVwarm<-c(daty.wei2[2,1]-daty.wei2[1,1],
+daty.wei2[2,1]-daty.wei2[2,1],
+daty.wei2[2,1]-daty.wei2[3,1],
+daty.wei2[2,1]-daty.wei2[4,1],
+daty.wei2[2,1]-daty.wei2[5,1],
+daty.wei2[2,1]-daty.wei2[6,1],
+daty.wei2[2,1]-daty.wei2[7,1],
+daty.wei2[2,1]-daty.wei2[8,1],
+daty.wei2[2,1]-daty.wei2[9,1],
+daty.wei2[2,1]-daty.wei2[10,1],
+daty.wei2[2,1]-daty.wei2[11,1])
 
-daty.wei<-predict(fit.wei,probs =c(0.25,.75),newdata=new.data)### something is wrong with error
-daty.wei<-cbind(daty.wei,new.data)
+HP$OBwarm<-c(daty.wei2[3,1]-daty.wei2[1,1],
+             daty.wei2[3,1]-daty.wei2[2,1],
+             daty.wei2[3,1]-daty.wei2[3,1],
+             daty.wei2[3,1]-daty.wei2[4,1],
+             daty.wei2[3,1]-daty.wei2[5,1],
+             daty.wei2[3,1]-daty.wei2[6,1],
+             daty.wei2[3,1]-daty.wei2[7,1],
+             daty.wei2[3,1]-daty.wei2[8,1],
+             daty.wei2[3,1]-daty.wei2[9,1],
+             daty.wei2[3,1]-daty.wei2[10,1],
+             daty.wei2[3,1]-daty.wei2[11,1])
 
-Forestsp<-dplyr::filter(daty,Taxa %in% c(Forest))
-Forestsp.wei<-dplyr::filter(daty.wei,Taxa %in% c(Forest))
+HP$ASwarm<-c(daty.wei2[4,1]-daty.wei2[1,1],
+             daty.wei2[4,1]-daty.wei2[2,1],
+             daty.wei2[4,1]-daty.wei2[3,1],
+             daty.wei2[4,1]-daty.wei2[4,1],
+             daty.wei2[4,1]-daty.wei2[5,1],
+             daty.wei2[4,1]-daty.wei2[6,1],
+             daty.wei2[4,1]-daty.wei2[7,1],
+             daty.wei2[4,1]-daty.wei2[8,1],
+             daty.wei2[4,1]-daty.wei2[9,1],
+             daty.wei2[4,1]-daty.wei2[10,1],
+             daty.wei2[4,1]-daty.wei2[11,1])
 
-library("timelineS")
+HP$SSwarm<-c(daty.wei2[5,1]-daty.wei2[1,1],
+             daty.wei2[5,1]-daty.wei2[2,1],
+             daty.wei2[5,1]-daty.wei2[3,1],
+             daty.wei2[5,1]-daty.wei2[4,1],
+             daty.wei2[5,1]-daty.wei2[5,1],
+             daty.wei2[5,1]-daty.wei2[6,1],
+             daty.wei2[5,1]-daty.wei2[7,1],
+             daty.wei2[5,1]-daty.wei2[8,1],
+             daty.wei2[5,1]-daty.wei2[9,1],
+             daty.wei2[5,1]-daty.wei2[10,1],
+             daty.wei2[5,1]-daty.wei2[11,1])
 
-pd=position_dodgev(height=0)
-jpeg("AFT.forest.jpeg",width = 10, height = 6, units = 'in', res=300)
-ggplot(Forestsp,aes(x=Estimate,y=0, color=Taxa,label=Taxa))+
-xlim(-20,120)+ylim(-5,20)+geom_point(position=pd,aes(color=Taxa),size=4)+
-  geom_vline(aes(xintercept=Estimate, color= Taxa))+
-facet_grid(as.factor(force)~as.factor(chillweeks))+theme_linedraw()+
-  scale_colour_brewer( type = "qual", palette = "Dark2", direction = 1)+
-  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y=element_blank())+
-  labs(x="Model Estimated Days to 50% Germination")
-dev.off()
-
-ggplot(Forestsp.wei,aes(x=Estimate,y=0, color=Taxa,label=Taxa))+
-  xlim(-0,35)+ylim(-5,20)+geom_point(position=pd,aes(color=Taxa),size=4)+
-  geom_vline(aes(xintercept=Estimate, color= Taxa))+
-  facet_grid(as.factor(force)~as.factor(chillweeks))+theme_linedraw()+
-  scale_colour_brewer( type = "qual", palette = "Dark2", direction = 1)+
-  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y=element_blank())+
-  labs(x="Model Estimated Days to 50% Germination")
-
-ggplot(Forestsp.wei,aes(x=Estimate,y=0, color=Taxa,label=Taxa))+
-  xlim(-0,35)+ylim(-5,20)+geom_point(position=pd,aes(color=Taxa),size=4)+
-  geom_vline(aes(xintercept=Estimate, color= Taxa))+geom_vline(aes(xintercept=Q2.5,color=Taxa),linetype="dotted")+
-  facet_grid(as.factor(force)~as.factor(chillweeks))+theme_linedraw()+
-  scale_colour_brewer( type = "qual", palette = "Dark2", direction = 1)+
-  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y=element_blank())+
-  labs(x="Model Estimated Days to 50% Germination")
-
-
-
-jpeg("AFT.forest.zoom.jpeg",width = 10, height = 6, units = 'in', res=300)
-ggplot(Forestsp,aes(x=Estimate,y=0, color=Taxa,label=Taxa))+
-  xlim(0,35)+ylim(-10,20)+geom_point(position=pd,aes(color=Taxa),size=4)+
-  geom_vline(aes(xintercept=Estimate, color= Taxa))+
-  facet_grid(as.factor(force)~as.factor(chillweeks))+theme_linedraw()+
-  scale_colour_brewer( type = "qual", palette = "Dark2", direction = 1)+
-  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y=element_blank())+
-  labs(x="Model Estimated Days to 50% Germination")
-dev.off()
-
-
-jpeg("AFT.forestsp.change.jpeg",width = 12, height = 6, units = 'in', res=300)
-ggplot(Forestsp,aes(x=Estimate,y=0, color=as.factor(chillweeks)))+
-  xlim(-10,90)+ylim(-40,40)+geom_point(aes(color=as.factor(chillweeks)),size=4)+
-  geom_vline(aes(xintercept=Estimate, color= as.factor(chillweeks)))+
-  facet_grid(as.factor(force)~Taxa)+theme_linedraw()+
-  scale_colour_brewer( type = "seq", palette = 16, direction = 2)+
-  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y=element_blank())+
-  labs(x="Model Estimated Days to 50% Germination")
-dev.off()
-
-ggplot(Forestsp,aes(x=chillweeks,y=Estimate, color=Taxa))+
-  geom_smooth(method="lm",level=.5)+ylim(-100,1800)+
-  scale_colour_brewer( type = "qual", palette = "Dark2", direction = 1)+
-  facet_wrap(~as.factor(force))+theme_linedraw()
-
-Fieldtsp<-dplyr::filter(daty,Taxa %in% c(Field))
-Fieldtsp<-dplyr::filter(Fieldtsp,chillweeks %in% c(0,4,6,9,13))
-ggplot(Fieldtsp,aes(x=Estimate,y=0, color=Taxa,label=Taxa))+
-  xlim(-10,120)+ylim(-40,80)+geom_point(aes(color=Taxa),size=4)+
-  geom_vline(aes(xintercept=Estimate, color= Taxa))+
-  facet_grid(as.factor(force)~as.factor(chillweeks))+theme_linedraw()+
-  scale_colour_brewer( type = "qual", palette = 1, direction = 1)
+HP$EDwarm<-c(daty.wei2[6,1]-daty.wei2[1,1],
+             daty.wei2[6,1]-daty.wei2[2,1],
+             daty.wei2[6,1]-daty.wei2[3,1],
+             daty.wei2[6,1]-daty.wei2[4,1],
+             daty.wei2[6,1]-daty.wei2[5,1],
+             daty.wei2[6,1]-daty.wei2[6,1],
+             daty.wei2[6,1]-daty.wei2[7,1],
+             daty.wei2[6,1]-daty.wei2[8,1],
+             daty.wei2[6,1]-daty.wei2[9,1],
+             daty.wei2[6,1]-daty.wei2[10,1],
+             daty.wei2[6,1]-daty.wei2[11,1])
+  
+HP$AVwarm<-c(daty.wei2[7,1]-daty.wei2[1,1],
+             daty.wei2[7,1]-daty.wei2[2,1],
+             daty.wei2[7,1]-daty.wei2[3,1],
+             daty.wei2[7,1]-daty.wei2[4,1],
+             daty.wei2[7,1]-daty.wei2[5,1],
+             daty.wei2[7,1]-daty.wei2[6,1],
+             daty.wei2[7,1]-daty.wei2[7,1],
+             daty.wei2[7,1]-daty.wei2[8,1],
+             daty.wei2[7,1]-daty.wei2[9,1],
+             daty.wei2[7,1]-daty.wei2[10,1],
+             daty.wei2[7,1]-daty.wei2[11,1])
 
 
+HP$CCwarm<-c(daty.wei2[8,1]-daty.wei2[1,1],
+             daty.wei2[8,1]-daty.wei2[2,1],
+             daty.wei2[8,1]-daty.wei2[3,1],
+             daty.wei2[8,1]-daty.wei2[4,1],
+             daty.wei2[8,1]-daty.wei2[5,1],
+             daty.wei2[8,1]-daty.wei2[6,1],
+             daty.wei2[8,1]-daty.wei2[7,1],
+             daty.wei2[8,1]-daty.wei2[8,1],
+             daty.wei2[8,1]-daty.wei2[9,1],
+             daty.wei2[8,1]-daty.wei2[10,1],
+             daty.wei2[8,1]-daty.wei2[11,1])
+
+HP$CGwarm<-c(daty.wei2[9,1]-daty.wei2[1,1],
+             daty.wei2[9,1]-daty.wei2[2,1],
+             daty.wei2[9,1]-daty.wei2[3,1],
+             daty.wei2[9,1]-daty.wei2[4,1],
+             daty.wei2[9,1]-daty.wei2[5,1],
+             daty.wei2[9,1]-daty.wei2[6,1],
+             daty.wei2[9,1]-daty.wei2[7,1],
+             daty.wei2[9,1]-daty.wei2[8,1],
+             daty.wei2[9,1]-daty.wei2[9,1],
+             daty.wei2[9,1]-daty.wei2[10,1],
+             daty.wei2[9,1]-daty.wei2[11,1])
+
+HP$TDwarm<-c(daty.wei2[10,1]-daty.wei2[1,1],
+             daty.wei2[10,1]-daty.wei2[2,1],
+             daty.wei2[10,1]-daty.wei2[3,1],
+             daty.wei2[10,1]-daty.wei2[4,1],
+             daty.wei2[10,1]-daty.wei2[5,1],
+             daty.wei2[10,1]-daty.wei2[6,1],
+             daty.wei2[10,1]-daty.wei2[7,1],
+             daty.wei2[10,1]-daty.wei2[8,1],
+             daty.wei2[10,1]-daty.wei2[9,1],
+             daty.wei2[10,1]-daty.wei2[10,1],
+             daty.wei2[10,1]-daty.wei2[11,1])
+
+HP$PVwarm<-c(daty.wei2[11,1]-daty.wei2[1,1],
+             daty.wei2[11,1]-daty.wei2[2,1],
+             daty.wei2[11,1]-daty.wei2[3,1],
+             daty.wei2[11,1]-daty.wei2[4,1],
+             daty.wei2[11,1]-daty.wei2[5,1],
+             daty.wei2[11,1]-daty.wei2[6,1],
+             daty.wei2[11,1]-daty.wei2[7,1],
+             daty.wei2[11,1]-daty.wei2[8,1],
+             daty.wei2[11,1]-daty.wei2[9,1],
+             daty.wei2[11,1]-daty.wei2[10,1],
+             daty.wei2[11,1]-daty.wei2[11,1])
 
 
-###not sure how to interpret these models on what scale but we need a cure funciton anyway
+#######
+HP2<-data.frame(Taxa=unique(daty.wei2$Taxa),HP_warm=c(
+  daty.wei2[12,1]-daty.wei2[12,1],
+  daty.wei2[12,1]-daty.wei2[12,1],
+  daty.wei2[12,1]-daty.wei2[14,1],
+  daty.wei2[12,1]-daty.wei2[15,1],
+  daty.wei2[12,1]-daty.wei2[16,1],
+  daty.wei2[12,1]-daty.wei2[17,1],
+  daty.wei2[12,1]-daty.wei2[18,1],
+  daty.wei2[12,1]-daty.wei2[19,1],
+  daty.wei2[12,1]-daty.wei2[20,1],
+  daty.wei2[12,1]-daty.wei2[21,1],
+  daty.wei2[12,1]-daty.wei2[22,1]))
 
-save.image("survmodel")
+HP2$SVwarm<-c(daty.wei2[13,1]-daty.wei2[12,1],
+             daty.wei2[13,1]-daty.wei2[13,1],
+             daty.wei2[13,1]-daty.wei2[14,1],
+             daty.wei2[13,1]-daty.wei2[15,1],
+             daty.wei2[13,1]-daty.wei2[16,1],
+             daty.wei2[13,1]-daty.wei2[17,1],
+             daty.wei2[13,1]-daty.wei2[18,1],
+             daty.wei2[13,1]-daty.wei2[19,1],
+             daty.wei2[13,1]-daty.wei2[20,1],
+             daty.wei2[13,1]-daty.wei2[21,1],
+             daty.wei2[13,1]-daty.wei2[22,1])
+
+HP2$OBwarm<-c(daty.wei2[14,1]-daty.wei2[12,1],
+             daty.wei2[14,1]-daty.wei2[13,1],
+             daty.wei2[14,1]-daty.wei2[14,1],
+             daty.wei2[14,1]-daty.wei2[15,1],
+             daty.wei2[14,1]-daty.wei2[16,1],
+             daty.wei2[14,1]-daty.wei2[17,1],
+             daty.wei2[14,1]-daty.wei2[18,1],
+             daty.wei2[14,1]-daty.wei2[19,1],
+             daty.wei2[14,1]-daty.wei2[20,1],
+             daty.wei2[14,1]-daty.wei2[21,1],
+             daty.wei2[14,1]-daty.wei2[22,1])
+
+HP2$ASwarm<-c(daty.wei2[15,1]-daty.wei2[12,1],
+             daty.wei2[15,1]-daty.wei2[13,1],
+             daty.wei2[15,1]-daty.wei2[14,1],
+             daty.wei2[15,1]-daty.wei2[15,1],
+             daty.wei2[15,1]-daty.wei2[16,1],
+             daty.wei2[15,1]-daty.wei2[17,1],
+             daty.wei2[15,1]-daty.wei2[18,1],
+             daty.wei2[15,1]-daty.wei2[19,1],
+             daty.wei2[15,1]-daty.wei2[20,1],
+             daty.wei2[15,1]-daty.wei2[21,1],
+             daty.wei2[15,1]-daty.wei2[22,1])
+
+HP2$SSwarm<-c(daty.wei2[16,1]-daty.wei2[12,1],
+             daty.wei2[16,1]-daty.wei2[13,1],
+             daty.wei2[16,1]-daty.wei2[14,1],
+             daty.wei2[16,1]-daty.wei2[15,1],
+             daty.wei2[16,1]-daty.wei2[16,1],
+             daty.wei2[16,1]-daty.wei2[17,1],
+             daty.wei2[16,1]-daty.wei2[18,1],
+             daty.wei2[16,1]-daty.wei2[19,1],
+             daty.wei2[16,1]-daty.wei2[20,1],
+             daty.wei2[16,1]-daty.wei2[21,1],
+             daty.wei2[16,1]-daty.wei2[22,1])
+
+HP2$EDwarm<-c(daty.wei2[17,1]-daty.wei2[12,1],
+             daty.wei2[17,1]-daty.wei2[13,1],
+             daty.wei2[17,1]-daty.wei2[14,1],
+             daty.wei2[17,1]-daty.wei2[15,1],
+             daty.wei2[17,1]-daty.wei2[16,1],
+             daty.wei2[17,1]-daty.wei2[17,1],
+             daty.wei2[17,1]-daty.wei2[18,1],
+             daty.wei2[17,1]-daty.wei2[19,1],
+             daty.wei2[17,1]-daty.wei2[20,1],
+             daty.wei2[17,1]-daty.wei2[21,1],
+             daty.wei2[17,1]-daty.wei2[22,1])
+
+HP2$AVwarm<-c(daty.wei2[18,1]-daty.wei2[12,1],
+             daty.wei2[18,1]-daty.wei2[13,1],
+             daty.wei2[18,1]-daty.wei2[14,1],
+             daty.wei2[18,1]-daty.wei2[15,1],
+             daty.wei2[18,1]-daty.wei2[16,1],
+             daty.wei2[18,1]-daty.wei2[17,1],
+             daty.wei2[18,1]-daty.wei2[18,1],
+             daty.wei2[18,1]-daty.wei2[19,1],
+             daty.wei2[18,1]-daty.wei2[20,1],
+             daty.wei2[18,1]-daty.wei2[21,1],
+             daty.wei2[18,1]-daty.wei2[22,1])
+
+
+HP2$CCwarm<-c(daty.wei2[19,1]-daty.wei2[12,1],
+             daty.wei2[19,1]-daty.wei2[13,1],
+             daty.wei2[19,1]-daty.wei2[14,1],
+             daty.wei2[19,1]-daty.wei2[15,1],
+             daty.wei2[19,1]-daty.wei2[16,1],
+             daty.wei2[19,1]-daty.wei2[17,1],
+             daty.wei2[19,1]-daty.wei2[18,1],
+             daty.wei2[19,1]-daty.wei2[19,1],
+             daty.wei2[19,1]-daty.wei2[20,1],
+             daty.wei2[19,1]-daty.wei2[21,1],
+             daty.wei2[19,1]-daty.wei2[22,1])
+
+HP2$CGwarm<-c(daty.wei2[20,1]-daty.wei2[12,1],
+             daty.wei2[20,1]-daty.wei2[13,1],
+             daty.wei2[20,1]-daty.wei2[14,1],
+             daty.wei2[20,1]-daty.wei2[15,1],
+             daty.wei2[20,1]-daty.wei2[16,1],
+             daty.wei2[20,1]-daty.wei2[17,1],
+             daty.wei2[20,1]-daty.wei2[18,1],
+             daty.wei2[20,1]-daty.wei2[19,1],
+             daty.wei2[20,1]-daty.wei2[20,1],
+             daty.wei2[20,1]-daty.wei2[21,1],
+             daty.wei2[20,1]-daty.wei2[22,1])
+
+HP2$TDwarm<-c(daty.wei2[21,1]-daty.wei2[12,1],
+             daty.wei2[21,1]-daty.wei2[13,1],
+             daty.wei2[21,1]-daty.wei2[14,1],
+             daty.wei2[21,1]-daty.wei2[15,1],
+             daty.wei2[21,1]-daty.wei2[16,1],
+             daty.wei2[21,1]-daty.wei2[17,1],
+             daty.wei2[21,1]-daty.wei2[18,1],
+             daty.wei2[21,1]-daty.wei2[19,1],
+             daty.wei2[21,1]-daty.wei2[20,1],
+             daty.wei2[21,1]-daty.wei2[21,1],
+             daty.wei2[21,1]-daty.wei2[22,1])
+
+HP2$PVwarm<-c(daty.wei2[22,1]-daty.wei2[12,1],
+             daty.wei2[22,1]-daty.wei2[13,1],
+             daty.wei2[22,1]-daty.wei2[14,1],
+             daty.wei2[22,1]-daty.wei2[15,1],
+             daty.wei2[22,1]-daty.wei2[16,1],
+             daty.wei2[22,1]-daty.wei2[17,1],
+             daty.wei2[22,1]-daty.wei2[18,1],
+             daty.wei2[22,1]-daty.wei2[19,1],
+             daty.wei2[22,1]-daty.wei2[20,1],
+             daty.wei2[22,1]-daty.wei2[21,1],
+             daty.wei2[22,1]-daty.wei2[22,1])
+
+
+
+
+#c(
+  daty.wei2[12,1]-daty.wei2[12,1],
+  daty.wei2[12,1]-daty.wei2[13,1],
+  daty.wei2[12,1]-daty.wei2[14,1],
+  daty.wei2[12,1]-daty.wei2[15,1],
+  daty.wei2[12,1]-daty.wei2[16,1],
+  daty.wei2[12,1]-daty.wei2[17,1],
+  daty.wei2[12,1]-daty.wei2[18,1],
+  daty.wei2[12,1]-daty.wei2[19,1],
+  daty.wei2[12,1]-daty.wei2[20,1],
+  daty.wei2[12,1]-daty.wei2[21,1],
+  daty.wei2[12,1]-daty.wei2[22,1])
+
+
+save.image("survmodel.Rda")

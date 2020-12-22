@@ -8,6 +8,8 @@
 \usepackage{authblk}
 \usepackage{gensymb}
 \usepackage{amsmath}
+\usepackage{rotating}
+
 %\usepackage[backend=bibtex]{biblatex}
 \usepackage[small]{caption}
 
@@ -101,5 +103,310 @@ I think we're going with the survival model. I'll just mention survival models a
     \label{fig:AFT}
 \end{figure}
 
+\section*{Tables}
+\begin{landscape}
+\begin{sidewaystable}
+
+<<echo=FALSE, results='asis'>>=
+ rm(list=ls()) 
+options(stringsAsFactors = FALSE)
+setwd("~/Documents/git/timetogerminate/germination_trials/input")
+load("survmodel.Rda")
+library(xtable,quietly = "TRUE")
+
+pred.weeks2<-c(8,12)
+pred.force2<-c(5,0)
+new.data2 <- data.frame(Taxa=c(rep(c(unique(d$Taxa)), 2)),
+                       chillweeks = c(rep(pred.weeks2,each=11)), force = c(rep(pred.force2,each=11)))
+
+daty.wei.all2<-fitted(fit.wei.all,probs =c(0.055,0.25,.75,.945),newdata=new.data2)### something is wrong with error
+daty.wei2<-cbind(daty.wei.all2,new.data2)
+
+Taxa=unique(daty.wei2$Taxa)
+HP<-data.frame(Taxa=unique(daty.wei2$Taxa),HP_warm=c(
+daty.wei2[1,1]-daty.wei2[1,1],
+daty.wei2[1,1]-daty.wei2[2,1],
+daty.wei2[1,1]-daty.wei2[3,1],
+daty.wei2[1,1]-daty.wei2[4,1],
+daty.wei2[1,1]-daty.wei2[5,1],
+daty.wei2[1,1]-daty.wei2[6,1],
+daty.wei2[1,1]-daty.wei2[7,1],
+daty.wei2[1,1]-daty.wei2[8,1],
+daty.wei2[1,1]-daty.wei2[9,1],
+daty.wei2[1,1]-daty.wei2[10,1],
+daty.wei2[1,1]-daty.wei2[11,1]))
+
+HP$SVwarm<-c(daty.wei2[2,1]-daty.wei2[1,1],
+daty.wei2[2,1]-daty.wei2[2,1],
+daty.wei2[2,1]-daty.wei2[3,1],
+daty.wei2[2,1]-daty.wei2[4,1],
+daty.wei2[2,1]-daty.wei2[5,1],
+daty.wei2[2,1]-daty.wei2[6,1],
+daty.wei2[2,1]-daty.wei2[7,1],
+daty.wei2[2,1]-daty.wei2[8,1],
+daty.wei2[2,1]-daty.wei2[9,1],
+daty.wei2[2,1]-daty.wei2[10,1],
+daty.wei2[2,1]-daty.wei2[11,1])
+
+HP$OBwarm<-c(daty.wei2[3,1]-daty.wei2[1,1],
+             daty.wei2[3,1]-daty.wei2[2,1],
+             daty.wei2[3,1]-daty.wei2[3,1],
+             daty.wei2[3,1]-daty.wei2[4,1],
+             daty.wei2[3,1]-daty.wei2[5,1],
+             daty.wei2[3,1]-daty.wei2[6,1],
+             daty.wei2[3,1]-daty.wei2[7,1],
+             daty.wei2[3,1]-daty.wei2[8,1],
+             daty.wei2[3,1]-daty.wei2[9,1],
+             daty.wei2[3,1]-daty.wei2[10,1],
+             daty.wei2[3,1]-daty.wei2[11,1])
+
+HP$ASwarm<-c(daty.wei2[4,1]-daty.wei2[1,1],
+             daty.wei2[4,1]-daty.wei2[2,1],
+             daty.wei2[4,1]-daty.wei2[3,1],
+             daty.wei2[4,1]-daty.wei2[4,1],
+             daty.wei2[4,1]-daty.wei2[5,1],
+             daty.wei2[4,1]-daty.wei2[6,1],
+             daty.wei2[4,1]-daty.wei2[7,1],
+             daty.wei2[4,1]-daty.wei2[8,1],
+             daty.wei2[4,1]-daty.wei2[9,1],
+             daty.wei2[4,1]-daty.wei2[10,1],
+             daty.wei2[4,1]-daty.wei2[11,1])
+
+HP$SSwarm<-c(daty.wei2[5,1]-daty.wei2[1,1],
+             daty.wei2[5,1]-daty.wei2[2,1],
+             daty.wei2[5,1]-daty.wei2[3,1],
+             daty.wei2[5,1]-daty.wei2[4,1],
+             daty.wei2[5,1]-daty.wei2[5,1],
+             daty.wei2[5,1]-daty.wei2[6,1],
+             daty.wei2[5,1]-daty.wei2[7,1],
+             daty.wei2[5,1]-daty.wei2[8,1],
+             daty.wei2[5,1]-daty.wei2[9,1],
+             daty.wei2[5,1]-daty.wei2[10,1],
+             daty.wei2[5,1]-daty.wei2[11,1])
+
+HP$EDwarm<-c(daty.wei2[6,1]-daty.wei2[1,1],
+             daty.wei2[6,1]-daty.wei2[2,1],
+             daty.wei2[6,1]-daty.wei2[3,1],
+             daty.wei2[6,1]-daty.wei2[4,1],
+             daty.wei2[6,1]-daty.wei2[5,1],
+             daty.wei2[6,1]-daty.wei2[6,1],
+             daty.wei2[6,1]-daty.wei2[7,1],
+             daty.wei2[6,1]-daty.wei2[8,1],
+             daty.wei2[6,1]-daty.wei2[9,1],
+             daty.wei2[6,1]-daty.wei2[10,1],
+             daty.wei2[6,1]-daty.wei2[11,1])
+  
+HP$AVwarm<-c(daty.wei2[7,1]-daty.wei2[1,1],
+             daty.wei2[7,1]-daty.wei2[2,1],
+             daty.wei2[7,1]-daty.wei2[3,1],
+             daty.wei2[7,1]-daty.wei2[4,1],
+             daty.wei2[7,1]-daty.wei2[5,1],
+             daty.wei2[7,1]-daty.wei2[6,1],
+             daty.wei2[7,1]-daty.wei2[7,1],
+             daty.wei2[7,1]-daty.wei2[8,1],
+             daty.wei2[7,1]-daty.wei2[9,1],
+             daty.wei2[7,1]-daty.wei2[10,1],
+             daty.wei2[7,1]-daty.wei2[11,1])
+
+
+HP$CCwarm<-c(daty.wei2[8,1]-daty.wei2[1,1],
+             daty.wei2[8,1]-daty.wei2[2,1],
+             daty.wei2[8,1]-daty.wei2[3,1],
+             daty.wei2[8,1]-daty.wei2[4,1],
+             daty.wei2[8,1]-daty.wei2[5,1],
+             daty.wei2[8,1]-daty.wei2[6,1],
+             daty.wei2[8,1]-daty.wei2[7,1],
+             daty.wei2[8,1]-daty.wei2[8,1],
+             daty.wei2[8,1]-daty.wei2[9,1],
+             daty.wei2[8,1]-daty.wei2[10,1],
+             daty.wei2[8,1]-daty.wei2[11,1])
+
+HP$CGwarm<-c(daty.wei2[9,1]-daty.wei2[1,1],
+             daty.wei2[9,1]-daty.wei2[2,1],
+             daty.wei2[9,1]-daty.wei2[3,1],
+             daty.wei2[9,1]-daty.wei2[4,1],
+             daty.wei2[9,1]-daty.wei2[5,1],
+             daty.wei2[9,1]-daty.wei2[6,1],
+             daty.wei2[9,1]-daty.wei2[7,1],
+             daty.wei2[9,1]-daty.wei2[8,1],
+             daty.wei2[9,1]-daty.wei2[9,1],
+             daty.wei2[9,1]-daty.wei2[10,1],
+             daty.wei2[9,1]-daty.wei2[11,1])
+
+HP$TDwarm<-c(daty.wei2[10,1]-daty.wei2[1,1],
+             daty.wei2[10,1]-daty.wei2[2,1],
+             daty.wei2[10,1]-daty.wei2[3,1],
+             daty.wei2[10,1]-daty.wei2[4,1],
+             daty.wei2[10,1]-daty.wei2[5,1],
+             daty.wei2[10,1]-daty.wei2[6,1],
+             daty.wei2[10,1]-daty.wei2[7,1],
+             daty.wei2[10,1]-daty.wei2[8,1],
+             daty.wei2[10,1]-daty.wei2[9,1],
+             daty.wei2[10,1]-daty.wei2[10,1],
+             daty.wei2[10,1]-daty.wei2[11,1])
+
+HP$PVwarm<-c(daty.wei2[11,1]-daty.wei2[1,1],
+             daty.wei2[11,1]-daty.wei2[2,1],
+             daty.wei2[11,1]-daty.wei2[3,1],
+             daty.wei2[11,1]-daty.wei2[4,1],
+             daty.wei2[11,1]-daty.wei2[5,1],
+             daty.wei2[11,1]-daty.wei2[6,1],
+             daty.wei2[11,1]-daty.wei2[7,1],
+             daty.wei2[11,1]-daty.wei2[8,1],
+             daty.wei2[11,1]-daty.wei2[9,1],
+             daty.wei2[11,1]-daty.wei2[10,1],
+             daty.wei2[11,1]-daty.wei2[11,1])
+
+
+#######
+HP2<-data.frame(Taxa=unique(daty.wei2$Taxa),HP_warm=c(
+  daty.wei2[12,1]-daty.wei2[12,1],
+  daty.wei2[12,1]-daty.wei2[13,1],
+  daty.wei2[12,1]-daty.wei2[14,1],
+  daty.wei2[12,1]-daty.wei2[15,1],
+  daty.wei2[12,1]-daty.wei2[16,1],
+  daty.wei2[12,1]-daty.wei2[17,1],
+  daty.wei2[12,1]-daty.wei2[18,1],
+  daty.wei2[12,1]-daty.wei2[19,1],
+  daty.wei2[12,1]-daty.wei2[20,1],
+  daty.wei2[12,1]-daty.wei2[21,1],
+  daty.wei2[12,1]-daty.wei2[22,1]))
+
+HP2$SVwarm<-c(daty.wei2[13,1]-daty.wei2[12,1],
+             daty.wei2[13,1]-daty.wei2[13,1],
+             daty.wei2[13,1]-daty.wei2[14,1],
+             daty.wei2[13,1]-daty.wei2[15,1],
+             daty.wei2[13,1]-daty.wei2[16,1],
+             daty.wei2[13,1]-daty.wei2[17,1],
+             daty.wei2[13,1]-daty.wei2[18,1],
+             daty.wei2[13,1]-daty.wei2[19,1],
+             daty.wei2[13,1]-daty.wei2[20,1],
+             daty.wei2[13,1]-daty.wei2[21,1],
+             daty.wei2[13,1]-daty.wei2[22,1])
+
+HP2$OBwarm<-c(daty.wei2[14,1]-daty.wei2[12,1],
+             daty.wei2[14,1]-daty.wei2[13,1],
+             daty.wei2[14,1]-daty.wei2[14,1],
+             daty.wei2[14,1]-daty.wei2[15,1],
+             daty.wei2[14,1]-daty.wei2[16,1],
+             daty.wei2[14,1]-daty.wei2[17,1],
+             daty.wei2[14,1]-daty.wei2[18,1],
+             daty.wei2[14,1]-daty.wei2[19,1],
+             daty.wei2[14,1]-daty.wei2[20,1],
+             daty.wei2[14,1]-daty.wei2[21,1],
+             daty.wei2[14,1]-daty.wei2[22,1])
+
+HP2$ASwarm<-c(daty.wei2[15,1]-daty.wei2[12,1],
+             daty.wei2[15,1]-daty.wei2[13,1],
+             daty.wei2[15,1]-daty.wei2[14,1],
+             daty.wei2[15,1]-daty.wei2[15,1],
+             daty.wei2[15,1]-daty.wei2[16,1],
+             daty.wei2[15,1]-daty.wei2[17,1],
+             daty.wei2[15,1]-daty.wei2[18,1],
+             daty.wei2[15,1]-daty.wei2[19,1],
+             daty.wei2[15,1]-daty.wei2[20,1],
+             daty.wei2[15,1]-daty.wei2[21,1],
+             daty.wei2[15,1]-daty.wei2[22,1])
+
+HP2$SSwarm<-c(daty.wei2[16,1]-daty.wei2[12,1],
+             daty.wei2[16,1]-daty.wei2[13,1],
+             daty.wei2[16,1]-daty.wei2[14,1],
+             daty.wei2[16,1]-daty.wei2[15,1],
+             daty.wei2[16,1]-daty.wei2[16,1],
+             daty.wei2[16,1]-daty.wei2[17,1],
+             daty.wei2[16,1]-daty.wei2[18,1],
+             daty.wei2[16,1]-daty.wei2[19,1],
+             daty.wei2[16,1]-daty.wei2[20,1],
+             daty.wei2[16,1]-daty.wei2[21,1],
+             daty.wei2[16,1]-daty.wei2[22,1])
+
+HP2$EDwarm<-c(daty.wei2[17,1]-daty.wei2[12,1],
+             daty.wei2[17,1]-daty.wei2[13,1],
+             daty.wei2[17,1]-daty.wei2[14,1],
+             daty.wei2[17,1]-daty.wei2[15,1],
+             daty.wei2[17,1]-daty.wei2[16,1],
+             daty.wei2[17,1]-daty.wei2[17,1],
+             daty.wei2[17,1]-daty.wei2[18,1],
+             daty.wei2[17,1]-daty.wei2[19,1],
+             daty.wei2[17,1]-daty.wei2[20,1],
+             daty.wei2[17,1]-daty.wei2[21,1],
+             daty.wei2[17,1]-daty.wei2[22,1])
+
+HP2$AVwarm<-c(daty.wei2[18,1]-daty.wei2[12,1],
+             daty.wei2[18,1]-daty.wei2[13,1],
+             daty.wei2[18,1]-daty.wei2[14,1],
+             daty.wei2[18,1]-daty.wei2[15,1],
+             daty.wei2[18,1]-daty.wei2[16,1],
+             daty.wei2[18,1]-daty.wei2[17,1],
+             daty.wei2[18,1]-daty.wei2[18,1],
+             daty.wei2[18,1]-daty.wei2[19,1],
+             daty.wei2[18,1]-daty.wei2[20,1],
+             daty.wei2[18,1]-daty.wei2[21,1],
+             daty.wei2[18,1]-daty.wei2[22,1])
+
+
+HP2$CCwarm<-c(daty.wei2[19,1]-daty.wei2[12,1],
+             daty.wei2[19,1]-daty.wei2[13,1],
+             daty.wei2[19,1]-daty.wei2[14,1],
+             daty.wei2[19,1]-daty.wei2[15,1],
+             daty.wei2[19,1]-daty.wei2[16,1],
+             daty.wei2[19,1]-daty.wei2[17,1],
+             daty.wei2[19,1]-daty.wei2[18,1],
+             daty.wei2[19,1]-daty.wei2[19,1],
+             daty.wei2[19,1]-daty.wei2[20,1],
+             daty.wei2[19,1]-daty.wei2[21,1],
+             daty.wei2[19,1]-daty.wei2[22,1])
+
+HP2$CGwarm<-c(daty.wei2[20,1]-daty.wei2[12,1],
+             daty.wei2[20,1]-daty.wei2[13,1],
+             daty.wei2[20,1]-daty.wei2[14,1],
+             daty.wei2[20,1]-daty.wei2[15,1],
+             daty.wei2[20,1]-daty.wei2[16,1],
+             daty.wei2[20,1]-daty.wei2[17,1],
+             daty.wei2[20,1]-daty.wei2[18,1],
+             daty.wei2[20,1]-daty.wei2[19,1],
+             daty.wei2[20,1]-daty.wei2[20,1],
+             daty.wei2[20,1]-daty.wei2[21,1],
+             daty.wei2[20,1]-daty.wei2[22,1])
+
+HP2$TDwarm<-c(daty.wei2[21,1]-daty.wei2[12,1],
+             daty.wei2[21,1]-daty.wei2[13,1],
+             daty.wei2[21,1]-daty.wei2[14,1],
+             daty.wei2[21,1]-daty.wei2[15,1],
+             daty.wei2[21,1]-daty.wei2[16,1],
+             daty.wei2[21,1]-daty.wei2[17,1],
+             daty.wei2[21,1]-daty.wei2[18,1],
+             daty.wei2[21,1]-daty.wei2[19,1],
+             daty.wei2[21,1]-daty.wei2[20,1],
+             daty.wei2[21,1]-daty.wei2[21,1],
+             daty.wei2[21,1]-daty.wei2[22,1])
+
+HP2$PVwarm<-c(daty.wei2[22,1]-daty.wei2[12,1],
+             daty.wei2[22,1]-daty.wei2[13,1],
+             daty.wei2[22,1]-daty.wei2[14,1],
+             daty.wei2[22,1]-daty.wei2[15,1],
+             daty.wei2[22,1]-daty.wei2[16,1],
+             daty.wei2[22,1]-daty.wei2[17,1],
+             daty.wei2[22,1]-daty.wei2[18,1],
+             daty.wei2[22,1]-daty.wei2[19,1],
+             daty.wei2[22,1]-daty.wei2[20,1],
+             daty.wei2[22,1]-daty.wei2[21,1],
+             daty.wei2[22,1]-daty.wei2[22,1])
+
+
+
+
+gooby<-data.frame(HP[1:1])
+gooby<-cbind(gooby,round(HP2[2:12]-HP[2:12],digits=1))
+colnames(gooby)<-c("Taxa",unique(HP$Taxa))
+gooby[upper.tri(gooby)] <- ""
+
+
+
+xside<-xtable(gooby)
+print(xside, floating = FALSE,scalebox=0.8)
+@
+\end{sidewaystable}
+\end{landscape}
 
 \end{document}

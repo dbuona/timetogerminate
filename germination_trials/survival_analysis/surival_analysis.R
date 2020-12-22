@@ -245,7 +245,7 @@ HP$PVwarm<-c(daty.wei2[11,1]-daty.wei2[1,1],
 #######
 HP2<-data.frame(Taxa=unique(daty.wei2$Taxa),HP_warm=c(
   daty.wei2[12,1]-daty.wei2[12,1],
-  daty.wei2[12,1]-daty.wei2[12,1],
+  daty.wei2[12,1]-daty.wei2[13,1],
   daty.wei2[12,1]-daty.wei2[14,1],
   daty.wei2[12,1]-daty.wei2[15,1],
   daty.wei2[12,1]-daty.wei2[16,1],
@@ -380,18 +380,11 @@ HP2$PVwarm<-c(daty.wei2[22,1]-daty.wei2[12,1],
 
 
 
-#c(
-  daty.wei2[12,1]-daty.wei2[12,1],
-  daty.wei2[12,1]-daty.wei2[13,1],
-  daty.wei2[12,1]-daty.wei2[14,1],
-  daty.wei2[12,1]-daty.wei2[15,1],
-  daty.wei2[12,1]-daty.wei2[16,1],
-  daty.wei2[12,1]-daty.wei2[17,1],
-  daty.wei2[12,1]-daty.wei2[18,1],
-  daty.wei2[12,1]-daty.wei2[19,1],
-  daty.wei2[12,1]-daty.wei2[20,1],
-  daty.wei2[12,1]-daty.wei2[21,1],
-  daty.wei2[12,1]-daty.wei2[22,1])
+gooby<-data.frame(HP[1:1])
+gooby<-cbind(gooby,round(HP2[2:12]-HP[2:12],digits=1))
+colnames(gooby)<-c("Taxa",unique(HP$Taxa))
+gooby[upper.tri(gooby)] <- ""
 
-
+library(xtable)
+xtable(gooby)
 save.image("survmodel.Rda")

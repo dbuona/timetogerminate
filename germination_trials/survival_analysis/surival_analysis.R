@@ -31,7 +31,13 @@ d<- filter(d,!Taxa %in% c("Phlox cuspidata","Impatiens capensis","Carex grisea")
 
 d$censored<-ifelse(d$DAY==0.00001 & d$germinated==1,-1,d$censored)
 
-
+###make histograms to help Lizzie and Megan
+d.germ<-filter(d,germinated==1)
+pdf("..//figures/histograms.pdf")
+ggplot(d.germ,aes(DAY))+
+  geom_density(aes(fill=as.factor(chillweeks),color=as.factor(chillweeks),alpha=0.3))+facet_grid(Taxa~as.factor(force),scales = "free")+
+  theme_bw()
+dev.off()
 ##try weibull
 
 priorz.wei<-get_prior(DAY | cens(censored)~chillweeks+force+(chillweeks+force|Taxa),data=d,family= weibull())
@@ -79,6 +85,18 @@ a<-ggplot()+
   facet_wrap(~incubation,nrow = 2)+ggthemes::theme_base(base_size = 11)+scale_color_manual(values = mycolors)+ylim(0,60)+
   labs(y="Model Estimated Days to 50% Germination",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"))
  
+sp.use<-dplyr::filter(daty.wei,Taxa %in% c("Hesperis matronalis","Cryptotaenia canadensis"))
+
+c<-ggplot()+
+  geom_line(data=sp.use,aes(x=chillweeks,y=Estimate,color=Taxa),size=1)+
+  
+  geom_line(data=sp.use,aes(x=chillweeks,y=Q25,color=Taxa),size=.5,alpha=0.5)+
+  geom_line(data=sp.use,aes(x=chillweeks,y=Q75,color=Taxa),size=.5,alpha=0.5)+
+  geom_line(data=sp.use,aes(x=chillweeks,y=Q5.5,color=Taxa),size=.5,alpha=0.5,linetype="dashed")+
+  geom_line(data=sp.use,aes(x=chillweeks,y=Q94.5,color=Taxa),size=.5,alpha=0.5,linetype="dashed")+##geom_point(aes(color=Taxa),position=pd)+
+  #ggplot2::geom_errorbar(aes(ymax=Q75,ymin=Q25,color=Taxa),width=0,position=pd)+
+  facet_wrap(~incubation,nrow = 2)+ggthemes::theme_base(base_size = 11)+scale_color_manual(values = c("#54A552","#CB6651" ))+ylim(0,60)+
+  labs(y="Model Estimated Days to 50% Germination",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"))
 
 ###############################
 ###### make plot 2############
@@ -103,6 +121,10 @@ b<-ggplot(daty.wei2,aes(scenario,Estimate))+geom_point(aes(color=Taxa),position=
 
 jpeg("..//figures/AFTplots.jpeg",height=8,width=10, units="in",res=300)
 ggpubr::ggarrange(a,b,common.legend = TRUE,nrow=1,widths = c(.7,.3),legend="bottom",labels = c("a)","b)"))
+dev.off()
+
+jpeg("..//figures/AFTplots_spcomp.jpeg",height=8,width=10, units="in",res=300)
+ggpubr::ggarrange(a,c,common.legend = TRUE,nrow=1,widths = c(.6,.45),legend="bottom",labels = c("a)","b)"))
 dev.off()
 
 ###########table###############

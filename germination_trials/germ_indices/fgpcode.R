@@ -23,7 +23,8 @@ realdat<-read.csv("input/daily_dat_nointerval.csv")
 
 ##clean data
 realdat$germ_perc<-NA
-realdat$germ_perc<-realdat$germ.daily/realdat$tot_seed
+realdat$germ_perc<-realdat$germ_num/realdat$tot_seed
+realdat$germ_perc_daily<-realdat$germ.daily/realdat$tot_seed
 realdat$germ_perc<-ifelse(realdat$germ_perc>1,1,realdat$germ_perc)
 
 ##make chilling numeric

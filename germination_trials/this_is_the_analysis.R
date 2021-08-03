@@ -16,7 +16,6 @@ if(length(grep("Lizzie", getwd())>0)) {
 setwd("~/Documents/git/projects/others/dan/timetogerminate/germination_trials") } else if (length(grep("boomer", getwd()))>0) {setwd("boom/boom")
 }  else setwd("~/Documents/git/timetogerminate/germination_trials/")
 
-
 load("goingforitgerm")
 ##likelihood of germination== propogule pressure
 d<-read.csv("survival_analysis/surival_dat_nointerval.csv")

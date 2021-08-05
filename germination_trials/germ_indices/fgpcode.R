@@ -47,6 +47,14 @@ realdat<- within(realdat, force[INC=="H"]<-5)
 
 realdat$DAY<-ifelse(realdat$DAY==0,0.0001,realdat$DAY) #elimiate 0 values for log logistic dist
 
+maxdaily<-realdat %>%
+  select(Taxa, chillweeks, force, DAY, germ_perc_daily)%>%
+  group_by(Taxa,chillweeks,force)%>% filter(germ_perc_daily== max(germ_perc_daily)) %>%
+  group_by(Taxa,chillweeks,force,germ_perc_daily) %>% summarise(mean_day=mean(DAY),sd_day=sd(DAY))
+
+
+
+
 realdatshorty<- filter(realdat,Taxa %in% c("Cryptotaenia canadensis","Polygonum virginiatum","Eurbia diviricata")) #These 3 sp show a strong chill responmse
 
 fgp.dat<-filter(realdatshorty,DAY==25) ### this makes a dataset of only final germination percentate

@@ -43,6 +43,12 @@ realdat$force <-NA # make forcing numeric
 realdat <- within(realdat, force[INC=="L"]<-0)
 realdat <- within(realdat, force[INC=="H"]<-5)
 
+maxdaily <- realdat %>%
+  select(Taxa, chillweeks, force, DAY, germ_perc_daily)%>%
+  group_by(Taxa,chillweeks,force)%>% filter(germ_perc_daily== max(germ_perc_daily)) %>%
+  group_by(Taxa,chillweeks,force,germ_perc_daily) %>% summarise(mean_day=mean(DAY),sd_day=sd(DAY))
+maxdaily$maxgermin20 <- maxdaily$germ_perc_daily*20
+
 realdatfin <- subset(realdat, DAY==25) # get the final germination fraction
 
 # summarize ...
@@ -93,3 +99,16 @@ ggplot(dsumfin, aes(x=as.numeric(chillweeks), y=mean, group=Taxa, fill=Taxa, col
     geom_ribbon(aes(ymin=(dsumfin$mean-dsumfin$sem), ymax=(dsumfin$mean+dsumfin$sem)), alpha=0.1) + 
     facet_wrap(.~Taxa*force) +
     xlab("Weeks of chilling)") + ylab("Final total percent germinated (mean +/- SE)")
+
+# max germination, first plot has just day of max germ, second one also plots that value
+ggplot(maxdaily, aes(x=as.numeric(chillweeks), y=mean_day, group=Taxa, fill=Taxa, color=Taxa)) +
+    geom_line() +
+    facet_wrap(.~Taxa*force) +
+    xlab("Weeks of chilling)") + ylab("Day of max germination)")
+
+ggplot(maxdaily, aes(x=as.numeric(chillweeks), y=mean_day, group=Taxa, fill=Taxa, color=Taxa)) +
+    geom_line() +
+    geom_line(aes(y=maxgermin20), linetype = "dashed") +
+    facet_wrap(.~Taxa*force) +
+    xlab("Weeks of chilling)") +
+    scale_y_continuous(name = "Day of max germination (solid line)", sec.axis = sec_axis(~.*1, name="Max germination (20X, dashed line)"))

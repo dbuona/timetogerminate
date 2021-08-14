@@ -64,6 +64,16 @@ dsumfin <-
       sd = sd(germ_perc),
       sem = sd(germ_perc)/sqrt(length(germ_perc)))
 
+totalgermbyplate <-
+      ddply(realdat, c("Taxa", "chillweeks", "force", "plate_num"), summarise,
+      sum = sum(germ_perc_daily))
+
+totalgerm <-
+      ddply(totalgermbyplate, c("Taxa", "chillweeks", "force"), summarise,
+      mean = mean(sum),
+      sd = sd(sum),
+      sem = sd(sum)/sqrt(length(sum)))
+
 
 # plotting
 ggplot(realdat, aes(x=germ_perc_daily, fill=Taxa, color=Taxa)) +
@@ -82,6 +92,8 @@ ggplot(dsum, aes(x=DAY, y=mean, group=Taxa, color=Taxa)) +
 dsumforce0 <- subset(dsum, force==0)
 dsumforce5 <- subset(dsum, force==5)
 
+## BIG plots (next two)
+# free-form, but you can read species names
 ggplot(dsumforce0, aes(x=DAY, y=mean, group=Taxa, fill=Taxa, color=Taxa)) +
     geom_point() +
     geom_ribbon(aes(ymin=(dsumforce0$mean-dsumforce0$sem), ymax=(dsumforce0$mean+dsumforce0$sem)), alpha=0.1) + 
@@ -91,8 +103,27 @@ ggplot(dsumforce0, aes(x=DAY, y=mean, group=Taxa, fill=Taxa, color=Taxa)) +
 ggplot(dsumforce5, aes(x=DAY, y=mean, group=Taxa, fill=Taxa, color=Taxa)) +
     geom_point() +
     geom_ribbon(aes(ymin=(dsumforce5$mean-dsumforce5$sem), ymax=(dsumforce5$mean+dsumforce5$sem)), alpha=0.1) + 
-    facet_wrap(.~Taxa*chillweeks)  +
+    facet_wrap(.~Taxa*chillweeks) +
     xlab("Days after forcing (at 5)") + ylab("Daily percent germinated (mean +/- SE)")
+
+# rows are each species
+ggplot(dsumforce5, aes(x=DAY, y=mean, group=Taxa, fill=Taxa, color=Taxa)) +
+    geom_point() +
+    geom_ribbon(aes(ymin=(dsumforce5$mean-dsumforce5$sem), ymax=(dsumforce5$mean+dsumforce5$sem)), alpha=0.1) + 
+    facet_grid(Taxa~chillweeks)  +
+    xlab("Days after forcing (at 5)") + ylab("Daily percent germinated (mean +/- SE)")
+
+ggplot(dsumforce0, aes(x=DAY, y=mean, group=Taxa, fill=Taxa, color=Taxa)) +
+    geom_point() +
+    geom_ribbon(aes(ymin=(dsumforce0$mean-dsumforce0$sem), ymax=(dsumforce0$mean+dsumforce0$sem)), alpha=0.1) + 
+    facet_grid(Taxa~chillweeks)  +
+    xlab("Days after forcing (at 5)") + ylab("Daily percent germinated (mean +/- SE)")
+
+ggplot(dsum, aes(x=DAY, y=mean, group=as.factor(force), color=as.factor(force))) +
+    geom_line() +
+    facet_grid(Taxa~chillweeks)  +
+    xlab("Days after forcing") + ylab("Daily percent germinated (mean +/- SE)")
+## End BIG plots
 
 ggplot(dsumfin, aes(x=as.numeric(chillweeks), y=mean, group=Taxa, fill=Taxa, color=Taxa)) +
     geom_line() +
@@ -100,11 +131,18 @@ ggplot(dsumfin, aes(x=as.numeric(chillweeks), y=mean, group=Taxa, fill=Taxa, col
     facet_wrap(.~Taxa*force) +
     xlab("Weeks of chilling)") + ylab("Final total percent germinated (mean +/- SE)")
 
+ggplot(totalgerm, aes(x=as.numeric(chillweeks), y=mean, group=Taxa, fill=Taxa, color=Taxa)) +
+    geom_point() +
+    geom_ribbon(aes(ymin=(totalgerm$mean-totalgerm$sem), ymax=(totalgerm$mean+totalgerm$sem)), alpha=0.1) + 
+    facet_wrap(.~Taxa*force) +
+    xlab("Weeks of chilling") + ylab("Total germinated (mean +/- SE)")
+
+
 # max germination, first plot has just day of max germ, second one also plots that value
 ggplot(maxdaily, aes(x=as.numeric(chillweeks), y=mean_day, group=Taxa, fill=Taxa, color=Taxa)) +
     geom_line() +
     facet_wrap(.~Taxa*force) +
-    xlab("Weeks of chilling)") + ylab("Day of max germination)")
+    xlab("Weeks of chilling") + ylab("Day of max germination)")
 
 ggplot(maxdaily, aes(x=as.numeric(chillweeks), y=mean_day, group=Taxa, fill=Taxa, color=Taxa)) +
     geom_line() +

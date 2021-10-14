@@ -55,10 +55,92 @@ maxdaily<-realdat %>%
 
 
 
-realdatshorty<- filter(realdat,Taxa %in% c("Cryptotaenia canadensis","Polygonum virginiatum","Eurbia diviricata")) #These 3 sp show a strong chill responmse
+realdatshorty<- filter(realdat,!Taxa %in% c("Phlox cuspidata","Impatiens capensis","Carex grisea")) #These 3 sp show a strong chill responmse
 
 fgp.dat<-filter(realdatshorty,DAY==25) ### this makes a dataset of only final germination percentate
 
+
+
+#####nonlinear model
+
+fgp.dat$taxa <- as.factor(fgp.dat$Taxa)
+
+mod.nl<-nls(germ_perc~g0+(gmax-g0)*(1-exp(1)^(-gamma_g*chillweeks)),data=fgp.dat, start = list(g0 = 0, gmax =1,gamma_g=.025))
+summary(mod.nl)
+
+plot(fgp.dat$chillweeks,fgp.dat$germ_perc)
+lines(fgp.dat$chillweeks,predict(mod.nl),lty=2,col="red",lwd=3)
+
+
+sapply( split( fgp.dat , fgp.dat$Taxa), function(d){ dat <- list2env(d)
+nlsfit <- nls( form = germ_perc~g0+(gmax-g0)*(1-exp(1)^(-gamma_g*chillweeks)), data=dat, start= list(g0 = 0, gmax =1,gamma_g=.025)) 
+list(g0 = coef(nlsfit)[1], gmax = coef(nlsfit)[2],gamma_g = coef(nlsfit)[3])}) 
+###didnt one species is breaking code i think
+
+
+d<-fgp.dat
+specieslist<-sort(unique(d$Taxa))
+X<-split(d, with(d, d$Taxa), drop = TRUE)
+Y <- lapply(seq_along(X), function(x) as.data.frame(X[[x]])[, 1:22]) 
+names(Y) <-(c(specieslist))
+list2env(Y, envir = .GlobalEnv)
+
+
+
+
+### should write a loop but small enough for manual 
+df<-data.frame(g0=numeric(),gmax=numeric(),gamm_g=numeric())
+
+#specieslist<-as.list(specieslist)
+for (i in c(1:length(specieslist))){
+dat<-filter(d,Taxa==specieslist[i])
+  model<-nls(germ_perc~g0+(gmax-g0)*(1-exp(1)^(-gamma_g*chillweeks)),data=dat, start = list(g0 = 0, gmax =1,gamma_g=.02))
+dfhere <- data.frame(g0=coef(model)[1],gmax=coef(model)[2],gamma_g=coef(model)[3] )
+df <- rbind(df, dfhere)}
+
+##one of these speceis is breaking the code
+
+mody<-function(x) {nls(germ_perc~g0+(gmax-g0)*(1-exp(1)^(-gamma_g*chillweeks)),data=x, start = list(g0 = 0, gmax =1,gamma_g=.025))
+}
+
+As<-mody(`Asclepias syriaca`)
+Av<-mody(`Anemone virginana`)
+Cg<-mody(`Carex grayi`)
+Cc<-mody(`Cryptotaenia canadensis`)
+Ed<-mody(`Eurbia diviricata`)
+Hm<-mody(`Hesperis matronalis`) ## This one is the problem!
+Ob<-mody(`Oenethera biennis`)
+Pv<-mody(`Polygonum virginiatum`)
+Ss<-mody(`Silene stellata`)
+Sv<-mody(`Silene vulgaris`)
+Td<-mody(`Thalictrum dioicum`)
+
+b0<-c(coef(As)[1],coef(Av)[1],coef(Cg)[1],coef(Cc)[1],coef(Ed)[1],
+      coef(Ob)[1],coef(Pv)[1],coef(Ss)[1],coef(Sv)[1],coef(Td)[1])
+
+bmax<-c(coef(As)[2],coef(Av)[2],coef(Cg)[2],coef(Cc)[2],coef(Ed)[2],
+      coef(Ob)[2],coef(Pv)[2],coef(Ss)[2],coef(Sv)[2],coef(Td)[2])
+
+gamma_g<-c(coef(As)[3],coef(Av)[3],coef(Cg)[3],coef(Cc)[3],coef(Ed)[3],
+        coef(Ob)[3],coef(Pv)[3],coef(Ss)[3],coef(Sv)[3],coef(Td)[3])
+#CVs
+sd(b0)/mean(b0)
+sd(bmax)/mean(bmax)
+sd(gamma_g)/mean(gamma_g)
+
+jpeg("~/Documents/git/temporalvar/docs/notes/CVs_for_priorityeffects.jpeg")
+plot(`Anemone virginana`$chillweeks,`Anemone virginana`$germ_perc,ylim=c(0,1))
+lines(`Anemone virginana`$chillweeks,predict(Av),lty=2,col="red",lwd=3)
+lines(`Anemone virginana`$chillweeks,predict(As),lty=2,col="red",lwd=3)
+lines(`Anemone virginana`$chillweeks,predict(Cc),lty=2,col="red",lwd=3)
+lines(`Anemone virginana`$chillweeks,predict(Ed),lty=2,col="red",lwd=3)
+lines(`Anemone virginana`$chillweeks,predict(Ob),lty=2,col="red",lwd=3)
+lines(`Anemone virginana`$chillweeks,predict(Pv),lty=2,col="red",lwd=3)
+lines(`Anemone virginana`$chillweeks,predict(Ss),lty=2,col="red",lwd=3)
+lines(`Anemone virginana`$chillweeks,predict(Sv),lty=2,col="red",lwd=3)
+lines(`Anemone virginana`$chillweeks,predict(Td),lty=2,col="red",lwd=3)
+text(x=10,y=0.3, "CVs: g0=1.36,\ngmax=.952, \ngamma_g=.946")
+dev.off()
 #full.fgp.mod<-brms::brm(germ_perc~force*chillweeks+(force*chillweeks|Taxa),data=fgp.dat,iter=4000,warmup=3000)
 
 

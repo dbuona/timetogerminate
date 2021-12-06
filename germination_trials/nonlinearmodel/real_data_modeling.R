@@ -13,7 +13,7 @@ library(dplyr)
 library(shinystan)
 library(extraDistr)
 library(bayesplot)
-
+library(ggplot2)
 realdat<-read.csv("input/daily_dat_nointerval.csv")
 
 ##clean data
@@ -64,11 +64,51 @@ realdatshorty<- filter(realdat,!Taxa %in% c("Phlox cuspidata","Impatiens capensi
 #drm(germ_perc~DAY,factor(chillweeks):factor(Taxa), data=candies2,fct = LL.3(), type ="continuous")
 
 
-#candies3<-filter(realdatshorty, Taxa %in% c("Hesperis matronalis", "Cryptotaenia canadensis"))
-#ggplot(candies3,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) +geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
-#candies3<-filter(candies3,chillweeks %in% c(5,8))
-#candies3<-filter(candies3,force==0)
-#drm(germ_perc~DAY,factor(chillweeks):factor(Taxa), data=candies3,fct = LL.3(c(NA,.8,NA)), type ="continuous")
+candies3<-filter(realdatshorty, Taxa %in% c("Hesperis matronalis","Cryptotaenia canadensis"))
+ggplot(candies3,aes(DAY,germ_perc,color=Taxa))+geom_point(aes(color=Taxa,alpha=as.factor(chillweeks)),size=0.2,shape=1)+geom_line(stat = "summary",aes(alpha=as.factor(chillweeks),size=as.factor(chillweeks)))+
+  facet_wrap(~force)+theme_minimal(base_size = 6)+scale_size_manual(values=c(.1,.2,.3,.4,.5,.6,.7,.8,.9,2))
+
+ggplot(candies3,aes(DAY,germ_perc,color=Taxa))+geom_point(aes(color=Taxa,alpha=as.factor(chillweeks)),size=0.2,shape=1)+stat_summary(geom="line", fun="mean",aes(alpha=as.factor(chillweeks),size=as.factor(chillweeks)))+
+  facet_wrap(~force)+ggthemes::theme_few(base_size = 6)+scale_size_manual(values=c(.1,.2,.3,.4,.5,.6,.7,.8,.9,2))+scale_colour_viridis_d()
+
+#+geom_point(aes(color=Taxa,alpha=chillweeks,group=chillweeks),size=0.2,shape=1)
+
+ggplot(candies3,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+stat_smooth(aes(color=Taxa,fill=Taxa))+facet_grid(chillweeks~INC)+
+ggthemes::theme_few(base_size = 11)+scale_color_viridis_d(option="turbo")+scale_fill_viridis_d(option="turbo")+xlab("Day of experiment")+ylab("Germination percentatge")  
+
+ggplot(candies3,aes(DAY,germ_perc))+geom_point(aes(color=Taxa,alpha=as.factor(chillweeks)),size=0.2,shape=1)+stat_smooth(aes(color=Taxa,alpha=as.factor(chillweeks),size=as.factor(chillweeks)),se=FALSE)+facet_wrap(~INC)+
+  ggthemes::theme_few()+scale_color_viridis_d(option="turbo")+scale_fill_viridis_d(option="turbo")+scale_size_manual(values=c(.1,.2,.3,.4,.5,.6,.7,.8,.9,2))  
+
+candies3<-filter(candies3,chillweeks %in% c(5,9,13))
+candies3<-filter(candies3,force==0)
+#candies3<-filter(candies3,chillweeks==13)
+mody<-drm(germ_perc~DAY,factor(chillweeks),data=candies3,fct = LL.3(c(NA,NA,NA)), type ="continuous")
+unique(`Cryptotaenia canadensis`$chillweeks)
+plot(mody,xlim=c(0.1,25))
+
+
+candies4<-filter(realdatshorty, Taxa %in% c("Hesperis matronalis"))
+#ggplot(candies3,aes(DAY,germ_perc,color=Taxa))+geom_point(aes(color=Taxa,alpha=as.factor(chillweeks)),size=0.2,shape=1)+geom_line(stat = "summary",aes(alpha=as.factor(chillweeks),size=as.factor(chillweeks)))+
+# facet_wrap(~force)+theme_minimal(base_size = 6)+scale_size_manual(values=c(.1,.2,.3,.4,.5,.6,.7,.8,.9,2))
+
+#ggplot(candies3,aes(DAY,germ_perc,color=Taxa))+geom_point(aes(color=Taxa,alpha=as.factor(chillweeks)),size=0.2,shape=1)+stat_summary(geom="line", fun="mean",aes(alpha=as.factor(chillweeks),size=as.factor(chillweeks)))+
+# facet_wrap(~force)+ggthemes::theme_few(base_size = 6)+scale_size_manual(values=c(.1,.2,.3,.4,.5,.6,.7,.8,.9,2))+scale_colour_viridis_d()
+
+#+geom_point(aes(color=Taxa,alpha=chillweeks,group=chillweeks),size=0.2,shape=1)
+
+#ggplot(candies3,aes(DAY,germ_perc))+geom_point(aes(color=Taxa,alpha=c),size=0.2,shape=1)+stat_smooth(aes(color=Taxa,fill=Taxa))+facet_grid(chillweeks~INC)+
+#ggthemes::theme_few()+scale_color_viridis_d(option="turbo")+scale_fill_viridis_d(option="turbo")  
+
+#ggplot(candies3,aes(DAY,germ_perc))+geom_point(aes(color=Taxa,alpha=as.factor(chillweeks)),size=0.2,shape=1)+stat_smooth(aes(color=Taxa,alpha=as.factor(chillweeks),size=as.factor(chillweeks)),se=FALSE)+facet_wrap(~INC)+
+# ggthemes::theme_few()+scale_color_viridis_d(option="turbo")+scale_fill_viridis_d(option="turbo")+scale_size_manual(values=c(.1,.2,.3,.4,.5,.6,.7,.8,.9,2))  
+
+candies4<-filter(candies4,chillweeks %in% c(5,6,7))
+candies4<-filter(candies4,force==0)
+mody2<-drm(germ_perc~DAY,factor(chillweeks),data=candies4,fct = LL.3(c(NA,NA,NA)), type ="continuous")
+unique(`Cryptotaenia canadensis`$chillweeks)
+plot(mody2,col="blue",add=TRUE)
+
+
 
 #candies4<-filter(realdatshorty, Taxa %in% c(,"))
 #ggplot(candies4,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+facet_grid(force~chillweeks) +geom_line(stat = "summary", fun.y = mean, aes(color=Taxa),size=1.2)+theme_minimal(base_size = 6)
@@ -88,6 +128,16 @@ list2env(Y, envir = .GlobalEnv)
 
 ##Anemone
 anemo.cold<-filter(`Anemone virginana`,INC=="L")
+modanemo.cold<-drm(germ_perc~DAY,factor(chillweeks), data=anemo.cold,fct = LL.3(fixed = c(-60, NA, NA), names = c("b", "gmax", "e50")), type ="continuous")
+plot(modanemo.cold,xlim=c(10,25))
+
+asclep.cold<-filter(`Asclepias syriaca`,INC=="H")
+modasclep.cold<-drm(germ_perc~DAY,factor(chillweeks), data=asclep.cold,fct = LL.3(fixed = c(-60, NA, NA), names = c("b", "gmax", "e50")), type ="continuous")
+plot(modasclep.cold,xlim=c(0,25))
+goober<-as.data.frame(coef(modasclep.cold))
+
+
+Sil<-drm(germ_perc~DAY,factor(chillweeks), data=`Silene vulgaris`,fct = LL.3(fixed = c(-60, NA, NA), names = c("b", "gmax", "e50")), type ="continuous")
 
 data.anemo.cold<-with(anemo.cold,
                list(Y=germ_perc,
@@ -96,6 +146,9 @@ data.anemo.cold<-with(anemo.cold,
                     N=nrow(anemo.cold)
                )
 )
+
+
+
 
 
 mod.anemo.cold= stan('stan/fakeseedgoodchill_alt.stan', data = data.anemo.cold, 

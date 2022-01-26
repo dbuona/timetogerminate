@@ -19,7 +19,7 @@ load("survmodel.Rda")
 d<-read.csv("..//survival_analysis/surival_dat_nointerval.csv")
 d$DAY<-ifelse(d$DAY==0,0.00001,d$DAY)
 
-
+unique(d$chill_time)
 d$chillweeks<-d$chill_time/7 # make chilling weeks instead of days
 
 d$force<-NA # make forcing numeric
@@ -44,8 +44,9 @@ priorz.wei<-get_prior(DAY | cens(censored)~chillweeks+force+(chillweeks+force|Ta
 
 fit.wei.all<- brm(DAY | cens(censored)~chillweeks+force+(chillweeks+force|Taxa), data=d, family =   weibull(),inits=0 ,prior=priorz.wei,iter=4000,warmup = 3000, chains=4) 
 
-
-
+d.in<-dplyr::filter(d,Taxa %in% c("Hesperis matronalis","Cryptotaenia canadensis"))
+priorz.wei.in<-get_prior(DAY | cens(censored)~chillweeks+force+Taxa+chillweeks:Taxa+force:Taxa,data=d.in,family= weibull())
+fit.wei.in<-brm(DAY | cens(censored)~chillweeks+force+Taxa+chillweeks:Taxa+force:Taxa,data=d.in,family= weibull(),inits=0 ,prior=priorz.wei.in,iter=4000,warmup = 3000, chains=4) 
 
 summary(fit.wei.all)
 coef(fit.wei.all,probs =c(0.55,0.25,.75,.945))
@@ -54,15 +55,43 @@ brmsfamily("weibull")
 
 ###########################
 ###### make plot 1############
-pred.weeks<-c(1:16)
-pred.force<-c(0,5)
-unique(d$Taxa)
-new.data <- data.frame(Taxa=c(rep(c(unique(d$Taxa)),each=16,2)),
-  chillweeks = c(rep(pred.weeks,22)), force = c(rep(pred.force,each=352)))
+pred.weeks<-c(5:16)
+pred.force<-c(0)
+
+new.data <- data.frame(Taxa=c(rep(c(unique(d.in$Taxa)),each=12)),
+  chillweeks = c(rep(pred.weeks,26)), force = c(rep(pred.force,each=12)))
+
+pred.weeks2<-c(10:16)
+pred.force2<-c(5)
+
+new.data2 <- data.frame(Taxa=c(rep(c(unique(d.in$Taxa)),each=7)),
+                       chillweeks = c(rep(pred.weeks2,26)), force = c(rep(pred.force2,each=13)))
 
 
+library(tidybayes)
+a<-new.data %>% add_epred_draws(fit.wei.in, ndraws = 200) %>%
+  ggplot(aes(x = chillweeks, color = Taxa))+
+geom_line(aes(y=.epred,group=paste(.draw,Taxa)),alpha=.05)+
+  stat_summary(fun=mean, geom="line", size = .75,aes(y=.epred,color=Taxa))+
+scale_color_viridis_d(begin=0,end=0.5)+ggthemes::theme_few()+
+  labs(y="Model Estimated Days to 50% Germination",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"))+
+  scale_x_continuous(breaks = c(6,8,10,12,14,16))+
+  scale_y_continuous(breaks = c(5,10,15,20,30,40,50))
 
-daty.wei.all<-fitted(fit.wei.all,probs =c(0.055,0.25,.75,.945),newdata=new.data)### something is wrong with error
+b<-new.data2 %>% add_epred_draws(fit.wei.in, ndraws = 200) %>%
+  ggplot(aes(x = chillweeks, color = Taxa))+
+  geom_line(aes(y=.epred,group=paste(.draw,Taxa)),alpha=.05)+
+  stat_summary(fun=mean, geom="line", size = .75,aes(y=.epred,color=Taxa))+
+  scale_color_viridis_d(begin=0,end=0.5)+ggthemes::theme_few()+
+  labs(y="Model Estimated Days to 50% Germination",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"))+
+  scale_x_continuous(breaks = c(10,12,14,16))+
+  scale_y_continuous(breaks = c(5,10,15,20,30,40))
+
+jpeg("..//figures/AFTsivansive.jpeg",height=5,width=8, units="in",res=200)
+ggpubr::ggarrange(a,b,common.legend = TRUE,legend="right",widths=c(.6,.3),labels = c("a)","b)"))
+dev.off()
+
+daty.wei.all<-fitted(fit.wei.in,probs =c(0.055,0.25,.75,.945),newdata=new.data)### something is wrong with error
 daty.wei<-cbind(daty.wei.all,new.data)
 daty.wei$incubation<-ifelse(daty.wei$force==0,"20/10","25/15")
 
@@ -74,15 +103,15 @@ library(RColorBrewer)
 # Define the number of colors you want
 nb.cols <- 11
 mycolors <- colorRampPalette(brewer.pal(8, "Set1"))(nb.cols)
-a<-ggplot()+
+ggplot()+
   geom_line(data=daty.wei,aes(x=chillweeks,y=Estimate,color=Taxa),size=1)+
 
- geom_line(data=daty.wei,aes(x=chillweeks,y=Q25,color=Taxa),size=.5,alpha=0.5)+
-  geom_line(data=daty.wei,aes(x=chillweeks,y=Q75,color=Taxa),size=.5,alpha=0.5)+
+ #geom_line(data=daty.wei,aes(x=chillweeks,y=Q25,color=Taxa),size=.5,alpha=0.5)+
+  #geom_line(data=daty.wei,aes(x=chillweeks,y=Q75,color=Taxa),size=.5,alpha=0.5)+
   geom_line(data=daty.wei,aes(x=chillweeks,y=Q5.5,color=Taxa),size=.5,alpha=0.5,linetype="dashed")+
   geom_line(data=daty.wei,aes(x=chillweeks,y=Q94.5,color=Taxa),size=.5,alpha=0.5,linetype="dashed")+##geom_point(aes(color=Taxa),position=pd)+
   #ggplot2::geom_errorbar(aes(ymax=Q75,ymin=Q25,color=Taxa),width=0,position=pd)+
-  facet_wrap(~incubation,nrow = 2)+ggthemes::theme_base(base_size = 11)+scale_color_manual(values = mycolors)+ylim(0,60)+
+  facet_wrap(~incubation,nrow = 2)+ggthemes::theme_few(base_size = 11)+scale_color_viridis_d(begin = 0,end=0.5)+ylim(0,40)+xlim(4,16)+
   labs(y="Model Estimated Days to 50% Germination",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"))
  
 sp.use<-dplyr::filter(daty.wei,Taxa %in% c("Hesperis matronalis","Cryptotaenia canadensis"))
@@ -95,7 +124,7 @@ c<-ggplot()+
   geom_line(data=sp.use,aes(x=chillweeks,y=Q5.5,color=Taxa),size=.5,alpha=0.5,linetype="dashed")+
   geom_line(data=sp.use,aes(x=chillweeks,y=Q94.5,color=Taxa),size=.5,alpha=0.5,linetype="dashed")+##geom_point(aes(color=Taxa),position=pd)+
   #ggplot2::geom_errorbar(aes(ymax=Q75,ymin=Q25,color=Taxa),width=0,position=pd)+
-  facet_wrap(~incubation,nrow = 2)+ggthemes::theme_base(base_size = 11)+scale_color_manual(values = c("#54A552","#CB6651" ))+ylim(0,60)+
+  facet_wrap(~incubation,nrow = 2)+ggthemes::theme_base(base_size = 11)+scale_color_viridis_d()+ylim(0,60)+
   labs(y="Model Estimated Days to 50% Germination",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"))
 
 ###############################

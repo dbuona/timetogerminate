@@ -15,6 +15,7 @@ library(brms)
 library(ggstance)
 setwd("~/Documents/git/timetogerminate/germination_trials/input")
 load("survmodel.Rda")
+save.image("survmodel.Rda")
 
 d<-read.csv("..//survival_analysis/surival_dat_nointerval.csv")
 d$DAY<-ifelse(d$DAY==0,0.00001,d$DAY)
@@ -41,11 +42,13 @@ dev.off()
 ##try weibull
 
 priorz.wei<-get_prior(DAY | cens(censored)~chillweeks+force+(chillweeks+force|Taxa),data=d,family= weibull())
+fit.wei.all<- brm(DAY | cens(censored)~chillweeks+force+(chillweeks+force|Taxa), data=d, family =   weibull(),inits=0 ,prior=priorz.wei,iter=4000,warmup = 3000, control=list(adapt_delta=0.95),chains=4) 
 
-fit.wei.all<- brm(DAY | cens(censored)~chillweeks+force+(chillweeks+force|Taxa), data=d, family =   weibull(),inits=0 ,prior=priorz.wei,iter=4000,warmup = 3000, chains=4) 
 
 d.in<-dplyr::filter(d,Taxa %in% c("Hesperis matronalis","Cryptotaenia canadensis"))
+
 priorz.wei.in<-get_prior(DAY | cens(censored)~chillweeks+force+Taxa+chillweeks:Taxa+force:Taxa,data=d.in,family= weibull())
+
 fit.wei.in<-brm(DAY | cens(censored)~chillweeks+force+Taxa+chillweeks:Taxa+force:Taxa,data=d.in,family= weibull(),inits=0 ,prior=priorz.wei.in,iter=4000,warmup = 3000, chains=4) 
 
 summary(fit.wei.all)
@@ -68,6 +71,13 @@ new.data2 <- data.frame(Taxa=c(rep(c(unique(d.in$Taxa)),each=7)),
                        chillweeks = c(rep(pred.weeks2,26)), force = c(rep(pred.force2,each=13)))
 
 
+
+pred.weeks3<-c(0:16)
+pred.force3<-c(0,5)
+new.data3 <- data.frame(Taxa=c(rep(c(unique(d$Taxa)),each=17)),
+                       chillweeks = c(rep(pred.weeks3,11)), force = c(rep(pred.force3,each=187)))
+
+
 library(tidybayes)
 a<-new.data %>% add_epred_draws(fit.wei.in, ndraws = 200) %>%
   ggplot(aes(x = chillweeks, color = Taxa))+
@@ -87,9 +97,44 @@ b<-new.data2 %>% add_epred_draws(fit.wei.in, ndraws = 200) %>%
   scale_x_continuous(breaks = c(10,12,14,16))+
   scale_y_continuous(breaks = c(5,10,15,20,30,40))
 
+
+c<-new.data3 %>% add_epred_draws(fit.wei.all, ndraws = 100) %>%
+  ggplot(aes(x = chillweeks, color = Taxa))+
+  geom_line(aes(y=.epred,group=paste(.draw,Taxa)),alpha=.05)+
+  stat_summary(fun=mean, geom="line", size = .75,aes(y=.epred,color=Taxa))+
+  scale_color_viridis_d(option = "B")+ggthemes::theme_few()+facet_wrap(~force)+
+  labs(y="",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"))
+
+
+pred.weeks4<-c(6,12)
+pred.force4<-c(0)
+new.data4 <- data.frame(Taxa=c(rep(c(unique(d$Taxa)),each=2)),
+                        chillweeks = c(rep(pred.weeks4,11)), force = c(rep(pred.force4,each=22)))
+
+new.data4$invasive<-NA
+new.data4$invasive<-ifelse(new.data4$Taxa %in% c("Hesperis matronalis","Silene vulgaris"),"Invasive","Native")
+
+d<-new.data4 %>% add_epred_draws(fit.wei.all, ndraws = 100) %>%
+  ggplot(aes(x = as.factor(chillweeks), y=.epred,color=Taxa,fill=Taxa))+
+  stat_pointinterval()+ggthemes::theme_few()+
+  scale_color_viridis_d(option="B")+scale_fill_viridis_d(option="B")+ylim(0,20)+
+  labs(y="Model Estimated Days to 50% Germination",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"))
+
+
+jpeg("..//figures/AFTall.jpeg",height=5,width=8, units="in",res=200)
+ggpubr::ggarrange(c,d,nrow=2,common.legend = TRUE,heights=c(.33,.66))
+dev.off()
+
 jpeg("..//figures/AFTsivansive.jpeg",height=5,width=8, units="in",res=200)
 ggpubr::ggarrange(a,b,common.legend = TRUE,legend="right",widths=c(.6,.3),labels = c("a)","b)"))
 dev.off()
+
+
+
+
+
+stop()### below is scratch
+
 
 daty.wei.all<-fitted(fit.wei.in,probs =c(0.055,0.25,.75,.945),newdata=new.data)### something is wrong with error
 daty.wei<-cbind(daty.wei.all,new.data)
@@ -438,4 +483,4 @@ gooby[upper.tri(gooby)] <- ""
 
 library(xtable)
 xtable(gooby)
-save.image("survmodel.Rda")
+

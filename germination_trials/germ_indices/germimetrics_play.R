@@ -38,6 +38,11 @@ goober$germ_perc<-ifelse(goober$germ_perc>1,1,goober$germ_perc)
 germ.perc<-goober %>% filter(DAY==25)
 germ.perc$final_perc<-germ.perc$germ_num/germ.perc$tot_seed
 
+#invasive.perc<-filter(germ.perc,Taxa %in% c("Hesperis matronalis","Cryptotaenia canadensis"))
+#FGP<-invasive.perc %>% dplyr::group_by(Taxa,chillweeks,warmT) %>% summarise(meanFGP=mean(final_perc,na.rm=TRUE),sdFGP=sd(final_perc,na.rm=TRUE))
+
+
+
 d<-goober
 
 goodsp<-filter(d, Taxa %in% c("Hesperis matronalis","Cryptotaenia canadensis"))
@@ -85,18 +90,46 @@ plot3<-ggplot(df,aes(chillweeks,T50))+geom_point(aes(color=Taxa))+stat_smooth(me
   theme(legend.position = "none")
 
 
+####MGT
+MGT<- df %>% group_by(Taxa,chillweeks,INC)%>%summarize(MGT=mean(T50,na.rm=TRUE),sd=sd(T50,na.rm=TRUE))
+MGT$MGT<-round(MGT$MGT,digits = 2)
+MGT$sd<-round(MGT$sd,digits = 1)
+
+MGT$MGTsd<-paste(MGT$MGT,MGT$sd,sep = " (")
+MGT<-dplyr::select(MGT,Taxa,chillweeks,INC,MGTsd)
+
+MGT<-spread(MGT,Taxa,MGTsd)
+
+
 
 time<-goodsp %>% dplyr::group_by(plate_num,Taxa) %>% dplyr::summarize(MGT=mean(DAY))
 
 germ.perc<-filter(germ.perc,Taxa %in% c("Hesperis matronalis","Cryptotaenia canadensis"))
-germ.perc<-filter(germ.perc,final_perc<1.0)
+germ.perc$final_perc<-ifelse(germ.perc$final_perc>1.0,1.0,germ.perc$final_perc)
+
+FGP<-dplyr::select(germ.perc,Taxa,chillweeks,INC,final_perc)
+FGP<- FGP %>% group_by(Taxa,chillweeks,INC)%>%summarize(FGP=mean(final_perc,na.rm=TRUE),sd=sd(final_perc,na.rm=TRUE))
+FGP$FGP<-round(FGP$FGP,digits = 2)
+FGP$sd<-round(FGP$sd,digits = 1)
+
+FGP$FGPsd<-paste(FGP$FGP,FGP$sd,sep = " (")
+FGP<-dplyr::select(FGP,Taxa,chillweeks,INC,FGPsd)
+
+FGP<-spread(FGP,Taxa,FGPsd)
+
+
+table.data<-cbind(FGP,MGT)
+table.data<-table.data[c(1,2,3,4,7,8)]
+write.csv(table.data,"descriptive.csv")
+xtable(table.data)
+
 ggplot(germ.perc,aes(chillweeks,final_perc))+geom_point(aes(color=Taxa))+stat_smooth(method="glm",aes(color=Taxa))+facet_wrap(~INC)+
   ggthemes::theme_few(base_size = 11)+scale_color_viridis_d(begin=0,end=.5)+scale_fill_viridis_d(begin=0,end=.5)+xlab("Weeks of cold stratification")+ylab("FGP")+
   theme(legend.position = "none")+ylim(0,1)
 
 
 
-  
+ 
 
 plot4<-ggpubr::ggarrange(plot3,plot2,ncol=1,nrow=2,labels = c("b)","c)"),heights = c(.6,.6))
 

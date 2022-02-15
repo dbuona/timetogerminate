@@ -97,32 +97,50 @@ b<-new.data2 %>% add_epred_draws(fit.wei.in, ndraws = 200) %>%
   scale_x_continuous(breaks = c(10,12,14,16))+
   scale_y_continuous(breaks = c(5,10,15,20,30,40))
 
+#scale_color_manual(values=c("#f0f921","#fdc527","#f89540","#440154","#e66c5c","#21918c","#cc4778","#aa2395","#7e03a8","#4c02a1", "#0d0887"))
+
+new.data3$incubation<-ifelse(new.data3$force==0,"20/10","25/15")
 
 c<-new.data3 %>% add_epred_draws(fit.wei.all, ndraws = 100) %>%
   ggplot(aes(x = chillweeks, color = Taxa))+
+  scale_color_manual(values=c("#f0f921","#fdc527","#f89540","#440154","#e66c5c","#21918c","#cc4778","#aa2395","#7e03a8","#4c02a1", "#0d0887"))+
   geom_line(aes(y=.epred,group=paste(.draw,Taxa)),alpha=.05)+
   stat_summary(fun=mean, geom="line", size = .75,aes(y=.epred,color=Taxa))+
-  scale_color_viridis_d(option = "B")+ggthemes::theme_few()+facet_wrap(~force)+
+  ggthemes::theme_few()+facet_wrap(~incubation)+
   labs(y="",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"))
 
+#fde725,#bddf26,#7ad151,#440154, #21918c,#2a788e,#355f8d,#414487,#482475,#2ab07f,#52c569
 
 pred.weeks4<-c(6,12)
-pred.force4<-c(0)
+pred.force4<-c(0,5)
 new.data4 <- data.frame(Taxa=c(rep(c(unique(d$Taxa)),each=2)),
                         chillweeks = c(rep(pred.weeks4,11)), force = c(rep(pred.force4,each=22)))
 
-new.data4$invasive<-NA
-new.data4$invasive<-ifelse(new.data4$Taxa %in% c("Hesperis matronalis","Silene vulgaris"),"Invasive","Native")
+daty4<-fitted(fit.wei.all,probs =c(0.025,0.25,.75,.975),newdata=new.data4)### something is wrong with error
+daty4<-cbind(daty4,new.data4)
+daty4$incubation<-ifelse(daty4$force==0,"20/10","25/15")
+daty4$stratification<-ifelse(daty4$chillweeks==6,"6 weeks","12 weeks")
 
-d<-new.data4 %>% add_epred_draws(fit.wei.all, ndraws = 100) %>%
-  ggplot(aes(x = as.factor(chillweeks), y=.epred,color=Taxa,fill=Taxa))+
-  stat_pointinterval()+ggthemes::theme_few()+
-  scale_color_viridis_d(option="B")+scale_fill_viridis_d(option="B")+ylim(0,20)+
-  labs(y="Model Estimated Days to 50% Germination",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"))
 
+daty4$invasive<-NA
+daty4$invasive<-ifelse(new.data4$Taxa %in% c("Hesperis matronalis","Silene vulgaris"),"Invasive","Native")
+daty4<-filter(daty4,!Taxa %in% c("Carex grayi","Thalictrum dioicum","Silene stellata"))
+
+cc<-ggplot(daty4,aes(reorder(Taxa,Estimate),Estimate))+geom_point(aes(shape=invasive,group=chillweeks),size=2.5)+ylim(0,20)+
+scale_shape_manual(values = c(1,16))+facet_grid(incubation~stratification,scales = "free")+
+geom_errorbar(aes(ymin=Q2.5,ymax=Q97.5),width=0)+
+  #scale_color_manual(values=c("#f0f921","#fdc527","#f89540","#440154","#e66c5c","#21918c","#cc4778","#aa2395","#7e03a8","#4c02a1", "#0d0887"))+
+  ggthemes::theme_few()+
+  theme(axis.text.x = element_text(angle = 300,hjust=-0.1,face = "italic"))+xlab("")
+ 
+dev.off()
 
 jpeg("..//figures/AFTall.jpeg",height=5,width=8, units="in",res=200)
-ggpubr::ggarrange(c,d,nrow=2,common.legend = TRUE,heights=c(.33,.66))
+c
+dev.off()
+
+jpeg("..//figures/commchange.jpeg",height=8,width=8, units="in",res=200)
+cc
 dev.off()
 
 jpeg("..//figures/AFTsivansive.jpeg",height=5,width=8, units="in",res=200)

@@ -51,9 +51,59 @@ priorz.wei.in<-get_prior(DAY | cens(censored)~chillweeks+force+Taxa+chillweeks:T
 
 fit.wei.in<-brm(DAY | cens(censored)~chillweeks+force+Taxa+chillweeks:Taxa+force:Taxa,data=d.in,family= weibull(),inits=0 ,prior=priorz.wei.in,iter=4000,warmup = 3000, chains=4) 
 
+
+
 summary(fit.wei.all)
 coef(fit.wei.all,probs =c(0.55,0.25,.75,.945))
+yaya<-fit.wei.all%>%
+  spread_draws(r_Taxa[Taxa,condition])
+yaya<-filter(yaya,condition=="chillweeks")
 
+yaya$species<-NA
+yaya$species[which(yaya$Taxa=="Thalictrum.dioicum")]<-"Thalictrum dioicum"
+yaya$species[which(yaya$Taxa=="Silene.vulgaris")]<-"Silene vulgaris"
+yaya$species[which(yaya$Taxa=="Silene.stellata")]<-"Silene stellata"
+yaya$species[which(yaya$Taxa=="Polygonum.virginiatum")]<-"Persicaria virginiana"
+yaya$species[which(yaya$Taxa=="Eurbia.diviricata")]<-"Eurybia divaricata"
+yaya$species[which(yaya$Taxa=="Oenethera.biennis")]<-"Oenethera biennis"
+yaya$species[which(yaya$Taxa=="Hesperis.matronalis")]<-"Hesperis matronalis"
+yaya$species[which(yaya$Taxa=="Cryptotaenia.canadensis")]<-"Cryptotaenia canadensis"
+yaya$species[which(yaya$Taxa=="Carex.grayi")]<-"Carex grayi"
+yaya$species[which(yaya$Taxa=="Asclepias.syriaca")]<-"Asclepias syriaca"
+yaya$species[which(yaya$Taxa=="Anemone.virginana")]<-"Anemone virginiana"
+
+yaya2<-fit.wei.all%>%
+  spread_draws(b_chillweeks)
+yaya$r_Taxa2<-yaya2$b_chillweeks+yaya$r_Taxa
+
+
+
+
+
+yaya3<-fit.wei.all%>%
+  spread_draws(r_Taxa[Taxa,condition])
+
+yaya3<-filter(yaya3,condition=="force")
+
+yaya4<-fit.wei.all%>%
+  spread_draws(b_force)
+yaya3$r_Taxa2<-yaya4$b_force+yaya3$r_Taxa
+
+mu1<-ggplot()+ stat_eye(data=yaya,aes(r_Taxa2,species),fill="skyblue1")+ggthemes::theme_few()+geom_vline(xintercept=0)+
+  xlab("Estimated effect of cold stratification")+xlim(-.4,.25)+
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_text(face="italic"))
+      
+
+mu2<-ggplot()+ stat_eye(data=yaya3,aes(r_Taxa2,Taxa),fill="salmon")+ggthemes::theme_few()+geom_vline(xintercept=0)+
+xlab("Estimated effect of incubation")+
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+
+jpeg("..//figures/mus_survival.jpeg",height=5,width=8, units="in",res=200)
+ggpubr::ggarrange(mu1,mu2,widths=c(.6,.4),labels = c("a)","b)"),hjust =c(-10, -1.5),vjust=2)
+dev.off()
 brmsfamily("weibull")
 
 ###########################
@@ -116,7 +166,7 @@ pred.force4<-c(0,5)
 new.data4 <- data.frame(Taxa=c(rep(c(unique(d$Taxa)),each=2)),
                         chillweeks = c(rep(pred.weeks4,11)), force = c(rep(pred.force4,each=22)))
 
-daty4<-fitted(fit.wei.all,probs =c(0.025,0.25,.75,.975),newdata=new.data4)### something is wrong with error
+daty4<-fitted(fit.wei.all,probs =c(0.1,0.9),newdata=new.data4)### something is wrong with error
 daty4<-cbind(daty4,new.data4)
 daty4$incubation<-ifelse(daty4$force==0,"20/10","25/15")
 daty4$stratification<-ifelse(daty4$chillweeks==6,"6 weeks","12 weeks")
@@ -125,15 +175,29 @@ daty4$stratification<-ifelse(daty4$chillweeks==6,"6 weeks","12 weeks")
 daty4$invasive<-NA
 daty4$invasive<-ifelse(new.data4$Taxa %in% c("Hesperis matronalis","Silene vulgaris"),"Invasive","Native")
 daty4<-filter(daty4,!Taxa %in% c("Carex grayi","Thalictrum dioicum","Silene stellata"))
+daty4$scenario<-NA
 
-cc<-ggplot(daty4,aes(reorder(Taxa,Estimate),Estimate))+geom_point(aes(shape=invasive,group=chillweeks),size=2.5)+ylim(0,20)+
-scale_shape_manual(values = c(1,16))+facet_grid(incubation~stratification,scales = "free")+
-geom_errorbar(aes(ymin=Q2.5,ymax=Q97.5),width=0)+
-  #scale_color_manual(values=c("#f0f921","#fdc527","#f89540","#440154","#e66c5c","#21918c","#cc4778","#aa2395","#7e03a8","#4c02a1", "#0d0887"))+
-  ggthemes::theme_few()+
-  theme(axis.text.x = element_text(angle = 300,hjust=-0.1,face = "italic"))+xlab("")
+daty4$scenario[which(daty4$stratification=="12 weeks"& daty4$incubation=="20/10")]<-1
+daty4$scenario[which(daty4$stratification=="12 weeks"& daty4$incubation=="25/15")]<-2
+daty4$scenario[which(daty4$stratification=="6 weeks"& daty4$incubation=="25/15")]<-4
+daty4$scenario[which(daty4$stratification=="6 weeks"& daty4$incubation=="20/10")]<-3
+
+###clean species
+daty4$Taxa[which(daty4$Taxa=="Eurbia diviricata")]<-"Eurybia divaricata"
+daty4$Taxa[which(daty4$Taxa=="Polygonum virginiatum")]<-"Persicaria virginiana"
+daty4$Taxa[which(daty4$Taxa=="Anemone virginana")]<-"Anemone virginiana"
+
+cc<-ggplot(daty4,aes(Estimate,Taxa))+geom_point(aes(shape=invasive,group=chillweeks,color=scenario),size=3.5)+
+scale_shape_manual(values = c(15,16))+facet_grid(incubation~stratification,scales = "free")+
+geom_errorbarh(aes(xmin=Q10,xmax=Q90),height=0)+
+  scale_color_viridis_c(option="turbo",direction = 1, begin=.2,end=.8)+
+  ggthemes::theme_few(base_size = 11)+
+  theme(axis.text.y = element_text(face = c("italic","italic","italic","italic","bold.italic","italic","italic","bold.italic"))
+)+xlab("Day of Season")+ylab("")+xlim(0,20)+ guides(col = FALSE)
  
+
 dev.off()
+
 
 jpeg("..//figures/AFTall.jpeg",height=5,width=8, units="in",res=200)
 c

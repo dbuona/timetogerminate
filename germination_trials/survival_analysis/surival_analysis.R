@@ -13,6 +13,8 @@ library(drc)
 library(lme4)
 library(brms)
 library(ggstance)
+library(tidybayes)
+library(bayesplot)
 setwd("~/Documents/git/timetogerminate/germination_trials/input")
 load("survmodel.Rda")
 save.image("survmodel.Rda")
@@ -43,7 +45,7 @@ dev.off()
 
 priorz.wei<-get_prior(DAY | cens(censored)~chillweeks+force+(chillweeks+force|Taxa),data=d,family= weibull())
 fit.wei.all<- brm(DAY | cens(censored)~chillweeks+force+(chillweeks+force|Taxa), data=d, family =   weibull(),inits=0 ,prior=priorz.wei,iter=4000,warmup = 3000, control=list(adapt_delta=0.95),chains=4) 
-
+fixef(fit.wei.all)
 
 d.in<-dplyr::filter(d,Taxa %in% c("Hesperis matronalis","Cryptotaenia canadensis"))
 
@@ -54,7 +56,12 @@ fit.wei.in<-brm(DAY | cens(censored)~chillweeks+force+Taxa+chillweeks:Taxa+force
 
 
 summary(fit.wei.all)
-coef(fit.wei.all,probs =c(0.55,0.25,.75,.945))
+fixef(fit.wei.all,probs =c(0.05,0.25,.75,.95))
+exp(fixef(fit.wei.all)[1])
+
+exp(fixef(fit.wei.all)[1])-exp(fixef(fit.wei.all)[1]+fixef(fit.wei.all)[2]) #6.14 days decrease in t50 per week of chilling
+exp(fixef(fit.wei.all)[1])-exp(fixef(fit.wei.all)[1]+fixef(fit.wei.all)[3]) #1.45 increase per degree C 
+exp(fixef(fit.wei.all)[1]+fixef(fit.wei.all)[3])
 yaya<-fit.wei.all%>%
   spread_draws(r_Taxa[Taxa,condition])
 yaya<-filter(yaya,condition=="chillweeks")
@@ -89,17 +96,17 @@ yaya4<-fit.wei.all%>%
   spread_draws(b_force)
 yaya3$r_Taxa2<-yaya4$b_force+yaya3$r_Taxa
 
-mu1<-ggplot()+ stat_eye(data=yaya,aes(r_Taxa2,species),fill="skyblue1")+ggthemes::theme_few()+geom_vline(xintercept=0)+
+mu1<-ggplot()+ stat_eye(data=yaya,aes(r_Taxa2,species),fill="skyblue1",.width = c(.9))+ggthemes::theme_few()+geom_vline(xintercept=0)+
   xlab("Estimated effect of cold stratification")+xlim(-.4,.25)+
   theme(axis.title.y=element_blank(),
-        axis.text.y=element_text(face="italic"))
+        axis.text.y=element_text(face="italic"))+scale_y_discrete(limits=rev)
       
 
-mu2<-ggplot()+ stat_eye(data=yaya3,aes(r_Taxa2,Taxa),fill="salmon")+ggthemes::theme_few()+geom_vline(xintercept=0)+
+mu2<-ggplot()+ stat_eye(data=yaya3,aes(r_Taxa2,Taxa),fill="salmon",.width = c(.9))+ggthemes::theme_few()+geom_vline(xintercept=0)+
 xlab("Estimated effect of incubation")+
   theme(axis.title.y=element_blank(),
         axis.text.y=element_blank(),
-        axis.ticks.y=element_blank())
+        axis.ticks.y=element_blank())+scale_y_discrete(limits=rev)
 
 jpeg("..//figures/mus_survival.jpeg",height=5,width=8, units="in",res=200)
 ggpubr::ggarrange(mu1,mu2,widths=c(.6,.4),labels = c("a)","b)"),hjust =c(-10, -1.5),vjust=2)
@@ -111,14 +118,14 @@ brmsfamily("weibull")
 pred.weeks<-c(5:16)
 pred.force<-c(0)
 
-new.data <- data.frame(Taxa=c(rep(c(unique(d.in$Taxa)),each=12)),
-  chillweeks = c(rep(pred.weeks,26)), force = c(rep(pred.force,each=12)))
+new.data <- data.frame(Taxa=c("Cryptotaenia canadensis"),
+  chillweeks = c(rep(pred.weeks,12)), force = c(rep(pred.force,each=12)))
 
 pred.weeks2<-c(10:16)
 pred.force2<-c(5)
 
-new.data2 <- data.frame(Taxa=c(rep(c(unique(d.in$Taxa)),each=7)),
-                       chillweeks = c(rep(pred.weeks2,26)), force = c(rep(pred.force2,each=13)))
+new.data2 <- data.frame(Taxa=c("Cryptotaenia canadensis"),
+                       chillweeks = c(rep(pred.weeks2,7)), force = c(rep(pred.force2,each=7)))
 
 
 
@@ -129,16 +136,29 @@ new.data3 <- data.frame(Taxa=c(rep(c(unique(d$Taxa)),each=17)),
 
 
 library(tidybayes)
-a<-new.data %>% add_epred_draws(fit.wei.in, ndraws = 200) %>%
-  ggplot(aes(x = chillweeks, color = Taxa))+
-geom_line(aes(y=.epred,group=paste(.draw,Taxa)),alpha=.05)+
-  stat_summary(fun=mean, geom="line", size = .75,aes(y=.epred,color=Taxa))+
-scale_color_viridis_d(begin=0,end=0.5)+ggthemes::theme_few()+
-  labs(y="Model Estimated Days to 50% Germination",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"))+
-  scale_x_continuous(breaks = c(6,8,10,12,14,16))+
-  scale_y_continuous(breaks = c(5,10,15,20,30,40,50))
+new.data<-new.data %>% add_epred_draws(fit.wei.in, ndraws = 200)
+new.data2<-new.data2 %>% add_epred_draws(fit.wei.in, ndraws = 200)
+new.data4<-filter(new.data3,Taxa=="Hesperis matronalis")
+new.data4<-new.data4 %>% add_epred_draws(fit.wei.in, ndraws = 200)
 
-b<-new.data2 %>% add_epred_draws(fit.wei.in, ndraws = 200) %>%
+new.data$incubation<-"25/15"
+new.data2$incubation<-"20/10"
+new.data4$incubation<-ifelse(new.data4$force==0,"20/10","25/15")
+new.data<-rbind(new.data,new.data2,new.data4)
+
+
+  ggplot(new.data,aes(x = chillweeks, color = Taxa))+
+geom_line(aes(y=.epred,group=paste(.draw,Taxa,incubation)),alpha=.05)+
+  stat_summary(fun=mean, geom="line", size = .75,aes(y=.epred,color=Taxa,group=paste(Taxa,incubation)))+
+scale_color_viridis_d(begin=0,end=0.5)+ggthemes::theme_few()+
+  labs(y="Model Estimated Days to 50% Germination",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"),legend.position = "top")+
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12,14,16))+
+  scale_y_continuous(breaks = c(0,5,10,15,20,30,40,50))+theme(legend.title= element_blank())
+
+
+  
+  
+  b<-new.data2 %>% add_epred_draws(fit.wei.in, ndraws = 200) %>%
   ggplot(aes(x = chillweeks, color = Taxa))+
   geom_line(aes(y=.epred,group=paste(.draw,Taxa)),alpha=.05)+
   stat_summary(fun=mean, geom="line", size = .75,aes(y=.epred,color=Taxa))+
@@ -166,7 +186,7 @@ pred.force4<-c(0,5)
 new.data4 <- data.frame(Taxa=c(rep(c(unique(d$Taxa)),each=2)),
                         chillweeks = c(rep(pred.weeks4,11)), force = c(rep(pred.force4,each=22)))
 
-daty4<-fitted(fit.wei.all,probs =c(0.1,0.9),newdata=new.data4)### something is wrong with error
+daty4<-fitted(fit.wei.all,probs =c(0.05,0.95),newdata=new.data4)### something is wrong with error
 daty4<-cbind(daty4,new.data4)
 daty4$incubation<-ifelse(daty4$force==0,"20/10","25/15")
 daty4$stratification<-ifelse(daty4$chillweeks==6,"6 weeks","12 weeks")
@@ -189,12 +209,22 @@ daty4$Taxa[which(daty4$Taxa=="Anemone virginana")]<-"Anemone virginiana"
 
 cc<-ggplot(daty4,aes(Estimate,Taxa))+geom_point(aes(shape=invasive,group=chillweeks,color=scenario),size=3.5)+
 scale_shape_manual(values = c(15,16))+facet_grid(incubation~stratification,scales = "free")+
-geom_errorbarh(aes(xmin=Q10,xmax=Q90),height=0)+
+geom_errorbarh(aes(xmin=Q5,xmax=Q95),height=0)+
   scale_color_viridis_c(option="turbo",direction = 1, begin=.2,end=.8)+
   ggthemes::theme_few(base_size = 11)+
   theme(axis.text.y = element_text(face = c("italic","italic","italic","italic","bold.italic","italic","italic","bold.italic"))
 )+xlab("Day of Season")+ylab("")+xlim(0,20)+ guides(col = FALSE)
  
+daty4a<-dplyr::filter(daty4,scenario %in% c(1,4))
+daty4a$scenario2<-ifelse(daty4a$scenario==1,"historic","warming")
+cc<-ggplot(daty4a,aes(Estimate,Taxa))+geom_point(aes(shape=invasive,group=chillweeks),size=3)+
+  scale_shape_manual(values = c(15,16))+
+  geom_errorbarh(aes(xmin=Q5,xmax=Q95),height=0)+facet_wrap(~scenario2)+
+  scale_color_viridis_d(option="turbo",direction = 1, begin=.2,end=.8)+
+  ggthemes::theme_few(base_size = 11)+
+  theme(axis.text.y = element_text(face = c("bold.italic","italic","italic","bold.italic","italic","italic","italic","italic")))+
+  xlab("Day of season for 50% germination")+ylab("")+guides(scale = "none")+geom_vline(xintercept=20, linetype="dashed")+theme(legend.title=element_blank(),legend.position = "top")+
+  scale_y_discrete(limits=rev)
 
 dev.off()
 
@@ -203,12 +233,20 @@ jpeg("..//figures/AFTall.jpeg",height=5,width=8, units="in",res=200)
 c
 dev.off()
 
-jpeg("..//figures/commchange.jpeg",height=8,width=8, units="in",res=200)
+jpeg("..//figures/commchange.jpeg",height=6,width=10, units="in",res=300)
 cc
 dev.off()
 
-jpeg("..//figures/AFTsivansive.jpeg",height=5,width=8, units="in",res=200)
-ggpubr::ggarrange(a,b,common.legend = TRUE,legend="right",widths=c(.6,.3),labels = c("a)","b)"))
+jpeg("..//figures/AFTsivansive.jpeg",height=8,width=8, units="in",res=200)
+#ggpubr::ggarrange(a,b,common.legend = TRUE,legend="right",widths=c(.6,.3),labels = c("a)","b)"))
+ggplot(new.data,aes(x = chillweeks, color = Taxa))+
+  geom_line(aes(y=.epred,group=paste(.draw,Taxa,incubation)),alpha=.05)+
+  stat_summary(fun=mean, geom="line", size = .75,aes(y=.epred,color=Taxa,group=paste(Taxa,incubation)))+
+  scale_color_viridis_d(begin=0,end=0.5)+ggthemes::theme_few()+
+  labs(y="Model Estimated Days to 50% Germination",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"),legend.position = "top")+
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12,14,16))+
+  scale_y_continuous(breaks = c(0,5,10,15,20,30,40,50))+theme(legend.title= element_blank())+scale_y_discrete()
+
 dev.off()
 
 

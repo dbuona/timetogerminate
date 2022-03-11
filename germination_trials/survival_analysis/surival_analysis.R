@@ -217,10 +217,10 @@ geom_errorbarh(aes(xmin=Q5,xmax=Q95),height=0)+
  
 daty4a<-dplyr::filter(daty4,scenario %in% c(1,4))
 daty4a$scenario2<-ifelse(daty4a$scenario==1,"historic","warming")
-cc<-ggplot(daty4a,aes(Estimate,Taxa))+geom_point(aes(shape=invasive,group=chillweeks),size=3)+
+cc<-ggplot(daty4a,aes(Estimate,Taxa))+geom_point(aes(shape=invasive,group=chillweeks,color=scenario2),size=3,alpha=0.75)+
   scale_shape_manual(values = c(15,16))+
-  geom_errorbarh(aes(xmin=Q5,xmax=Q95),height=0)+facet_wrap(~scenario2)+
-  scale_color_viridis_d(option="turbo",direction = 1, begin=.2,end=.8)+
+  geom_errorbarh(aes(xmin=Q5,xmax=Q95,color=scenario2),height=0)+
+  scale_color_viridis_d(option="turbo",direction = 1, begin=.3,end=.95)+
   ggthemes::theme_few(base_size = 11)+
   theme(axis.text.y = element_text(face = c("bold.italic","italic","italic","bold.italic","italic","italic","italic","italic")))+
   xlab("Day of season for 50% germination")+ylab("")+guides(scale = "none")+geom_vline(xintercept=20, linetype="dashed")+theme(legend.title=element_blank(),legend.position = "top")+

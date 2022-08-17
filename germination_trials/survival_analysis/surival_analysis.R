@@ -17,7 +17,7 @@ library(tidybayes)
 library(bayesplot)
 setwd("~/Documents/git/timetogerminate/germination_trials/input")
 load("survmodel.Rda")
-save.image("survmodel.Rda")
+#save.image("survmodel.Rda")
 
 d<-read.csv("..//survival_analysis/surival_dat_nointerval.csv")
 d$DAY<-ifelse(d$DAY==0,0.00001,d$DAY)
@@ -147,14 +147,18 @@ new.data4$incubation<-ifelse(new.data4$force==0,"20/10","25/15")
 new.data<-rbind(new.data,new.data2,new.data4)
 
 
-  ggplot(new.data,aes(x = chillweeks, color = Taxa))+
-geom_line(aes(y=.epred,group=paste(.draw,Taxa,incubation)),alpha=.05)+
-  stat_summary(fun=mean, geom="line", size = .75,aes(y=.epred,color=Taxa,group=paste(Taxa,incubation)))+
+new.data$Taxa2<-ifelse(new.data$Taxa=="Cryptotaenia canadensis","Cryptotaenia canadensis \n(native)","Hesperis matronalis \n(invasive)")
+
+jpeg("..//figures/AFTsivansive.jpeg",height=8,width=8, units="in",res=200)
+  
+ggplot(new.data,aes(x = chillweeks, color = Taxa2))+
+geom_line(aes(y=.epred,group=paste(.draw,Taxa2,incubation)),alpha=.05)+
+  stat_summary(fun=mean, geom="line", size = .75,aes(y=.epred,color=Taxa2,group=paste(Taxa,incubation)))+
 scale_color_viridis_d(begin=0,end=0.5)+ggthemes::theme_few()+
   labs(y="Model Estimated Days to 50% Germination",x="Weeks of cold stratification")+theme(legend.text = element_text(face = "italic"),legend.position = "top")+
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12,14,16))+
   scale_y_continuous(breaks = c(0,5,10,15,20,30,40,50))+theme(legend.title= element_blank())
-
+dev.off()
 
   
   
@@ -207,7 +211,7 @@ daty4$Taxa[which(daty4$Taxa=="Eurbia diviricata")]<-"Eurybia divaricata"
 daty4$Taxa[which(daty4$Taxa=="Polygonum virginiatum")]<-"Persicaria virginiana"
 daty4$Taxa[which(daty4$Taxa=="Anemone virginana")]<-"Anemone virginiana"
 
-cc<-ggplot(daty4,aes(Estimate,Taxa))+geom_point(aes(shape=invasive,group=chillweeks,color=scenario),size=3.5)+
+ggplot(daty4,aes(Estimate,Taxa))+geom_point(aes(shape=invasive,group=chillweeks,color=scenario),size=3.5)+
 scale_shape_manual(values = c(15,16))+facet_grid(incubation~stratification,scales = "free")+
 geom_errorbarh(aes(xmin=Q5,xmax=Q95),height=0)+
   scale_color_viridis_c(option="turbo",direction = 1, begin=.2,end=.8)+

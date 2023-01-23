@@ -8,7 +8,7 @@ library(lme4)
 library(broom)
 library(ggstance)
 library(RColorBrewer)
-load("GImodels")
+#load("GImodels")
 d.dat<-read.csv("daily_dat_nointerval.csv",header=TRUE)
 
 goober<-d.dat
@@ -33,7 +33,7 @@ goober<- within(goober, warmT[INC=="L" ]<-20)
 goober$germ_perc<-NA
 goober$germ_perc<-goober$germ_num/goober$tot_seed
 goober$germ_perc<-ifelse(goober$germ_perc>1,1,goober$germ_perc)
-
+goober$incubation<-ifelse(goober$INC=="L","cool","warm")
 
 germ.perc<-goober %>% filter(DAY==25)
 germ.perc$final_perc<-germ.perc$germ_num/germ.perc$tot_seed
@@ -43,12 +43,19 @@ germ.perc$final_perc<-germ.perc$germ_num/germ.perc$tot_seed
 
 
 
-d<-goober
 
-goodsp<-filter(d, Taxa %in% c("Hesperis matronalis","Cryptotaenia canadensis"))
-plot1<-ggplot(goodsp,aes(DAY,germ_perc))+geom_point(aes(color=Taxa),size=0.2,shape=1)+stat_smooth(aes(color=Taxa,fill=Taxa))+facet_grid(chillweeks~INC)+
-  ggthemes::theme_few(base_size = 11)+scale_color_viridis_d(begin=0,end=.5)+scale_fill_viridis_d(begin=0,end=.5)+xlab("Day of experiment")+ylab("Germination percentatge")  
+goodsp<-filter(goober, Taxa %in% c("Hesperis matronalis","Cryptotaenia canadensis"))
 
+plot1<-ggplot(goodsp,aes(DAY,germ_perc))+stat_summary(aes(color=Taxa,shape=Taxa),size=.5)+ stat_smooth(aes(color=Taxa,fill=Taxa),size=0.3,se=FALSE)+
+  facet_grid(chillweeks~incubation)+
+  ggthemes::theme_few(base_size = 11)+scale_color_viridis_d(begin=0,end=.5)+scale_fill_viridis_d(begin=0,end=.5)+xlab("Day of trial")+ylab("Germination percentatge")+
+   theme(legend.text = element_text(face = "italic"),legend.position = "top")
+
+germ.perc<-filter(germ.perc, Taxa %in% c("Hesperis matronalis","Cryptotaenia canadensis"))
+germ.perc$final_perc<-ifelse(germ.perc$final_perc>1,1,germ.perc$final_perc)
+plot1a<-ggplot(germ.perc,aes(chillweeks,final_perc*100))+geom_point(aes(color=Taxa,shape=Taxa),size=0.9)+stat_smooth(aes(color=Taxa,fill=Taxa),size=0.5,method="lm",se=FALSE)+facet_wrap(~incubation)+
+  ggthemes::theme_few(base_size = 11)+scale_color_viridis_d(begin=0,end=.5)+scale_fill_viridis_d(begin=0,end=.5)+xlab("")+ylab("Final germination percentatge")+
+  theme(legend.text = element_text(face = "italic"))+theme(legend.position = "none")+scale_y_continuous(limits=c(0,100))
 
 
 ####calculate GI germination index Kader 2005
@@ -60,12 +67,15 @@ goodsp2<-goodsp %>% group_by(plate_num)  %>%  mutate(weight = rev(DAY))
 
 goodsp2$weighting<-goodsp2$weight*goodsp2$germ.daily
 
-GIs<-goodsp2 %>% group_by(Taxa,warmT,chillweeks,COLD,INC,plate_num) %>% summarise(GI=sum(weighting))                                          
-GI2<-GIs %>%group_by(Taxa,warmT,chill_time,COLD,INC) %>% summarise(mean=mean(GI))
-GI3<-GIs %>%group_by(Taxa,warmT,chill_time,COLD,INC) %>% summarise(sd=sd(GI))
+GIs<-goodsp2 %>% group_by(Taxa,warmT,chillweeks,COLD,incubation,plate_num) %>% summarise(GI=sum(weighting))                                          
+GI2<-GIs %>%group_by(Taxa,warmT,chillweeks,COLD,incubation) %>% summarise(mean=mean(GI))
+GI3<-GIs %>%group_by(Taxa,warmT,chillweeks,COLD,incubation) %>% summarise(sd=sd(GI))
 
 GIforplot<-left_join(GI2,GI3)
-plot2<-ggplot(GIs,aes(chillweeks,GI))+geom_point(aes(color=Taxa))+geom_smooth(method="lm",aes(color=Taxa,fill=Taxa))+facet_wrap(~INC)+
+plot2<-ggplot(GIs,aes(chillweeks,GI))+geom_point(aes(color=Taxa),size=0.9)+geom_smooth(method="lm",aes(color=Taxa,fill=Taxa,shape=Taxa),size=0.5,se=FALSE)+facet_wrap(~incubation)+
+  ggthemes::theme_few(base_size = 11)+scale_color_viridis_d(begin=0,end=.5)+scale_fill_viridis_d(begin=0,end=.5)+xlab("")+ylab("Germination index")+theme(legend.position = "none")
+
+ggplot(fgp.dat,aes(chillweeks,final_perc))+geom_point(aes(color=Taxa))+geom_smooth(method="lm",aes(color=Taxa,fill=Taxa),size=0.3)+facet_wrap(~INC)+
   ggthemes::theme_few(base_size = 11)+scale_color_viridis_d(begin=0,end=.5)+scale_fill_viridis_d(begin=0,end=.5)+xlab("Weeks of cold stratification")+ylab("Germination index")+theme(legend.position = "none")
 
 
@@ -81,12 +91,12 @@ df<-data.frame(plate_num=numeric(),Taxa=character(),INC=character(),chillweeks=n
 for (p in seq_along(plates)){
   dataoneplate <- dplyr::filter(goodsp, plate_num==plates[p])
   t50 <- sum(dataoneplate$DAY*dataoneplate$germ.daily)/dataoneplate$finalgerm
-  dfhere<-data.frame(plate_num=plates[p],Taxa=unique(dataoneplate$Taxa),INC=unique(dataoneplate$INC), chillweeks=unique(dataoneplate$chillweeks),T50=t50)
+  dfhere<-data.frame(plate_num=plates[p],Taxa=unique(dataoneplate$Taxa),INC=unique(dataoneplate$incubation), chillweeks=unique(dataoneplate$chillweeks),T50=t50)
   df <- rbind(df, dfhere)
 }
 
-plot3<-ggplot(df,aes(chillweeks,T50))+geom_point(aes(color=Taxa))+stat_smooth(method="lm",aes(color=Taxa))+facet_wrap(~INC)+
-  ggthemes::theme_few(base_size = 11)+scale_color_viridis_d(begin=0,end=.5)+scale_fill_viridis_d(begin=0,end=.5)+xlab("Weeks of cold stratification")+ylab("MGT")+
+plot3<-ggplot(df,aes(chillweeks,T50))+geom_point(aes(color=Taxa,shape=Taxa),size=0.9)+stat_smooth(method="lm",aes(color=Taxa),size=0.5,se=FALSE)+facet_wrap(~INC)+
+  ggthemes::theme_few(base_size = 11)+scale_color_viridis_d(begin=0,end=.5)+scale_fill_viridis_d(begin=0,end=.5)+xlab("Weeks of cold stratification")+ylab("Mean germination time")+
   theme(legend.position = "none")
 
 
@@ -131,10 +141,13 @@ ggplot(germ.perc,aes(chillweeks,final_perc))+geom_point(aes(color=Taxa))+stat_sm
 
  
 
-plot4<-ggpubr::ggarrange(plot3,plot2,ncol=1,nrow=2,labels = c("b)","c)"),heights = c(.6,.6))
+plot4<-ggpubr::ggarrange(plot1a,plot3,plot2,ncol=3,nrow=1,labels = c("b)","c)","d)"))
 
-jpeg("..//figures/crp_hesp1.jpeg",width=6,height=5,units='in',res=300)
-ggpubr::ggarrange(plot1,plot4,common.legend = TRUE,widths=c(.6,.5),labels=c("a)"))
+jpeg("..//figures/crp_hesp2.jpeg",width=7,height=10,units='in',res=400)
+plot1
+dev.off()
+jpeg("..//figures/crp_hesp1.jpeg",width=10,height=10,units='in',res=400)
+ggpubr::ggarrange(plot1,plot4,nrow=2,ncol=1,common.legend = TRUE,heights=c(.9,.4),labels=c("a)"))
 dev.off()
 ###center predictors
 GIs$inc.cent<-GIs$warmT-mean(GIs$warmT)

@@ -6,7 +6,7 @@ options(stringsAsFactors = FALSE)
 library(survival)
 library(ggplot2)
 library(dplyr)
-library("ggfortify")
+#library("ggfortify")
 library("icenReg")
 library("emmeans")
 library(drc)
@@ -48,6 +48,9 @@ fit.wei.all<- brm(DAY | cens(censored)~chillweeks+force+(chillweeks+force|Taxa),
 fixef(fit.wei.all)
 
 d.in<-dplyr::filter(d,Taxa %in% c("Hesperis matronalis","Cryptotaenia canadensis"))
+colnames(d.in)
+d.knb<-dplyr::select(d.in,-X,-INC,-COLD,-date,-warmT,-chill_time)
+write.csv(d.knb,"germ_assays_knb.csv",row.names = FALSE)
 
 priorz.wei.in<-get_prior(DAY | cens(censored)~chillweeks+force+Taxa+chillweeks:Taxa+force:Taxa,data=d.in,family= weibull())
 

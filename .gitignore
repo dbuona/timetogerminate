@@ -15,3 +15,6 @@ germination_trials/.Rhistory
 *.gz
 *.Rda
 germination_trials/refs/.DS_Store
+germination_trials/input/.Rhistory
+germination_trials/.Rhistory
+*.history

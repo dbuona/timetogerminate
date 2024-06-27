@@ -46,6 +46,11 @@ dev.off()
 priorz.wei<-get_prior(DAY | cens(censored)~chillweeks+force+(chillweeks+force|Taxa),data=d,family= weibull())
 fit.wei.all<- brm(DAY | cens(censored)~chillweeks+force+(chillweeks+force|Taxa), data=d, family =   weibull(),inits=0 ,prior=priorz.wei,iter=4000,warmup = 3000, control=list(adapt_delta=0.95),chains=4) 
 fixef(fit.wei.all)
+colnames(d)
+forknb<-dplyr::select(d,Taxa, plate_num, DAY, germinated, chillweeks,force,censored)
+forknb<-dplyr::filter(forknb, !Taxa %in% c("Cryptotaenia candensis","Hesperis matronalis"))
+write.csv(forknb,"..//input/allsps_germ_assays.knb.csv")
+
 
 d.in<-dplyr::filter(d,Taxa %in% c("Hesperis matronalis","Cryptotaenia canadensis"))
 colnames(d.in)
@@ -119,40 +124,61 @@ yaya.n$treatment<-ifelse(yaya.n$condition=="chillweeks","chilling","incubation")
 
 
 
-mu1<-ggplot()+ stat_interval(data=yaya,aes(r_Taxa2,species),fill="skyblue1",.width = c(.5,.89,.975))+ggthemes::theme_few()+geom_vline(xintercept=0)+
-  xlab("Estimated effect of chilling")+coord_cartesian(xlim=c(-.4,.25))+
+mu1<-ggplot()+ stat_pointinterval(data=yaya,aes(r_Taxa2,species,fill=species,color=species,shape=species),.width = c(.5,.95),show.legend=FALSE)+ggthemes::theme_few()+geom_vline(xintercept=0)+
+  xlab("Estimated effect of \nwinter chilling")+coord_cartesian(xlim=c(-.4,.25))+
+  scale_fill_manual(values=c("grey","grey","grey","grey","darkorchid","grey","grey","orange","grey","grey","grey"))+
+  scale_color_manual(values=c("black","black","black","black","darkorchid4","black","black","orange3","black","black","black"))+
   theme(axis.title.y=element_blank(),
-        axis.text.y=element_text(face="italic"))+scale_y_discrete(limits=rev)
+        axis.text.y=element_text(face="italic"))+scale_y_discrete(limits=rev)+scale_shape_manual(values=c(0,1,2,8,19,6,15,19,17,18,11))
+
       
 
-mu2<-ggplot()+ stat_interval(data=yaya3,aes(r_Taxa2,Taxa),fill="salmon",.width = c(.5,.89,.975))+ggthemes::theme_few()+geom_vline(xintercept=0)+
-xlab("Estimated effect of incubation")+
+mu2<-ggplot()+ stat_pointinterval(data=yaya3,aes(r_Taxa2,Taxa,fill=species,color=species,shape=species),.width = c(.5,.95),show.legend=FALSE)+ggthemes::theme_few()+geom_vline(xintercept=0)+
+xlab("Estimated effect of \nspring forcing")+
+  scale_fill_manual(values=c("grey","grey","grey","grey","darkorchid","grey","grey","orange","grey","grey","grey"))+
+  scale_color_manual(values=c("black","black","black","black","darkorchid4","black","black","orange3","black","black","black"))+
   theme(axis.title.y=element_blank(),
         axis.text.y=element_blank(),
-        axis.ticks.y=element_blank())+scale_y_discrete(limits=rev)
+        axis.ticks.y=element_blank())+scale_y_discrete(limits=rev)+scale_shape_manual(values=c(0,1,2,8,19,6,15,19,17,18,11))
 
-jpeg("..//figures/mus_survival.jpeg",height=5,width=8, units="in",res=200)
 
-ggplot()+ stat_interval(data=yaya.n,aes(r_Taxa2,reorder(species,-r_Taxa2)),.width = c(.5,.89,.975))+ggthemes::theme_few()+geom_vline(xintercept=0,color="firebrick4")+facet_wrap(~treatment)+
-  xlab("estimated effect")+coord_cartesian(xlim=c(-.4,.4))+
-  theme(axis.text.y=element_text(face="italic"),legend.position = "bottom")+ylab("")
+plotter3<-ggpubr::ggarrange(mu1,mu2,ncol=2,widths=c(.5,.3))
+
+jpeg("..//figures/mus_survival.jpeg",height=3,width=7, units="in",res=300)
+
+plotter3
+#ggplot()+ stat_interval(data=yaya.n,aes(r_Taxa2,reorder(species,-r_Taxa2)),.width = c(.5,.89,.975))+ggthemes::theme_few()+geom_vline(xintercept=0,color="firebrick4")+facet_wrap(~treatment)+
+ # xlab("estimated effect")+coord_cartesian(xlim=c(-.4,.4))+
+  #theme(axis.text.y=element_text(face="italic"),legend.position = "bottom")+ylab("")
+
+
 
 #ggpubr::ggarrange(mu1,mu2,widths=c(.6,.4),common.legend = TRUE)#,labels = c("a)","b)"),hjust =c(-10, -1.5),vjust=-10)
 
 dev.off()
+yaya.prief<-filter(yaya.n, species  %in% c("Eurybia divaricata","Persicaria virginiana"))
+yaya.prief<-filter(yaya.prief,treatment=="chilling")
+
+
+pdf("..//figures/prief_sps_mus.pdf")
+ggplot()+ stat_halfeye(data=yaya.prief,aes(r_Taxa2,reorder(species,-r_Taxa2), color=species,fill=species),.width = c(.5,.95))+ggthemes::theme_few()+geom_vline(xintercept=0,linetype="dashed")+
+  xlab("chilling sensitivity")+coord_cartesian(xlim=c(-.4,0))+scale_color_viridis_d(option="magma",begin = .3,end=.8)+scale_fill_viridis_d(option="magma",begin = .3,end=.8,alpha=.4)+
+  theme(axis.text.y=element_text(face="italic"),legend.position = "bottom")+ylab("")
+dev.off()
+
 brmsfamily("weibull")
 
 
 
 ####plot for all sps
-pred.weeks.A<-c(6,12)
-pred.force.A<-c(0,5)
+pred.weeks.A<-c(6,9,12)
+pred.force.A<-c(0)
 rm(new.data.A)
-new.data.A <- data.frame(Taxa=c(rep(c(unique(d$Taxa)),4)),
-                        chillweeks = c(rep(pred.weeks.A,each=11)), force = c(rep(pred.force.A,each=22)))
+new.data.A <- data.frame(Taxa=c(rep(c(unique(d$Taxa)),3)),
+                        chillweeks = c(rep(pred.weeks.A,each=11)))
+new.data.A$force<-0
 
-
-pred<-fitted(fit.wei.all,newdata = new.data.A,probs = c(.055,.945))
+pred<-fitted(fit.wei.all,newdata = new.data.A,probs = c(.25,.75,.05,.95))
 new.data.A<-cbind(new.data.A,pred)
 
 
@@ -170,13 +196,24 @@ new.data.A$species[which(new.data.A$Taxa=="Carex grayi")]<-"Carex grayi"
 new.data.A$species[which(new.data.A$Taxa=="Asclepias syriaca")]<-"Asclepias syriaca"
 new.data.A$species[which(new.data.A$Taxa=="Anemone virginana")]<-"Anemone virginiana"
 
-smaps<-filter(new.data.A, species %in% c("Asclepias syriaca","Hesperis matronalis","Persicaria virginiana") )
-smaps<-filter(smaps,force==0)
-smaps$chilling<-ifelse(smaps$chillweeks==12, "12 weeks of chilling", "6 weeks of chilling")
-smaps2<-filter(new.data.A, species %in% c("Persicaria virginiana","Hesperis matronalis") )
+smaps<-filter(new.data.A, species %in% c("Eurybia divaricata","Persicaria virginiana") )
+#smaps<-filter(smaps,force==0)
+#smaps$chilling<-ifelse(smaps$chillweeks==12, "12 weeks of chilling", "6 weeks of chilling")
+#smaps2<-filter(new.data.A, species %in% c("Persicaria virginiana","Hesperis matronalis") )
 #smaps2<-filter(smaps2,force==0)
 
 jpeg("..//figures/sps_case_examps.jpeg",height=5,width=8, units="in",res=200)
+ploter2<-ggplot(smaps,aes(x=Estimate,y=0))+
+  geom_point(aes(color=species),size=2,show.legend=FALSE)+geom_hline(yintercept=-.1,color="darkgreen",size=.5,alpha=0.6)+
+  geom_errorbarh(aes(xmin=`Q5`,xmax=`Q95`,color=species),height=0,show.legend=FALSE)+coord_cartesian(ylim=c(-.08,.8))+
+  facet_wrap(~chillweeks,ncol=1)+scale_y_discrete()+
+  scale_color_manual(values=c("darkorchid","orange"))+ggthemes::theme_few()+xlab("days to 50% germination")+ylab("")
+#+theme(legend.position = "bottom")+
+  theme(legend.text = element_text(face = "italic"))
+dev.off()
+
+
+pdf("..//figures/sps_case_examps.pdf")
 ggplot(smaps,aes(x=Estimate,y=0))+
   geom_point(aes(color=species),size=3)+geom_hline(yintercept=-.05)+
   geom_errorbarh(aes(xmin=`Q5.5`,xmax=`Q94.5`,color=species),height=0)+
@@ -207,7 +244,7 @@ new.data3 <- data.frame(Taxa=c(rep(c(unique(d$Taxa)),each=17)),
 
 
 library(tidybayes)
-new.data3<-new.data3 %>% add_epred_draws(fit.wei.all, ndraws = 100)
+new.data3<-new.data3 %>% add_epred_draws(fit.wei.all, ndraws = 1000)
 
 
 new.data3$species<-NA
@@ -224,13 +261,62 @@ new.data3$species[which(new.data3$Taxa=="Asclepias syriaca")]<-"Asclepias syriac
 new.data3$species[which(new.data3$Taxa=="Anemone virginana")]<-"Anemone virginiana"
 new.data3$incubation<-ifelse(new.data3$force==0,"low incubation","high incubation")
 
+prief<-filter(new.data3, species  %in% c("Eurybia divaricata","Persicaria virginiana"))
+prief<-filter(prief,force==0)
+prief2<-filter(prief,chillweeks>5)
+prief2<-filter(prief2,chillweeks<13)
+
+pdf("..//figures/prief_sps_slopes.pdf")
+ggplot(new.data3,aes(x = chillweeks, color = species),show.legend=FALSE)+
+  geom_line(aes(y=.epred,group=paste(.draw,species,force)),alpha=.01)+
+  stat_summary(fun=mean, geom="line", size = 1.5,aes(y=.epred,color=species,group=paste(species,force)))+
+  scale_color_viridis_d(option="magma",begin = .3,end=.8)+ggthemes::theme_few()+
+  labs(y="days to 50% germination",x="Weeks of chilling")+theme(legend.text = element_text(face = "italic"),legend.position = "bottom")+
+  scale_x_continuous(breaks = c(6,8,10,12))+coord_cartesian(ylim=c(5,50),xlim=c(5.5,12))+
+  scale_y_continuous()+theme(legend.title= element_blank())+geom_vline(xintercept=6,color="gray",linetype="dotted")+geom_vline(xintercept=12,color="gray",linetype="dotted")
+dev.off()
+
+ploter<-ggplot(prief2,aes(x = chillweeks, color = species),show.legend=FALSE)+
+  geom_line(aes(y=.epred,group=paste(.draw,species,force)),alpha=.01)+
+  stat_summary(fun=mean, geom="line", size = 1.5,aes(y=.epred,color=species,group=paste(species,force)))+
+  scale_color_viridis_d(option="magma",begin = .3,end=.8)+ggthemes::theme_few()+
+  labs(y="days to 50% germination",x="Weeks of chilling")+theme(legend.text = element_text(face = "italic"),legend.position = "bottom")+
+  scale_x_continuous(breaks = c(6,8,10,12))+coord_cartesian(ylim=c(5,40),xlim=c(5.5,12))+
+  scale_y_continuous()+theme(legend.title= element_blank())+geom_vline(xintercept=6,color="gray",linetype="dotted")+geom_vline(xintercept=12,color="gray",linetype="dotted")
+
+
+
+plotter4<-ggpubr::ggarrange(ploter,ploter2, ncol=2,common.legend = TRUE,labels=c("b)","c)"))
+pdf("..//figures/prief_conception.pdf")
+ggpubr::ggarrange(plotter3,plotter4,ncol=1,common.legend = TRUE,heights=c(2,4),labels=c("a)","",""))
+dev.off()
+
+pdf("..//figures/prief_sps_means.pdf")
+ggplot(prief2,aes(x = 0,y=.epred, color = species))+
+  stat_summary(fun = "mean",size=1)+
+  scale_color_viridis_d(option="magma",begin = .2,end=.8)+ggthemes::theme_few()+
+  labs(y="T50",x="")+theme(legend.text = element_text(face = "italic"),legend.position = "bottom")+
+  scale_x_discrete()+coord_cartesian(ylim=c(10,25))+
+  scale_y_continuous()+theme(legend.title= element_blank())
+dev.off()
+
+sil<-data.frame(x=-30:30,y=-30:30)
+pdf("..//figures/prief_sps_blank.pdf")
+ggplot(sil,aes(x=x,y=y*.7))+geom_point(size=0.01,alpha=0)+geom_abline(slope=-.3,intercept=0,size=16,alpha=.1)+
+  geom_abline(slope=-.3,intercept=0,linetype="dotdash")+
+  ylim(-10,10)+scale_x_continuous(breaks=c(-30,-25,-20,-15,-10,-5,0,5,10,15,20,25,30))+
+  scale_y_continuous(breaks=c(-30,-25,-20,-15,-10,-5,0,5,10,15,20,25,30))+
+  geom_vline(xintercept=0)+geom_hline(yintercept=0)+ylab("difference in competitive ability")+xlab("difference in phenology")+
+  ggthemes::theme_few()
+dev.off()
+
 jpeg("..//figures/surv_prieff.jpeg",height=5,width=9, units="in",res=200)
 ggplot(new.data3,aes(x = chillweeks, color = species))+
   geom_line(aes(y=.epred,group=paste(.draw,species,force)),alpha=.05)+
   stat_summary(fun=mean, geom="line", size = .75,aes(y=.epred,color=species,group=paste(species,force)))+
   scale_color_viridis_d(option = "turbo")+ggthemes::theme_few()+facet_wrap(~incubation)+
   labs(y="T50",x="Weeks of chilling")+theme(legend.text = element_text(face = "italic"),legend.position = "bottom")+
-  scale_x_continuous(breaks = c(0,4,8,12,16))+coord_cartesian(ylim=c(0,365))+
+  scale_x_continuous(breaks = c(0,4,8,12,16))+coord_cartesian(ylim=c(2,365))+
   scale_y_continuous()+theme(legend.title= element_blank())
 dev.off()
 
